@@ -3,7 +3,12 @@ export const locale = {
   data: {
     MENU: {
       HOME: 'Home',
-      SAMPLE: 'Sample'
+      SAMPLE: 'Sample',
+      Dashboard:'Dashboard',
+      CVs:'CVs',
+      Users:'Users',
+      Campaign:'Campaign',
+      cvtech:'CvTech'
     }
   }
 }
