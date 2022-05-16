@@ -10,8 +10,8 @@ export const locale = {
       Campaign: 'Campaign',
       cvtech: 'CvTech',
       Settings: 'Settings',
-      GNE: 'education level management',
-      GEG: 'global experience management',
+      GNE: 'Education level management',
+      GEG: 'Global experience management',
       GSC: 'skill area management',
       GFS: 'desired function management',
     }

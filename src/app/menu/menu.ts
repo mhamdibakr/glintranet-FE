@@ -3,96 +3,77 @@ import { CoreMenu } from '@core/types'
 export const menu: CoreMenu[] = [
   {
     id: 'home',
-    title: 'Home',
-    translate: 'MENU.HOME',
+    title: 'MENU.HOME',
     type: 'item',
     icon: 'home',
     url: 'home'
   },
   {
-    id: 'sample',
-    title: 'Sample',
-    translate: 'MENU.SAMPLE',
-    type: 'item',
-    icon: 'sample',
-    url: 'sample'
-  },
-  {
 
     id: 'cvtech',
-    title: 'Cvtech',
-    translate: 'MENU.cvtech',
+    title: 'MENU.cvtech',
     type: 'collapsible',
     icon: 'menu',
 
     children: [
       {
         id: 'dashboard',
-        title: 'Dashboard',
-        translate: 'MENU.Dashboard',
+        title: 'MENU.Dashboard',
         type: 'item',
         icon: 'monitor',
         url: 'cvtech/dashboard',
       },
       {
         id: 'cvs',
-        title: 'CVs',
-        translate: 'MENU.CVs',
+        title: 'MENU.CVs',
         type: 'item',
         icon: 'file',
         url: 'cvtech/cvs'
       },
       {
         id: 'compaign',
-        title: 'Compaign',
-        translate: 'MENU.Compaign',
+        title: 'MENU.Campaign',
         type: 'item',
         icon: 'folder-plus',
         url: 'cvtech/compaign'
       },
       {
         id: 'users',
-        title: 'Users',
-        translate: 'MENU.Users',
+        title: 'MENU.Users',
         type: 'item',
         icon: 'users',
         url: 'cvtech/users'
       },
       {
         id: 'settings',
-        title: 'Settings',
-        translate: 'MENU.Settings',
+        title: 'MENU.Settings',
         type: 'collapsible',
         icon: 'book',
         children: [
           {
             id: 'gne',
-            title: 'gestion des niveau d études',
-            translate: 'MENU.GNE',
+            title: 'MENU.GNE',
             type: 'item',
             icon: 'file',
-            url: 'test'
+            url: 'education-management'
           },
           {
             id: 'geg',
-            title: 'gestion des expériences globale',
-            translate: 'MENU.GEG',
+            title: 'MENU.GEG',
             type: 'item',
             icon: 'file',
             url: 'test'
           },
           {
             id: 'gsc',
-            title: 'gestion des secteurs de compétence',
-            translate: 'MENU.Users',
+            title: 'MENU.GSC',
             type: 'item',
             icon: 'file',
             url: 'test'
           },
           {
             id: 'gfs',
-            title: 'gestion des fonctions souhaité',
-            translate: 'MENU.Users',
+            title: 'MENU.GFS',
             type: 'item',
             icon: 'file',
             url: 'test'
