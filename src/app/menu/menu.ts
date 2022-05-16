@@ -29,7 +29,7 @@ export const menu: CoreMenu[] = [
       {
         id: 'dashboard',
         title: 'Dashboard',
-        //translate: 'MENU.Dashboard',
+        translate: 'MENU.Dashboard',
         type: 'item',
         icon: 'monitor',
         url: 'cvtech/dashboard',
@@ -37,7 +37,7 @@ export const menu: CoreMenu[] = [
       {
         id: 'cvs',
         title: 'CVs',
-        //translate: 'MENU.CVs',
+        translate: 'MENU.CVs',
         type: 'item',
         icon: 'file',
         url: 'cvtech/cvs'
@@ -45,7 +45,7 @@ export const menu: CoreMenu[] = [
       {
         id: 'compaign',
         title: 'Compaign',
-        //translate: 'MENU.Compaign',
+        translate: 'MENU.Compaign',
         type: 'item',
         icon: 'folder-plus',
         url: 'cvtech/compaign'
@@ -53,7 +53,7 @@ export const menu: CoreMenu[] = [
       {
         id: 'users',
         title: 'Users',
-        // translate: 'Users',
+        translate: 'MENU.Users',
         type: 'item',
         icon: 'users',
         url: 'cvtech/users'
@@ -63,8 +63,8 @@ export const menu: CoreMenu[] = [
         title: 'Settings',
         translate: 'MENU.Settings',
         type: 'collapsible',
-        icon: 'users',
-        children:[
+        icon: 'book',
+        children: [
           {
             id: 'gne',
             title: 'gestion des niveau d études',
@@ -78,7 +78,7 @@ export const menu: CoreMenu[] = [
             title: 'gestion des expériences globale',
             translate: 'MENU.GEG',
             type: 'item',
-            icon: 'folder-plus',
+            icon: 'file',
             url: 'test'
           },
           {
@@ -86,7 +86,7 @@ export const menu: CoreMenu[] = [
             title: 'gestion des secteurs de compétence',
             translate: 'MENU.Users',
             type: 'item',
-            icon: 'users',
+            icon: 'file',
             url: 'test'
           },
           {
@@ -94,7 +94,7 @@ export const menu: CoreMenu[] = [
             title: 'gestion des fonctions souhaité',
             translate: 'MENU.Users',
             type: 'item',
-            icon: 'users',
+            icon: 'file',
             url: 'test'
           }
         ]
