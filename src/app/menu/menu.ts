@@ -31,12 +31,31 @@ export const menu: CoreMenu[] = [
         url: 'cvtech/cvs'
       },
       {
-        id: 'campaign',
-        title: 'Campaign',
-        //translate: 'MENU.Compaign',
-        type: 'item',
-        icon: 'folder-plus',
-        url: 'cvtech/compaign'
+        id: 'campaigns',
+        title: 'Campaigns',
+        //translate: 'MENU.cvtech',
+        type: 'collapsible',
+        icon: 'users',
+        children:
+         [
+          {
+            id: 'addcampaign',
+            title: 'Add campaign',
+            //translate: 'MENU.CVs',
+            type: 'item',
+            icon: "plus-square",
+            url: 'cvtech/cvs'
+          },
+          {
+            
+              id: 'adduser',
+              title: 'All campaigns',
+              //translate: 'MENU.CVs',
+              type: 'item',
+              icon: "list",
+              url: 'cvtech/cvs'
+          }
+        ]
       },
       {
         id: 'users',
@@ -61,18 +80,20 @@ export const menu: CoreMenu[] = [
           },
           {
             id: 'adduser',
-            title: 'Add new user',
+            title: 'Add user',
             //translate: 'MENU.CVs',
             type: 'item',
             icon: 'file',
             url: 'gsc'
           },
           {
-            id: 'gfs',
-            title: 'MENU.GFS',
-            type: 'item',
-            icon: 'file',
-            url: 'gfs'
+            
+              id: 'adduser',
+              title: 'Add new user',
+              //translate: 'MENU.CVs',
+              type: 'item',
+              icon: "list",
+              url: 'cvtech/cvs'
           }
         ]
       },
