@@ -14,6 +14,7 @@ export const locale = {
       GEG: 'Global experience management',
       GSC: 'skill area management',
       GFS: 'desired function management',
+      adduser:'Add new user',
     }
   }
 }

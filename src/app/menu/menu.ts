@@ -31,29 +31,31 @@ export const menu: CoreMenu[] = [
         url: 'cvtech/cvs'
       },
       {
-        id: 'campaigns',
-        title: 'Campaigns',
-        //translate: 'MENU.cvtech',
+        id: 'compaign',
+        title: 'MENU.Campaign',
+        type: 'item',
+        icon: 'folder-plus',
+        url: 'cvtech/compaign'
+      },
+      {
+        id: 'users',
+        title: 'MENU.Users',
         type: 'collapsible',
         icon: 'users',
-        children:
-         [
+        children:[
           {
-            id: 'addcampaign',
-            title: 'Add campaign',
-            //translate: 'MENU.CVs',
+            id: 'adduser',
+            title: 'MENU.adduser',
             type: 'item',
-            icon: "plus-square",
-            url: 'cvtech/cvs'
+            icon: '',
+            url: 'cvtech/compaign'
           },
           {
-            
-              id: 'adduser',
-              title: 'All campaigns',
-              //translate: 'MENU.CVs',
-              type: 'item',
-              icon: "list",
-              url: 'cvtech/cvs'
+            id: 'users',
+            title: 'MENU.users',
+            type: 'item',
+            icon: '',
+            url: 'cvtech/compaign'
           }
         ]
       },
