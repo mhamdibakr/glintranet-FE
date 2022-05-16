@@ -10,9 +10,17 @@ export const menu: CoreMenu[] = [
     url: 'home'
   },
   {
+    id: 'sample',
+    title: 'Sample',
+    translate: 'MENU.SAMPLE',
+    type: 'item',
+    icon: 'sample',
+    url: 'sample'
+  },
+  {
 
     id: 'cvtech',
-    title: 'CvTech',
+    title: 'Cvtech',
     translate: 'MENU.cvtech',
     type: 'collapsible',
     icon: 'menu',
@@ -21,34 +29,34 @@ export const menu: CoreMenu[] = [
       {
         id: 'dashboard',
         title: 'Dashboard',
-        translate: 'MENU.Dashboard',
+        //translate: 'MENU.Dashboard',
         type: 'item',
         icon: 'monitor',
-        url: 'test',
+        url: 'cvtech/dashboard',
       },
       {
-        id: 'cv',
+        id: 'cvs',
         title: 'CVs',
-        translate: 'MENU.CVs',
+        //translate: 'MENU.CVs',
         type: 'item',
         icon: 'file',
-        url: 'test'
+        url: 'cvtech/cvs'
       },
       {
-        id: 'campaign',
-        title: 'Campaign',
-        translate: 'MENU.Campaign',
+        id: 'compaign',
+        title: 'Compaign',
+        //translate: 'MENU.Compaign',
         type: 'item',
         icon: 'folder-plus',
-        url: 'test'
+        url: 'cvtech/compaign'
       },
       {
         id: 'users',
         title: 'Users',
-        translate: 'MENU.Users',
+        // translate: 'Users',
         type: 'item',
         icon: 'users',
-        url: 'test'
+        url: 'cvtech/users'
       }
     ]
 

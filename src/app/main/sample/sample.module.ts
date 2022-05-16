@@ -24,7 +24,12 @@ const routes = [
 
 @NgModule({
   declarations: [SampleComponent, HomeComponent],
-  imports: [RouterModule.forChild(routes), ContentHeaderModule, TranslateModule, CoreCommonModule],
+  imports: [
+    RouterModule.forChild(routes), 
+    ContentHeaderModule, 
+    TranslateModule, 
+    CoreCommonModule
+  ],
   exports: [SampleComponent, HomeComponent]
 })
 export class SampleModule {}

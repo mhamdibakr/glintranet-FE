@@ -18,6 +18,7 @@ import { coreConfig } from 'app/app-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
+import { CvtechModule } from './main/CvTech/cvtech.module';
 
 const appRoutes: Routes = [
   {
@@ -25,10 +26,19 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main/pages/pages.module').then(m => m.PagesModule)
   },
   {
+    path: 'cvtech',
+    loadChildren: () => import('./main/cvtech/cvtech.module').then(m => m.CvtechModule)
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },
+  // {
+  //   path: 'sample',
+  //   redirectTo: '/sample',
+  //   pathMatch: 'full'
+  // },
   {
     path: '**',
     redirectTo: '/pages/miscellaneous/error' //Error 404 - Page not found
@@ -59,7 +69,10 @@ const appRoutes: Routes = [
 
     // App modules
     LayoutModule,
-    SampleModule
+    SampleModule,
+
+    //--- add by soufiane ---
+    CvtechModule
   ],
 
   bootstrap: [AppComponent]
