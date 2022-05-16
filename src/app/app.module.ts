@@ -39,6 +39,12 @@ const appRoutes: Routes = [
   //   redirectTo: '/sample',
   //   pathMatch: 'full'
   // },
+
+    // {
+  //   path: 'bakr',
+  //   redirectTo: '/test',
+  //   pathMatch: 'bakr test pull'
+  // },
   {
     path: '**',
     redirectTo: '/pages/miscellaneous/error' //Error 404 - Page not found

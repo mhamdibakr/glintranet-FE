@@ -31,56 +31,40 @@ export const menu: CoreMenu[] = [
         url: 'cvtech/cvs'
       },
       {
-        id: 'compaign',
-        title: 'MENU.Campaign',
+        id: 'campaign',
+        title: 'Campaign',
+        //translate: 'MENU.Compaign',
         type: 'item',
         icon: 'folder-plus',
         url: 'cvtech/compaign'
       },
       {
         id: 'users',
-        title: 'MENU.Users',
-        type: 'item',
-        icon: 'users',
-        url: 'cvtech/users'
-      },
-      {
-        id: 'settings',
-        title: 'MENU.Settings',
+        title: 'Users',
+        //translate: 'MENU.cvtech',
         type: 'collapsible',
-        icon: 'book',
-        children: [
+        icon: 'users',
+        children:
+         [
           {
-            id: 'gne',
-            title: 'MENU.GNE',
+            id: 'adduser',
+            title: 'Add new user',
+            //translate: 'MENU.CVs',
             type: 'item',
-            icon: 'file',
-            url: 'education-management'
+            icon: "plus-square",
+            url: 'cvtech/cvs'
           },
           {
-            id: 'geg',
-            title: 'MENU.GEG',
-            type: 'item',
-            icon: 'file',
-            url: 'test'
-          },
-          {
-            id: 'gsc',
-            title: 'MENU.GSC',
-            type: 'item',
-            icon: 'file',
-            url: 'test'
-          },
-          {
-            id: 'gfs',
-            title: 'MENU.GFS',
-            type: 'item',
-            icon: 'file',
-            url: 'test'
+              id: 'allusers',
+              title: 'All users',
+              //translate: 'MENU.CVs',
+              type: 'item',
+              icon: "list",
+              url: 'cvtech/cvs'
+            
           }
         ]
-      }
-
+      },
     ]
 
   },
