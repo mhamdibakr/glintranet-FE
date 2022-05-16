@@ -40,9 +40,24 @@ export const menu: CoreMenu[] = [
       {
         id: 'users',
         title: 'MENU.Users',
-        type: 'item',
+        type: 'collapsible',
         icon: 'users',
-        url: 'cvtech/users'
+        children:[
+          {
+            id: 'adduser',
+            title: 'MENU.adduser',
+            type: 'item',
+            icon: '',
+            url: 'cvtech/compaign'
+          },
+          {
+            id: 'users',
+            title: 'MENU.users',
+            type: 'item',
+            icon: '',
+            url: 'cvtech/compaign'
+          }
+        ]
       },
       {
         id: 'settings',

@@ -2,7 +2,7 @@ export const locale = {
   lang: 'fr',
   data: {
     MENU: {
-      HOME: 'Maison',
+      HOME: 'Accueil',
       SAMPLE: 'Échantillon',
       Dashboard: 'tableau de bord',
       CVs: 'CVs',
@@ -14,6 +14,7 @@ export const locale = {
       GEG: 'gestion des expériences globale',
       GSC: 'gestion des secteurs de compétence',
       GFS: 'gestion des fonctions souhaité',
+      adduser:'Ajouter un utilisateur',
     }
   }
 }
