@@ -60,8 +60,9 @@ export const menu: CoreMenu[] = [
         ]
       },
       {
-        id: 'settings',
-        title: 'MENU.Settings',
+        id: 'users',
+        title: 'Users',
+        //translate: 'MENU.cvtech',
         type: 'collapsible',
         icon: 'book',
         children: [
@@ -80,22 +81,24 @@ export const menu: CoreMenu[] = [
             url: 'global-experience-management'
           },
           {
-            id: 'gsc',
-            title: 'MENU.GSC',
+            id: 'adduser',
+            title: 'Add user',
+            //translate: 'MENU.CVs',
             type: 'item',
             icon: 'file',
             url: 'gsc'
           },
           {
-            id: 'gfs',
-            title: 'MENU.GFS',
-            type: 'item',
-            icon: 'file',
-            url: 'gfs'
+            
+              id: 'adduser',
+              title: 'Add new user',
+              //translate: 'MENU.CVs',
+              type: 'item',
+              icon: "list",
+              url: 'cvtech/cvs'
           }
         ]
-      }
-
+      },
     ]
 
   },
