@@ -9,6 +9,7 @@ export const locale = {
       Users: 'Utilisateurs',
       Campaign: 'Campagne',
       cvtech: 'CvTech',
+      Settings: 'Parametres',
       GNE: "gestion des niveau d'études",
       GEG: 'gestion des expériences globale',
       GSC: 'gestion des secteurs de compétence',

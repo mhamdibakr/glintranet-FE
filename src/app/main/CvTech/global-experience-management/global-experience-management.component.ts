@@ -13,7 +13,7 @@ export class GlobalExperienceManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.contentHeader = {
-      headerTitle: 'Education Level Management',
+      headerTitle: 'Globale Experience Management',
       actionButton: true,
       breadcrumb: {
         type: '',
@@ -29,7 +29,7 @@ export class GlobalExperienceManagementComponent implements OnInit {
             link: '/'
           },
           {
-            name: 'Education Level Management',
+            name: 'Globale Experience Management',
             isLink: false
           }
         ]
