@@ -19,7 +19,7 @@ export const coreConfig: CoreConfig = {
     appName     : 'GL INTRANET',                                        // App Name
     appTitle    : 'gl-intranet-front', // App Title
     appLogoImage: 'assets/images/logo/logo.svg',                  // App Logo
-    appLanguage : 'en',                                           // App Default Language (en, fr, de, pt etc..)
+    appLanguage : 'fr',                                           // App Default Language (en, fr, de, pt etc..)
   },
   layout: {
     skin  : 'default',                        // default, dark, bordered, semi-dark
