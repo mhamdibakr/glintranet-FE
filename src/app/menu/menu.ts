@@ -29,7 +29,7 @@ export const menu: CoreMenu[] = [
       {
         id: 'dashboard',
         title: 'Dashboard',
-        //translate: 'MENU.Dashboard',
+        translate: 'MENU.Dashboard',
         type: 'item',
         icon: 'monitor',
         url: 'cvtech/dashboard',
@@ -37,7 +37,7 @@ export const menu: CoreMenu[] = [
       {
         id: 'cvs',
         title: 'CVs',
-        //translate: 'MENU.CVs',
+        translate: 'MENU.CVs',
         type: 'item',
         icon: 'file',
         url: 'cvtech/cvs'
@@ -45,7 +45,7 @@ export const menu: CoreMenu[] = [
       {
         id: 'compaign',
         title: 'Compaign',
-        //translate: 'MENU.Compaign',
+        translate: 'MENU.Compaign',
         type: 'item',
         icon: 'folder-plus',
         url: 'cvtech/compaign'
@@ -53,11 +53,53 @@ export const menu: CoreMenu[] = [
       {
         id: 'users',
         title: 'Users',
-        // translate: 'Users',
+        translate: 'MENU.Users',
         type: 'item',
         icon: 'users',
         url: 'cvtech/users'
+      },
+      {
+        id: 'settings',
+        title: 'Settings',
+        translate: 'MENU.Settings',
+        type: 'collapsible',
+        icon: 'book',
+        children: [
+          {
+            id: 'gne',
+            title: 'gestion des niveau d études',
+            translate: 'MENU.GNE',
+            type: 'item',
+            icon: 'file',
+            url: 'test'
+          },
+          {
+            id: 'geg',
+            title: 'gestion des expériences globale',
+            translate: 'MENU.GEG',
+            type: 'item',
+            icon: 'file',
+            url: 'test'
+          },
+          {
+            id: 'gsc',
+            title: 'gestion des secteurs de compétence',
+            translate: 'MENU.Users',
+            type: 'item',
+            icon: 'file',
+            url: 'test'
+          },
+          {
+            id: 'gfs',
+            title: 'gestion des fonctions souhaité',
+            translate: 'MENU.Users',
+            type: 'item',
+            icon: 'file',
+            url: 'test'
+          }
+        ]
       }
+
     ]
 
   },
