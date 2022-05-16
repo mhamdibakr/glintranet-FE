@@ -10,14 +10,6 @@ export const menu: CoreMenu[] = [
     url: 'home'
   },
   {
-    id: 'sample',
-    title: 'Sample',
-    translate: 'MENU.SAMPLE',
-    type: 'item',
-    icon: 'sample',
-    url: 'sample'
-  },
-  {
 
     id: 'cvtech',
     title: 'Cvtech',
@@ -43,8 +35,8 @@ export const menu: CoreMenu[] = [
         url: 'cvtech/cvs'
       },
       {
-        id: 'compaign',
-        title: 'Compaign',
+        id: 'campaign',
+        title: 'Campaign',
         //translate: 'MENU.Compaign',
         type: 'item',
         icon: 'folder-plus',
@@ -53,11 +45,30 @@ export const menu: CoreMenu[] = [
       {
         id: 'users',
         title: 'Users',
-        // translate: 'Users',
-        type: 'item',
+        //translate: 'MENU.cvtech',
+        type: 'collapsible',
         icon: 'users',
-        url: 'cvtech/users'
-      }
+        children:
+         [
+          {
+            id: 'adduser',
+            title: 'Add new user',
+            //translate: 'MENU.CVs',
+            type: 'item',
+            icon: "plus-square",
+            url: 'cvtech/cvs'
+          },
+          {
+              id: 'allusers',
+              title: 'All users',
+              //translate: 'MENU.CVs',
+              type: 'item',
+              icon: "list",
+              url: 'cvtech/cvs'
+            
+          }
+        ]
+      },
     ]
 
   },
