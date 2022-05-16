@@ -3,8 +3,7 @@ import { CoreMenu } from '@core/types'
 export const menu: CoreMenu[] = [
   {
     id: 'home',
-    title: 'Home',
-    translate: 'MENU.HOME',
+    title: 'MENU.HOME',
     type: 'item',
     icon: 'home',
     url: 'home'
@@ -12,24 +11,21 @@ export const menu: CoreMenu[] = [
   {
 
     id: 'cvtech',
-    title: 'Cvtech',
-    translate: 'MENU.cvtech',
+    title: 'MENU.cvtech',
     type: 'collapsible',
     icon: 'menu',
 
     children: [
       {
         id: 'dashboard',
-        title: 'Dashboard',
-        //translate: 'MENU.Dashboard',
+        title: 'MENU.Dashboard',
         type: 'item',
         icon: 'monitor',
         url: 'cvtech/dashboard',
       },
       {
         id: 'cvs',
-        title: 'CVs',
-        //translate: 'MENU.CVs',
+        title: 'MENU.CVs',
         type: 'item',
         icon: 'file',
         url: 'cvtech/cvs'
