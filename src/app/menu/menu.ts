@@ -31,22 +31,17 @@ export const menu: CoreMenu[] = [
         url: 'cvtech/cvs'
       },
       {
-        id: 'compaign',
-        title: 'MENU.Campaign',
+        id: 'campaign',
+        title: 'Campaign',
+        //translate: 'MENU.Compaign',
         type: 'item',
         icon: 'folder-plus',
         url: 'cvtech/compaign'
       },
       {
         id: 'users',
-        title: 'MENU.Users',
-        type: 'item',
-        icon: 'users',
-        url: 'cvtech/users'
-      },
-      {
-        id: 'settings',
-        title: 'MENU.Settings',
+        title: 'Users',
+        //translate: 'MENU.cvtech',
         type: 'collapsible',
         icon: 'book',
         children: [
@@ -65,8 +60,9 @@ export const menu: CoreMenu[] = [
             url: 'global-experience-management'
           },
           {
-            id: 'gsc',
-            title: 'MENU.GSC',
+            id: 'adduser',
+            title: 'Add new user',
+            //translate: 'MENU.CVs',
             type: 'item',
             icon: 'file',
             url: 'gsc'
@@ -79,8 +75,7 @@ export const menu: CoreMenu[] = [
             url: 'gfs'
           }
         ]
-      }
-
+      },
     ]
 
   },
