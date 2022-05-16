@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreCommonModule } from '@core/common.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
-import { UsersComponent } from './users/users.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { CvsComponent } from './cvs/cvs.component';
+import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 import { CompaignComponent } from './compaign/compaign.component';
+import { CvsComponent } from './cvs/cvs.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { EducationLevelManagementComponent } from './education-level-management/education-level-management.component';
+import { UsersComponent } from './users/users.component';
+import { GlobalExperienceManagementComponent } from './global-experience-management/global-experience-management.component';
 
 const routes: Routes = [
   {
@@ -43,16 +45,26 @@ const routes: Routes = [
     //   Ias: InvoiceAddService
     // },
     //data: { animation: 'UsersComponent' }
+  },
+  {
+    path: 'education-management',
+    component: EducationLevelManagementComponent,
+  },
+  {
+    path: 'global-experience-management',
+    component: GlobalExperienceManagementComponent,
   }
 ];
 
 @NgModule({
-  declarations: [ 
+  declarations: [
     UsersComponent,
     DashboardComponent,
     CvsComponent,
-    CompaignComponent
-   ],
+    CompaignComponent,
+    EducationLevelManagementComponent,
+    GlobalExperienceManagementComponent
+  ],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
@@ -66,4 +78,4 @@ const routes: Routes = [
 
   providers: []
 })
-export class CvtechModule {}
+export class CvtechModule { }
