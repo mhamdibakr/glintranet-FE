@@ -62,21 +62,21 @@ export const menu: CoreMenu[] = [
             title: 'MENU.GEG',
             type: 'item',
             icon: 'file',
-            url: 'test'
+            url: 'global-experience-management'
           },
           {
             id: 'gsc',
             title: 'MENU.GSC',
             type: 'item',
             icon: 'file',
-            url: 'test'
+            url: 'gsc'
           },
           {
             id: 'gfs',
             title: 'MENU.GFS',
             type: 'item',
             icon: 'file',
-            url: 'test'
+            url: 'gfs'
           }
         ]
       }
