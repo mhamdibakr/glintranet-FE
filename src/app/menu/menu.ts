@@ -43,25 +43,36 @@ export const menu: CoreMenu[] = [
         title: 'Users',
         //translate: 'MENU.cvtech',
         type: 'collapsible',
-        icon: 'users',
-        children:
-         [
+        icon: 'book',
+        children: [
+          {
+            id: 'gne',
+            title: 'MENU.GNE',
+            type: 'item',
+            icon: 'file',
+            url: 'education-management'
+          },
+          {
+            id: 'geg',
+            title: 'MENU.GEG',
+            type: 'item',
+            icon: 'file',
+            url: 'global-experience-management'
+          },
           {
             id: 'adduser',
             title: 'Add new user',
             //translate: 'MENU.CVs',
             type: 'item',
-            icon: "plus-square",
-            url: 'cvtech/cvs'
+            icon: 'file',
+            url: 'gsc'
           },
           {
-              id: 'allusers',
-              title: 'All users',
-              //translate: 'MENU.CVs',
-              type: 'item',
-              icon: "list",
-              url: 'cvtech/cvs'
-            
+            id: 'gfs',
+            title: 'MENU.GFS',
+            type: 'item',
+            icon: 'file',
+            url: 'gfs'
           }
         ]
       },
