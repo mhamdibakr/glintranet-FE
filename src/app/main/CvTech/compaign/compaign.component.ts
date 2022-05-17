@@ -74,7 +74,7 @@ export class CompaignComponent implements OnInit, OnDestroy {
     //   }
     // };
     this.contentHeader = {
-      headerTitle: 'Compaign',
+      headerTitle: 'Campaign',
       actionButton: true,
       breadcrumb: {
         type: '',
@@ -90,7 +90,7 @@ export class CompaignComponent implements OnInit, OnDestroy {
             link: '/'
           },
           {
-            name: 'Compaign',
+            name: 'Campaign',
             isLink: false
           }
         ]
