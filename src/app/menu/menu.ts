@@ -34,9 +34,25 @@ export const menu: CoreMenu[] = [
       {
         id: 'compaign',
         title: 'MENU.Campaign',
-        type: 'item',
+        type: 'collapsible',
         icon: 'folder-plus',
-        url: 'cvtech/compaign'
+        children:[
+          {
+            id: 'addcampaign',
+            title: 'Add campaign',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'cvtech/addcampaign'
+          },
+          {
+            id: 'allcampaigns',
+            title: 'All campaigns',
+            type: 'item',
+            icon: 'list',
+            url: 'cvtech/allcampaigns'
+          },
+        ]
+        
       },
       {
         id: 'users',
@@ -49,14 +65,14 @@ export const menu: CoreMenu[] = [
             title: 'MENU.adduser',
             type: 'item',
             icon: '',
-            url: 'cvtech/compaign'
+            //url: 'cvtech/compaign'
           },
           {
             id: 'users',
             title: 'MENU.users',
             type: 'item',
             icon: '',
-            url: 'cvtech/compaign'
+            //url: 'cvtech/compaign'
           }
         ]
       },

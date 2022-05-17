@@ -1,0 +1,53 @@
+<p>all-campaigns works!</p>
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+        <div class="row" id="basic-table">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header"><h4 class="card-title">All campaigns</h4></div>
+
+                <div class="table-responsive">
+                  <table class="table" style="text-align: center;">
+                    <thead>
+                      <tr>
+                        <th>Campaign name</th>
+                        <th>Number of Positions</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                         <span class="font-weight-bold">Recrut.. des ing dev camp 2022</span>
+                        </td>
+                        <td>05</td>
+                        <td><span class="badge badge-pill badge-light-primary mr-1">Active</span></td>
+                        <td class="overflow-hidden">
+                          <div ngbDropdown container="body">
+                            <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle data-toggle="dropdown">
+                              <i data-feather="more-vertical"></i>
+                            </button>
+                            <div ngbDropdownMenu>
+                              <a ngbDropdownItem href="javascript:void(0);">
+                                <i data-feather="info" class="mr-50"></i><span>Details</span>
+                              </a>
+                              <a ngbDropdownItem href="javascript:void(0);">
+                                <i data-feather="edit-2" class="mr-50"></i><span>Edit</span>
+                              </a
+                              ><a ngbDropdownItem href="javascript:void(0);"
+                                ><i data-feather="trash" class="mr-50"></i><span>Delete</span></a
+                              >
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
