@@ -1,4 +1,5 @@
 export class Candidat {
+    id:number;
     civility: String;
     firstName: String;
     lastName: String;

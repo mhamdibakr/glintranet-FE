@@ -1,6 +1,7 @@
 import { Profile } from "./profile.model";
 
 export class Campaign {
+    id:number;
     name: String;
     description: String;
     nbPositions: number;
