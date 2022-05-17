@@ -13,7 +13,7 @@
           <!-- <core-card-snippet [snippetCode]="_snippetCodeHorizontal"> -->
 
           <div class="card-header">
-            <h4 class="card-title">Horizontal Form</h4>
+            <h4 class="card-title">Campaign details</h4>
           </div>
 
           <div class="card-body">
@@ -22,54 +22,49 @@
                 <div class="col-12">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                      <label for="first-name">First Name</label>
+                      <label for="first-name">Campaign name</label>
                     </div>
                     <div class="col-sm-9">
-                      <input type="text" id="first-name" class="form-control" name="fname" placeholder="First Name" />
+                      <input type="text" id="campaign-name" class="form-control" name="c-name" placeholder="Campaign name" />
                     </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                      <label for="email-id">Email</label>
+                      <label for="email-id">Number of Positions </label>
                     </div>
                     <div class="col-sm-9">
-                      <input type="email" id="email-id" class="form-control" name="email-id" placeholder="Email" />
+                      <input type="number" id="positions-nb" class="form-control" name="c-positions-nb" placeholder="Number of positions" />
                     </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                      <label for="contact-info">Mobile</label>
+                      <label for="contact-info">Description</label>
                     </div>
                     <div class="col-sm-9">
-                      <input type="number" id="contact-info" class="form-control" name="contact" placeholder="Mobile" />
+                      <textarea id="campaign-desc" placeholder="Description" name="c-desc"  rows="5" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
                     </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                      <label for="password">Password</label>
+                      <label for="password">Closing Date</label>
                     </div>
                     <div class="col-sm-9">
-                      <input type="password" id="password" class="form-control" name="password"
-                        placeholder="Password" />
+                      <input type="date" id="closing-date" class="form-control" name="c-closing-date"
+                        placeholder="Closing Date" />
                     </div>
                   </div>
                 </div>
+                <br><br><br><br>
+                <br>
+                
                 <div class="col-sm-9 offset-sm-3">
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck1" />
-                      <label class="custom-control-label" for="customCheck1">Remember me</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-9 offset-sm-3">
-                  <button type="submit" rippleEffect class="btn btn-primary mr-1">Submit</button>
+                  <button type="submit" rippleEffect class="btn btn-primary mr-1">save</button>
                   <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
                 </div>
               </div>
@@ -82,7 +77,7 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Horizontal Form with Icons</h4>
+            <h4 class="card-title">Researched Profil</h4>
           </div>
 
           <div class="card-body">
@@ -91,72 +86,60 @@
                 <div class="col-12">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                      <label for="fname-icon">First Name</label>
+                      <label for="contact-info">Education Level</label>
                     </div>
                     <div class="col-sm-9">
-                      <div class="input-group input-group-merge">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><span [data-feather]="'user'"></span></span>
-                        </div>
-                        <input type="text" id="fname-icon" class="form-control" name="fname-icon"
-                          placeholder="First Name" />
-                      </div>
+                      <textarea id="campaign-rp-el" placeholder="Education Level" name="c-rp-el"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
                     </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                      <label for="email-icon">Email</label>
+                      <label for="contact-info">Globale Exprience</label>
                     </div>
                     <div class="col-sm-9">
-                      <div class="input-group input-group-merge">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><span [data-feather]="'mail'"></span></span>
-                        </div>
-                        <input type="email" id="email-icon" class="form-control" name="email-id-icon"
-                          placeholder="Email" />
-                      </div>
+                      <textarea id="campaign-rp-ge" placeholder="Globale exprience" name="c-pr-ge"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
                     </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                      <label for="contact-icon">Mobile</label>
+                      <label for="contact-info">Current Situation</label>
                     </div>
                     <div class="col-sm-9">
-                      <div class="input-group input-group-merge">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><span [data-feather]="'smartphone'"></span></span>
-                        </div>
-                        <input type="number" id="contact-icon" class="form-control" name="contact-icon"
-                          placeholder="Mobile" />
-                      </div>
+                      <textarea id="campaign-rp-cs" placeholder="Current situation" name="c-rp-cs"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
                     </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
-                      <label for="pass-icon">Password</label>
+                      <label for="contact-info">Function</label>
                     </div>
                     <div class="col-sm-9">
-                      <div class="input-group input-group-merge">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><span [data-feather]="'lock'"></span></span>
-                        </div>
-                        <input type="password" id="pass-icon" class="form-control" name="contact-icon"
-                          placeholder="Password" />
-                      </div>
+                      <textarea id="campaign-rp-func" placeholder="Function" name="c-rp-func"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-9 offset-sm-3">
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck2" />
-                      <label class="custom-control-label" for="customCheck2">Remember me</label>
+                <div class="col-12">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="contact-info">Availability</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <textarea id="campaign-rp-avl" placeholder="Availability" name="c-rp-avl"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="contact-info">Skills</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <textarea id="campaign-skills" placeholder="Skills" name="c-skills"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
                     </div>
                   </div>
                 </div>
@@ -178,7 +161,7 @@
 
 
 
-      
+  <!--     
     <div class="row" id="table-hover-animation">
       <div class="col-12">
         <div class="card">
@@ -189,7 +172,7 @@
             <!-- <p class="card-text">
           Add <code>.table-hover-animation</code> to enable a hover stat with animation on table rows within a
           <code class="highlighter-rouge">&lt;tbody&gt;</code>.
-          </p> -->
+          </p> 
             <div class="row">
               <div class="col-md-6 col-12">
                 <div class="d-flex justify-content-between align-items-center m-1">
@@ -368,6 +351,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     </div>
   </div>

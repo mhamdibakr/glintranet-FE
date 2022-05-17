@@ -13,7 +13,9 @@ export const menu: CoreMenu[] = [
     title: 'MENU.cvtech',
     type: 'collapsible',
     icon: 'menu',
-    children: [
+
+    children: 
+    [
       {
         id: 'dashboard',
         title: 'MENU.Dashboard',
