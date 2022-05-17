@@ -13,6 +13,8 @@ import { EducationLevelManagementComponent } from './education-level-management/
 import { UsersComponent } from './users/users.component';
 import { GlobalExperienceManagementComponent } from './global-experience-management/global-experience-management.component';
 import { AllCampaignsComponent } from './all-campaigns/all-campaigns.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { AllUsersComponent } from './all-users/all-users.component';
 
 const routes: Routes = [
   {
@@ -56,6 +58,22 @@ const routes: Routes = [
     //data: { animation: 'UsersComponent' }
   },
   {
+    path: 'allusers',
+    component: AllUsersComponent,
+    // resolve: {
+    //   Ias: InvoiceAddService
+    // },
+    //data: { animation: 'UsersComponent' }
+  },
+  {
+    path: 'adduser',
+    component: AddUserComponent,
+    // resolve: {
+    //   Ias: InvoiceAddService
+    // },
+    //data: { animation: 'UsersComponent' }
+  },
+  {
     path: 'education-management',
     component: EducationLevelManagementComponent,
   },
@@ -73,7 +91,9 @@ const routes: Routes = [
     CompaignComponent,
     EducationLevelManagementComponent,
     GlobalExperienceManagementComponent,
-    AllCampaignsComponent
+    AllCampaignsComponent,
+    AddUserComponent,
+    AllUsersComponent
   ],
   imports: [
     RouterModule.forChild(routes),
