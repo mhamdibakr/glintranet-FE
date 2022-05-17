@@ -15,6 +15,7 @@ export const locale = {
       GSC: 'gestion des secteurs de compétence',
       GFS: 'gestion des fonctions souhaité',
       adduser:'Ajouter un utilisateur',
+      listuser:'Liste des utilisateurs',
     }
   }
 }

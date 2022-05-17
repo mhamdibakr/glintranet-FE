@@ -78,7 +78,7 @@ const routes: Routes = [
     component: EducationLevelManagementComponent,
   },
   {
-    path: 'global-experience-management',
+    path: 'global-experience',
     component: GlobalExperienceManagementComponent,
   }
 ];
