@@ -15,7 +15,8 @@ export const menu: CoreMenu[] = [
     type: 'collapsible',
     icon: 'menu',
 
-    children: [
+    children: 
+    [
       {
         id: 'dashboard',
         title: 'MENU.Dashboard',
@@ -79,23 +80,6 @@ export const menu: CoreMenu[] = [
             type: 'item',
             icon: 'file',
             url: 'global-experience-management'
-          },
-          {
-            id: 'adduser',
-            title: 'Add user',
-            //translate: 'MENU.CVs',
-            type: 'item',
-            icon: 'file',
-            url: 'gsc'
-          },
-          {
-            
-              id: 'adduser',
-              title: 'Add new user',
-              //translate: 'MENU.CVs',
-              type: 'item',
-              icon: "list",
-              url: 'cvtech/cvs'
           }
         ]
       },
