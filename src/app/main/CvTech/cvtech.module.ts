@@ -12,6 +12,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EducationLevelManagementComponent } from './education-level-management/education-level-management.component';
 import { UsersComponent } from './users/users.component';
 import { GlobalExperienceManagementComponent } from './global-experience-management/global-experience-management.component';
+import { AllCampaignsComponent } from './all-campaigns/all-campaigns.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { AllUsersComponent } from './all-users/all-users.component';
 
 const routes: Routes = [
   {
@@ -39,7 +42,7 @@ const routes: Routes = [
     //data: { animation: 'UsersComponent' }
   },
   {
-    path: 'compaign',
+    path: 'addcampaign',
     component: CompaignComponent,
     // resolve: {
     //   Ias: InvoiceAddService
@@ -47,7 +50,31 @@ const routes: Routes = [
     //data: { animation: 'UsersComponent' }
   },
   {
-    path: 'education',
+    path: 'allcampaigns',
+    component: AllCampaignsComponent,
+    // resolve: {
+    //   Ias: InvoiceAddService
+    // },
+    //data: { animation: 'UsersComponent' }
+  },
+  {
+    path: 'allusers',
+    component: AllUsersComponent,
+    // resolve: {
+    //   Ias: InvoiceAddService
+    // },
+    //data: { animation: 'UsersComponent' }
+  },
+  {
+    path: 'adduser',
+    component: AddUserComponent,
+    // resolve: {
+    //   Ias: InvoiceAddService
+    // },
+    //data: { animation: 'UsersComponent' }
+  },
+  {
+    path: 'education-management',
     component: EducationLevelManagementComponent,
   },
   {
@@ -63,7 +90,10 @@ const routes: Routes = [
     CvsComponent,
     CompaignComponent,
     EducationLevelManagementComponent,
-    GlobalExperienceManagementComponent
+    GlobalExperienceManagementComponent,
+    AllCampaignsComponent,
+    AddUserComponent,
+    AllUsersComponent
   ],
   imports: [
     RouterModule.forChild(routes),
