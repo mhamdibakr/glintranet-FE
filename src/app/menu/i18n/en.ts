@@ -15,6 +15,7 @@ export const locale = {
       GSC: 'skill area management',
       GFS: 'desired function management',
       adduser:'Add new user',
+      listuser:'Users list',
     }
   }
 }

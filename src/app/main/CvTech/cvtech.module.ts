@@ -47,11 +47,11 @@ const routes: Routes = [
     //data: { animation: 'UsersComponent' }
   },
   {
-    path: 'education-management',
+    path: 'education',
     component: EducationLevelManagementComponent,
   },
   {
-    path: 'global-experience-management',
+    path: 'global-experience',
     component: GlobalExperienceManagementComponent,
   }
 ];
