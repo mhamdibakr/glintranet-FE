@@ -9,7 +9,6 @@ export const menu: CoreMenu[] = [
     url: 'home'
   },
   {
-
     id: 'cvtech',
     title: 'MENU.cvtech',
     type: 'collapsible',
@@ -41,29 +40,13 @@ export const menu: CoreMenu[] = [
       {
         id: 'users',
         title: 'MENU.Users',
-        type: 'collapsible',
+        type: 'item',
         icon: 'users',
-        children:[
-          {
-            id: 'adduser',
-            title: 'MENU.adduser',
-            type: 'item',
-            icon: '',
-            url: 'cvtech/compaign'
-          },
-          {
-            id: 'users',
-            title: 'MENU.users',
-            type: 'item',
-            icon: '',
-            url: 'cvtech/compaign'
-          }
-        ]
+        url: 'cvtech/users'
       },
       {
-        id: 'users',
-        title: 'Users',
-        //translate: 'MENU.cvtech',
+        id: 'settings',
+        title: 'MENU.Settings',
         type: 'collapsible',
         icon: 'book',
         children: [
@@ -72,14 +55,28 @@ export const menu: CoreMenu[] = [
             title: 'MENU.GNE',
             type: 'item',
             icon: 'file',
-            url: 'education-management'
+            url: 'cvtech/education'
           },
           {
             id: 'geg',
             title: 'MENU.GEG',
             type: 'item',
             icon: 'file',
-            url: 'global-experience-management'
+            url: 'cvtech/global-experience'
+          },
+          {
+            id: 'gsc',
+            title: 'MENU.GSC',
+            type: 'item',
+            icon: 'file',
+            url: '/gsc'
+          },
+          {
+            id: 'gfs',
+            title: 'MENU.GFS',
+            type: 'item',
+            icon: 'file',
+            url: '/gfs'
           }
         ]
       },
