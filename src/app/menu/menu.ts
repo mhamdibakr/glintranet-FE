@@ -33,16 +33,47 @@ export const menu: CoreMenu[] = [
       {
         id: 'compaign',
         title: 'MENU.Campaign',
-        type: 'item',
+        type: 'collapsible',
         icon: 'folder-plus',
-        url: 'cvtech/compaign'
+        children:[
+          {
+            id: 'allcampaigns',
+            title: 'All campaigns',
+            type: 'item',
+            icon: 'list',
+            url: 'cvtech/allcampaigns'
+          },
+          {
+            id: 'addcampaign',
+            title: 'Add campaign',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'cvtech/addcampaign'
+          },
+        ]
+        
       },
       {
         id: 'users',
         title: 'MENU.Users',
         type: 'item',
         icon: 'users',
-        url: 'cvtech/users'
+        children:[
+          {
+            id: 'allusers',
+            title: 'All user',
+            type: 'item',
+            icon: 'list',
+            url: 'cvtech/allusers'
+          },
+          {
+            id: 'adduser',
+            title: 'Add User',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'cvtech/adduser'
+          }
+        ]
       },
       {
         id: 'settings',

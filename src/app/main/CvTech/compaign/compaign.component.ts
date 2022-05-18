@@ -90,7 +90,7 @@ export class CompaignComponent implements OnInit, OnDestroy {
             link: '/'
           },
           {
-            name: 'Campaign',
+            name: 'Add Campaign',
             isLink: false
           }
         ]
