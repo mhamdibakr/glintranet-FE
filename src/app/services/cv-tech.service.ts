@@ -39,7 +39,7 @@ export class CvTechService {
     return this.httpClient.put(`${baseUrl}/Availability/edit/${id}`, data);
   }
 
-  deleteMovieAvailability(id: number): Observable<any> {  
+  deleteAvailability(id: number): Observable<any> {  
     return this.httpClient.delete(`${baseUrl}/Availability/${id}`, { responseType: 'text' });  
   }  
 
@@ -116,23 +116,23 @@ export class CvTechService {
   //Education
   //Education
   getEducations(): Observable<Education[]> {
-    return this.httpClient.get<Education[]>(`${baseUrl}/Education`);
+    return this.httpClient.get<Education[]>(`${baseUrl}/education`);
   }
 
   getEducation(id: number): Observable<Education> {  
-    return this.httpClient.get<Education>(`${baseUrl}/Education/${id}`);  
+    return this.httpClient.get<Education>(`${baseUrl}/education/${id}`);  
   }  
 
   createEducation(data: any): Observable<any> {
-    return this.httpClient.post(`${baseUrl}/Education/add`, data);
+    return this.httpClient.post(`${baseUrl}/education/add`, data);
   }
 
   updateEducation(id: number,data: any): Observable<any> {
-    return this.httpClient.put(`${baseUrl}/Education/edit/${id}`, data);
+    return this.httpClient.put(`${baseUrl}/education/edit/${id}`, data);
   }
 
   deleteEducation(id: number): Observable<any> {  
-    return this.httpClient.delete(`${baseUrl}/Education/${id}`, { responseType: 'text' });  
+    return this.httpClient.delete(`${baseUrl}/education/${id}`, { responseType: 'text' });  
   }  
   
   //Functions

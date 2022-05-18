@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CoreTranslationService } from '@core/services/translation.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CvTechService } from 'app/services/cv-tech.service';
-import { takeUntil } from 'rxjs/operators';
 import { Education } from '../models/education.model';
-import { DatatablesService } from './Datatables.service';
 
 @Component({
   selector: 'app-education-level-management',
@@ -14,31 +11,22 @@ import { DatatablesService } from './Datatables.service';
 export class EducationLevelManagementComponent implements OnInit {
 
   public contentHeader: object;
+
   EducationList: Education[] = [];
-  public kitchenSinkRows: any;
-  public basicSelectedOption: number = 10;
-  //public SelectionType = SelectionType;
 
-  /**
-   * Method Search (filter)
-   *
-   * @param event
-   */
-  filterUpdate(event) {
-    const val = event.target.value.toLowerCase();
-
-    // filter our data
-    const temp = this.EducationList.filter(function (d) {
-      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
-    });
-
-    // update the rows
-    this.kitchenSinkRows = temp;
-    // Whenever the filter changes, always go back to the first page
-    //this.table.offset = 0;
+  education: Education = {
+    id: null,
+    name: '',
+    description: '',
   }
 
-  constructor(private modalService: NgbModal, private cvTechService: CvTechService,private _datatablesService: DatatablesService, private _coreTranslationService: CoreTranslationService) { }
+  options: Education = {
+    id: null,
+    name: '',
+    description: ''
+  }
+
+  constructor(private modalService: NgbModal, private cvTechService: CvTechService) { }
 
   // Lifecycle Hooks
   // -----------------------------------------------------------------------------------------------------
@@ -72,10 +60,6 @@ export class EducationLevelManagementComponent implements OnInit {
       }
     };
     this.getEducations();
-    this._datatablesService.onDatatablessChanged.pipe(takeUntil(this.cvTechService.getEducations())).subscribe(response => {
-      //this.kitchenSinkRows = this.rows;
-      //this.exportCSVData = this.rows;
-    });
   }
 
   getEducations(): void {
@@ -101,11 +85,54 @@ export class EducationLevelManagementComponent implements OnInit {
         error => console.log(error));
   }
 
-  modalOpenPrimary(modalPrimary) {
+  modalOpenPrimary(modalPrimary, id) {
+    this.cvTechService.getEducation(id)
+    this.cvTechService.getEducation(id).subscribe({
+      next: (data) => {
+        this.options = data;
+      }, error: (err) => {
+        console.error(err);
+      }
+    });
     this.modalService.open(modalPrimary, {
       centered: true,
-      windowClass: 'modal modal-primary'
+      windowClass: 'modal modal-primary',
     });
+  }
+
+
+  updateEducation():void{
+    const data = {
+      id: this.options.id,
+      name: this.options.name,
+      description : this.options.description
+    }
+    this.cvTechService.updateEducation(data.id,data).subscribe(
+      {
+        next: (data) => {
+          console.log(data);
+          this.getEducations();
+        }, error: (err) => {
+          console.error(err);
+        }
+      });
+  }
+
+
+  saveEducation(): void {
+    const data = {
+      name: this.education.name,
+      description: this.education.description
+    }
+    this.cvTechService.createEducation(data).subscribe(
+      {
+        next: (data) => {
+          console.log(data);
+          this.getEducations();
+        }, error: (err) => {
+          console.error(err);
+        }
+      });
   }
 
 }
