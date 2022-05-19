@@ -8,6 +8,7 @@ import { GlobalExperience } from "./global-experience.model";
 import { Skills } from "./skills.model";
 
 export class Profile {
+    id:number;
     name: String;
     candidat: Candidat;
     educations: Education[];

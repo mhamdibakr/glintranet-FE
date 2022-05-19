@@ -28,7 +28,7 @@
                                         </div>
                                         <div class="col-sm-9">
                                             <input type="text" id="first-name" class="form-control" name="fname"
-                                                placeholder="Niveau" />
+                                                placeholder="Niveau" [(ngModel)]="education.name" />
                                         </div>
                                     </div>
                                 </div>
@@ -39,13 +39,14 @@
                                         </div>
                                         <div class="col-sm-9">
                                             <input type="email" id="email-id" class="form-control" name="email-id"
-                                                placeholder="Description" />
+                                                placeholder="Description" [(ngModel)]="education.description" />
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-9 offset-sm-3">
-                                    <button type="submit" rippleEffect class="btn btn-primary mr-1">Add</button>
+                                    <button type="submit" rippleEffect class="btn btn-primary mr-1"
+                                        (click)="saveEducation()">Add</button>
                                     <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
                                 </div>
                             </div>
@@ -55,6 +56,7 @@
 
             </div>
         </section>
+
         <div class="row" id="table-hover-animation">
             <div class="col-12">
                 <div class="card">
@@ -74,12 +76,13 @@
                                     <th>Options</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody *ngFor="let education of EducationList">
                                 <tr>
                                     <td>
-                                        <span class="font-weight-bold">Bts (Brevet de Technicien Supérieur)</span>
+                                        <span class="font-weight-bold">{{education?.name}}</span>
                                     </td>
-                                    <td>Brevet de Technicien Supérieur en Développement des Systèmes d’Information</td>
+                                    <td>{{education?.description}}
+                                    </td>
                                     <td class="overflow-hidden">
                                         <div ngbDropdown container="body">
                                             <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle
@@ -90,11 +93,12 @@
                                                 <a ngbDropdownItem href="javascript:void(0);">
                                                     <i data-feather="edit-2" class="mr-50"></i>
                                                     <button class="btn btn-link"
-                                                        (click)="modalOpenPrimary(modalPrimary)"
+                                                        (click)="modalOpenPrimary(modalPrimary,education.id)"
                                                         rippleEffect>Edit</button>
                                                     <ng-template #modalPrimary let-modal>
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="myModalLabel160">Modifier niveau
+                                                            <h5 class="modal-title" id="myModalLabel160">Modifier
+                                                                niveau
                                                                 d'etude
                                                             </h5>
                                                             <button type="button" class="close"
@@ -112,27 +116,28 @@
                                                                     <div class="col-sm-9">
                                                                         <input type="text" id="first-name"
                                                                             class="form-control" name="fname"
-                                                                            placeholder="Niveau" />
+                                                                            placeholder="Niveau"
+                                                                            [(ngModel)]="options.name" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-12">
                                                                 <div class="form-group row">
                                                                     <div class="col-sm-3 col-form-label">
-                                                                        <label for="email-id">Description</label>
+                                                                        <label for="Description">Description</label>
                                                                     </div>
                                                                     <div class="col-sm-9">
-                                                                        <div type="input" placeholder="Description"
-                                                                            contenteditable>
-
-                                                                        </div>
+                                                                        <input type="text" id="Description"
+                                                                            class="form-control" name="desc"
+                                                                            placeholder="Description"
+                                                                            [(ngModel)]="options.description">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-primary"
-                                                                (click)="modal.close('Accept click')" rippleEffect>
+                                                                (click)="updateEducation();modal.close('Accept click')" rippleEffect>
                                                                 Accept
                                                             </button>
                                                         </div>
@@ -140,28 +145,11 @@
                                                 </a>
                                                 <a ngbDropdownItem href="javascript:void(0);">
                                                     <i data-feather="trash" class="mr-50"></i>
-                                                    <span>Delete</span>
+                                                    <button type="button" class="btn btn-link"
+                                                        (click)="deleteEducation(education.id)">
+                                                        Delete
+                                                    </button>
                                                 </a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="font-weight-bold">Master</span>
-                                    </td>
-                                    <td>Master en systèmes informatique</td>
-                                    <td class="overflow-hidden">
-                                        <div ngbDropdown container="body">
-                                            <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle
-                                                data-toggle="dropdown">
-                                                <i data-feather="more-vertical"></i>
-                                            </button>
-                                            <div ngbDropdownMenu>
-                                                <a ngbDropdownItem href="javascript:void(0);"><i data-feather="edit-2"
-                                                        class="mr-50"></i><span>Edit</span></a><a ngbDropdownItem
-                                                    href="javascript:void(0);"><i data-feather="trash"
-                                                        class="mr-50"></i><span>Delete</span></a>
                                             </div>
                                         </div>
                                     </td>

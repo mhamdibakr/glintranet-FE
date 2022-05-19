@@ -56,7 +56,7 @@ export const menu: CoreMenu[] = [
       {
         id: 'users',
         title: 'MENU.Users',
-        type: 'item',
+        type: 'collapsible',
         icon: 'users',
         children:[
           {
@@ -86,7 +86,7 @@ export const menu: CoreMenu[] = [
             title: 'MENU.GNE',
             type: 'item',
             icon: 'file',
-            url: 'cvtech/education'
+            url: 'cvtech/education-management'
           },
           {
             id: 'geg',

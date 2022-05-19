@@ -19,6 +19,7 @@ import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
 import { CvtechModule } from './main/CvTech/cvtech.module';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 const appRoutes: Routes = [
   {
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
   //   pathMatch: 'full'
   // },
 
-    // {
+  // {
   //   path: 'bakr',
   //   redirectTo: '/test',
   //   pathMatch: 'bakr test pull'
@@ -67,6 +68,9 @@ const appRoutes: Routes = [
     NgbModule,
     ToastrModule.forRoot(),
 
+    //NgxDatatable 
+    NgxDatatableModule,
+
     // Core modules
     CoreModule.forRoot(coreConfig),
     CoreCommonModule,
@@ -77,10 +81,12 @@ const appRoutes: Routes = [
     LayoutModule,
     SampleModule,
 
+
+
     //--- add by soufiane ---
     CvtechModule
   ],
 
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
