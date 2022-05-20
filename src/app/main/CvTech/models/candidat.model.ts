@@ -1,5 +1,7 @@
+import { Postulation } from "./postulation.model";
+
 export class Candidat {
-    id:number;
+    id: number;
     civility: String;
     firstName: String;
     lastName: String;
@@ -10,8 +12,9 @@ export class Candidat {
     country: String;
     birthDate: Date;
     Message: String;
+    postulation: Postulation[];
 
-    constructor(civility: String, firstName: String, lastName: String, email: String, phone: String, adress: String, city: String, country: String, birthDate: Date, Message: String) {
+    constructor(civility: String, firstName: String, lastName: String, email: String, phone: String, adress: String, city: String, country: String, birthDate: Date, Message: String, postulation: Postulation[]) {
         this.civility = civility;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -22,5 +25,6 @@ export class Candidat {
         this.country = country;
         this.birthDate = birthDate;
         this.Message = Message
+        this.postulation = postulation;
     }
 }

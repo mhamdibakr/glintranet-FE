@@ -3,17 +3,7 @@
         <app-content-header [contentHeader]="contentHeader"></app-content-header>
         <section id="basic-carousel">
             <div class="row">
-
-                <!--<div class="col-md-6 col-sm-12">
-                    <input type="text" placeholder="options">
-                </div>
-
-                <div class="col-md-6 col-sm-12">
-                    <input type="text" placeholder="description">
-                </div>-->
                 <div class="card">
-                    <!-- <core-card-snippet [snippetCode]="_snippetCodeHorizontal"> -->
-
                     <div class="card-header">
                         <h4 class="card-title">Niveau d'études</h4>
                     </div>
@@ -91,10 +81,10 @@
                                             </button>
                                             <div ngbDropdownMenu>
                                                 <a ngbDropdownItem href="javascript:void(0);">
-                                                    <i data-feather="edit-2" class="mr-50"></i>
                                                     <button class="btn btn-link"
                                                         (click)="modalOpenPrimary(modalPrimary,education.id)"
-                                                        rippleEffect>Edit</button>
+                                                        rippleEffect><i data-feather="edit-2"
+                                                            class="mr-50"></i>Edit</button>
                                                     <ng-template #modalPrimary let-modal>
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="myModalLabel160">Modifier
@@ -111,7 +101,7 @@
                                                             <div class="col-12">
                                                                 <div class="form-group row">
                                                                     <div class="col-sm-3 col-form-label">
-                                                                        <label for="first-name">Niveau</label>
+                                                                        <label for="first-name">Education name</label>
                                                                     </div>
                                                                     <div class="col-sm-9">
                                                                         <input type="text" id="first-name"
@@ -137,16 +127,17 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-primary"
-                                                                (click)="updateEducation();modal.close('Accept click')" rippleEffect>
+                                                                (click)="updateEducation();modal.close('Accept click')"
+                                                                rippleEffect>
                                                                 Accept
                                                             </button>
                                                         </div>
                                                     </ng-template>
                                                 </a>
                                                 <a ngbDropdownItem href="javascript:void(0);">
-                                                    <i data-feather="trash" class="mr-50"></i>
                                                     <button type="button" class="btn btn-link"
                                                         (click)="deleteEducation(education.id)">
+                                                        <i data-feather="trash" class="mr-50"></i>
                                                         Delete
                                                     </button>
                                                 </a>
