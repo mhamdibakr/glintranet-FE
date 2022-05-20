@@ -7,7 +7,7 @@ import { CurrentSituation } from 'app/main/CvTech/models/current-situation.model
 import { Education } from 'app/main/CvTech/models/education.model';
 import { Function } from 'app/main/CvTech/models/function.model';
 import { GlobalExperience } from 'app/main/CvTech/models/global-experience.model';
-import { Profile } from 'app/main/CvTech/models/profile.model';
+import { Postulation } from 'app/main/CvTech/models/postulation.model';
 import { Skills } from 'app/main/CvTech/models/skills.model';
 import { Observable } from 'rxjs';
 
@@ -19,208 +19,208 @@ const baseUrl = 'http://localhost:8080/api/cvtheque';
 })
 export class CvTechService {
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  //Availability
-  //Availability
+  //availablity
+  //availablity
   getAvailabilities(): Observable<Availability[]> {
-    return this.httpClient.get<Availability[]>(`${baseUrl}/Availability`);
+    return this.httpClient.get<Availability[]>(`${baseUrl}/availablity`);
   }
 
-  getAvailability(id: number): Observable<Availability> {  
-    return this.httpClient.get<Availability>(`${baseUrl}/Availability/${id}`);  
-  }  
+  getAvailability(id: number): Observable<Availability> {
+    return this.httpClient.get<Availability>(`${baseUrl}/availablity/${id}`);
+  }
 
   createAvailability(data: any): Observable<any> {
-    return this.httpClient.post(`${baseUrl}/Availability/add`, data);
+    return this.httpClient.post(`${baseUrl}/availablity`, data);
   }
 
-  updateAvailability(id: number,data: any): Observable<any> {
-    return this.httpClient.put(`${baseUrl}/Availability/edit/${id}`, data);
+  updateAvailability(id: number, data: any): Observable<any> {
+    return this.httpClient.put(`${baseUrl}/availablity/${id}`, data);
   }
 
-  deleteAvailability(id: number): Observable<any> {  
-    return this.httpClient.delete(`${baseUrl}/Availability/${id}`, { responseType: 'text' });  
-  }  
+  deleteAvailability(id: number): Observable<any> {
+    return this.httpClient.delete(`${baseUrl}/availablity/${id}`, { responseType: 'text' });
+  }
 
 
-  //Campaign
-  //Campaign
+  //campaign
+  //campaign
   getCampaigns(): Observable<Campaign[]> {
-    return this.httpClient.get<Campaign[]>(`${baseUrl}/Campaign`);
+    return this.httpClient.get<Campaign[]>(`${baseUrl}/campaign`);
   }
 
-  getCampaign(id: number): Observable<Campaign> {  
-    return this.httpClient.get<Campaign>(`${baseUrl}/Campaign/${id}`);  
-  }  
+  getCampaign(id: number): Observable<Campaign> {
+    return this.httpClient.get<Campaign>(`${baseUrl}/campaign/${id}`);
+  }
 
   createCampaign(data: any): Observable<any> {
-    return this.httpClient.post(`${baseUrl}/Campaign/add`, data);
+    return this.httpClient.post(`${baseUrl}/campaign`, data);
   }
 
-  updateCampaign(id: number,data: any): Observable<any> {
-    return this.httpClient.put(`${baseUrl}/Campaign/edit/${id}`, data);
+  updateCampaign(id: number, data: any): Observable<any> {
+    return this.httpClient.put(`${baseUrl}/campaign/${id}`, data);
   }
 
-  deleteCampaign(id: number): Observable<any> {  
-    return this.httpClient.delete(`${baseUrl}/Campaign/${id}`, { responseType: 'text' });  
-  }  
-  
+  deleteCampaign(id: number): Observable<any> {
+    return this.httpClient.delete(`${baseUrl}/campaign/${id}`, { responseType: 'text' });
+  }
 
-  //Candidat
-  //Candidat
+
+  //candidat
+  //candidat
   getCandidats(): Observable<Candidat[]> {
-    return this.httpClient.get<Candidat[]>(`${baseUrl}/Candidat`);
+    return this.httpClient.get<Candidat[]>(`${baseUrl}/candidat`);
   }
 
-  getCandidat(id: number): Observable<Candidat> {  
-    return this.httpClient.get<Candidat>(`${baseUrl}/Candidat/${id}`);  
-  }  
+  getCandidat(id: number): Observable<Candidat> {
+    return this.httpClient.get<Candidat>(`${baseUrl}/candidat/${id}`);
+  }
 
   createCandidat(data: any): Observable<any> {
-    return this.httpClient.post(`${baseUrl}/Candidat/add`, data);
+    return this.httpClient.post(`${baseUrl}/candidat`, data);
   }
 
-  updateCandidat(id: number,data: any): Observable<any> {
-    return this.httpClient.put(`${baseUrl}/Candidat/edit/${id}`, data);
+  updateCandidat(id: number, data: any): Observable<any> {
+    return this.httpClient.put(`${baseUrl}/candidat/${id}`, data);
   }
 
-  deleteCandidat(id: number): Observable<any> {  
-    return this.httpClient.delete(`${baseUrl}/Candidat/${id}`, { responseType: 'text' });  
-  }  
-  
+  deleteCandidat(id: number): Observable<any> {
+    return this.httpClient.delete(`${baseUrl}/candidat/${id}`, { responseType: 'text' });
+  }
+
 
   //Current-situation
   //Current-situation
   getCurrentSituations(): Observable<CurrentSituation[]> {
-    return this.httpClient.get<CurrentSituation[]>(`${baseUrl}/CurrentSituation`);
+    return this.httpClient.get<CurrentSituation[]>(`${baseUrl}/situation`);
   }
 
-  getCurrentSituation(id: number): Observable<CurrentSituation> {  
-    return this.httpClient.get<CurrentSituation>(`${baseUrl}/CurrentSituation/${id}`);  
-  }  
+  getCurrentSituation(id: number): Observable<CurrentSituation> {
+    return this.httpClient.get<CurrentSituation>(`${baseUrl}/situation/${id}`);
+  }
 
   createCurrentSituation(data: any): Observable<any> {
-    return this.httpClient.post(`${baseUrl}/CurrentSituation/add`, data);
+    return this.httpClient.post(`${baseUrl}/situation`, data);
   }
 
-  updateCurrentSituation(id: number,data: any): Observable<any> {
-    return this.httpClient.put(`${baseUrl}/CurrentSituation/edit/${id}`, data);
+  updateCurrentSituation(id: number, data: any): Observable<any> {
+    return this.httpClient.put(`${baseUrl}/situation/${id}`, data);
   }
 
-  deleteCurrentSituation(id: number): Observable<any> {  
-    return this.httpClient.delete(`${baseUrl}/CurrentSituation/${id}`, { responseType: 'text' });  
-  }  
-  
+  deleteCurrentSituation(id: number): Observable<any> {
+    return this.httpClient.delete(`${baseUrl}/situation/${id}`, { responseType: 'text' });
+  }
 
-  //Education
-  //Education
+
+  //education
+  //education
   getEducations(): Observable<Education[]> {
     return this.httpClient.get<Education[]>(`${baseUrl}/education`);
   }
 
-  getEducation(id: number): Observable<Education> {  
-    return this.httpClient.get<Education>(`${baseUrl}/education/${id}`);  
-  }  
+  getEducation(id: number): Observable<Education> {
+    return this.httpClient.get<Education>(`${baseUrl}/education/${id}`);
+  }
 
   createEducation(data: any): Observable<any> {
-    return this.httpClient.post(`${baseUrl}/education/add`, data);
+    return this.httpClient.post(`${baseUrl}/education`, data);
   }
 
-  updateEducation(id: number,data: any): Observable<any> {
-    return this.httpClient.put(`${baseUrl}/education/edit/${id}`, data);
+  updateEducation(id: number, data: any): Observable<any> {
+    return this.httpClient.put(`${baseUrl}/education/${id}`, data);
   }
 
-  deleteEducation(id: number): Observable<any> {  
-    return this.httpClient.delete(`${baseUrl}/education/${id}`, { responseType: 'text' });  
-  }  
-  
-  //Functions
-  //Functions
+  deleteEducation(id: number): Observable<any> {
+    return this.httpClient.delete(`${baseUrl}/education/${id}`, { responseType: 'text' });
+  }
+
+  //functions
+  //functions
   getFunctions(): Observable<Function[]> {
-    return this.httpClient.get<Function[]>(`${baseUrl}/Function`);
+    return this.httpClient.get<Function[]>(`${baseUrl}/function`);
   }
 
-  getFunction(id: number): Observable<Function> {  
-    return this.httpClient.get<Function>(`${baseUrl}/Function/${id}`);  
-  }  
+  getFunction(id: number): Observable<Function> {
+    return this.httpClient.get<Function>(`${baseUrl}/function/${id}`);
+  }
 
   createFunction(data: any): Observable<any> {
-    return this.httpClient.post(`${baseUrl}/Function/add`, data);
+    return this.httpClient.post(`${baseUrl}/function`, data);
   }
 
-  updateFunction(id: number,data: any): Observable<any> {
-    return this.httpClient.put(`${baseUrl}/Function/edit/${id}`, data);
+  updateFunction(id: number, data: any): Observable<any> {
+    return this.httpClient.put(`${baseUrl}/function/${id}`, data);
   }
 
-  deleteFunction(id: number): Observable<any> {  
-    return this.httpClient.delete(`${baseUrl}/Function/${id}`, { responseType: 'text' });  
-  }  
-  
+  deleteFunction(id: number): Observable<any> {
+    return this.httpClient.delete(`${baseUrl}/function/${id}`, { responseType: 'text' });
+  }
+
   //Globale-experience
   //Globale-experience
   getGlobaleExperiences(): Observable<GlobalExperience[]> {
-    return this.httpClient.get<GlobalExperience[]>(`${baseUrl}/GlobalExperience`);
+    return this.httpClient.get<GlobalExperience[]>(`${baseUrl}/experience`);
   }
 
-  getGlobaleExperience(id: number): Observable<GlobalExperience> {  
-    return this.httpClient.get<GlobalExperience>(`${baseUrl}/GlobalExperience/${id}`);  
-  }  
+  getGlobaleExperience(id: number): Observable<GlobalExperience> {
+    return this.httpClient.get<GlobalExperience>(`${baseUrl}/experience/${id}`);
+  }
 
   createGlobaleExperience(data: any): Observable<any> {
-    return this.httpClient.post(`${baseUrl}/GlobalExperience/add`, data);
+    return this.httpClient.post(`${baseUrl}/experience`, data);
   }
 
-  updateGlobaleExperience(id: number,data: any): Observable<any> {
-    return this.httpClient.put(`${baseUrl}/GlobalExperience/edit/${id}`, data);
+  updateGlobaleExperience(id: number, data: any): Observable<any> {
+    return this.httpClient.put(`${baseUrl}/experience/${id}`, data);
   }
 
-  deleteGlobaleExperience(id: number): Observable<any> {  
-    return this.httpClient.delete(`${baseUrl}/GlobalExperience/${id}`, { responseType: 'text' });  
-  }  
-  
-  //Profile
-  //Profile
-  getProfiles(): Observable<Profile[]> {
-    return this.httpClient.get<Profile[]>(`${baseUrl}/Profile`);
+  deleteGlobaleExperience(id: number): Observable<any> {
+    return this.httpClient.delete(`${baseUrl}/experience/${id}`, { responseType: 'text' });
   }
 
-  getProfile(id: number): Observable<Profile> {  
-    return this.httpClient.get<Profile>(`${baseUrl}/Profile/${id}`);  
-  }  
+  //postulation
+  //postulation
+  getProfiles(): Observable<Postulation[]> {
+    return this.httpClient.get<Postulation[]>(`${baseUrl}/postulation`);
+  }
+
+  getProfile(id: number): Observable<Postulation> {
+    return this.httpClient.get<Postulation>(`${baseUrl}/postulation/${id}`);
+  }
 
   createProfile(data: any): Observable<any> {
-    return this.httpClient.post(`${baseUrl}/Profile/add`, data);
+    return this.httpClient.post(`${baseUrl}/postulation`, data);
   }
 
-  updateProfile(id: number,data: any): Observable<any> {
-    return this.httpClient.put(`${baseUrl}/Profile/edit/${id}`, data);
+  updateProfile(id: number, data: any): Observable<any> {
+    return this.httpClient.put(`${baseUrl}/postulation/${id}`, data);
   }
 
-  deleteProfile(id: number): Observable<any> {  
-    return this.httpClient.delete(`${baseUrl}/Profile/${id}`, { responseType: 'text' });  
-  }  
-  
+  deleteProfile(id: number): Observable<any> {
+    return this.httpClient.delete(`${baseUrl}/postulation/${id}`, { responseType: 'text' });
+  }
 
-  //Skills
-  //Skills
+
+  //skills
+  //skills
   getSkills(): Observable<Skills[]> {
-    return this.httpClient.get<Skills[]>(`${baseUrl}/Skills`);
+    return this.httpClient.get<Skills[]>(`${baseUrl}/skills`);
   }
 
-  getSkill(id: number): Observable<Skills> {  
-    return this.httpClient.get<Skills>(`${baseUrl}/Skills/${id}`);  
-  }  
+  getSkill(id: number): Observable<Skills> {
+    return this.httpClient.get<Skills>(`${baseUrl}/skills/${id}`);
+  }
 
   createSkill(data: any): Observable<any> {
-    return this.httpClient.post(`${baseUrl}/Skills/add`, data);
+    return this.httpClient.post(`${baseUrl}/skills`, data);
   }
 
-  updateSkill(id: number,data: any): Observable<any> {
-    return this.httpClient.put(`${baseUrl}/Skills/edit/${id}`, data);
+  updateSkill(id: number, data: any): Observable<any> {
+    return this.httpClient.put(`${baseUrl}/skills/${id}`, data);
   }
 
-  deleteSkill(id: number): Observable<any> {  
-    return this.httpClient.delete(`${baseUrl}/Skills/${id}`, { responseType: 'text' });  
-  }  
+  deleteSkill(id: number): Observable<any> {
+    return this.httpClient.delete(`${baseUrl}/skills/${id}`, { responseType: 'text' });
+  }
 }

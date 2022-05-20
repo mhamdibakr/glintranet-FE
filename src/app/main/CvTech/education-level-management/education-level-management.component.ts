@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateService } from '@ngx-translate/core';
 import { CvTechService } from 'app/services/cv-tech.service';
 import { Education } from '../models/education.model';
 
@@ -86,7 +87,6 @@ export class EducationLevelManagementComponent implements OnInit {
   }
 
   modalOpenPrimary(modalPrimary, id) {
-    this.cvTechService.getEducation(id)
     this.cvTechService.getEducation(id).subscribe({
       next: (data) => {
         this.options = data;
@@ -101,13 +101,13 @@ export class EducationLevelManagementComponent implements OnInit {
   }
 
 
-  updateEducation():void{
+  updateEducation(): void {
     const data = {
       id: this.options.id,
       name: this.options.name,
-      description : this.options.description
+      description: this.options.description
     }
-    this.cvTechService.updateEducation(data.id,data).subscribe(
+    this.cvTechService.updateEducation(data.id, data).subscribe(
       {
         next: (data) => {
           console.log(data);
