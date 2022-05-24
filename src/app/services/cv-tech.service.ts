@@ -12,7 +12,7 @@ import { Skills } from 'app/main/CvTech/models/skills.model';
 import { Observable } from 'rxjs';
 
 
-const baseUrl = 'http://localhost:8080/api/cvtheque';
+const baseUrl = 'http://localhost:8080/api';
 
 @Injectable({
   providedIn: 'root'
@@ -115,8 +115,8 @@ export class CvTechService {
 
   //education
   //education
-  getEducations(): Observable<Education[]> {
-    return this.httpClient.get<Education[]>(`${baseUrl}/education`);
+  getEducationsPagination(params: any): Observable<any> {
+    return this.httpClient.get<Education[]>(`${baseUrl}/education`, { params });
   }
 
   getEducation(id: number): Observable<Education> {
@@ -159,8 +159,8 @@ export class CvTechService {
 
   //Globale-experience
   //Globale-experience
-  getGlobaleExperiences(): Observable<GlobalExperience[]> {
-    return this.httpClient.get<GlobalExperience[]>(`${baseUrl}/experience`);
+  getGlobaleExperiencesPagination(params: any): Observable<any> {
+    return this.httpClient.get<GlobalExperience[]>(`${baseUrl}/experience`, { params });
   }
 
   getGlobaleExperience(id: number): Observable<GlobalExperience> {

@@ -52,102 +52,116 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Table des niveau d'éducation</h4>
+                    </div>
+                    <div class="card-body">
                         <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
-                            <input type="search" placeholder="Search" class="form-control ml-25" />
+                            <div class="col-md-6 col-12">
+                                <div class="d-flex justify-content-between align-items-center m-1">
+                                    <label class="d-flex align-items-center">Show
+                                        <select class="form-control mx-25" [(ngModel)]="pageSize" (change)="getEducations()">
+                                            <option value="5">5</option>
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        entries</label>
+                                </div>
+                            </div>
+                            <input type="search" placeholder="Search" class="form-control ml-25"
+                                (keyup)="filterUpdate($event)"/>
                         </div>
                     </div>
-
-                    <div class="table-responsive">
-                        <table class="table table-hover-animation">
-                            <thead>
-                                <tr>
-                                    <th>Nom de niveau d'éducation</th>
-                                    <th>Description</th>
-                                    <th>Options</th>
-                                </tr>
-                            </thead>
-                            <tbody *ngFor="let education of EducationList">
-                                <tr>
-                                    <td>
-                                        <span class="font-weight-bold">{{education?.name}}</span>
-                                    </td>
-                                    <td>{{education?.description}}
-                                    </td>
-                                    <td class="overflow-hidden">
-                                        <div ngbDropdown container="body">
-                                            <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle
-                                                data-toggle="dropdown">
-                                                <i data-feather="more-vertical"></i>
-                                            </button>
-                                            <div ngbDropdownMenu>
-                                                <a ngbDropdownItem href="javascript:void(0);">
-                                                    <button class="btn btn-link"
-                                                        (click)="modalOpenPrimary(modalPrimary,education.id)"
-                                                        rippleEffect><i data-feather="edit-2"
-                                                            class="mr-50"></i>Edit</button>
-                                                    <ng-template #modalPrimary let-modal>
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="myModalLabel160">Modifier
-                                                                niveau
-                                                                d'etude
-                                                            </h5>
-                                                            <button type="button" class="close"
-                                                                (click)="modal.dismiss('Cross click')"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body" tabindex="0" ngbAutofocus>
-                                                            <div class="col-12">
-                                                                <div class="form-group row">
-                                                                    <div class="col-sm-3 col-form-label">
-                                                                        <label for="first-name">Education name</label>
-                                                                    </div>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" id="first-name"
-                                                                            class="form-control" name="fname"
-                                                                            placeholder="Niveau"
-                                                                            [(ngModel)]="options.name" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <div class="form-group row">
-                                                                    <div class="col-sm-3 col-form-label">
-                                                                        <label for="Description">Description</label>
-                                                                    </div>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" id="Description"
-                                                                            class="form-control" name="desc"
-                                                                            placeholder="Description"
-                                                                            [(ngModel)]="options.description">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-primary"
-                                                                (click)="updateEducation();modal.close('Accept click')"
-                                                                rippleEffect>
-                                                                Accept
-                                                            </button>
-                                                        </div>
-                                                    </ng-template>
-                                                </a>
-                                                <a ngbDropdownItem href="javascript:void(0);">
-                                                    <button type="button" class="btn btn-link"
-                                                        (click)="deleteEducation(education.id)">
-                                                        <i data-feather="trash" class="mr-50"></i>
-                                                        Delete
+                </div>
+                <table class="table table-hover-animation">
+                    <thead>
+                        <tr>
+                            <th>Nom de niveau d'éducation</th>
+                            <th>Description</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let education of EducationList| paginate :{itemsPerPage: pageSize,
+                                    currentPage: page,
+                                    totalItems: count
+                                }">
+                            <td>
+                                <span class="font-weight-bold">{{education?.name}}</span>
+                            </td>
+                            <td>{{education?.description}}
+                            </td>
+                            <td class="overflow-hidden">
+                                <div ngbDropdown container="body">
+                                    <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle
+                                        data-toggle="dropdown">
+                                        <i data-feather="more-vertical"></i>
+                                    </button>
+                                    <div ngbDropdownMenu>
+                                        <a ngbDropdownItem href="javascript:void(0);">
+                                            <button class="btn btn-link"
+                                                (click)="modalOpenPrimary(modalPrimary,education.id)" rippleEffect><i
+                                                    data-feather="edit-2" class="mr-50"></i>Edit</button>
+                                            <ng-template #modalPrimary let-modal>
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="myModalLabel160">Modifier
+                                                        niveau
+                                                        d'etude
+                                                    </h5>
+                                                    <button type="button" class="close"
+                                                        (click)="modal.dismiss('Cross click')" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
                                                     </button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                                </div>
+                                                <div class="modal-body" tabindex="0" ngbAutofocus>
+                                                    <div class="col-12">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-3 col-form-label">
+                                                                <label for="first-name">Education name</label>
+                                                            </div>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" id="first-name" class="form-control"
+                                                                    name="fname" placeholder="Niveau"
+                                                                    [(ngModel)]="options.name" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-3 col-form-label">
+                                                                <label for="Description">Description</label>
+                                                            </div>
+                                                            <div class="col-sm-9">
+                                                                <input type="text" id="Description" class="form-control"
+                                                                    name="desc" placeholder="Description"
+                                                                    [(ngModel)]="options.description">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary"
+                                                        (click)="updateEducation();modal.close('Accept click')"
+                                                        rippleEffect>
+                                                        Accept
+                                                    </button>
+                                                </div>
+                                            </ng-template>
+                                        </a>
+                                        <a ngbDropdownItem href="javascript:void(0);">
+                                            <button type="button" class="btn btn-link"
+                                                (click)="deleteEducation(education.id)">
+                                                <i data-feather="trash" class="mr-50"></i>
+                                                Delete
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
                 </div>
             </div>
         </div>

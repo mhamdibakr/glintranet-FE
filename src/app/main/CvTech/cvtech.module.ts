@@ -3,18 +3,20 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreCommonModule } from '@core/common.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AddUserComponent } from './add-user/add-user.component';
+import { AllCampaignsComponent } from './all-campaigns/all-campaigns.component';
+import { AllUsersComponent } from './all-users/all-users.component';
 import { CompaignComponent } from './compaign/compaign.component';
 import { CvsComponent } from './cvs/cvs.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EducationLevelManagementComponent } from './education-level-management/education-level-management.component';
-import { UsersComponent } from './users/users.component';
 import { GlobalExperienceManagementComponent } from './global-experience-management/global-experience-management.component';
-import { AllCampaignsComponent } from './all-campaigns/all-campaigns.component';
-import { AddUserComponent } from './add-user/add-user.component';
-import { AllUsersComponent } from './all-users/all-users.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {
@@ -93,7 +95,7 @@ const routes: Routes = [
     GlobalExperienceManagementComponent,
     AllCampaignsComponent,
     AddUserComponent,
-    AllUsersComponent
+    AllUsersComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -103,7 +105,9 @@ const routes: Routes = [
     NgbModule,
     NgSelectModule,
     FormsModule,
-
+    NgxPaginationModule,
+    NgbPaginationModule,
+    NgxDatatableModule
   ],
 
   providers: []
