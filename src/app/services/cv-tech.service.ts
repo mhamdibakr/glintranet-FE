@@ -23,8 +23,8 @@ export class CvTechService {
 
   //availablity
   //availablity
-  getAvailabilities(): Observable<Availability[]> {
-    return this.httpClient.get<Availability[]>(`${baseUrl}/availablity`);
+  getAvailabilities(params: any): Observable<any> {
+    return this.httpClient.get<Availability[]>(`${baseUrl}/availablity`, { params });
   }
 
   getAvailability(id: number): Observable<Availability> {
@@ -46,8 +46,8 @@ export class CvTechService {
 
   //campaign
   //campaign
-  getCampaigns(): Observable<Campaign[]> {
-    return this.httpClient.get<Campaign[]>(`${baseUrl}/campaign`);
+  getCampaigns(params: any): Observable<any> {
+    return this.httpClient.get<Campaign[]>(`${baseUrl}/campaign`, { params });
   }
 
   getCampaign(id: number): Observable<Campaign> {
@@ -69,8 +69,8 @@ export class CvTechService {
 
   //candidat
   //candidat
-  getCandidats(): Observable<Candidat[]> {
-    return this.httpClient.get<Candidat[]>(`${baseUrl}/candidat`);
+  getCandidats(params: any): Observable<any> {
+    return this.httpClient.get<Candidat[]>(`${baseUrl}/candidat`, { params });
   }
 
   getCandidat(id: number): Observable<Candidat> {
@@ -92,8 +92,8 @@ export class CvTechService {
 
   //Current-situation
   //Current-situation
-  getCurrentSituations(): Observable<CurrentSituation[]> {
-    return this.httpClient.get<CurrentSituation[]>(`${baseUrl}/situation`);
+  getCurrentSituations(params: any): Observable<any> {
+    return this.httpClient.get<CurrentSituation[]>(`${baseUrl}/situation`, { params });
   }
 
   getCurrentSituation(id: number): Observable<CurrentSituation> {
@@ -115,7 +115,7 @@ export class CvTechService {
 
   //education
   //education
-  getEducationsPagination(params: any): Observable<any> {
+  getEducations(params: any): Observable<any> {
     return this.httpClient.get<Education[]>(`${baseUrl}/education`, { params });
   }
 
@@ -137,8 +137,8 @@ export class CvTechService {
 
   //functions
   //functions
-  getFunctions(): Observable<Function[]> {
-    return this.httpClient.get<Function[]>(`${baseUrl}/function`);
+  getFunctions(params: any): Observable<any> {
+    return this.httpClient.get<Function[]>(`${baseUrl}/function`, { params });
   }
 
   getFunction(id: number): Observable<Function> {
@@ -159,7 +159,7 @@ export class CvTechService {
 
   //Globale-experience
   //Globale-experience
-  getGlobaleExperiencesPagination(params: any): Observable<any> {
+  getGlobaleExperiences(params: any): Observable<any> {
     return this.httpClient.get<GlobalExperience[]>(`${baseUrl}/experience`, { params });
   }
 
@@ -181,8 +181,8 @@ export class CvTechService {
 
   //postulation
   //postulation
-  getProfiles(): Observable<Postulation[]> {
-    return this.httpClient.get<Postulation[]>(`${baseUrl}/postulation`);
+  getProfiles(params: any): Observable<any> {
+    return this.httpClient.get<Postulation[]>(`${baseUrl}/postulation`, { params });
   }
 
   getProfile(id: number): Observable<Postulation> {
@@ -204,8 +204,8 @@ export class CvTechService {
 
   //skills
   //skills
-  getSkills(): Observable<Skills[]> {
-    return this.httpClient.get<Skills[]>(`${baseUrl}/skills`);
+  getSkills(params: any): Observable<any> {
+    return this.httpClient.get<Skills[]>(`${baseUrl}/skills`, { params });
   }
 
   getSkill(id: number): Observable<Skills> {
