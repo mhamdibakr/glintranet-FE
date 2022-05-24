@@ -10,6 +10,11 @@ import { GlobalExperience } from '../models/global-experience.model';
 })
 export class GlobalExperienceManagementComponent implements OnInit {
 
+  searchTitle = "search";
+  page = 1;
+  count = 0;
+  pageSize = 5;
+
   public contentHeader: object;
 
   GExperienceList: GlobalExperience[] = [];
@@ -52,7 +57,7 @@ export class GlobalExperienceManagementComponent implements OnInit {
         ]
       }
     };
-    this.getGExperience();
+    this.getGExperiences();
   }
 
   modalOpenPrimary(modalPrimary, id) {
@@ -70,12 +75,47 @@ export class GlobalExperienceManagementComponent implements OnInit {
   }
 
 
-  getGExperience(): void {
-    this.cvTechService.getGlobaleExperiences().subscribe(
+  getParams(page: number, pageSize: number, title: string) {
+    let params: any = {};
+    if (page) {
+      params['page'] = page - 1;
+      if (pageSize) {
+        params['size'] = pageSize;
+      }
+      if (title) {
+        params['title'] = title;
+      }
+      return params;
+    }
+  }
+
+  filterUpdate(event) {
+    const val = event.target.value.toLowerCase();
+
+    // filter our data
+    const temp = this.GExperienceList.filter(function (d) {
+      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+    });
+
+    // update the rows
+    this.GExperienceList = temp;
+  }
+
+  
+  pageChanged(event: any): void {
+    this.page = event;
+    this.getGExperiences();
+  }
+
+  getGExperiences(): void {
+    const params = this.getParams(this.page, this.pageSize, this.searchTitle);
+    this.cvTechService.getGlobaleExperiencesPagination(params).subscribe(
       {
         next: (data) => {
-          console.log(data);
-          this.GExperienceList = data;
+          console.log(data.length);
+          const { content, totalElements } = data;
+          this.GExperienceList = content;
+          this.count = totalElements;
         }, error: (err) => {
           console.error(err);
         }
@@ -88,7 +128,7 @@ export class GlobalExperienceManagementComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          this.getGExperience();
+          this.getGExperiences();
         },
         error => console.log(error));
   }
@@ -104,7 +144,7 @@ export class GlobalExperienceManagementComponent implements OnInit {
       {
         next: (data) => {
           console.log(data);
-          this.getGExperience();
+          this.getGExperiences();
         }, error: (err) => {
           console.error(err);
         }
@@ -121,7 +161,7 @@ export class GlobalExperienceManagementComponent implements OnInit {
       {
         next: (data) => {
           console.log(data);
-          this.getGExperience();
+          this.getGExperiences();
         }, error: (err) => {
           console.error(err);
         }

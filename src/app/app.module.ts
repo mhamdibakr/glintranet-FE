@@ -84,7 +84,7 @@ const appRoutes: Routes = [
 
 
     //--- add by soufiane ---
-    CvtechModule
+    CvtechModule,
   ],
 
   bootstrap: [AppComponent]

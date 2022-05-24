@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateService } from '@ngx-translate/core';
 import { CvTechService } from 'app/services/cv-tech.service';
 import { Education } from '../models/education.model';
 
@@ -10,6 +9,11 @@ import { Education } from '../models/education.model';
   styleUrls: ['./education-level-management.component.scss']
 })
 export class EducationLevelManagementComponent implements OnInit {
+
+  searchTitle = "search";
+  page = 1;
+  count = 0;
+  pageSize = 5;
 
   public contentHeader: object;
 
@@ -60,20 +64,56 @@ export class EducationLevelManagementComponent implements OnInit {
         ]
       }
     };
+
     this.getEducations();
   }
 
+  filterUpdate(event) {
+    const val = event.target.value.toLowerCase();
+
+    // filter our data
+    const temp = this.EducationList.filter(function (d) {
+      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+    });
+
+    // update the rows
+    this.EducationList = temp;
+  }
+
+  getParams(page: number, pageSize: number, title: string) {
+    let params: any = {};
+    if (page) {
+      params['page'] = page - 1;
+      if (pageSize) {
+        params['size'] = pageSize;
+      }
+      if (title) {
+        params['title'] = title;
+      }
+      return params;
+    }
+  }
+
+
   getEducations(): void {
-    this.cvTechService.getEducations().subscribe(
+    const params = this.getParams(this.page, this.pageSize, this.searchTitle);
+    this.cvTechService.getEducationsPagination(params).subscribe(
       {
         next: (data) => {
           console.log(data);
-          this.EducationList = data;
+          const { content, totalElements } = data;
+          this.EducationList = content;
+          this.count = totalElements;
         }, error: (err) => {
           console.error(err);
         }
       }
     );
+  }
+
+  pageChanged(event: any): void {
+    this.page = event;
+    this.getEducations();
   }
 
   deleteEducation(id: number): void {
@@ -87,6 +127,7 @@ export class EducationLevelManagementComponent implements OnInit {
   }
 
   modalOpenPrimary(modalPrimary, id) {
+    console.log(id);
     this.cvTechService.getEducation(id).subscribe({
       next: (data) => {
         this.options = data;
