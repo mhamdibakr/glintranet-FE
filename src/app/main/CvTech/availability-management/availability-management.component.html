@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Add Education Level</h4>
+                        <h4 class="card-title">Add Availability</h4>
                     </div>
 
                     <div class="card-body">
@@ -18,7 +18,7 @@
                                         </div>
                                         <div class="col-sm-9">
                                             <input type="text" id="first-name" class="form-control" name="fname"
-                                                placeholder="Name" [(ngModel)]="education.name" />
+                                                placeholder="Name" [(ngModel)]="availability.name" />
                                         </div>
                                     </div>
                                 </div>
@@ -29,14 +29,14 @@
                                         </div>
                                         <div class="col-sm-9">
                                             <input type="email" id="email-id" class="form-control" name="email-id"
-                                                placeholder="Description" [(ngModel)]="education.description" />
+                                                placeholder="Description" [(ngModel)]="availability.description" />
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-9 offset-sm-3">
                                     <button type="submit" rippleEffect class="btn btn-primary mr-1"
-                                        (click)="saveEducation()">Add</button>
+                                        (click)="saveAvailability()">Add</button>
                                     <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Education Level Table</h4>
+                        <h4 class="card-title">Availabilities Table</h4>
                     </div>
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
@@ -59,7 +59,7 @@
                                 <div class="d-flex justify-content-between align-items-center m-1">
                                     <label class="d-flex align-items-center">Show
                                         <select class="form-control mx-25" [(ngModel)]="pageSize"
-                                            (change)="getEducations()">
+                                            (change)="getAvailabilities()">
                                             <option value="5">5</option>
                                             <option value="10">10</option>
                                             <option value="25">25</option>
@@ -74,7 +74,7 @@
                                 <input type="search" placeholder="Search" class="form-control ml-25"
                                     [(ngModel)]="searchTitle" />
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button" (click)="getEducations()"><i
+                                    <button class="btn btn-primary" type="button" (click)="getAvailabilities()"><i
                                             class="fa fa-search"></i></button>
                                 </div>
                             </div>
@@ -90,15 +90,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let education of EducationList| paginate :{itemsPerPage: pageSize,
+                        <tr *ngFor="let education of AvailabilityList| paginate :{itemsPerPage: pageSize,
                                     currentPage: page,
                                     totalItems: count
                                 }">
                             <td>
                                 <span class="font-weight-bold">{{education?.name}}</span>
                             </td>
-                            <td>
-                                {{education?.description}}
+                            <td>{{education?.description}}
                             </td>
                             <td class="overflow-hidden">
                                 <div ngbDropdown container="body">
@@ -113,7 +112,7 @@
                                                     data-feather="edit-2" class="mr-50"></i>Edit</button>
                                             <ng-template #modalPrimary let-modal>
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="myModalLabel160">Update Education Level
+                                                    <h5 class="modal-title" id="myModalLabel160">Update Availability
                                                     </h5>
                                                     <button type="button" class="close"
                                                         (click)="modal.dismiss('Cross click')" aria-label="Close">
@@ -148,7 +147,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-primary"
-                                                        (click)="updateEducation();modal.close('Accept click')"
+                                                        (click)="updateAvailability();modal.close('Accept click')"
                                                         rippleEffect>
                                                         Accept
                                                     </button>
@@ -157,7 +156,7 @@
                                         </a>
                                         <a ngbDropdownItem href="javascript:void(0);">
                                             <button type="button" class="btn btn-link"
-                                                (click)="deleteEducation(education.id)">
+                                                (click)="deleteAvailability(education.id)">
                                                 <i data-feather="trash" class="mr-50"></i>
                                                 Delete
                                             </button>

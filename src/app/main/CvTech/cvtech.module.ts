@@ -17,63 +17,41 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EducationLevelManagementComponent } from './education-level-management/education-level-management.component';
 import { GlobalExperienceManagementComponent } from './global-experience-management/global-experience-management.component';
 import { UsersComponent } from './users/users.component';
+import { AvailabilityManagementComponent } from './availability-management/availability-management.component';
+import { CurrentSituationManagementComponent } from './current-situation-management/current-situation-management.component';
+import { FunctionManagementComponent } from './function-management/function-management.component';
+import { PostulationManagementComponent } from './postulation-management/postulation-management.component';
+import { SkillsManagementComponent } from './skills-management/skills-management.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
-    // resolve: {
-    //   Ias: InvoiceAddService
-    // },
-    //data: { animation: 'UsersComponent' }
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    // resolve: {
-    //   Ias: InvoiceAddService
-    // },
-    //data: { animation: 'UsersComponent' }
   },
   {
     path: 'cvs',
     component: CvsComponent,
-    // resolve: {
-    //   Ias: InvoiceAddService
-    // },
-    //data: { animation: 'UsersComponent' }
   },
   {
     path: 'addcampaign',
     component: CompaignComponent,
-    // resolve: {
-    //   Ias: InvoiceAddService
-    // },
-    //data: { animation: 'UsersComponent' }
   },
   {
     path: 'allcampaigns',
     component: AllCampaignsComponent,
-    // resolve: {
-    //   Ias: InvoiceAddService
-    // },
-    //data: { animation: 'UsersComponent' }
   },
   {
     path: 'allusers',
     component: AllUsersComponent,
-    // resolve: {
-    //   Ias: InvoiceAddService
-    // },
-    //data: { animation: 'UsersComponent' }
   },
   {
     path: 'adduser',
     component: AddUserComponent,
-    // resolve: {
-    //   Ias: InvoiceAddService
-    // },
-    //data: { animation: 'UsersComponent' }
   },
   {
     path: 'education-management',
@@ -82,7 +60,27 @@ const routes: Routes = [
   {
     path: 'global-experience',
     component: GlobalExperienceManagementComponent,
-  }
+  },
+  {
+    path: 'availability-management',
+    component: AvailabilityManagementComponent,
+  }, 
+  {
+    path: 'current-situation',
+    component: CurrentSituationManagementComponent,
+  }, 
+  {
+    path: 'funtion-management',
+    component: FunctionManagementComponent,
+  },
+  {
+    path: 'skills-management',
+    component: SkillsManagementComponent,
+  },
+  {
+    path: 'postulation-management',
+    component: PostulationManagementComponent,
+  },
 ];
 
 @NgModule({
@@ -96,6 +94,11 @@ const routes: Routes = [
     AllCampaignsComponent,
     AddUserComponent,
     AllUsersComponent,
+    AvailabilityManagementComponent,
+    CurrentSituationManagementComponent,
+    FunctionManagementComponent,
+    PostulationManagementComponent,
+    SkillsManagementComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -107,7 +110,8 @@ const routes: Routes = [
     FormsModule,
     NgxPaginationModule,
     NgbPaginationModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    TranslateModule.forRoot(),
   ],
 
   providers: []

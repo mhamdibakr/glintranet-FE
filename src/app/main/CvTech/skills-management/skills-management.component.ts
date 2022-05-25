@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CvTechService } from 'app/services/cv-tech.service';
-import { GlobalExperience } from '../models/global-experience.model';
+import { Skills } from '../models/skills.model';
 
 @Component({
-  selector: 'app-global-experience-management',
-  templateUrl: './global-experience-management.component.html',
-  styleUrls: ['./global-experience-management.component.scss']
+  selector: 'app-skills-management',
+  templateUrl: './skills-management.component.html',
+  styleUrls: ['./skills-management.component.scss']
 })
-export class GlobalExperienceManagementComponent implements OnInit {
+export class SkillsManagementComponent implements OnInit {
+
 
   searchTitle = "";
   page = 1;
@@ -17,15 +18,15 @@ export class GlobalExperienceManagementComponent implements OnInit {
 
   public contentHeader: object;
 
-  GExperienceList: GlobalExperience[] = [];
+  SkillList: Skills[] = [];
 
-  globalExperience: GlobalExperience = {
+  skill: Skills = {
     id: null,
     name: '',
     description: '',
   }
 
-  options: GlobalExperience = {
+  options: Skills = {
     id: null,
     name: '',
     description: ''
@@ -51,17 +52,19 @@ export class GlobalExperienceManagementComponent implements OnInit {
             link: '/'
           },
           {
-            name: 'Globale Experience Management',
+            name: 'Globale Skill Management',
             isLink: false
           }
         ]
       }
     };
-    this.getGExperiences();
+    this.getSkills();
   }
 
+
+  
   modalOpenPrimary(modalPrimary, id) {
-    this.cvTechService.getGlobaleExperience(id).subscribe({
+    this.cvTechService.getSkill(id).subscribe({
       next: (data) => {
         this.options = data;
       }, error: (err) => {
@@ -92,17 +95,17 @@ export class GlobalExperienceManagementComponent implements OnInit {
 
   pageChanged(event: any): void {
     this.page = event;
-    this.getGExperiences();
+    this.getSkills();
   }
 
-  getGExperiences(): void {
+  getSkills(): void {
     const params = this.getParams(this.page, this.pageSize, this.searchTitle);
-    this.cvTechService.getGlobaleExperiences(params).subscribe(
+    this.cvTechService.getSkills(params).subscribe(
       {
         next: (data) => {
           console.log(data.length);
           const { content, totalElements } = data;
-          this.GExperienceList = content;
+          this.SkillList = content;
           this.count = totalElements;
         }, error: (err) => {
           console.error(err);
@@ -111,28 +114,28 @@ export class GlobalExperienceManagementComponent implements OnInit {
     );
   }
 
-  deleteExperience(id: number): void {
-    this.cvTechService.deleteGlobaleExperience(id)
+  deleteSkill(id: number): void {
+    this.cvTechService.deleteSkill(id)
       .subscribe(
         data => {
           console.log(data);
-          this.getGExperiences();
+          this.getSkills();
         },
         error => console.log(error));
   }
 
 
-  updateExperience(): void {
+  updateSkill(): void {
     const data = {
       id: this.options.id,
       name: this.options.name,
       description: this.options.description
     }
-    this.cvTechService.updateGlobaleExperience(data.id, data).subscribe(
+    this.cvTechService.updateSkill(data.id, data).subscribe(
       {
         next: (data) => {
           console.log(data);
-          this.getGExperiences();
+          this.getSkills();
         }, error: (err) => {
           console.error(err);
         }
@@ -140,20 +143,19 @@ export class GlobalExperienceManagementComponent implements OnInit {
   }
 
 
-  saveExperience(): void {
+  saveSkill(): void {
     const data = {
-      name: this.globalExperience.name,
-      description: this.globalExperience.description
+      name: this.skill.name,
+      description: this.skill.description
     }
-    this.cvTechService.createGlobaleExperience(data).subscribe(
+    this.cvTechService.createSkill(data).subscribe(
       {
         next: (data) => {
           console.log(data);
-          this.getGExperiences();
+          this.getSkills();
         }, error: (err) => {
           console.error(err);
         }
       });
   }
-
 }

@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CvTechService } from 'app/services/cv-tech.service';
-import { GlobalExperience } from '../models/global-experience.model';
+import { CurrentSituation } from '../models/current-situation.model';
 
 @Component({
-  selector: 'app-global-experience-management',
-  templateUrl: './global-experience-management.component.html',
-  styleUrls: ['./global-experience-management.component.scss']
+  selector: 'app-current-situation-management',
+  templateUrl: './current-situation-management.component.html',
+  styleUrls: ['./current-situation-management.component.scss']
 })
-export class GlobalExperienceManagementComponent implements OnInit {
-
+export class CurrentSituationManagementComponent implements OnInit {
   searchTitle = "";
   page = 1;
   count = 0;
@@ -17,20 +16,19 @@ export class GlobalExperienceManagementComponent implements OnInit {
 
   public contentHeader: object;
 
-  GExperienceList: GlobalExperience[] = [];
+  CSituationList: CurrentSituation[] = [];
 
-  globalExperience: GlobalExperience = {
+  currentSituation: CurrentSituation = {
     id: null,
     name: '',
     description: '',
   }
 
-  options: GlobalExperience = {
+  options: CurrentSituation = {
     id: null,
     name: '',
     description: ''
   }
-
   constructor(private modalService: NgbModal, private cvTechService: CvTechService) { }
 
   ngOnInit(): void {
@@ -51,27 +49,13 @@ export class GlobalExperienceManagementComponent implements OnInit {
             link: '/'
           },
           {
-            name: 'Globale Experience Management',
+            name: 'Current Situation Management',
             isLink: false
           }
         ]
       }
     };
-    this.getGExperiences();
-  }
-
-  modalOpenPrimary(modalPrimary, id) {
-    this.cvTechService.getGlobaleExperience(id).subscribe({
-      next: (data) => {
-        this.options = data;
-      }, error: (err) => {
-        console.error(err);
-      }
-    });
-    this.modalService.open(modalPrimary, {
-      centered: true,
-      windowClass: 'modal modal-primary'
-    });
+    this.getCSituations();
   }
 
 
@@ -90,19 +74,14 @@ export class GlobalExperienceManagementComponent implements OnInit {
   }
 
 
-  pageChanged(event: any): void {
-    this.page = event;
-    this.getGExperiences();
-  }
-
-  getGExperiences(): void {
+  getCSituations(): void {
     const params = this.getParams(this.page, this.pageSize, this.searchTitle);
-    this.cvTechService.getGlobaleExperiences(params).subscribe(
+    this.cvTechService.getCurrentSituations(params).subscribe(
       {
         next: (data) => {
-          console.log(data.length);
+          console.log(data);
           const { content, totalElements } = data;
-          this.GExperienceList = content;
+          this.CSituationList = content;
           this.count = totalElements;
         }, error: (err) => {
           console.error(err);
@@ -111,28 +90,48 @@ export class GlobalExperienceManagementComponent implements OnInit {
     );
   }
 
-  deleteExperience(id: number): void {
-    this.cvTechService.deleteGlobaleExperience(id)
+  pageChanged(event: any): void {
+    this.page = event;
+    this.getCSituations();
+  }
+
+  deleteCSituation(id: number): void {
+    this.cvTechService.deleteCurrentSituation(id)
       .subscribe(
         data => {
           console.log(data);
-          this.getGExperiences();
+          this.getCSituations();
         },
         error => console.log(error));
   }
 
+  modalOpenPrimary(modalPrimary, id) {
+    console.log(id);
+    this.cvTechService.getCurrentSituation(id).subscribe({
+      next: (data) => {
+        this.options = data;
+      }, error: (err) => {
+        console.error(err);
+      }
+    });
+    this.modalService.open(modalPrimary, {
+      centered: true,
+      windowClass: 'modal modal-primary',
+    });
+  }
 
-  updateExperience(): void {
+
+  updateCSituation(): void {
     const data = {
       id: this.options.id,
       name: this.options.name,
       description: this.options.description
     }
-    this.cvTechService.updateGlobaleExperience(data.id, data).subscribe(
+    this.cvTechService.updateCurrentSituation(data.id, data).subscribe(
       {
         next: (data) => {
           console.log(data);
-          this.getGExperiences();
+          this.getCSituations();
         }, error: (err) => {
           console.error(err);
         }
@@ -140,16 +139,16 @@ export class GlobalExperienceManagementComponent implements OnInit {
   }
 
 
-  saveExperience(): void {
+  saveCSituation(): void {
     const data = {
-      name: this.globalExperience.name,
-      description: this.globalExperience.description
+      name: this.currentSituation.name,
+      description: this.currentSituation.description
     }
-    this.cvTechService.createGlobaleExperience(data).subscribe(
+    this.cvTechService.createCurrentSituation(data).subscribe(
       {
         next: (data) => {
           console.log(data);
-          this.getGExperiences();
+          this.getCSituations();
         }, error: (err) => {
           console.error(err);
         }

@@ -100,14 +100,28 @@ export const menu: CoreMenu[] = [
             title: 'MENU.GSC',
             type: 'item',
             icon: 'file',
-            url: '/gsc'
+            url: 'cvtech/skills-management'
           },
           {
             id: 'gfs',
             title: 'MENU.GFS',
             type: 'item',
             icon: 'file',
-            url: '/gfs'
+            url: 'cvtech/funtion-management'
+          },
+          {
+            id: 'ga',
+            title: 'MENU.GA',
+            type: 'item',
+            icon: 'file',
+            url: 'cvtech/availability-management'
+          },
+          {
+            id: 'gcs',
+            title: 'MENU.GCS',
+            type: 'item',
+            icon: 'file',
+            url: 'cvtech/current-situation'
           }
         ]
       },

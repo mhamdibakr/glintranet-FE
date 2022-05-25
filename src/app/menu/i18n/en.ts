@@ -10,12 +10,15 @@ export const locale = {
       Campaign: 'Campaign',
       cvtech: 'CvTech',
       Settings: 'Settings',
-      GNE: 'Education level management',
-      GEG: 'Global experience management',
-      GSC: 'skill area management',
-      GFS: 'desired function management',
+      GNE: 'Education Level Management',
+      GEG: 'Global Experience Management',
+      GSC: 'skill Area Management',
+      GFS: 'Desired Function Management',
+      GCS:'Current Situation Management',
+      GA:'Availability Management',
       adduser:'Add new user',
       listuser:'Users list',
+      
     }
   }
 }
