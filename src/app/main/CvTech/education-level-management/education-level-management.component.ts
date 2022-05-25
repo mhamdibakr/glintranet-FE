@@ -10,7 +10,7 @@ import { Education } from '../models/education.model';
 })
 export class EducationLevelManagementComponent implements OnInit {
 
-  searchTitle = "search";
+  searchTitle = "";
   page = 1;
   count = 0;
   pageSize = 5;
@@ -42,7 +42,7 @@ export class EducationLevelManagementComponent implements OnInit {
   ngOnInit(): void {
     // content header
     this.contentHeader = {
-      headerTitle: 'Education Level Management',
+      headerTitle: 'GL INTRANET',
       actionButton: true,
       breadcrumb: {
         type: '',
@@ -68,18 +68,7 @@ export class EducationLevelManagementComponent implements OnInit {
     this.getEducations();
   }
 
-  filterUpdate(event) {
-    const val = event.target.value.toLowerCase();
-
-    // filter our data
-    const temp = this.EducationList.filter(function (d) {
-      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
-    });
-
-    // update the rows
-    this.EducationList = temp;
-  }
-
+  
   getParams(page: number, pageSize: number, title: string) {
     let params: any = {};
     if (page) {
@@ -88,7 +77,7 @@ export class EducationLevelManagementComponent implements OnInit {
         params['size'] = pageSize;
       }
       if (title) {
-        params['title'] = title;
+        params['name'] = title;
       }
       return params;
     }
@@ -97,7 +86,7 @@ export class EducationLevelManagementComponent implements OnInit {
 
   getEducations(): void {
     const params = this.getParams(this.page, this.pageSize, this.searchTitle);
-    this.cvTechService.getEducationsPagination(params).subscribe(
+    this.cvTechService.getEducations(params).subscribe(
       {
         next: (data) => {
           console.log(data);

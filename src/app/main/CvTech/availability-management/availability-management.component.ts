@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CvTechService } from 'app/services/cv-tech.service';
-import { GlobalExperience } from '../models/global-experience.model';
+import { Availability } from '../models/availability.model';
 
 @Component({
-  selector: 'app-global-experience-management',
-  templateUrl: './global-experience-management.component.html',
-  styleUrls: ['./global-experience-management.component.scss']
+  selector: 'app-availability-management',
+  templateUrl: './availability-management.component.html',
+  styleUrls: ['./availability-management.component.scss']
 })
-export class GlobalExperienceManagementComponent implements OnInit {
+export class AvailabilityManagementComponent implements OnInit {
 
   searchTitle = "";
   page = 1;
@@ -17,15 +17,15 @@ export class GlobalExperienceManagementComponent implements OnInit {
 
   public contentHeader: object;
 
-  GExperienceList: GlobalExperience[] = [];
+  AvailabilityList: Availability[] = [];
 
-  globalExperience: GlobalExperience = {
+  availability: Availability = {
     id: null,
     name: '',
     description: '',
   }
 
-  options: GlobalExperience = {
+  options: Availability = {
     id: null,
     name: '',
     description: ''
@@ -51,29 +51,14 @@ export class GlobalExperienceManagementComponent implements OnInit {
             link: '/'
           },
           {
-            name: 'Globale Experience Management',
+            name: 'Availability Management',
             isLink: false
           }
         ]
       }
     };
-    this.getGExperiences();
+    this.getAvailabilities();
   }
-
-  modalOpenPrimary(modalPrimary, id) {
-    this.cvTechService.getGlobaleExperience(id).subscribe({
-      next: (data) => {
-        this.options = data;
-      }, error: (err) => {
-        console.error(err);
-      }
-    });
-    this.modalService.open(modalPrimary, {
-      centered: true,
-      windowClass: 'modal modal-primary'
-    });
-  }
-
 
   getParams(page: number, pageSize: number, title: string) {
     let params: any = {};
@@ -90,19 +75,14 @@ export class GlobalExperienceManagementComponent implements OnInit {
   }
 
 
-  pageChanged(event: any): void {
-    this.page = event;
-    this.getGExperiences();
-  }
-
-  getGExperiences(): void {
+  getAvailabilities(): void {
     const params = this.getParams(this.page, this.pageSize, this.searchTitle);
-    this.cvTechService.getGlobaleExperiences(params).subscribe(
+    this.cvTechService.getAvailabilities(params).subscribe(
       {
         next: (data) => {
-          console.log(data.length);
+          console.log(data);
           const { content, totalElements } = data;
-          this.GExperienceList = content;
+          this.AvailabilityList = content;
           this.count = totalElements;
         }, error: (err) => {
           console.error(err);
@@ -111,28 +91,48 @@ export class GlobalExperienceManagementComponent implements OnInit {
     );
   }
 
-  deleteExperience(id: number): void {
-    this.cvTechService.deleteGlobaleExperience(id)
+  pageChanged(event: any): void {
+    this.page = event;
+    this.getAvailabilities();
+  }
+
+  deleteAvailability(id: number): void {
+    this.cvTechService.deleteAvailability(id)
       .subscribe(
         data => {
           console.log(data);
-          this.getGExperiences();
+          this.getAvailabilities();
         },
         error => console.log(error));
   }
 
+  modalOpenPrimary(modalPrimary, id) {
+    console.log(id);
+    this.cvTechService.getAvailability(id).subscribe({
+      next: (data) => {
+        this.options = data;
+      }, error: (err) => {
+        console.error(err);
+      }
+    });
+    this.modalService.open(modalPrimary, {
+      centered: true,
+      windowClass: 'modal modal-primary',
+    });
+  }
 
-  updateExperience(): void {
+
+  updateAvailability(): void {
     const data = {
       id: this.options.id,
       name: this.options.name,
       description: this.options.description
     }
-    this.cvTechService.updateGlobaleExperience(data.id, data).subscribe(
+    this.cvTechService.updateAvailability(data.id, data).subscribe(
       {
         next: (data) => {
           console.log(data);
-          this.getGExperiences();
+          this.getAvailabilities();
         }, error: (err) => {
           console.error(err);
         }
@@ -140,20 +140,21 @@ export class GlobalExperienceManagementComponent implements OnInit {
   }
 
 
-  saveExperience(): void {
+  saveAvailability(): void {
     const data = {
-      name: this.globalExperience.name,
-      description: this.globalExperience.description
+      name: this.availability.name,
+      description: this.availability.description
     }
-    this.cvTechService.createGlobaleExperience(data).subscribe(
+    this.cvTechService.createAvailability(data).subscribe(
       {
         next: (data) => {
           console.log(data);
-          this.getGExperiences();
+          this.getAvailabilities();
         }, error: (err) => {
           console.error(err);
         }
       });
   }
+
 
 }

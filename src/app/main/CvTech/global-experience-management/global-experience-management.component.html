@@ -3,19 +3,11 @@
         <app-content-header [contentHeader]="contentHeader"></app-content-header>
         <section id="basic-carousel">
             <div class="row">
-
-                <!--<div class="col-md-6 col-sm-12">
-                    <input type="text" placeholder="options">
-                </div>
-
-                <div class="col-md-6 col-sm-12">
-                    <input type="text" placeholder="description">
-                </div>-->
                 <div class="card">
                     <!-- <core-card-snippet [snippetCode]="_snippetCodeHorizontal"> -->
 
                     <div class="card-header">
-                        <h4 class="card-title">Global experiences</h4>
+                        <h4 class="card-title">Add Global Experience</h4>
                     </div>
 
                     <div class="card-body">
@@ -62,7 +54,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Table des Experiences global</h4>
+                        <h4 class="card-title">Global Experience Table</h4>
                     </div>
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
@@ -79,17 +71,23 @@
                                         entries</label>
                                 </div>
                             </div>
-                            <input type="search" placeholder="Search" class="form-control ml-25"
-                                (keyup)="filterUpdate($event)" />
+                            <div class="input-group mb-6">
+                                <input type="search" placeholder="Search" class="form-control ml-25"
+                                    [(ngModel)]="searchTitle" />
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button" (click)="getGExperiences()"><i
+                                            class="fa fa-search"></i></button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <table class="table table-hover-animation">
                     <thead>
                         <tr>
-                            <th>Nom d'experiences global</th>
-                            <th>Description</th>
-                            <th>Options</th>
+                            <th width="25%">Name</th>
+                            <th width="65%">Description</th>
+                            <th width="10%">Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,7 +98,9 @@
                             <td>
                                 <span class="font-weight-bold">{{experience.name}}</span>
                             </td>
-                            <td>{{experience.description}}</td>
+                            <td>
+                                {{experience.description}}
+                            </td>
                             <td class="overflow-hidden">
                                 <div ngbDropdown container="body">
                                     <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle
@@ -114,8 +114,8 @@
                                                     data-feather="edit-2" class="mr-50"></i>Edit</button>
                                             <ng-template #modalPrimary let-modal>
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="myModalLabel160">Modifier niveau
-                                                        d'etude
+                                                    <h5 class="modal-title" id="myModalLabel160">Update Global
+                                                        Experience
                                                     </h5>
                                                     <button type="button" class="close"
                                                         (click)="modal.dismiss('Cross click')" aria-label="Close">
@@ -126,11 +126,11 @@
                                                     <div class="col-12">
                                                         <div class="form-group row">
                                                             <div class="col-sm-3 col-form-label">
-                                                                <label for="first-name">Experience name</label>
+                                                                <label for="first-name">Name</label>
                                                             </div>
                                                             <div class="col-sm-9">
                                                                 <input type="text" id="first-name" class="form-control"
-                                                                    name="fname" placeholder="Niveau"
+                                                                    name="fname" placeholder="Name"
                                                                     [(ngModel)]="options.name" />
                                                             </div>
                                                         </div>
