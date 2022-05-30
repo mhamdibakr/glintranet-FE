@@ -10,19 +10,20 @@ import { CvsComponent } from './cvs/cvs.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EducationLevelManagementComponent } from './profil/education-level-management/education-level-management.component';
 import { GlobalExperienceManagementComponent } from './profil/global-experience-management/global-experience-management.component';
-import { AddUserComponent } from './users/add-user/add-user.component';
-import { AllUsersComponent } from './users/all-users/all-users.component';
 import { SituationComponent } from './profil/situation/situation.component';
 import { SkillsComponent } from './profil/skills/skills.component';
 import { AvailabiltyComponent } from './profil/availabilty/availabilty.component';
 import { FunctionComponent } from './profil/function/function.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { CampaignModule } from "./campaign/campaign.module";
 const routes: Routes = [
   
   {
     path: 'campaign',
     loadChildren: () => import('./campaign/campaign.module').then(m => m.CampaignModule)
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
   },
   {
     path: 'dashboard',
@@ -31,14 +32,6 @@ const routes: Routes = [
   {
     path: 'cvs',
     component: CvsComponent,
-  },
-  {
-    path: 'allusers',
-    component: AllUsersComponent,
-  },
-  {
-    path: 'adduser',
-    component: AddUserComponent,
   },
   {
     path: 'education',
@@ -73,8 +66,6 @@ const routes: Routes = [
     CvsComponent,
     EducationLevelManagementComponent,
     GlobalExperienceManagementComponent,
-    AddUserComponent,
-    AllUsersComponent,
   ],
   imports: [
     CommonModule,

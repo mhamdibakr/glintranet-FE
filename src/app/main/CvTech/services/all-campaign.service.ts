@@ -28,6 +28,7 @@ export class AllCampaignService {
 
   DeleteCampaignById(id : number): Observable<HttpEvent<any>> {
    return this.http.delete<HttpEvent<any>>(`${baseUrl}/campaign/${id}`); 
+    
   }
 
 }

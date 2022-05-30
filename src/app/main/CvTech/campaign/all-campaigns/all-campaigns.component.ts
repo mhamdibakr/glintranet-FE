@@ -50,7 +50,6 @@ export class AllCampaignsComponent implements OnInit {
       windowClass: 'modal modal-primary'
     });
   }
-
   // -------------------- pagination 
   page = 1;
   count = 0;

@@ -7,22 +7,24 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { AddCampaignComponent } from './add-campaign/add-campaign.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 const routes: Routes = [
   {
-    path: 'addcampaign',
-    component: AddCampaignComponent,
+    path: 'adduser',
+    component: AddUserComponent,
   },
   {
-    path: 'allcampaigns', 
-    loadChildren: () => import('./all-campaigns/all-campaigns.module').then(m => m.AllCampaignModule)
+    path: 'allusers',
+    loadChildren: () => import('./all-users/all-users.module').then(m => m.AllUsersModule)
   },
+
 ];
 
 @NgModule({
   declarations: [
-    AddCampaignComponent,
+    AddUserComponent,
+
   ],
   imports: [
     CommonModule,
@@ -37,4 +39,4 @@ const routes: Routes = [
 
   providers: []
 })
-export class CampaignModule { }
+export class UsersModule { }

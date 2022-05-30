@@ -62,14 +62,14 @@ export const menu: CoreMenu[] = [
             title: 'All user',
             type: 'item',
             icon: 'list',
-            url: 'cvtech/allusers'
+            url: 'cvtech/users/allusers'
           },
           {
             id: 'adduser',
             title: 'Add User',
             type: 'item',
             icon: 'plus-square',
-            url: 'cvtech/adduser'
+            url: 'cvtech/users/adduser'
           }
         ]
       },

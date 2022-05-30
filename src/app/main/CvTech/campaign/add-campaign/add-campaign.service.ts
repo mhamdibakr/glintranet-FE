@@ -5,7 +5,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
-export class AddCompaignService implements Resolve<any> {
+export class AddCampaignService implements Resolve<any> {
   rows: any;
   onPricingChanged: BehaviorSubject<any>;
 

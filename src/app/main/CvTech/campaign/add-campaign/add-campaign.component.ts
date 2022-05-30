@@ -7,12 +7,12 @@ import { takeUntil } from 'rxjs/operators';
 // import { ProfileService } from 'app/main/pages/profile/profile.service';
 
 @Component({
-  selector: 'app-add-compaign',
-  templateUrl: './add-compaign.component.html',
-  styleUrls: ['./add-compaign.component.scss'],
+  selector: 'app-add-campaign',
+  templateUrl: './add-campaign.component.html',
+  styleUrls: ['./add-campaign.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AddCompaignComponent implements OnInit, OnDestroy {
+export class AddCampaignComponent implements OnInit, OnDestroy {
   // public
   public contentHeader: object;
   public data: any;
