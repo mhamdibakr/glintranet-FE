@@ -1,0 +1,197 @@
+<!-- <p>all-users works!</p>
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+        <div class="row" id="basic-table">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header"><h4 class="card-title">All campaigns</h4></div>
+
+                <div class="table-responsive">
+                  <table class="table" style="text-align: center;">
+                    <thead>
+                      <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                            <img
+                            src="assets/images/icons/angular.svg"
+                            class="mr-75"
+                            height="20"
+                            width="20"
+                            alt="Angular"
+                          /><span class="font-weight-bold">GiantLink employee</span>
+                        </td>
+                        <td>gl@GiantLink.ma</td>
+                        <td><span class="badge badge-pill badge-light-primary mr-1">06 06 06 06 06 06</span></td>
+                        <td class="overflow-hidden">
+                          <div ngbDropdown container="body">
+                            <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle data-toggle="dropdown">
+                              <i data-feather="more-vertical"></i>
+                            </button>
+                            <div ngbDropdownMenu>
+                              <a ngbDropdownItem href="javascript:void(0);">
+                                <i data-feather="info" class="mr-50"></i><span>Details</span>
+                              </a>
+                              <a ngbDropdownItem href="javascript:void(0);">
+                                <i data-feather="edit-2" class="mr-50"></i><span>Edit</span>
+                              </a
+                              ><a ngbDropdownItem href="javascript:void(0);"
+                                ><i data-feather="trash" class="mr-50"></i><span>Delete</span></a
+                              >
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div> -->
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+      <app-content-header [contentHeader]="contentHeader"></app-content-header>
+      <div class="row" id="basic-table">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header"><h4 class="card-title">All campaigns</h4></div>
+
+              <div class="table-responsive">
+                <!-- <table class="table" style="text-align: center;">
+                  <thead>
+                    <tr>
+                      <th>Full Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                          <img
+                          src="assets/images/icons/angular.svg"
+                          class="mr-75"
+                          height="20"
+                          width="20"
+                          alt="Angular"
+                        /><span class="font-weight-bold">GiantLink employee</span>
+                      </td>
+                      <td>gl@GiantLink.ma</td>
+                      <td><span class="badge badge-pill badge-light-primary mr-1">06 06 06 06 06 06</span></td>
+                      <td class="overflow-hidden">
+                        <div ngbDropdown container="body">
+                          <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle data-toggle="dropdown">
+                            <i data-feather="more-vertical"></i>
+                          </button>
+                          <div ngbDropdownMenu>
+                            <a ngbDropdownItem href="javascript:void(0);">
+                              <i data-feather="info" class="mr-50"></i><span>Details</span>
+                            </a>
+                            <a ngbDropdownItem href="javascript:void(0);">
+                              <i data-feather="edit-2" class="mr-50"></i><span>Edit</span>
+                            </a
+                            ><a ngbDropdownItem href="javascript:void(0);"
+                              ><i data-feather="trash" class="mr-50"></i><span>Delete</span></a
+                            >
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table> -->
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <!-- ---------------------------------- -->
+      <div class="row" id="basic-table">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">All Users</h4>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <div class="d-flex justify-content-between align-items-center m-1">
+                  <label class="d-flex align-items-center">Show
+                    <select class="form-control mx-25">
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                    entries</label>
+                </div>
+              </div>
+              <div class="col-md-6 col-12 d-flex justify-content-md-end">
+                <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                  <label class="d-flex align-items-center">Search<input type="search" placeholder="Search"
+                      class="form-control ml-25" /></label>
+                </div>
+              </div>
+            </div>
+  
+            <ngx-datatable class="bootstrap core-bootstrap" [rows]="rows" [columnMode]="'flex'" [headerHeight]="40"
+              [footerHeight]="50" [rowHeight]="58" class="bootstrap core-bootstrap" [limit]="10" rowHeight="auto">
+  
+              <ngx-datatable-column name="#" [width]="50" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                [resizeable]="false">
+                <!-- <ngx-datatable-column name="#" [flexGrow]="0.5"> -->
+                <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+                  {{(rowIndex + 1)}}
+                </ng-template>
+              </ngx-datatable-column>
+  
+              <ngx-datatable-column name="Full Name" [flexGrow]="2">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row?.name | titlecase }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Email" [flexGrow]="2">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{row?.age}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Phone" [flexGrow]="2">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{row?.town}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Actions" [flexGrow]="2">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{row?.country}}
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+            <!-- Pagination -->
+            <div class="row">
+              <div class="col-xl-12">
+                <ngb-pagination class="d-flex justify-content-end" [collectionSize]="50" [(page)]="pageBasicText"
+                  aria-label="Custom pagination">
+                  <ng-template ngbPaginationPrevious><span [data-feather]="'chevron-left'"
+                      [class]="'font-weight-bolder'"></span>Prev
+                  </ng-template>
+                  <ng-template ngbPaginationNext>Next<span [data-feather]="'chevron-right'"
+                      [class]="'font-weight-bolder'"></span>
+                  </ng-template>
+                </ngb-pagination>
+              </div>
+            </div>
+          </div>
+          <!-- Pagination -->
+  
+        </div>
+      </div>
+  </div>
+</div>
