@@ -56,7 +56,7 @@ export class UserDetailsComponent implements OnInit {
           {
             name: 'All Users',
             isLink: true,
-            link: '/allusers'
+            link: '/cvtech/users/allusers'
           },
           {
             name: 'Users Details',
