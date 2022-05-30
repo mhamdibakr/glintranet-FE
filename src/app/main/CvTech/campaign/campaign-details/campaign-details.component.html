@@ -1,0 +1,175 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+    <div class="row" id="basic-table">
+      <div class="col-12">
+        <div class="card">
+
+          <div class="card-header">
+            <h4 class="card-title">Campaigns Details</h4>
+          </div>
+          <div class="table-responsive">
+
+          
+            <ngx-datatable class="bootstrap core-bootstrap ml-1" 
+            [columnMode]="'flex'" 
+            [headerHeight]="40"
+            [footerHeight]="50" 
+            [rowHeight]="58"
+            [limit]="10" 
+            rowHeight="auto" 
+            [rows]=[Campaign]
+          >
+
+            <ngx-datatable-column name="Name" prop="full_name" [flexGrow]="1">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <div>
+                  {{row?.name}} 
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Description" [flexGrow]="3">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row?.description}}
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Nb Positions" [flexGrow]="1">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row?.nbPositions}}
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column  name="Date" [flexGrow]="1.25">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{ row?.closing_date | date:'yyyy-MM-dd' }}
+              </ng-template>
+            </ngx-datatable-column>
+
+            <!-- <ngx-datatable-column name="Action" [flexGrow]="0.75">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <div ngbDropdown container="body">
+                  <a routerLink="/campaign/campaign-details/{{row.id}}">
+                    <i data-feather="edit-2" class="mr-50"></i>
+                    <span>Details</span>
+                  </a>
+                </div>
+              </ng-template>
+            </ngx-datatable-column> -->
+            
+          </ngx-datatable>
+
+          
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-xl-4">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Availablities</h4>
+                <p class="card-text">{{ Campaign?.availablities[0]?.name }} </p>
+                <p class="card-text">{{ Campaign?.availablities[0]?.description }} </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="card ">
+              <div class="card-body">
+                <h4 class="card-title">Educations</h4>
+                <p class="card-text">{{ Campaign?.educations[0]?.name }} </p>
+                <p class="card-text">{{ Campaign?.educations[0]?.description }} </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="card ">
+              <div class="card-body">
+                <h4 class="card-title">Situations</h4>
+                <p class="card-text">{{ Campaign?.situations[0]?.name }} </p>
+                <p class="card-text">{{ Campaign?.situations[0]?.description }} </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="card ">
+              <div class="card-body">
+                <h4 class="card-title">Functions</h4>
+                <p class="card-text">{{ Campaign?.functions[0]?.name }} </p>
+                <p class="card-text">{{ Campaign?.functions[0]?.description }} </p>
+              </div>
+            </div>
+          </div> 
+          <div class="col-md-6 col-xl-4">
+            <div class="card ">
+              <div class="card-body">
+                <h4 class="card-title">Skills</h4>
+                <p class="card-text">{{ Campaign?.skills[0]?.name }} </p>
+                <p class="card-text">{{ Campaign?.skills[0]?.description }} </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="card ">
+              <div class="card-body">
+                <h4 class="card-title">Experiences</h4>
+                <p class="card-text">{{ Campaign?.experiences[0]?.name }} </p>
+                <p class="card-text">{{ Campaign?.experiences[0]?.description }} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <ngx-datatable class="bootstrap core-bootstrap ml-1" 
+        [columnMode]="'flex'" 
+        [headerHeight]="40"
+        [footerHeight]="50" 
+        [rowHeight]="58"
+        [limit]="10" 
+        rowHeight="auto" 
+      >
+
+        <ngx-datatable-column name="Name" prop="full_name" [flexGrow]="1">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <div>
+              {{row?.name}} 
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Description" [flexGrow]="3">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row?.description}}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Nb Positions" [flexGrow]="1">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row?.nbPositions}}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column  name="Date" [flexGrow]="1.25">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row?.closing_date | date:'yyyy-MM-dd' }}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Action" [flexGrow]="0.75">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <div ngbDropdown container="body">
+              <a routerLink="/campaign-details/{{row.id}}">
+                <i data-feather="edit-2" class="mr-50"></i>
+                <span>Details</span>
+              </a>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        
+      </ngx-datatable> -->
+      </div>
+    </div>
+  </div>
+</div>
