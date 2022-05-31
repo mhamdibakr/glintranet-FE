@@ -9,7 +9,6 @@ import { Postulation } from '../../../models/postulation.model';
 import { PostulationResponse } from '../../../models/postulation-response.model';
 import { PostulationService } from '../../../services/postulation.service';
 
-
 @Component({
   selector: 'app-campaign-details',
   templateUrl: './campaign-details.component.html',
@@ -35,7 +34,6 @@ export class CampaignDetailsComponent implements OnInit {
   phone = '';
   public pagePosition = 1;
   public totalPages = 0;
-
 
   public pageChanged(event: any): void {
     this.page = event;
@@ -71,7 +69,7 @@ export class CampaignDetailsComponent implements OnInit {
   public getCandidats() {
     const params = {
       page: this.page - 1,
-      size: 3,
+      size: 1,
       name: this.name,
       email: this.email,
       phone: this.phone
@@ -93,15 +91,8 @@ export class CampaignDetailsComponent implements OnInit {
               if(candidat.id == candid.id) {
                 this.Candidats.splice(index, 1);
               }
-
             })
           });
-
-          console.log("3 - allCandidats => ", this.Candidats);
-
-
-          // console.log("postulatedCandidats",this.postulatedCandidats);
-          // console.log("Postulations",this.Postulations);
         }
       }
     )
@@ -122,7 +113,6 @@ export class CampaignDetailsComponent implements OnInit {
     }
   }
 
-
   // modal Open Small
   modalOpenSM(modalSM) {
     this.modalService.open(modalSM, {
@@ -130,7 +120,6 @@ export class CampaignDetailsComponent implements OnInit {
       size: 'xl'
     });
   }
-
 
   // ------- Get One Campaign By Id ------- //
   campainId: number = this.route.snapshot.params["campaign_id"];
@@ -197,7 +186,6 @@ export class CampaignDetailsComponent implements OnInit {
     // //
     this.getCandidats();
     // //
-
 
     this.contentHeader = {
       headerTitle: 'Campaign Details',
