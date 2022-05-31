@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { CoreTranslationService } from '@core/services/translation.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CvTechService } from 'app/services/cv-tech.service';
 import { Skills } from '../models/skills.model';
+
+import { locale as en } from '../i18n/en';
+import { locale as fr } from '../i18n/fr';
 
 @Component({
   selector: 'app-skills-management',
@@ -31,8 +35,13 @@ export class SkillsManagementComponent implements OnInit {
     name: '',
     description: ''
   }
-
-  constructor(private modalService: NgbModal, private cvTechService: CvTechService) { }
+  /**
+   *
+   * @param {CoreTranslationService} _coreTranslationService
+   */
+  constructor(private modalService: NgbModal, private cvTechService: CvTechService, private _coreTranslationService: CoreTranslationService) {
+    this._coreTranslationService.translate(en, fr)
+  }
 
   ngOnInit(): void {
     this.contentHeader = {
@@ -62,7 +71,7 @@ export class SkillsManagementComponent implements OnInit {
   }
 
 
-  
+
   modalOpenPrimary(modalPrimary, id) {
     this.cvTechService.getSkill(id).subscribe({
       next: (data) => {

@@ -12,7 +12,7 @@ import { Skills } from 'app/main/CvTech/models/skills.model';
 import { Observable } from 'rxjs';
 
 
-const baseUrl = 'http://localhost:8080/api';
+const baseUrl = 'http://localhost:8092/api';
 
 @Injectable({
   providedIn: 'root'

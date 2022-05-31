@@ -3,6 +3,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CvTechService } from 'app/services/cv-tech.service';
 import { CurrentSituation } from '../models/current-situation.model';
 
+import { CoreTranslationService } from '@core/services/translation.service';
+import { locale as en } from '../i18n/en';
+import { locale as fr } from '../i18n/fr';
+
 @Component({
   selector: 'app-current-situation-management',
   templateUrl: './current-situation-management.component.html',
@@ -29,7 +33,14 @@ export class CurrentSituationManagementComponent implements OnInit {
     name: '',
     description: ''
   }
-  constructor(private modalService: NgbModal, private cvTechService: CvTechService) { }
+
+  /**
+   *
+   * @param {CoreTranslationService} _coreTranslationService
+   */
+  constructor(private modalService: NgbModal, private cvTechService: CvTechService, private _coreTranslationService: CoreTranslationService) {
+    this._coreTranslationService.translate(en, fr)
+  }
 
   ngOnInit(): void {
     this.contentHeader = {

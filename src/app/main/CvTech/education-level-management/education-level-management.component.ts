@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { CoreTranslationService } from '@core/services/translation.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CvTechService } from 'app/services/cv-tech.service';
 import { Education } from '../models/education.model';
+
+import { locale as en } from '../i18n/en';
+import { locale as fr } from '../i18n/fr';
+
 
 @Component({
   selector: 'app-education-level-management',
@@ -9,6 +14,7 @@ import { Education } from '../models/education.model';
   styleUrls: ['./education-level-management.component.scss']
 })
 export class EducationLevelManagementComponent implements OnInit {
+
 
   searchTitle = "";
   page = 1;
@@ -31,7 +37,14 @@ export class EducationLevelManagementComponent implements OnInit {
     description: ''
   }
 
-  constructor(private modalService: NgbModal, private cvTechService: CvTechService) { }
+
+  /**
+   *
+   * @param {CoreTranslationService} _coreTranslationService
+   */
+  constructor(private modalService: NgbModal, private cvTechService: CvTechService, private _coreTranslationService: CoreTranslationService) {
+    this._coreTranslationService.translate(en, fr)
+  }
 
   // Lifecycle Hooks
   // -----------------------------------------------------------------------------------------------------
@@ -68,7 +81,7 @@ export class EducationLevelManagementComponent implements OnInit {
     this.getEducations();
   }
 
-  
+
   getParams(page: number, pageSize: number, title: string) {
     let params: any = {};
     if (page) {
