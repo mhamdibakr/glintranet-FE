@@ -115,8 +115,7 @@ const routes: Routes = [
     NgbPaginationModule,
     NgxDatatableModule,
     DataTablesModule,
-    TranslateModule, 
-    TranslateModule.forRoot(),
+    TranslateModule,
   ],
 
   providers: []

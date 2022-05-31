@@ -43,7 +43,7 @@ export class EducationLevelManagementComponent implements OnInit {
    * @param {CoreTranslationService} _coreTranslationService
    */
   constructor(private modalService: NgbModal, private cvTechService: CvTechService, private _coreTranslationService: CoreTranslationService) {
-    this._coreTranslationService.translate(en,fr)
+    this._coreTranslationService.translate(en, fr)
   }
 
   // Lifecycle Hooks

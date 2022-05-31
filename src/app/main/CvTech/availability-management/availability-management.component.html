@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Add Availability</h4>
+                        <h4 class="card-title">{{ "CVTECH.AA" | translate }}</h4>
                     </div>
 
                     <div class="card-body">
@@ -14,30 +14,33 @@
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-sm-3 col-form-label">
-                                            <label for="first-name">Name</label>
+                                            <label for="first-name">{{ "CVTECH.NAME" | translate }}</label>
                                         </div>
                                         <div class="col-sm-9">
                                             <input type="text" id="first-name" class="form-control" name="fname"
-                                                placeholder="Name" [(ngModel)]="availability.name" />
+                                                placeholder="{{ 'CVTECH.NAME' | translate }}"
+                                                [(ngModel)]="availability.name" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group row">
                                         <div class="col-sm-3 col-form-label">
-                                            <label for="email-id">Description</label>
+                                            <label for="email-id">{{ "CVTECH.DESCRIPTION" | translate }}</label>
                                         </div>
                                         <div class="col-sm-9">
                                             <input type="email" id="email-id" class="form-control" name="email-id"
-                                                placeholder="Description" [(ngModel)]="availability.description" />
+                                                placeholder="{{ 'CVTECH.DESCRIPTION' | translate }}"
+                                                [(ngModel)]="availability.description" />
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-9 offset-sm-3">
                                     <button type="submit" rippleEffect class="btn btn-primary mr-1"
-                                        (click)="saveAvailability()">Add</button>
-                                    <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
+                                        (click)="saveAvailability()">{{ "CVTECH.ADD" | translate }}</button>
+                                    <button type="reset" rippleEffect class="btn btn-outline-secondary">{{
+                                        "CVTECH.RESET" | translate }}</button>
                                 </div>
                             </div>
                         </form>
@@ -47,17 +50,17 @@
             </div>
         </section>
 
-        <div class="row" id="table-hover-animation">
+        <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Availabilities Table</h4>
+                        <h4 class="card-title">{{ "CVTECH.AT" | translate }}</h4>
                     </div>
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
                             <div class="col-md-6 col-12">
                                 <div class="d-flex justify-content-between align-items-center m-1">
-                                    <label class="d-flex align-items-center">Show
+                                    <label class="d-flex align-items-center">{{ "CVTECH.SHOW" | translate }}
                                         <select class="form-control mx-25" [(ngModel)]="pageSize"
                                             (change)="getAvailabilities()">
                                             <option value="5">5</option>
@@ -65,14 +68,14 @@
                                             <option value="25">25</option>
                                             <option value="50">50</option>
                                         </select>
-                                        entries</label>
+                                        {{ "CVTECH.ENTRIES" | translate }}</label>
                                 </div>
                             </div>
 
 
                             <div class="input-group mb-6">
-                                <input type="search" placeholder="Search" class="form-control ml-25"
-                                    [(ngModel)]="searchTitle" />
+                                <input type="search" placeholder="{{ 'CVTECH.SEARCH' | translate }}"
+                                    class="form-control ml-25" [(ngModel)]="searchTitle" />
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="button" (click)="getAvailabilities()"><i
                                             class="fa fa-search"></i></button>
@@ -84,9 +87,9 @@
                 <table class="table table-hover-animation">
                     <thead>
                         <tr>
-                            <th width="25%">Name</th>
-                            <th width="65%">Description</th>
-                            <th width="10%">Options</th>
+                            <th width="25%">{{ "CVTECH.NAME" | translate }}</th>
+                            <th width="65%">{{ "CVTECH.DESCRIPTION" | translate }}</th>
+                            <th width="10%">{{ "CVTECH.OPTIONS" | translate }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -109,10 +112,12 @@
                                         <a ngbDropdownItem href="javascript:void(0);">
                                             <button class="btn btn-link"
                                                 (click)="modalOpenPrimary(modalPrimary,education.id)" rippleEffect><i
-                                                    data-feather="edit-2" class="mr-50"></i>Edit</button>
+                                                    data-feather="edit-2" class="mr-50"></i>{{ "CVTECH.EDIT" | translate
+                                                }}</button>
                                             <ng-template #modalPrimary let-modal>
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="myModalLabel160">Update Availability
+                                                    <h5 class="modal-title" id="myModalLabel160">{{ "CVTECH.UA" |
+                                                        translate }}
                                                     </h5>
                                                     <button type="button" class="close"
                                                         (click)="modal.dismiss('Cross click')" aria-label="Close">
@@ -123,11 +128,13 @@
                                                     <div class="col-12">
                                                         <div class="form-group row">
                                                             <div class="col-sm-3 col-form-label">
-                                                                <label for="first-name">Name</label>
+                                                                <label for="first-name">{{ "CVTECH.NAME" | translate
+                                                                    }}</label>
                                                             </div>
                                                             <div class="col-sm-9">
                                                                 <input type="text" id="first-name" class="form-control"
-                                                                    name="fname" placeholder="Name"
+                                                                    name="fname"
+                                                                    placeholder="{{ 'CVTECH.NAME' | translate }}"
                                                                     [(ngModel)]="options.name" />
                                                             </div>
                                                         </div>
@@ -135,11 +142,13 @@
                                                     <div class="col-12">
                                                         <div class="form-group row">
                                                             <div class="col-sm-3 col-form-label">
-                                                                <label for="Description">Description</label>
+                                                                <label for="Description">{{ "CVTECH.DESCRIPTION" |
+                                                                    translate }}</label>
                                                             </div>
                                                             <div class="col-sm-9">
                                                                 <input type="text" id="Description" class="form-control"
-                                                                    name="desc" placeholder="Description"
+                                                                    name="desc"
+                                                                    placeholder="{{ 'CVTECH.DESCRIPTION' | translate }}"
                                                                     [(ngModel)]="options.description">
                                                             </div>
                                                         </div>
@@ -149,7 +158,7 @@
                                                     <button type="button" class="btn btn-primary"
                                                         (click)="updateAvailability();modal.close('Accept click')"
                                                         rippleEffect>
-                                                        Accept
+                                                        {{ "CVTECH.ACCEPT" | translate }}
                                                     </button>
                                                 </div>
                                             </ng-template>
@@ -158,7 +167,7 @@
                                             <button type="button" class="btn btn-link"
                                                 (click)="deleteAvailability(education.id)">
                                                 <i data-feather="trash" class="mr-50"></i>
-                                                Delete
+                                                {{ "CVTECH.DELETE" | translate }}
                                             </button>
                                         </a>
                                     </div>
