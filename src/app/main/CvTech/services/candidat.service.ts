@@ -16,10 +16,9 @@ export class CandidatService {
   getAllCandidat(): Observable<Candidat[]> {
     return this.http.get<Candidat[]>(`${baseUrl}/candidat`);
   }
-
-  // En cours
-  // addCandidat(data: any): Observable<any> {
-  //   return this.http.post(`${baseUrl}/postulation/add`, data);
-  // }
+  
+  getAllPagination(params: any): Observable<any> {
+    return this.http.get<Candidat[]>(`${baseUrl}/candidat`, { params });
+  }
 
 }

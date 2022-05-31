@@ -214,6 +214,18 @@
                   <div class="modal-body" tabindex="0" ngbAutofocus>
                     <div class="table-responsive">
                       <table class="table">
+
+                        <div class="row">
+                          <div class="col-12  mb-2">            
+                            <label class="d-flex align-items-center float-right mr-1">
+                              <input type="search" [(ngModel)]="name" name="name" id="name" placeholder="Search by Name" class="form-control ml-25" />
+                              <input type="search" [(ngModel)]="email" name="email" id="email" placeholder="Search by Email" class="form-control ml-25" />
+                              <input type="search" [(ngModel)]="phone" name="phone" id="phone" placeholder="Search by Phone" class="form-control ml-25" />
+                              <button type="button" class="btn btn-flat-primary" (click)="getCandidats()" rippleEffect>Search</button>
+                            </label>
+                          </div>
+                        </div>
+
                         <ngx-datatable class="bootstrap core-bootstrap ml-1" 
                           [columnMode]="'flex'" 
                           [headerHeight]="40"
@@ -231,23 +243,7 @@
                             [draggable]="false"
                             [resizeable]="false"
                           >
-                          <ng-template
-                            ngx-datatable-header-template
-                            let-value="value"
-                            let-allRowsSelected="allRowsSelected"
-                            let-selectFn="selectFn"
-                          >
-                            <div class="custom-control custom-checkbox">
-                              <input
-                                type="checkbox"
-                                class="custom-control-input"
-                                [checked]="allRowsSelected"
-                                (change)="selectFn(!allRowsSelected)"
-                                id="headerChkbxRef"
-                              />
-                              <label class="custom-control-label" for="headerChkbxRef"></label>
-                            </div>
-                          </ng-template>
+                          
                           <ng-template
                             ngx-datatable-cell-template
                             let-rowIndex="rowIndex"

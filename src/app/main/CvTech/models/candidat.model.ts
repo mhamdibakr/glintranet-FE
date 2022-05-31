@@ -9,6 +9,7 @@ export class Candidat {
     country: String;
     birthDate: Date;
     message: String;
+    
 
     constructor(
         id: number,

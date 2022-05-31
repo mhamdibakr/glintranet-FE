@@ -50,10 +50,9 @@ export class AllCampaignsComponent implements OnInit {
       windowClass: 'modal modal-primary'
     });
   }
-  // -------------------- pagination 
+  // -------------------- pagination & search
   page = 1;
   count = 0;
-  pageSize = 4;
   name = ''
   public pagePosition = 1;
   public totalPages=0;
@@ -82,7 +81,7 @@ export class AllCampaignsComponent implements OnInit {
   public chkBoxSelected = [];
   Campains? : AllCampaign[];
 
-  getAllCampaigns(): void {
+  public getAllCampaigns(): void {
     const params = {
       page : this.page-1,
       size : 3,
@@ -92,9 +91,9 @@ export class AllCampaignsComponent implements OnInit {
       {
         next: (response: any) => {
           const { content, totalElements, totalPages } = response;
-          this.Campains = response.content
           this.count = totalElements;
           this.totalPages = totalPages*10
+          this.Campains = response.content
           
         }, error: (err) => {
           console.error(err);

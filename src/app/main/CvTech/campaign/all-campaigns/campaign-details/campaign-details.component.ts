@@ -27,28 +27,82 @@ export class CampaignDetailsComponent implements OnInit {
 
   contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
 
+  // -------------------- pagination & search
+  page = 1;
+  count = 0;
+  name = '';
+  email = '';
+  phone = '';
+  public pagePosition = 1;
+  public totalPages = 0;
+
+
+  public pageChanged(event: any): void {
+    this.page = event;
+    this.getCandidats();
+  }
+
+  getParams(page: number, pageSize: number, name: string, email: string, phone: string) {
+    let params: any = {};
+    if (page) {
+      params['page'] = page - 1;
+    }
+    if (pageSize) {
+      params['size'] = pageSize;
+    }
+    if (name) {
+      params['name'] = name;
+    }
+    if (email) {
+      params['email'] = email;
+    }
+    if (phone) {
+      params['phone'] = phone;
+    }
+
+    return params;
+  }
 
   // ------- Get All Candidats ------- //
-  
-  Candidats?: Candidat[];
   Postulations?: PostulationResponse[];
   postulatedCandidats: Candidat[] = [];
 
+  Candidats?: Candidat[];
   public getCandidats() {
-    this.AllCandidatService.getAllCandidat().subscribe(
-      (response: any) => {
-        this.Candidats = response.content
-        this.Postulations.forEach(p => {
-          this.postulatedCandidats.push(p.candidat);
-        })
-        
-        // console.log("allCandidats",this.Candidats);
-        //console.log("postulatedCandidats",this.postulatedCandidats);
-        
-        this.postulatedCandidats.forEach(candid => {
-          this.Candidats.splice(this.Candidats.findIndex(candidat => candidat.id === candid.id), 1);
-        });
-        //console.log("Postulations",this.Postulations);
+    const params = {
+      page: this.page - 1,
+      size: 3,
+      name: this.name,
+      email: this.email,
+      phone: this.phone
+    }
+    this.AllCandidatService.getAllPagination(params).subscribe(
+      {
+        next: (response: any) => {
+          const { content, totalElements, totalPages } = response;
+          this.count = totalElements;
+          this.totalPages = totalPages * 10;
+          this.Candidats = response.content;
+          this.postulatedCandidats=[]
+          
+          this.Postulations.forEach(p => {
+            this.postulatedCandidats.push(p.candidat);
+          })
+          this.postulatedCandidats.forEach(candid => {
+            this.Candidats.forEach((candidat,index) => {
+              if(candidat.id == candid.id) {
+                this.Candidats.splice(index, 1);
+              }
+
+            })
+          });
+
+          console.log("3 - allCandidats => ", this.Candidats);
+
+
+          // console.log("postulatedCandidats",this.postulatedCandidats);
+          // console.log("Postulations",this.Postulations);
+        }
       }
     )
   }
@@ -82,7 +136,7 @@ export class CampaignDetailsComponent implements OnInit {
   campainId: number = this.route.snapshot.params["campaign_id"];
   Campaign?: AllCampaign;
   getCampaign() {
-     this.AllCampaignService.getbyid(this.campainId).subscribe(
+    this.AllCampaignService.getbyid(this.campainId).subscribe(
       {
         next: (response: any) => {
           this.Campaign = response;
@@ -111,6 +165,7 @@ export class CampaignDetailsComponent implements OnInit {
         next: (data) => {
           console.log(data);
           document.getElementById('close-model')?.click();
+
           this.ngOnInit();
         },
         error: (err) => {
@@ -121,14 +176,14 @@ export class CampaignDetailsComponent implements OnInit {
     })
   }
 
-  // ---------- Deelete Selected Candidats ------------ //
+  // ---------- Delete Selected Candidats ------------ //
   deleteSelectedCandidat(id: number) {
     this.PostulationService.deletebyid(id).subscribe(
       {
-        next: (data) => {
-          console.log("deleted ! ",id);
+        next: () => {
+          console.log("deleted ! ", id);
           this.ngOnInit();
-        }, 
+        },
         error: (err) => {
           console.error(err);
         }
@@ -142,7 +197,8 @@ export class CampaignDetailsComponent implements OnInit {
     // //
     this.getCandidats();
     // //
-    
+
+
     this.contentHeader = {
       headerTitle: 'Campaign Details',
       actionButton: true,
@@ -174,4 +230,9 @@ export class CampaignDetailsComponent implements OnInit {
     };
 
   }
+
+
+
+
+
 }
