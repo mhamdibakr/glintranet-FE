@@ -11,7 +11,7 @@
 
               
               <div class="card-header">
-                <h4 class="card-title">All Campaigns</h4>
+                <h4 class="card-title text-primary">All Campaigns</h4>
               </div>
 
               <div class="row">
@@ -39,9 +39,15 @@
                 [selected]="chkBoxSelected"
               >
 
-                <ngx-datatable-column name="Name" [flexGrow]="1">
+                <ngx-datatable-column name="Name" [flexGrow]="1.25">
                   <ng-template let-row="row" ngx-datatable-cell-template>
                     {{row?.name}}
+                  </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Description" [flexGrow]="2.75">
+                  <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{row?.description}}
                   </ng-template>
                 </ngx-datatable-column>
 
@@ -51,19 +57,13 @@
                   </ng-template>
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Description" [flexGrow]="3">
-                  <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{row?.description}}
-                  </ng-template>
-                </ngx-datatable-column>
-
-                <ngx-datatable-column  name="Date" [flexGrow]="1.25">
+                <ngx-datatable-column  name="Date" [flexGrow]="1">
                   <ng-template let-row="row" ngx-datatable-cell-template>
                     {{ row?.closing_date | date:'yyyy-MM-dd' }}
                   </ng-template>
                 </ngx-datatable-column>
                 
-                <ngx-datatable-column name="Actions" [flexGrow]="1" >
+                <ngx-datatable-column name="Actions" [flexGrow]="0.75" >
                   <ng-template let-row="row" ngx-datatable-cell-template>
                     <div class="d-flex align-items-center">
                       <div ngbDropdown container="body">

@@ -7,7 +7,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Campaign Details</h4>
+            <h4 class="card-title text-primary">Campaign Details</h4>
           </div>
           <div class="table-responsive">
             <ngx-datatable class="bootstrap core-bootstrap ml-1" 
@@ -61,66 +61,77 @@
           <div class="col-md-6 col-xl-4">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Availablities</h4>
-                <p class="card-text">{{ Campaign?.availablities[0]?.name }} </p>
-                <p class="card-text">{{ Campaign?.availablities[0]?.description }} </p>
+                <h4 class="card-title text-primary">Availabilities</h4>
+                <div class="card-subtitle text-muted mb-1">{{ Campaign?.availablities[0]?.name }}</div>
+                <p class="card-text">
+                  {{ Campaign?.availablities[0]?.description }}
+                </p>
               </div>
             </div>
           </div>
           <div class="col-md-6 col-xl-4">
-            <div class="card ">
+            <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Educations</h4>
-                <p class="card-text">{{ Campaign?.educations[0]?.name }} </p>
-                <p class="card-text">{{ Campaign?.educations[0]?.description }} </p>
+                <h4 class="card-title text-primary">Educations</h4>
+                <div class="card-subtitle text-muted mb-1">{{ Campaign?.educations[0]?.name }}</div>
+                <p class="card-text">
+                  {{ Campaign?.educations[0]?.description }}
+                </p>
               </div>
             </div>
           </div>
           <div class="col-md-6 col-xl-4">
-            <div class="card ">
+            <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Situations</h4>
-                <p class="card-text">{{ Campaign?.situations[0]?.name }} </p>
-                <p class="card-text">{{ Campaign?.situations[0]?.description }} </p>
+                <h4 class="card-title text-primary">Situations</h4>
+                <div class="card-subtitle text-muted mb-1">{{ Campaign?.situations[0]?.name }}</div>
+                <p class="card-text">
+                  {{ Campaign?.situations[0]?.description }}
+                </p>
               </div>
             </div>
           </div>
           <div class="col-md-6 col-xl-4">
-            <div class="card ">
+            <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Functions</h4>
-                <p class="card-text">{{ Campaign?.functions[0]?.name }} </p>
-                <p class="card-text">{{ Campaign?.functions[0]?.description }} </p>
-              </div>
-            </div>
-          </div> 
-          <div class="col-md-6 col-xl-4">
-            <div class="card ">
-              <div class="card-body">
-                <h4 class="card-title">Skills</h4>
-                <p class="card-text">{{ Campaign?.skills[0]?.name }} </p>
-                <p class="card-text">{{ Campaign?.skills[0]?.description }} </p>
+                <h4 class="card-title text-primary">Functions</h4>
+                <div class="card-subtitle text-muted mb-1">{{ Campaign?.functions[0]?.name }}</div>
+                <p class="card-text">
+                  {{ Campaign?.functions[0]?.description }}
+                </p>
               </div>
             </div>
           </div>
           <div class="col-md-6 col-xl-4">
-            <div class="card ">
+            <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Experiences</h4>
-                <p class="card-text">{{ Campaign?.experiences[0]?.name }} </p>
-                <p class="card-text">{{ Campaign?.experiences[0]?.description }} </p>
+                <h4 class="card-title text-primary">Skills</h4>
+                <div class="card-subtitle text-muted mb-1">{{ Campaign?.skills[0]?.name }}</div>
+                <p class="card-text">
+                  {{ Campaign?.skills[0]?.description }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title text-primary">Experiences</h4>
+                <div class="card-subtitle text-muted mb-1">{{ Campaign?.experiences[0]?.name }}</div>
+                <p class="card-text">
+                  {{ Campaign?.experiences[0]?.description }}
+                </p>
               </div>
             </div>
           </div>
         </div>
-
         <!-- ---------------------------------- -->
         <div class="row" id="basic-table">
           <div class="col-12">
             <div class="card">
 
               <div class="card-header">
-                <h4 class="card-title">Selected Candidats</h4>
+                <h4 class="card-title text-primary">Selected Candidats</h4>
               </div>
 
               <!-- Table of Selected Candidats -->
@@ -135,7 +146,7 @@
                   [rows]="Postulations"
                 >
 
-                <ngx-datatable-column name="Name" prop="full_name" [flexGrow]="1">
+                <ngx-datatable-column name="Name" prop="full_name" [flexGrow]="1.5">
                   <ng-template let-row="row" ngx-datatable-cell-template>
                     <div>
                       {{ row?.candidat.name }} 
@@ -151,14 +162,14 @@
                   </ng-template>
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Phone" prop="full_name" [flexGrow]="1.5">
+                <ngx-datatable-column name="Phone" prop="full_name" [flexGrow]="1.25">
                   <ng-template let-row="row" ngx-datatable-cell-template>
                     <div>
                       {{ row?.candidat.phone}} 
                     </div>
                   </ng-template>
                 </ngx-datatable-column>
-                  <ngx-datatable-column  name="Insert Date" [flexGrow]="1.5">
+                  <ngx-datatable-column  name="Insert Date" [flexGrow]="1.25">
                     <ng-template let-row="row" ngx-datatable-cell-template>
                       {{ row?.date_postulation | date:'yyyy-MM-dd' }} 
                     </ng-template>

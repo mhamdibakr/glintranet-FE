@@ -69,7 +69,7 @@ export class CampaignDetailsComponent implements OnInit {
   public getCandidats() {
     const params = {
       page: this.page - 1,
-      size: 1,
+      size: 5,
       name: this.name,
       email: this.email,
       phone: this.phone
