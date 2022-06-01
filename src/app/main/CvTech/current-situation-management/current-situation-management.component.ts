@@ -3,9 +3,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CurrentSituation } from '../models/current-situation.model';
 
 import { CoreTranslationService } from '@core/services/translation.service';
+import { CurrentSituationService } from 'app/services/current-situation.service';
 import { locale as en } from '../i18n/en';
 import { locale as fr } from '../i18n/fr';
-import { CurrentSituationService } from 'app/services/cvtech/current-situation.service';
 
 @Component({
   selector: 'app-current-situation-management',

@@ -3,7 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalExperience } from '../models/global-experience.model';
 
 import { CoreTranslationService } from '@core/services/translation.service';
-import { GlobalExperienceService } from 'app/services/cvtech/global-experience.service';
+import { GlobalExperienceService } from 'app/services/global-experience.service';
 import { locale as en } from '../i18n/en';
 import { locale as fr } from '../i18n/fr';
 

@@ -3,7 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Availability } from '../models/availability.model';
 
 import { CoreTranslationService } from '@core/services/translation.service';
-import { AvailabilityService } from 'app/services/cvtech/availability.service';
+import { AvailabilityService } from 'app/services/availability.service';
 import { locale as en } from '../i18n/en';
 import { locale as fr } from '../i18n/fr';
 

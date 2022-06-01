@@ -3,7 +3,7 @@ import { CoreTranslationService } from '@core/services/translation.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Function } from '../models/function.model';
 
-import { FunctionsService } from 'app/services/cvtech/functions.service';
+import { FunctionsService } from 'app/services/functions.service';
 import { locale as en } from '../i18n/en';
 import { locale as fr } from '../i18n/fr';
 

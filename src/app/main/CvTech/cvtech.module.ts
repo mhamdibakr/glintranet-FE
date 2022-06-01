@@ -22,32 +22,12 @@ import { SkillsManagementComponent } from './skills-management/skills-management
 
 const routes: Routes = [
   {
-    path: 'users',
-    //component: UsersComponent,
-  },
-  {
     path: 'dashboard',
     component: DashboardComponent,
   },
   {
     path: 'cvs',
     component: CvsComponent,
-  },
-  {
-    path: 'addcampaign',
-    //component: CompaignComponent,
-  },
-  {
-    path: 'allcampaigns',
-    //component: AllCampaignsComponent,
-  },
-  {
-    path: 'allusers',
-    //component: AllUsersComponent,
-  },
-  {
-    path: 'adduser',
-    //component: AddUserComponent,
   },
   {
     path: 'education-management',

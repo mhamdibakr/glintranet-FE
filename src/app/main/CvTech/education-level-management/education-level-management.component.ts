@@ -5,7 +5,7 @@ import { Education } from '../models/education.model';
 
 import { locale as en } from '../i18n/en';
 import { locale as fr } from '../i18n/fr';
-import { EducationService } from 'app/services/cvtech/education.service';
+import { EducationService } from 'app/services/education.service';
 
 
 @Component({
