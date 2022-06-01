@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreTranslationService } from '@core/services/translation.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CvTechService } from 'app/services/cv-tech.service';
 import { Function } from '../models/function.model';
 
+import { FunctionsService } from 'app/services/cvtech/functions.service';
 import { locale as en } from '../i18n/en';
 import { locale as fr } from '../i18n/fr';
 
@@ -39,7 +39,7 @@ export class FunctionManagementComponent implements OnInit {
    *
    * @param {CoreTranslationService} _coreTranslationService
    */
-  constructor(private modalService: NgbModal, private cvTechService: CvTechService, private _coreTranslationService: CoreTranslationService) {
+  constructor(private modalService: NgbModal, private functionService: FunctionsService, private _coreTranslationService: CoreTranslationService) {
     this._coreTranslationService.translate(en, fr)
   }
 
@@ -71,7 +71,7 @@ export class FunctionManagementComponent implements OnInit {
 
 
   modalOpenPrimary(modalPrimary, id) {
-    this.cvTechService.getGlobaleExperience(id).subscribe({
+    this.functionService.getFunction(id).subscribe({
       next: (data) => {
         this.options = data;
       }, error: (err) => {
@@ -108,7 +108,7 @@ export class FunctionManagementComponent implements OnInit {
 
   getFunctions(): void {
     const params = this.getParams(this.page, this.pageSize, this.searchTitle);
-    this.cvTechService.getFunctions(params).subscribe(
+    this.functionService.getFunctions(params).subscribe(
       {
         next: (data) => {
           console.log(data.length);
@@ -123,7 +123,7 @@ export class FunctionManagementComponent implements OnInit {
   }
 
   deleteFunction(id: number): void {
-    this.cvTechService.deleteFunction(id)
+    this.functionService.deleteFunction(id)
       .subscribe(
         data => {
           console.log(data);
@@ -139,7 +139,7 @@ export class FunctionManagementComponent implements OnInit {
       name: this.options.name,
       description: this.options.description
     }
-    this.cvTechService.updateFunction(data.id, data).subscribe(
+    this.functionService.updateFunction(data.id, data).subscribe(
       {
         next: (data) => {
           console.log(data);
@@ -156,7 +156,7 @@ export class FunctionManagementComponent implements OnInit {
       name: this.function.name,
       description: this.function.description
     }
-    this.cvTechService.createFunction(data).subscribe(
+    this.functionService.createFunction(data).subscribe(
       {
         next: (data) => {
           console.log(data);

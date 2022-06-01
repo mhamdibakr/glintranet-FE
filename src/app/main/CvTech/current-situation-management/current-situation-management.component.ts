@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CvTechService } from 'app/services/cv-tech.service';
 import { CurrentSituation } from '../models/current-situation.model';
 
 import { CoreTranslationService } from '@core/services/translation.service';
 import { locale as en } from '../i18n/en';
 import { locale as fr } from '../i18n/fr';
+import { CurrentSituationService } from 'app/services/cvtech/current-situation.service';
 
 @Component({
   selector: 'app-current-situation-management',
@@ -38,7 +38,7 @@ export class CurrentSituationManagementComponent implements OnInit {
    *
    * @param {CoreTranslationService} _coreTranslationService
    */
-  constructor(private modalService: NgbModal, private cvTechService: CvTechService, private _coreTranslationService: CoreTranslationService) {
+  constructor(private modalService: NgbModal, private currentsituationService: CurrentSituationService, private _coreTranslationService: CoreTranslationService) {
     this._coreTranslationService.translate(en, fr)
   }
 
@@ -87,7 +87,7 @@ export class CurrentSituationManagementComponent implements OnInit {
 
   getCSituations(): void {
     const params = this.getParams(this.page, this.pageSize, this.searchTitle);
-    this.cvTechService.getCurrentSituations(params).subscribe(
+    this.currentsituationService.getCurrentSituations(params).subscribe(
       {
         next: (data) => {
           console.log(data);
@@ -107,7 +107,7 @@ export class CurrentSituationManagementComponent implements OnInit {
   }
 
   deleteCSituation(id: number): void {
-    this.cvTechService.deleteCurrentSituation(id)
+    this.currentsituationService.deleteCurrentSituation(id)
       .subscribe(
         data => {
           console.log(data);
@@ -118,7 +118,7 @@ export class CurrentSituationManagementComponent implements OnInit {
 
   modalOpenPrimary(modalPrimary, id) {
     console.log(id);
-    this.cvTechService.getCurrentSituation(id).subscribe({
+    this.currentsituationService.getCurrentSituation(id).subscribe({
       next: (data) => {
         this.options = data;
       }, error: (err) => {
@@ -138,7 +138,7 @@ export class CurrentSituationManagementComponent implements OnInit {
       name: this.options.name,
       description: this.options.description
     }
-    this.cvTechService.updateCurrentSituation(data.id, data).subscribe(
+    this.currentsituationService.updateCurrentSituation(data.id, data).subscribe(
       {
         next: (data) => {
           console.log(data);
@@ -155,7 +155,7 @@ export class CurrentSituationManagementComponent implements OnInit {
       name: this.currentSituation.name,
       description: this.currentSituation.description
     }
-    this.cvTechService.createCurrentSituation(data).subscribe(
+    this.currentsituationService.createCurrentSituation(data).subscribe(
       {
         next: (data) => {
           console.log(data);
