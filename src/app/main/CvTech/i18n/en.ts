@@ -11,7 +11,7 @@ export const locale = {
       CST: 'Current Situation Table',
       FT: 'Functions Table',
       GET: 'Global Experience Table',
-      SK: 'Skills Table',
+      ST: 'Skills Table',
 
       ADD: 'Add',
       AA: 'Add Availability',

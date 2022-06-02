@@ -11,7 +11,7 @@ export const locale = {
       CST: 'Tableau de la situation actuelle',
       FT: 'Tableau des fonctions',
       GET: "Tableau d'expérience globale",
-      SK: 'Tableau des compétences',
+      ST: 'Tableau des compétences',
 
       ADD: 'Ajouter',
       AA: 'Ajouter une disponibilité',

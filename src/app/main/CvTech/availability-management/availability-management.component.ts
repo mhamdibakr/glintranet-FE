@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CvTechService } from 'app/services/cv-tech.service';
 import { Availability } from '../models/availability.model';
 
 import { CoreTranslationService } from '@core/services/translation.service';
+import { AvailabilityService } from 'app/services/availability.service';
 import { locale as en } from '../i18n/en';
 import { locale as fr } from '../i18n/fr';
 
@@ -39,7 +39,7 @@ export class AvailabilityManagementComponent implements OnInit {
    *
    * @param {CoreTranslationService} _coreTranslationService
    */
-  constructor(private modalService: NgbModal, private cvTechService: CvTechService, private _coreTranslationService: CoreTranslationService) {
+  constructor(private modalService: NgbModal, private availabilityService: AvailabilityService, private _coreTranslationService: CoreTranslationService) {
     this._coreTranslationService.translate(en, fr)
   }
 
@@ -87,7 +87,7 @@ export class AvailabilityManagementComponent implements OnInit {
 
   getAvailabilities(): void {
     const params = this.getParams(this.page, this.pageSize, this.searchTitle);
-    this.cvTechService.getAvailabilities(params).subscribe(
+    this.availabilityService.getAvailabilities(params).subscribe(
       {
         next: (data) => {
           console.log(data);
@@ -107,7 +107,7 @@ export class AvailabilityManagementComponent implements OnInit {
   }
 
   deleteAvailability(id: number): void {
-    this.cvTechService.deleteAvailability(id)
+    this.availabilityService.deleteAvailability(id)
       .subscribe(
         data => {
           console.log(data);
@@ -118,7 +118,7 @@ export class AvailabilityManagementComponent implements OnInit {
 
   modalOpenPrimary(modalPrimary, id) {
     console.log(id);
-    this.cvTechService.getAvailability(id).subscribe({
+    this.availabilityService.getAvailability(id).subscribe({
       next: (data) => {
         this.options = data;
       }, error: (err) => {
@@ -138,7 +138,7 @@ export class AvailabilityManagementComponent implements OnInit {
       name: this.options.name,
       description: this.options.description
     }
-    this.cvTechService.updateAvailability(data.id, data).subscribe(
+    this.availabilityService.updateAvailability(data.id, data).subscribe(
       {
         next: (data) => {
           console.log(data);
@@ -155,7 +155,7 @@ export class AvailabilityManagementComponent implements OnInit {
       name: this.availability.name,
       description: this.availability.description
     }
-    this.cvTechService.createAvailability(data).subscribe(
+    this.availabilityService.createAvailability(data).subscribe(
       {
         next: (data) => {
           console.log(data);

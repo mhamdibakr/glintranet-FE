@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreTranslationService } from '@core/services/translation.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CvTechService } from 'app/services/cv-tech.service';
 import { Education } from '../models/education.model';
 
 import { locale as en } from '../i18n/en';
 import { locale as fr } from '../i18n/fr';
+import { EducationService } from 'app/services/education.service';
 
 
 @Component({
@@ -42,7 +42,7 @@ export class EducationLevelManagementComponent implements OnInit {
    *
    * @param {CoreTranslationService} _coreTranslationService
    */
-  constructor(private modalService: NgbModal, private cvTechService: CvTechService, private _coreTranslationService: CoreTranslationService) {
+  constructor(private modalService: NgbModal, private educationService: EducationService, private _coreTranslationService: CoreTranslationService) {
     this._coreTranslationService.translate(en, fr)
   }
 
@@ -99,7 +99,7 @@ export class EducationLevelManagementComponent implements OnInit {
 
   getEducations(): void {
     const params = this.getParams(this.page, this.pageSize, this.searchTitle);
-    this.cvTechService.getEducations(params).subscribe(
+    this.educationService.getEducations(params).subscribe(
       {
         next: (data) => {
           console.log(data);
@@ -119,7 +119,7 @@ export class EducationLevelManagementComponent implements OnInit {
   }
 
   deleteEducation(id: number): void {
-    this.cvTechService.deleteEducation(id)
+    this.educationService.deleteEducation(id)
       .subscribe(
         data => {
           console.log(data);
@@ -130,7 +130,7 @@ export class EducationLevelManagementComponent implements OnInit {
 
   modalOpenPrimary(modalPrimary, id) {
     console.log(id);
-    this.cvTechService.getEducation(id).subscribe({
+    this.educationService.getEducation(id).subscribe({
       next: (data) => {
         this.options = data;
       }, error: (err) => {
@@ -150,7 +150,7 @@ export class EducationLevelManagementComponent implements OnInit {
       name: this.options.name,
       description: this.options.description
     }
-    this.cvTechService.updateEducation(data.id, data).subscribe(
+    this.educationService.updateEducation(data.id, data).subscribe(
       {
         next: (data) => {
           console.log(data);
@@ -167,7 +167,7 @@ export class EducationLevelManagementComponent implements OnInit {
       name: this.education.name,
       description: this.education.description
     }
-    this.cvTechService.createEducation(data).subscribe(
+    this.educationService.createEducation(data).subscribe(
       {
         next: (data) => {
           console.log(data);

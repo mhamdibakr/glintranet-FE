@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreTranslationService } from '@core/services/translation.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CvTechService } from 'app/services/cv-tech.service';
 import { Skills } from '../models/skills.model';
 
+import { SkillsService } from 'app/services/skills.service';
 import { locale as en } from '../i18n/en';
 import { locale as fr } from '../i18n/fr';
 
@@ -39,7 +39,7 @@ export class SkillsManagementComponent implements OnInit {
    *
    * @param {CoreTranslationService} _coreTranslationService
    */
-  constructor(private modalService: NgbModal, private cvTechService: CvTechService, private _coreTranslationService: CoreTranslationService) {
+  constructor(private modalService: NgbModal, private skillsService: SkillsService, private _coreTranslationService: CoreTranslationService) {
     this._coreTranslationService.translate(en, fr)
   }
 
@@ -73,7 +73,7 @@ export class SkillsManagementComponent implements OnInit {
 
 
   modalOpenPrimary(modalPrimary, id) {
-    this.cvTechService.getSkill(id).subscribe({
+    this.skillsService.getSkill(id).subscribe({
       next: (data) => {
         this.options = data;
       }, error: (err) => {
@@ -109,7 +109,7 @@ export class SkillsManagementComponent implements OnInit {
 
   getSkills(): void {
     const params = this.getParams(this.page, this.pageSize, this.searchTitle);
-    this.cvTechService.getSkills(params).subscribe(
+    this.skillsService.getSkills(params).subscribe(
       {
         next: (data) => {
           console.log(data.length);
@@ -124,7 +124,7 @@ export class SkillsManagementComponent implements OnInit {
   }
 
   deleteSkill(id: number): void {
-    this.cvTechService.deleteSkill(id)
+    this.skillsService.deleteSkill(id)
       .subscribe(
         data => {
           console.log(data);
@@ -140,7 +140,7 @@ export class SkillsManagementComponent implements OnInit {
       name: this.options.name,
       description: this.options.description
     }
-    this.cvTechService.updateSkill(data.id, data).subscribe(
+    this.skillsService.updateSkill(data.id, data).subscribe(
       {
         next: (data) => {
           console.log(data);
@@ -157,7 +157,7 @@ export class SkillsManagementComponent implements OnInit {
       name: this.skill.name,
       description: this.skill.description
     }
-    this.cvTechService.createSkill(data).subscribe(
+    this.skillsService.createSkill(data).subscribe(
       {
         next: (data) => {
           console.log(data);

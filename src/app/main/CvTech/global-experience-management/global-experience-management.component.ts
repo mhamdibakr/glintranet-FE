@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CvTechService } from 'app/services/cv-tech.service';
 import { GlobalExperience } from '../models/global-experience.model';
 
 import { CoreTranslationService } from '@core/services/translation.service';
+import { GlobalExperienceService } from 'app/services/global-experience.service';
 import { locale as en } from '../i18n/en';
 import { locale as fr } from '../i18n/fr';
 
@@ -38,7 +38,7 @@ export class GlobalExperienceManagementComponent implements OnInit {
    *
    * @param {CoreTranslationService} _coreTranslationService
   */
-  constructor(private modalService: NgbModal, private cvTechService: CvTechService, private _coreTranslationService: CoreTranslationService) {
+  constructor(private modalService: NgbModal, private globalexperienceService: GlobalExperienceService, private _coreTranslationService: CoreTranslationService) {
     this._coreTranslationService.translate(en, fr)
   }
 
@@ -70,7 +70,7 @@ export class GlobalExperienceManagementComponent implements OnInit {
   }
 
   modalOpenPrimary(modalPrimary, id) {
-    this.cvTechService.getGlobaleExperience(id).subscribe({
+    this.globalexperienceService.getGlobaleExperience(id).subscribe({
       next: (data) => {
         this.options = data;
       }, error: (err) => {
@@ -106,7 +106,7 @@ export class GlobalExperienceManagementComponent implements OnInit {
 
   getGExperiences(): void {
     const params = this.getParams(this.page, this.pageSize, this.searchTitle);
-    this.cvTechService.getGlobaleExperiences(params).subscribe(
+    this.globalexperienceService.getGlobaleExperiences(params).subscribe(
       {
         next: (data) => {
           console.log(data.length);
@@ -121,7 +121,7 @@ export class GlobalExperienceManagementComponent implements OnInit {
   }
 
   deleteExperience(id: number): void {
-    this.cvTechService.deleteGlobaleExperience(id)
+    this.globalexperienceService.deleteGlobaleExperience(id)
       .subscribe(
         data => {
           console.log(data);
@@ -137,7 +137,7 @@ export class GlobalExperienceManagementComponent implements OnInit {
       name: this.options.name,
       description: this.options.description
     }
-    this.cvTechService.updateGlobaleExperience(data.id, data).subscribe(
+    this.globalexperienceService.updateGlobaleExperience(data.id, data).subscribe(
       {
         next: (data) => {
           console.log(data);
@@ -154,7 +154,7 @@ export class GlobalExperienceManagementComponent implements OnInit {
       name: this.globalExperience.name,
       description: this.globalExperience.description
     }
-    this.cvTechService.createGlobaleExperience(data).subscribe(
+    this.globalexperienceService.createGlobaleExperience(data).subscribe(
       {
         next: (data) => {
           console.log(data);
