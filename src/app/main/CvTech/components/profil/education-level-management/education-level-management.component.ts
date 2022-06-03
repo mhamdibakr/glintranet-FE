@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Education } from '../../models/education';
-import { EducationService } from '../../services/education.service';
+import { Education } from '../../../models/education';
+import { EducationService } from '../../../services/education.service';
 
 
 @Component({

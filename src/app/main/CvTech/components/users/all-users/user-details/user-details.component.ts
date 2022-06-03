@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AllCampaign } from '../../../models/all-campaign.model';
-import { AllUsersService } from '../../../services/all-user.service';
+import { AllCampaign } from '../../../../models/all-campaign.model';
+import { AllUsersService } from '../../../../services/all-user.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AllUsers } from '../../../models/allusers.model';
+import { AllUsers } from '../../../../models/allusers.model';
 
 
 @Component({

@@ -1,34 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { AllUsers } from '../../models/allusers.model';
-import { AllUsersService } from "../../services/all-user.service";
+import { AllCampaignService } from '../../../services/all-campaign.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-
+import { AllCampaign } from '../../../models/all-campaign.model';
 
 @Component({
-  selector: 'app-all-users',
-  templateUrl: './all-users.component.html',
-  styleUrls: ['./all-users.component.scss']
+  selector: 'app-all-campaigns',
+  templateUrl: './all-campaigns.component.html',
+  styleUrls: ['./all-campaigns.component.scss']
 })
+export class AllCampaignsComponent implements OnInit {
 
-export class AllUsersComponent implements OnInit {
-
-  public pagePosition = 2;
-public totalPages=0;
   contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
+  
+  constructor(private modalService: NgbModal, private AllCampaignService : AllCampaignService) {}
 
-  public chkBoxSelected = [];
-
-  constructor(private modalService: NgbModal, private AllUsersService: AllUsersService) { }
-
-
-  ngOnInit(): void {
-
-    // this.getData()
-    this.getAllUsers();
+  ngOnInit(): void 
+  {
+    this.getAllCampaigns()
+    //
 
     this.contentHeader = {
-      headerTitle: 'Users',
+      headerTitle: 'Campaign',
       actionButton: true,
       breadcrumb: {
         type: '',
@@ -44,7 +36,7 @@ public totalPages=0;
             link: '/'
           },
           {
-            name: 'All Users',
+            name: 'All Campaigns',
             isLink: false
           }
         ]
@@ -58,19 +50,20 @@ public totalPages=0;
       windowClass: 'modal modal-primary'
     });
   }
-
+  // -------------------- pagination & search
   page = 1;
   count = 0;
-  pageSize = 4;
-  email = ''
+  name = ''
+  public pagePosition = 1;
+  public totalPages=0;
+  
 
   public pageChanged(event: any): void {
     this.page = event;
-    console.log(event);
-    this.getAllUsers();
+    this.getAllCampaigns();
   }
 
-  getParams(page: number, pageSize: number, email: string) {
+  getParams(page: number, pageSize: number, name: string) {
     let params: any = {};
     if (page) {
       params['page'] = page - 1;
@@ -78,34 +71,48 @@ public totalPages=0;
     if (pageSize) {
       params['size'] = pageSize;
     }
-    if (email) {
-      params['email'] = email;
+    if (name) {
+      params['name'] = name;
     }
 
     return params;
   }
-  Users?: AllUsers[];
 
-  getAllUsers(): void {
+  public chkBoxSelected = [];
+  Campains? : AllCampaign[];
+
+  public getAllCampaigns(): void {
     const params = {
       page : this.page-1,
-      size : 2,
-      email : this.email
+      size : 3,
+      name : this.name
     }
-    
-    this.AllUsersService.getAllPagination(params).subscribe(
+    this.AllCampaignService.getAllPagination(params).subscribe(
       {
         next: (response: any) => {
           const { content, totalElements, totalPages } = response;
-          // this.Users = content;
-          this.Users = content
           this.count = totalElements;
           this.totalPages = totalPages*10
+          this.Campains = response.content
+          
         }, error: (err) => {
           console.error(err);
         }
       }
     );
   }
-  
+
+  // ------------- delete campaign 
+  deleteCampaign(id: number){
+    this.AllCampaignService.DeleteCampaignById(id).subscribe({
+      next: () => {
+        console.log("raaa9 , deleted !", id);
+        this.ngOnInit();
+      },
+      error: (err) => {
+        console.log(err);
+        
+      }
+    })
+  }
 }

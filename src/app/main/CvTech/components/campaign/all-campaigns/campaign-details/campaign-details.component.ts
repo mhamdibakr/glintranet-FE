@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AllCampaign } from '../../../models/all-campaign.model';
-import { AllCampaignService } from '../../../services/all-campaign.service';
+import { AllCampaign } from '../../../../models/all-campaign.model';
+import { AllCampaignService } from '../../../../services/all-campaign.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Candidat } from '../../../models/candidat.model';
-import { CandidatService } from '../../../services/candidat.service';
-import { Postulation } from '../../../models/postulation.model';
-import { PostulationResponse } from '../../../models/postulation-response.model';
-import { PostulationService } from '../../../services/postulation.service';
+import { Candidat } from '../../../../models/candidat.model';
+import { CandidatService } from '../../../../services/candidat.service';
+import { Postulation } from '../../../../models/postulation.model';
+import { PostulationResponse } from '../../../../models/postulation-response.model';
+import { PostulationService } from '../../../../services/postulation.service';
 
 @Component({
   selector: 'app-campaign-details',

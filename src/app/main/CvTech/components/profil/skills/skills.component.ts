@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, NgModule, OnInit } from '@angular/core';
-import { Skill } from '../../models/skill';
-import { SkillService } from '../../services/skill.service';
+import { Skill } from '../../../models/skill';
+import { SkillService } from '../../../services/skill.service';
 
 
 @Component({

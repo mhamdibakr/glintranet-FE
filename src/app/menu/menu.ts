@@ -85,42 +85,42 @@ export const menu: CoreMenu[] = [
             title: 'Education',
             type: 'item',
             icon: 'file',
-            url: 'education'
+            url: 'cvtech/profile/education'
           },
           {
             id: 'ge',
             title: 'Global Exprience',
             type: 'item',
             icon: 'file',
-            url: 'global-experience'
+            url: 'cvtech/profile/global-experience'
           },
           {
             id: 'cs',
             title: 'Current Situation',
             type: 'item',
             icon: 'file',
-            url: 'current-situation'
+            url: 'cvtech/profile/current-situation'
           },
           {
             id: 'skill',
             title: 'Skills',
             type: 'item',
             icon: 'file',
-            url: 'skills'
+            url: 'cvtech/profile/skills'
           },
           {
             id: 'avail',
             title: 'Availabilty',
             type: 'item',
             icon: 'file',
-            url: 'availabilty'
+            url: 'cvtech/profile/availabilty'
           },
           {
             id: 'func',
             title: 'Function',
             type: 'item',
             icon: 'file',
-            url: 'function'
+            url: 'cvtech/profile/function'
           }
         ]
       },
