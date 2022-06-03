@@ -10,12 +10,10 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 const routes: Routes = [
   
   {
-    path: '',
+    path: 'company',
     loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule)
   },
   
-  
-
 ];
 
 @NgModule({

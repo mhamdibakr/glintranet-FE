@@ -30,6 +30,10 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main/CvTech/cvtech.module').then(m => m.CvtechModule)
   },
   {
+    path: 'company',
+    loadChildren: () => import('./main/company/company.module').then(m => m.CompanyModule)
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'

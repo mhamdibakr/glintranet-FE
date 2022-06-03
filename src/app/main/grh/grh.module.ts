@@ -11,7 +11,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 const routes: Routes = [
   
   {
-    path: '',
+    path: 'grh',
     // loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule)
   },
   
