@@ -100,7 +100,7 @@ export class CandidatDetailsComponent implements OnInit {
           {
             name: 'All Candidats',
             isLink: true,
-            link: '/allusers'
+            link: '/cvtech/candidats/allcandidats'
           },
           {
             name: 'Candidats Details',
