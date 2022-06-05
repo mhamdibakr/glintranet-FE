@@ -1,0 +1,168 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <!-- content-header component -->
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+
+    
+    <!-- Basic Horizontal form layout section start -->
+    <!-- <section id="basic-horizontal-layouts"> -->
+    <div class="row ">
+      <div class="col-md-6">
+        <div class="card">
+          <!-- <core-card-snippet [snippetCode]="_snippetCodeHorizontal"> -->
+
+          <div class="card-header">
+            <h4 class="card-title">Campaign details</h4>
+          </div>
+
+          <div class="card-body">
+            <form class="form form-horizontal">
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="first-name">Campaign name</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="text" [(ngModel)]="Campaign.name" id="campaign-name" class="form-control" name="name" placeholder="Campaign name" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="email-id">Number of Positions </label>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="number" [(ngModel)]="Campaign.nbPositions" id="positions-nb" class="form-control" name="nbPositions" placeholder="Number of positions" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="contact-info">Description</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <textarea id="campaign-desc" [(ngModel)]="Campaign.description" placeholder="Description" name="description"  rows="5" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="password">Closing Date</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="date" id="closing-date" [(ngModel)]="Campaign.closing_date" class="form-control" name="closing_date"
+                        placeholder="Closing Date" />
+                    </div>
+                  </div>
+                </div>
+                <br><br><br><br>
+                <br>
+                
+                <div class="col-sm-9 offset-sm-3">
+                  <button type="submit" (click)="AddCampaign()" rippleEffect class="btn btn-primary mr-1">save</button>
+                  <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- </core-card-snippet> -->
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Researched Profil</h4>
+          </div>
+
+          <div class="card-body">
+            <form class="form form-horizontal">
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="contact-info">Education Level</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <ng-select
+                        [items]="education"
+                        [addTag]="selectAddTagMethod"
+                        [hideSelected]="true"
+                        multiple="true"
+                        bindLabel="name"
+                        [(ngModel)]="customTagselected"
+                        name="name"
+                      >
+                        <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                          <span class="ng-value-label"> {{ item.name }}</span>
+                          <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                        </ng-template>
+                      </ng-select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="contact-info">Globale Exprience</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <textarea id="campaign-rp-ge" placeholder="Globale exprience" name="c-pr-ge"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="contact-info">Current Situation</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <textarea id="campaign-rp-cs" placeholder="Current situation" name="c-rp-cs"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="contact-info">Function</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <textarea id="campaign-rp-func" placeholder="Function" name="c-rp-func"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="contact-info">Availability</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <textarea id="campaign-rp-avl" placeholder="Availability" name="c-rp-avl"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="contact-info">Skills</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <textarea id="campaign-skills" placeholder="Skills" name="c-skills"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-9 offset-sm-3">
+                  <button type="submit" rippleEffect class="btn btn-primary mr-1">Submit</button>
+                  <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
