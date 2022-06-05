@@ -95,7 +95,7 @@
                         [hideSelected]="true"
                         multiple="true"
                         bindLabel="name"
-                        [(ngModel)]="customTagselected"
+                        [(ngModel)]="educationSelected"
                         name="name"
                       >
                         <ng-template ng-label-tmp let-item="item" let-clear="clear">
@@ -152,7 +152,20 @@
                       <label for="contact-info">Skills</label>
                     </div>
                     <div class="col-sm-9">
-                      <textarea id="campaign-skills" placeholder="Skills" name="c-skills"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                      <ng-select
+                        [items]="skill"
+                        [addTag]="selectAddTagMethod"
+                        [hideSelected]="true"
+                        multiple="true"
+                        bindLabel="name"
+                        [(ngModel)]="skillSelected"
+                        name="name"
+                      >
+                        <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                          <span class="ng-value-label"> {{ item.name }}</span>
+                          <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                        </ng-template>
+                      </ng-select>
                     </div>
                   </div>
                 </div>

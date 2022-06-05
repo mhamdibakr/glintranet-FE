@@ -2,9 +2,12 @@ import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AllCampaign } from 'app/main/CvTech/models/all-campaign.model';
+import { Availability } from 'app/main/CvTech/models/availability';
 import { Education } from 'app/main/CvTech/models/education';
+import { Skill } from 'app/main/CvTech/models/skill';
 import { AllCampaignService } from 'app/main/CvTech/services/all-campaign.service';
 import { EducationService } from 'app/main/CvTech/services/education.service';
+import { SkillService } from 'app/main/CvTech/services/skill.service';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -22,7 +25,8 @@ export class AddCampaignComponent implements OnInit {
   constructor(
     private AllCampaignService: AllCampaignService,
     private router: Router,
-    private EducationService: EducationService
+    private EducationService: EducationService,
+    private SkillService: SkillService
   ) {
   }
 
@@ -51,11 +55,9 @@ export class AddCampaignComponent implements OnInit {
       }
     };
 
-    // this.customTagNames.forEach((c, i) => {
-    //   this.customTag.push({ id: i, name: c });
-    // });
     this.getEducation()
-
+    // 
+    this.getSkill()
   }
 
   // ----- Add Campaign
@@ -91,7 +93,7 @@ export class AddCampaignComponent implements OnInit {
   }
 
   // ------ Get Education
-  public customTagselected;
+  public educationSelected;
   education : Education[] = []
   getEducation() {
     this.EducationService.getEducations().subscribe( 
@@ -99,6 +101,19 @@ export class AddCampaignComponent implements OnInit {
       {
         this.education = edu.content;
         console.log(this.education);
+      }
+    )
+  }
+
+  // ------ Get Skill
+  public skillSelected;
+  skill : Skill[] = []
+  getSkill() {
+    this.SkillService.getSkills().subscribe( 
+      (sk: any) => 
+      {
+        this.skill = sk.content;
+        console.log(this.skill);
       }
     )
   }

@@ -13,19 +13,6 @@ const baseUrl = environment.apiBaseUrl;
 export class AllCandidatService {
 
   constructor(private http : HttpClient) { }
-  
-  // getAllUsers(): Observable<AllUsers[]> {
-  //   return this.http.get<AllUsers[]>(`${baseUrl}/candidat`);
-  // }
-
-  // getbyid(id: number): Observable<AllUsers> {
-  //   return this.http.get<AllUsers>(`${baseUrl}/candidat/${id}`);
-    
-  // }
-
-  // getAllPagination(params: any): Observable<any> {
-  //   return this.http.get<AllUsers[]>(`${baseUrl}/candidat`, { params });
-  // }
 
   getAllUsers(): Observable<AllCandidat[]> {
     return this.http.get<AllCandidat[]>(`${baseUrl}/candidat`);

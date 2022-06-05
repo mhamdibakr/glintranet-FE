@@ -4,10 +4,10 @@ import { AllCampaign } from '../../../../models/all-campaign.model';
 import { AllCampaignService } from '../../../../services/all-campaign.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Candidat } from '../../../../models/candidat.model';
-import { CandidatService } from '../../../../services/candidat.service';
 import { Postulation } from '../../../../models/postulation.model';
 import { PostulationResponse } from '../../../../models/postulation-response.model';
 import { PostulationService } from '../../../../services/postulation.service';
+import { AllCandidatService } from 'app/main/CvTech/services/all-candidat.service';
 
 @Component({
   selector: 'app-campaign-details',
@@ -20,7 +20,7 @@ export class CampaignDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private AllCampaignService: AllCampaignService,
     private modalService: NgbModal,
-    private AllCandidatService: CandidatService,
+    private AllCandidatService: AllCandidatService,
     private PostulationService: PostulationService,
   ) { }
 

@@ -104,12 +104,8 @@ export class AllCampaignsComponent implements OnInit {
     );
   }
 
-  
-
-private modal=null;
-private id=0;
-
-
+  private modal=null;
+  private id=0;
 
   modalOpenDanger(modalDanger, id:any) {
     this.id=id
