@@ -19,7 +19,7 @@ public totalPages=0;
 
   public chkBoxSelected = [];
 
-  constructor(private modalService: NgbModal, private AllUsersService: AllCandidatService) { }
+  constructor(private modalService: NgbModal, private AllCandidatService: AllCandidatService) { }
 
 
   ngOnInit(): void {
@@ -106,7 +106,7 @@ public totalPages=0;
 
     }
     
-    this.AllUsersService.getAllPagination(params).subscribe(
+    this.AllCandidatService.getAllPagination(params).subscribe(
       {
         next: (response: any) => {
           const { content, totalElements, totalPages } = response;

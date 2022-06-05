@@ -37,7 +37,7 @@ export class AddCandidatComponent implements OnInit {
     message: new FormControl(false),
   });
   submitted = false;
-  constructor(private formBuilder: FormBuilder, private AllUsersService: AllCandidatService) { }
+  constructor(private formBuilder: FormBuilder, private AllCandidatService: AllCandidatService) { }
 
   ngOnInit(): void {
     
@@ -118,7 +118,7 @@ export class AddCandidatComponent implements OnInit {
     this.candidat = this.form.value;
     console.log(this.candidat);
 
-    this.AllUsersService.addCandidat(this.candidat).subscribe(
+    this.AllCandidatService.addCandidat(this.candidat).subscribe(
       {
         next: (response: any) => {
           console.log(response);

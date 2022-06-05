@@ -28,7 +28,7 @@ export class CandidatDetailsComponent implements OnInit {
   // country: '';
   // birthDate: '';
   // bio: '';
-  constructor(private route: ActivatedRoute, private AllUsersService: AllCandidatService, private modalService: NgbModal, private formBuilder: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private AllCandidatService: AllCandidatService, private modalService: NgbModal, private formBuilder: FormBuilder) { }
 
   id: number = this.route.snapshot.params["candidat_id"];
   contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
@@ -63,7 +63,7 @@ export class CandidatDetailsComponent implements OnInit {
   submitted = false;
 
   async getUsers() {
-    this.AllUsersService.getbyid(this.id).subscribe(
+    this.AllCandidatService.getbyid(this.id).subscribe(
       {
         next: (response: any) => {
           this.User = response;
@@ -158,7 +158,7 @@ export class CandidatDetailsComponent implements OnInit {
       // }
     );
 
-    this.AllUsersService.getbyid(this.route.snapshot.params['user_id']).subscribe({
+    this.AllCandidatService.getbyid(this.route.snapshot.params['user_id']).subscribe({
       next: (data) => {
         console.log(data);
         this.User = data;
@@ -177,7 +177,7 @@ export class CandidatDetailsComponent implements OnInit {
     this.User=this.form.value;
     console.log(this.User);
     
-    this.AllUsersService.update(this.User, id).subscribe({
+    this.AllCandidatService.update(this.User, id).subscribe({
       next: (data) => {
         console.log(data);
       }, error: (err) => {
