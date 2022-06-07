@@ -8,6 +8,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AddCampaignComponent } from './add-campaign/add-campaign.component';
+import { CardSnippetModule } from '@core/components/card-snippet/card-snippet.module';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 const routes: Routes = [
   {
@@ -32,7 +34,9 @@ const routes: Routes = [
     NgbModule,
     NgSelectModule,
     FormsModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    CardSnippetModule,
+    SweetAlert2Module.forRoot()
   ],
 
   providers: []

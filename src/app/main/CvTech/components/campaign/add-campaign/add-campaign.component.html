@@ -166,3 +166,37 @@
 
   </div>
 </div>
+
+
+
+
+<section>
+  <div class="row">
+    <div class="col-12">
+      <!-- <core-card-snippet [snippetCode]="_snippetCodePosition"> -->
+        <h4 class="card-title">Position</h4>
+        <div class="card-body">
+          <p class="card-text">
+            You can specify position of your alert with
+            <code>[position]=" top-start | top-end | bottom-start | bottom-end "</code> property of swal component.
+          </p>
+
+
+          <!-- Sweet Alert With Position bottom-end -->
+          <button class="btn btn-outline-primary mb-1" [swal]="SweetAlertBottomEnd" rippleEffect>Bottom End</button>
+          <!-- Swal of Sweet Alert With Position bottom-end -->
+          <swal
+            #SweetAlertBottomEnd
+            title="Your work has been saved"
+            icon="success"
+            [showConfirmButton]="false"
+            [timer]="1500"
+            [position]="'bottom-end'"
+          >
+          </swal>
+          <!--/ Swal of Sweet Alert With Position bottom-end -->
+        </div>
+      <!-- </core-card-snippet>  -->
+    </div>
+  </div>
+</section>
