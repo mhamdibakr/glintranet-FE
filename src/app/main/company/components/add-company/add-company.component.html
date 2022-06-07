@@ -1,0 +1,91 @@
+
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+      <app-content-header [contentHeader]="contentHeader"></app-content-header>
+      <div class="row ">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Add Company</h4>
+            </div>
+            <div class="card-body">
+              <form class="form form-horizontal">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label">
+                        <label for="first-name">Name</label>
+                      </div>
+                      <div class="col-sm-9">
+                        <div class="form-group">
+                          <input type="name" id="name" 
+                          class="form-control" 
+                          name="name"
+                          [(ngModel)]="company.name" 
+                          placeholder="name" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label">
+                        <label for="address">Address</label>
+                      </div>
+                      <div class="col-sm-9">
+                        <textarea id="address" placeholder="address" name="c-rp-cs" rows="2" wrap="soft"
+                          class="form-control" data-v-aa799a9e=""
+                          [(ngModel)]="company.address" >
+                                    </textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label">
+                        <label for="email">Email</label>
+                      </div>
+                      <div class="col-sm-9">
+                        <input type="email" id="email" 
+                        class="form-control" name="email" placeholder="email"
+                        [(ngModel)]="company.email"  />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label">
+                        <label for="phone">Phone number</label>
+                      </div>
+                      <div class="col-sm-9">
+                        <input type="text" id="phone" class="form-control"
+                         name="phone" placeholder="phone number"
+                         [(ngModel)]="company.phoneNumber" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label">
+                        <label for="Web site">Web site</label>
+                      </div>
+                      <div class="col-sm-9">
+                        <input type="text" id="website" class="form-control"
+                         name="website" placeholder="Web site" 
+                         [(ngModel)]="company.webSite"/>
+                      </div>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="col-sm-9 offset-sm-3">
+                    <button type="submit" rippleEffect class="btn btn-primary mr-1" (click)="saveCompany()">save</button>
+                    <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

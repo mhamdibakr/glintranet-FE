@@ -127,5 +127,75 @@ export const menu: CoreMenu[] = [
     ]
 
   },
+  {
+    id: 'apps-company',
+    type: 'collapsible',
+    title: 'MENU.COMPANY.APP',
+    icon: 'list',
+
+    children: [
+      {
+        id: 'Company',
+        title: 'MENU.COMPANY.COMP',
+        type: 'collapsible',
+        icon: 'grid',
+        children:[
+          {
+            id: 'Company',
+            title: 'MENU.COMPANY.ALLCOMPANIES',
+            type: 'item',
+            icon: 'list',
+            url: 'company/allcompanies'
+          },
+          {
+            id: 'Company',
+            title: 'MENU.COMPANY.ADDCOMPANY',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'company/addcompany'
+          },
+        ]
+      },
+      {
+        id: 'Companyentity',
+        title: 'MENU.COMPANY.COMPANYENTITY',
+        type: 'collapsible',
+        icon: 'grid',
+        children: [
+          {
+            id: 'Companyentity',
+            title: 'MENU.COMPANY.ALLENTITIES',
+            type: 'item',
+            icon: 'list',
+            url: 'company/allentities'
+          },
+          {
+            id: 'Companyentity',
+            title: 'MENU.COMPANY.ADDCOMPANYENTITY',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'company/addcompanyentity'
+          }
+        ]
+        },
+        {
+          id: 'Department',
+          title: 'MENU.COMPANY.DEPARTMENT',
+          type: 'collapsible',
+          icon: 'grid',
+          children: [
+            {
+              id: 'adddepartment',
+              title: 'MENU.COMPANY.ADDDEPARTMENT',
+              type: 'item',
+              icon: 'plus-square',
+              url: 'company/adddepartment'
+            }
+          ]
+          }
+    ]
+  }
+
+
 
 ]
