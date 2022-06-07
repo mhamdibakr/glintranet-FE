@@ -121,4 +121,33 @@ public totalPages=0;
     );
   }
   
+
+  private modal=null;
+  private id=0;
+
+  modalOpenDanger(modalDanger, id:any) {
+    this.id=id
+    this.modal = this.modalService.open(modalDanger, {
+      centered: true,
+      windowClass: 'modal modal-danger'
+    });
+  }
+    // ------------- delete candidat 
+    deleteCandidat(){
+      console.log(this.id);
+      
+       this.modal.close('Accept click')
+       window.location.reload();
+       this.AllCandidatService.DeleteCandidatById(this.id).subscribe({
+         next: () => {
+           console.log("Campaigns , deleted !", this.id);
+           this.ngOnInit();
+         
+         },
+         error: (err) => {
+           console.log(err);
+           
+         }
+       })
+     }
 }

@@ -35,4 +35,8 @@ export class AllCandidatService {
     return this.http.put<HttpEvent<any>>(`${baseUrl}/candidat/${candidat_id}`, data);
   }
 
+  
+  DeleteCandidatById(id : number): Observable<HttpEvent<any>> {
+    return this.http.delete<HttpEvent<any>>(`${baseUrl}/candidat/${id}`); 
+   }
 }

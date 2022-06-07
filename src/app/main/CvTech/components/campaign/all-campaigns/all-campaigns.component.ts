@@ -113,7 +113,7 @@ export class AllCampaignsComponent implements OnInit {
       centered: true,
       windowClass: 'modal modal-danger'
     });
-    }
+  }
 
     // delFunc(id){
     //   //console.log("Delete ",id);
