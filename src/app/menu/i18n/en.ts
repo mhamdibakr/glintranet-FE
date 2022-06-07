@@ -15,6 +15,17 @@ export const locale = {
       GSC: 'skill area management',
       GFS: 'desired function management',
       adduser:'Add new user',
+      COMPANY:{
+        APP: 'Companies',
+        COMP:"Company",
+        COMPANYENTITY:"Company entity",
+        DEPARTMENT:"Department",
+        ALLCOMPANIES:"All Companies",
+        ADDCOMPANY:"Add company",
+        ALLENTITIES:"All entities",
+        ADDCOMPANYENTITY:"Add entity",
+        ADDDEPARTMENT:"Add department"
+      }
     }
   }
 }

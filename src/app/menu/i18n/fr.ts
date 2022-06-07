@@ -15,6 +15,17 @@ export const locale = {
       GSC: 'gestion des secteurs de compétence',
       GFS: 'gestion des fonctions souhaité',
       adduser:'Ajouter un utilisateur',
+      COMPANY:{
+        APP: 'Compagnies ',
+        COMP:"Compagnie",
+        COMPANYENTITY:"Entités",
+        DEPARTMENT:"Départements",
+        ADDCOMPANY:"Ajouter une compagnie",
+        ALLCOMPANIES:"Tous les compagnies",
+        ADDCOMPANYENTITY:"Ajouter une entité de compagnie",
+        ADDDEPARTMENT:"Ajouter un département",
+        ALLENTITIES:"Toutes les entitées"
+      }
     }
   }
 }
