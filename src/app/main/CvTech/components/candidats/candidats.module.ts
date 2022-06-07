@@ -8,6 +8,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AddCandidatComponent } from './add-candidat/add-candidat.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 // import { AllCandidatsModule } from './all-candidats/all-candidats.module';
 // import { UserDetailsComponent } from './user-details/user-details.component';
 
@@ -40,7 +42,9 @@ const routes: Routes = [
     FormsModule,
     NgxDatatableModule,
     // added by saad.......
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SweetAlert2Module.forRoot()
+
   ],
 
   providers: []
