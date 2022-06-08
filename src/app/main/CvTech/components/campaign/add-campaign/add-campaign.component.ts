@@ -60,7 +60,7 @@ export class AddCampaignComponent implements OnInit {
     this.getSkill()
   }
 
-  // ----- Add Campaign
+  // ----- Add Campaign 
   Campaign : AllCampaign = {
     name: undefined,
     description: undefined,
