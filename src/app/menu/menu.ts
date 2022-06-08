@@ -92,14 +92,14 @@ export const menu: CoreMenu[] = [
             title: 'Global Exprience',
             type: 'item',
             icon: 'file',
-            url: 'cvtech/profile/global-experience'
+            url: 'cvtech/profile/experience'
           },
           {
             id: 'cs',
             title: 'Current Situation',
             type: 'item',
             icon: 'file',
-            url: 'cvtech/profile/current-situation'
+            url: 'cvtech/profile/situation'
           },
           {
             id: 'skill',

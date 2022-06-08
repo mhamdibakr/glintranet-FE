@@ -6,9 +6,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Add a new educational level</h4>
+                            <h4 class="card-title text-primary">Add Educational Level</h4>
                         </div>
-                        {{educationForm.value | json}}
                         <div class="card-body">
                             <form class="form form-horizontal" [formGroup]="educationForm" (ngSubmit)="addData()">
                                 <div class="row">
@@ -53,7 +52,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">List of education levels</h4>
+                        <h4 class="card-title text-primary">All Education Levels</h4>
                         <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
                             <input type="search" placeholder="Search" class="form-control ml-25" />
                         </div>
@@ -79,7 +78,7 @@
                                     <td class="overflow-hidden">
                                         <div ngbDropdown container="body">
                                           <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle data-toggle="dropdown">
-                                            <i data-feather="more-vertical"></i>
+                                            <i data-feather="more-horizontal"></i>
                                           </button>
                                           <div ngbDropdownMenu>
                                             <a ngbDropdownItem href="javascript:void(0);">

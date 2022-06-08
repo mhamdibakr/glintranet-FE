@@ -5,9 +5,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Add new availibilty</h4>
+                            <h4 class="card-title text-primary">Add Availibilty</h4>
                         </div>
-                        {{availabilityForm.value | json}}
                         <div class="card-body">
                             <form class="form form-horizontal" [formGroup]="availabilityForm" (ngSubmit)="addData()">
                                 <div class="row">
@@ -49,7 +48,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">All avalibilty options</h4>
+                        <h4 class="card-title text-primary">All Avalibilties</h4>
                         <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
                             <input type="search" placeholder="Search" class="form-control ml-25" />
                         </div>
@@ -75,17 +74,17 @@
                               <td class="overflow-hidden">
                                 <div ngbDropdown container="body">
                                   <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle data-toggle="dropdown">
-                                    <i data-feather="more-vertical"></i>
+                                    <i data-feather="more-horizontal"></i>
                                   </button>
                                   <div ngbDropdownMenu>
                                     <a ngbDropdownItem href="javascript:void(0);">
                                       <i data-feather="edit-2" class="mr-50"></i><span>Edit</span>
                                     </a
                                     >
-                                    <button ngbDropdownItem  (click)="deleteData(obj.id)">
+                                    <a ngbDropdownItem  (click)="deleteData(obj.id)">
                                         <i data-feather="trash" class="mr-50"></i>
                                         <span>Delete</span>
-                                    </button>
+                                    </a>
                                   </div>
                                 </div>
                               </td>
