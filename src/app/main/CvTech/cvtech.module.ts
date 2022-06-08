@@ -15,11 +15,6 @@ const routes: Routes = [
     loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule)
   },
   
-<<<<<<< HEAD
-  
-
-=======
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
 ];
 
 @NgModule({

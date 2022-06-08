@@ -30,11 +30,7 @@ export const menu: CoreMenu[] = [
         url: 'cvtech/cvs'
       },
       {
-<<<<<<< HEAD
-        id: 'compaign',
-=======
         id: 'campaign',
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
         title: 'MENU.Campaign',
         type: 'collapsible',
         icon: 'folder-plus',
@@ -56,31 +52,12 @@ export const menu: CoreMenu[] = [
         ]
       },
       {
-<<<<<<< HEAD
-        id: 'users',
-        title: 'MENU.Users',
-=======
         id: 'candidats',
         title: 'Candidats',
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
         type: 'collapsible',
         icon: 'users',
         children:[
           {
-<<<<<<< HEAD
-            id: 'allusers',
-            title: 'All user',
-            type: 'item',
-            icon: 'list',
-            url: 'cvtech/users/allusers'
-          },
-          {
-            id: 'adduser',
-            title: 'Add User',
-            type: 'item',
-            icon: 'plus-square',
-            url: 'cvtech/users/adduser'
-=======
             id: 'allcandidats',
             title: 'All candidats',
             type: 'item',
@@ -93,7 +70,6 @@ export const menu: CoreMenu[] = [
             type: 'item',
             icon: 'plus-square',
             url: 'cvtech/candidats/addcandidat'
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
           }
         ]
       },
@@ -151,8 +127,6 @@ export const menu: CoreMenu[] = [
     ]
 
   },
-<<<<<<< HEAD
-=======
   {
     id: 'companies',
     type: 'collapsible',
@@ -224,6 +198,5 @@ export const menu: CoreMenu[] = [
   }
 
 
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
 
 ]

@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AllCampaignService } from '../../../services/all-campaign.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AllCampaign } from '../../../models/all-campaign.model';
-<<<<<<< HEAD
-=======
 import { Router } from '@angular/router';
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
 
 @Component({
   selector: 'app-all-campaigns',
@@ -15,10 +12,7 @@ import { Router } from '@angular/router';
 export class AllCampaignsComponent implements OnInit {
 
   contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
-<<<<<<< HEAD
-=======
   router: any;
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
   
   constructor(private modalService: NgbModal, private AllCampaignService : AllCampaignService) {}
 
@@ -110,14 +104,6 @@ export class AllCampaignsComponent implements OnInit {
     );
   }
 
-<<<<<<< HEAD
-  // ------------- delete campaign 
-  deleteCampaign(id: number){
-    this.AllCampaignService.DeleteCampaignById(id).subscribe({
-      next: () => {
-        console.log("raaa9 , deleted !", id);
-        this.ngOnInit();
-=======
   private modal=null;
   private id=0;
 
@@ -148,7 +134,6 @@ export class AllCampaignsComponent implements OnInit {
         console.log("Campaigns , deleted !", this.id);
         this.ngOnInit();
       
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
       },
       error: (err) => {
         console.log(err);

@@ -12,11 +12,7 @@ const routes: Routes = [
   
   {
     path: 'grh',
-<<<<<<< HEAD
-    // loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule)
-=======
     loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule)
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
   },
   
   

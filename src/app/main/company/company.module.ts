@@ -3,18 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreCommonModule } from '@core/common.module';
-<<<<<<< HEAD
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgSelectModule } from '@ng-select/ng-select';
-import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-const routes: Routes = [
-  
-  {
-    path: 'company',
-    loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule)
-  },
-=======
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
@@ -64,15 +52,11 @@ const routes: Routes = [
   //   path: 'allentities',
   //   component:AllEntitiesComponent ,
   // }
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
   
 ];
 
 @NgModule({
   declarations: [
-<<<<<<< HEAD
-    
-=======
     // AddCompanyComponent,
     // AddCompanyentityComponent,
     // AddDepartmentComponent,
@@ -80,7 +64,6 @@ const routes: Routes = [
     // AllEntitiesComponent,
     // CompanyDetailsComponent,
     // CompanyentityDetailsComponent
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
   ],
   imports: [
     CommonModule,
@@ -91,10 +74,7 @@ const routes: Routes = [
     NgSelectModule,
     FormsModule,
     NgxDatatableModule,
-<<<<<<< HEAD
-=======
     NgbPaginationModule
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
   ],
 
   providers: []

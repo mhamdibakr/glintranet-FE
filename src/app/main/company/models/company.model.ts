@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-export class Company {
-=======
 import { CompanyEntity } from "./company-entity.model";
 
 export class Company {
@@ -21,5 +18,4 @@ export class Company {
         this.phoneNumber=phonenumber;
         this.webSite=website;
     }
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
 }

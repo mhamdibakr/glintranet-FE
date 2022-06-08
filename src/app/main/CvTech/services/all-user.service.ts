@@ -6,7 +6,7 @@ import { AllCampaign } from '../models/all-campaign.model';
 import { HttpClient, HttpClientModule, HttpEvent, HttpRequest } from '@angular/common/http';
 import { AllUsers } from '../models/allusers.model';
 
-const baseUrl = environment.apiBaseUrl;
+const baseUrl = environment.UrlCvTech;
 
 @Injectable({
   providedIn: 'root'

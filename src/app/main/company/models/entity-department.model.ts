@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-export class EntityDepartment {
-=======
 import { CompanyEntity } from "./company-entity.model";
 
 export class EntityDepartment {
@@ -13,5 +10,4 @@ export class EntityDepartment {
     constructor (name:string){
         this.name=name;
     }
->>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
 }
