@@ -29,11 +29,11 @@ const routes: Routes = [
     component: FunctionComponent,
   },
   {
-    path: 'global-experience',
+    path: 'experience',
     component: GlobalExperienceManagementComponent,
   },
   {
-    path: 'current-situation',
+    path: 'situation',
     component: SituationComponent,
   },
   {

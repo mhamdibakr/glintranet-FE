@@ -19,6 +19,8 @@ import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
 import { CvtechModule } from './main/CvTech/cvtech.module';
+import { CompanyModule } from './main/company/company.module';
+import { GrhModule } from './main/grh/grh.module';
 
 const appRoutes: Routes = [
   {
@@ -30,8 +32,12 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main/CvTech/cvtech.module').then(m => m.CvtechModule)
   },
   {
-    path: 'company',
+    path: 'companies',
     loadChildren: () => import('./main/company/company.module').then(m => m.CompanyModule)
+  },
+  {
+    path: 'grh',
+    loadChildren: () => import('./main/grh/grh.module').then(m => m.GrhModule)
   },
   {
     path: '',
@@ -48,7 +54,6 @@ const appRoutes: Routes = [
     BrowserModule, 
     BrowserAnimationsModule, 
     HttpClientModule, 
-    CvtechModule,
     RouterModule.forRoot(appRoutes, {
       scrollPositionRestoration: 'enabled', // Add options right here
       relativeLinkResolution: 'legacy'
@@ -58,16 +63,19 @@ const appRoutes: Routes = [
     //NgBootstrap
     NgbModule,
     ToastrModule.forRoot(),
-
+    
     // Core modules
     CoreModule.forRoot(coreConfig),
     CoreCommonModule,
     CoreSidebarModule,
     CoreThemeCustomizerModule,
-
+    
     // App modules
     LayoutModule,
     SampleModule,
+    CvtechModule,
+    CompanyModule,
+    GrhModule
   ],
 
   bootstrap: [AppComponent]

@@ -30,7 +30,11 @@ export const menu: CoreMenu[] = [
         url: 'cvtech/cvs'
       },
       {
+<<<<<<< HEAD
         id: 'compaign',
+=======
+        id: 'campaign',
+>>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
         title: 'MENU.Campaign',
         type: 'collapsible',
         icon: 'folder-plus',
@@ -52,12 +56,18 @@ export const menu: CoreMenu[] = [
         ]
       },
       {
+<<<<<<< HEAD
         id: 'users',
         title: 'MENU.Users',
+=======
+        id: 'candidats',
+        title: 'Candidats',
+>>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
         type: 'collapsible',
         icon: 'users',
         children:[
           {
+<<<<<<< HEAD
             id: 'allusers',
             title: 'All user',
             type: 'item',
@@ -70,6 +80,20 @@ export const menu: CoreMenu[] = [
             type: 'item',
             icon: 'plus-square',
             url: 'cvtech/users/adduser'
+=======
+            id: 'allcandidats',
+            title: 'All candidats',
+            type: 'item',
+            icon: 'list',
+            url: 'cvtech/candidats/allcandidats'
+          },
+          {
+            id: 'addcandidat',
+            title: 'Add Candidat',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'cvtech/candidats/addcandidat'
+>>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
           }
         ]
       },
@@ -127,5 +151,79 @@ export const menu: CoreMenu[] = [
     ]
 
   },
+<<<<<<< HEAD
+=======
+  {
+    id: 'companies',
+    type: 'collapsible',
+    title: 'MENU.COMPANY.APP',
+    icon: 'list',
+
+    children: [
+      {
+        id: 'company',
+        title: 'MENU.COMPANY.COMP',
+        type: 'collapsible',
+        icon: 'grid',
+
+        children:[
+          {
+            id: 'allcompanies',
+            title: 'MENU.COMPANY.ALLCOMPANIES',
+            type: 'item',
+            icon: 'list',
+            url: 'companies/company/allcompanies'
+          },
+          {
+            id: 'addcompany',
+            title: 'MENU.COMPANY.ADDCOMPANY',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'companies/company/addcompany'
+          },
+        ]
+      },
+      {
+        id: 'Companyentity',
+        title: 'MENU.COMPANY.COMPANYENTITY',
+        type: 'collapsible',
+        icon: 'grid',
+        children: [
+          {
+            id: 'Companyentity',
+            title: 'MENU.COMPANY.ALLENTITIES',
+            type: 'item',
+            icon: 'list',
+            url: 'companies/company-entity/allentities'
+          },
+          {
+            id: 'Companyentity',
+            title: 'MENU.COMPANY.ADDCOMPANYENTITY',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'companies/company-entity/addcompanyentity'
+          }
+        ]
+        },
+        {
+          id: 'Department',
+          title: 'MENU.COMPANY.DEPARTMENT',
+          type: 'collapsible',
+          icon: 'grid',
+          children: [
+            {
+              id: 'adddepartment',
+              title: 'MENU.COMPANY.ADDDEPARTMENT',
+              type: 'item',
+              icon: 'plus-square',
+              url: 'company/adddepartment'
+            }
+          ]
+          }
+    ]
+  }
+
+
+>>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
 
 ]

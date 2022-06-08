@@ -78,11 +78,23 @@
                         >
                           <i data-feather="more-horizontal" class="text-primary cursor-pointer mr-50"></i>
                         </a>
+<<<<<<< HEAD
                         <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="dropdownBrowserState">
                           <a routerLink="campaign-details/{{row.id}}" ngbDropdownItem class="d-flex align-items-center"
                             ><i data-feather="file-text" class="mr-50"></i> Details
                           </a>
                           <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center" (click)="deleteCampaign(row?.id)">
+=======
+                        <div ngbDropdownMenu class="drodopwn-menu-right" aria-labelledby="dropdownBrowserState">
+                          <a routerLink="campaign-details/{{row.id}}" ngbDropdownItem class="d-flex align-items-center"
+                            ><i data-feather="file-text" class="mr-50"></i> Details
+                          </a>
+                          <a 
+                          href="javascript:void(0)" 
+                          ngbDropdownItem 
+                          class="d-flex align-items-center"
+                          (click)="modalOpenDanger(modalDanger, row?.id)">
+>>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
                             <i data-feather="trash-2" class="mr-50"></i> Delete
                           </a>
                         </div>
@@ -133,4 +145,35 @@
       </div>
     </div>
   </div>
+<<<<<<< HEAD
+=======
+</div>
+
+<div class="modal-danger d-inline-block">
+  <!-- Modal -->
+  <ng-template #modalDanger let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title" id="myModalLabel160">Confirm</h5>
+
+      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+     Are you sure you want to delete the compaign ?
+    </div>
+    <div class="modal-footer">
+
+      <button type="button" class="btn btn-danger" (click)="modal.close('Accept click')" rippleEffect>
+        Cancel
+      </button>
+
+      <button type="button" class="btn btn-danger" (click)="deleteCampaign()" routerLink="/reload" rippleEffect>
+        Delete
+      </button>
+     
+    </div>
+  </ng-template>
+  <!-- / Modal -->
+>>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
 </div>

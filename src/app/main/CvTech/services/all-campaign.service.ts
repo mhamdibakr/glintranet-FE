@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { AllCampaign } from '../models/all-campaign.model';
 import { HttpClient, HttpClientModule, HttpEvent, HttpRequest } from '@angular/common/http';
 
-const baseUrl = environment.apiBaseUrl;
+const baseUrl = environment.UrlCvTech;
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,11 @@ export class AllCampaignService {
 
   DeleteCampaignById(id : number): Observable<HttpEvent<any>> {
    return this.http.delete<HttpEvent<any>>(`${baseUrl}/campaign/${id}`); 
-    
   }
+
+  addCampaign(data: any): Observable<any> {
+    return this.http.post(`${baseUrl}/campaign`, data);
+  }
+
 
 }

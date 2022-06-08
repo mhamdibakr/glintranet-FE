@@ -1,5 +1,6 @@
 <div class="content-wrapper container-xxl p-0">
   <div class="content-body">
+<<<<<<< HEAD
     <!-- content-header component -->
     <app-content-header [contentHeader]="contentHeader"></app-content-header>
 
@@ -19,13 +20,32 @@
           <div class="card-body">
             <form class="form form-horizontal">
               <div class="row">
+=======
+    
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+    <form class="form form-horizontal">
+      <div class="card">
+        <div class="row ">
+
+          <div class="col-md-6">
+            <div class="card-header">
+              <h4 class="card-title text-primary">Campaign details</h4>
+            </div>
+            <div class="card-body">
+              <!-- <div class="row"> -->
+>>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
                 <div class="col-12">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
                       <label for="first-name">Campaign name</label>
                     </div>
                     <div class="col-sm-9">
+<<<<<<< HEAD
                       <input type="text" id="campaign-name" class="form-control" name="c-name" placeholder="Campaign name" />
+=======
+                      <input type="text" [(ngModel)]="Campaign.name" id="campaign-name" class="form-control" name="name" placeholder="Campaign name" />
+>>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
                     </div>
                   </div>
                 </div>
@@ -35,7 +55,11 @@
                       <label for="email-id">Number of Positions </label>
                     </div>
                     <div class="col-sm-9">
+<<<<<<< HEAD
                       <input type="number" id="positions-nb" class="form-control" name="c-positions-nb" placeholder="Number of positions" />
+=======
+                      <input type="number" [(ngModel)]="Campaign.nbPositions" id="positions-nb" class="form-control" name="nbPositions" placeholder="Number of positions" />
+>>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
                     </div>
                   </div>
                 </div>
@@ -45,7 +69,11 @@
                       <label for="contact-info">Description</label>
                     </div>
                     <div class="col-sm-9">
+<<<<<<< HEAD
                       <textarea id="campaign-desc" placeholder="Description" name="c-desc"  rows="5" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+=======
+                      <textarea id="campaign-desc" [(ngModel)]="Campaign.description" placeholder="Description" name="description"  rows="5" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+>>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896
                     </div>
                   </div>
                 </div>
@@ -55,6 +83,7 @@
                       <label for="password">Closing Date</label>
                     </div>
                     <div class="col-sm-9">
+<<<<<<< HEAD
                       <input type="date" id="closing-date" class="form-control" name="c-closing-date"
                         placeholder="Closing Date" />
                     </div>
@@ -153,3 +182,156 @@
         </div>
       </div>
       </div>
+=======
+                      <input type="date" id="closing-date" [(ngModel)]="Campaign.closing_date" class="form-control" name="closing_date"
+                        placeholder="Closing Date" />
+                    </div>
+                  </div>
+                </div>            
+              <!-- </div> -->
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title text-primary">Researched Profil</h4>
+              </div>
+              <div class="card-body">
+                <!-- <div class="row"> -->
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label">
+                        <label for="contact-info">Education Level</label>
+                      </div>
+                      <div class="col-sm-9">
+                        <ng-select
+                          [items]="education"
+                          [addTag]="selectAddTagMethod"
+                          [hideSelected]="true"
+                          multiple="true"
+                          bindLabel="name"
+                          [(ngModel)]="educationSelected"
+                          name="name"
+                        >
+                          <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                            <span class="ng-value-label"> {{ item.name }}</span>
+                            <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                          </ng-template>
+                        </ng-select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label">
+                        <label for="contact-info">Globale Exprience</label>
+                      </div>
+                      <div class="col-sm-9">
+                        <textarea id="campaign-rp-ge" placeholder="Globale exprience" name="c-pr-ge"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label">
+                        <label for="contact-info">Current Situation</label>
+                      </div>
+                      <div class="col-sm-9">
+                        <textarea id="campaign-rp-cs" placeholder="Current situation" name="c-rp-cs"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label">
+                        <label for="contact-info">Function</label>
+                      </div>
+                      <div class="col-sm-9">
+                        <textarea id="campaign-rp-func" placeholder="Function" name="c-rp-func"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label">
+                        <label for="contact-info">Availability</label>
+                      </div>
+                      <div class="col-sm-9">
+                        <textarea id="campaign-rp-avl" placeholder="Availability" name="c-rp-avl"  rows="1" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group row">
+                      <div class="col-sm-3 col-form-label">
+                        <label for="contact-info">Skills</label>
+                      </div>
+                      <div class="col-sm-9">
+                        <ng-select
+                          [items]="skill"
+                          [addTag]="selectAddTagMethod"
+                          [hideSelected]="true"
+                          multiple="true"
+                          bindLabel="name"
+                          [(ngModel)]="skillSelected"
+                          name="name"
+                        >
+                          <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                            <span class="ng-value-label"> {{ item.name }}</span>
+                            <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                          </ng-template>
+                        </ng-select>
+                      </div>
+                    </div>
+                  </div>
+                <!-- </div> -->
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="d-flex justify-content-end mb-1 pr-3">
+          <button type="submit" (click)="AddCampaign()" rippleEffect class="btn btn-primary mr-1">save</button>
+          <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+
+
+
+<section>
+  <div class="row">
+    <div class="col-12">
+      <!-- <core-card-snippet [snippetCode]="_snippetCodePosition"> -->
+        <h4 class="card-title">Position</h4>
+        <div class="card-body">
+          <p class="card-text">
+            You can specify position of your alert with
+            <code>[position]=" top-start | top-end | bottom-start | bottom-end "</code> property of swal component.
+          </p>
+
+
+          <!-- Sweet Alert With Position bottom-end -->
+          <button class="btn btn-outline-primary mb-1" [swal]="SweetAlertBottomEnd" rippleEffect>Bottom End</button>
+          <!-- Swal of Sweet Alert With Position bottom-end -->
+          <swal
+            #SweetAlertBottomEnd
+            title="Your work has been saved"
+            icon="success"
+            [showConfirmButton]="false"
+            [timer]="1500"
+            [position]="'bottom-end'"
+          >
+          </swal>
+          <!--/ Swal of Sweet Alert With Position bottom-end -->
+        </div>
+      <!-- </core-card-snippet>  -->
+    </div>
+  </div>
+</section>
+>>>>>>> abc6e843b84b0ead49ff0fcae765674509ad0896

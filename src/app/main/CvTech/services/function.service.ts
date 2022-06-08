@@ -4,7 +4,7 @@ import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 import { Function } from '../models/function';
 
-const baseUrl = environment.apiBaseUrl;
+const baseUrl = environment.UrlCvTech;
 
 @Injectable({
   providedIn: 'root'

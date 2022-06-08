@@ -13,6 +13,7 @@ import { CampaignModule } from './campaign/campaign.module';
 import { UsersModule } from './users/users.module';
 import { profile } from 'console';
 import { ProfileModule } from './profil/profile.module';
+import { CandidatsModule } from './candidats/candidats.module';
 
 
 const routes: Routes = 
@@ -26,8 +27,8 @@ const routes: Routes =
       loadChildren: () => import('./profil/profile.module').then(m => m.ProfileModule)
     },
     {
-      path: 'users',
-      loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+      path: 'candidats',
+      loadChildren: () => import('./candidats/candidats.module').then(m => m.CandidatsModule)
     },
     {
     path: 'cvs',
@@ -54,8 +55,7 @@ const routes: Routes =
     FormsModule,
     NgxDatatableModule,
     CampaignModule,
-    UsersModule,
-    ProfileModule
+    CandidatsModule
   ],
 
   providers: []

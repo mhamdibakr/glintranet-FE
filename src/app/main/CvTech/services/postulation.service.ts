@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Postulation } from '../models/postulation.model';
 import { HttpClient, HttpEvent } from '@angular/common/http';
 
-const baseUrl = environment.apiBaseUrl;
+const baseUrl = environment.UrlCvTech;
 
 @Injectable({
   providedIn: 'root'
