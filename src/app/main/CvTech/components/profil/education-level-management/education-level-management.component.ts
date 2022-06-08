@@ -53,10 +53,28 @@ export class EducationLevelManagementComponent implements OnInit {
     console.log(educationData)
   }
 
-  public deleteData(id : number) : void 
+
+  private modal=null;
+  private id=0;
+
+  modalOpenDanger(modalDanger, id:any) {
+    this.id=id
+    this.modal = this.modalService.open(modalDanger, {
+      centered: true,
+      windowClass: 'modal modal-danger'
+    });
+  }
+
+  
+
+
+  public deleteData() : void 
   {
-    console.log(id)
-    this.educationService.deleteEducation(id).subscribe(
+   
+    this.modal.close('Accept click')
+    window.location.reload();
+    console.log(this.id)
+    this.educationService.deleteEducation(this.id).subscribe(
       () => { window.location.reload() },
       (error : HttpErrorResponse) => {  alert(error.message) }
 

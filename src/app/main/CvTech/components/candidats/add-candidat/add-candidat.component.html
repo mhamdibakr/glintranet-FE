@@ -168,9 +168,25 @@
 
                 <br><br>
                 <div class="col-sm-9 offset-sm-3">
-                
-                  <button type="submit" onsubmit="onSubmit()" rippleEffect class="btn btn-primary mr-1">save</button>
-                  <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
+                  <div class="d-flex justify-content-end mb-1 pr-3">
+                    <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
+                    <!-- <button type="submit" (click)="AddCampaign()" rippleEffect class="btn btn-primary mr-1">save</button> -->
+          
+                    <!-- Sweet Alert With Position bottom-end -->
+                    <button type="submit" (click)="onSubmit()" class="btn btn-primary mr-1"[swal]="SweetAlertBottomEnd" rippleEffect>Save</button>
+                    <!-- Swal of Sweet Alert With Position bottom-end -->
+                    <swal
+                      #SweetAlertBottomEnd
+                      title="Your work has been saved"
+                      icon="success"
+                      [showConfirmButton]="false"
+                      [timer]="1800"
+                      [position]="'bottom-end'"
+                    >
+                    </swal>
+                    <!--/ Swal of Sweet Alert With Position bottom-end -->
+                  </div>
+                  <!-- <button type="submit" onsubmit="onSubmit()" rippleEffect class="btn btn-primary mr-1">save</button> -->
                 </div>
               </div>
             </form>

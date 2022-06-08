@@ -14,6 +14,7 @@ import { FunctionComponent } from './function/function.component';
 import { GlobalExperienceManagementComponent } from './global-experience-management/global-experience-management.component';
 import { SkillsComponent } from './skills/skills.component';
 import { SituationComponent } from './situation/situation.component';
+import { CardSnippetModule } from '@core/components/card-snippet/card-snippet.module';
 
 const routes: Routes = [
   {
@@ -60,6 +61,7 @@ const routes: Routes = [
     NgbModule,
     NgSelectModule,
     FormsModule,
+    CardSnippetModule,
     NgxDatatableModule
   ],
 

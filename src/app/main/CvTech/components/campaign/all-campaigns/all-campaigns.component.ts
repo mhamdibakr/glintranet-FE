@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 })
 export class AllCampaignsComponent implements OnInit {
 
-  contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
+  contentHeader: { headerTitle: string;
+     actionButton: boolean;
+    breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
   router: any;
   
   constructor(private modalService: NgbModal, private AllCampaignService : AllCampaignService) {}
