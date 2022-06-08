@@ -4,13 +4,18 @@ import { Router } from '@angular/router';
 import { AllCampaign } from 'app/main/CvTech/models/all-campaign.model';
 import { Availability } from 'app/main/CvTech/models/availability';
 import { Education } from 'app/main/CvTech/models/education';
+import { Function } from 'app/main/CvTech/models/function';
 import { Skill } from 'app/main/CvTech/models/skill';
+import { GlobalExperience } from 'app/main/CvTech/models/global-experience';
 import { AllCampaignService } from 'app/main/CvTech/services/all-campaign.service';
 import { EducationService } from 'app/main/CvTech/services/education.service';
+import { FunctionService } from 'app/main/CvTech/services/function.service';
 import { SkillService } from 'app/main/CvTech/services/skill.service';
+import { GlobalExperienceService } from 'app/main/CvTech/services/global-experience.service';
+import { CurrentSituationService } from 'app/main/CvTech/services/current-situation.service';
+import { AvailabiltyService } from 'app/main/CvTech/services/availabilty.service';
+import { CurrentSituation } from 'app/main/CvTech/models/current-situation';
 
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-campaign',
@@ -25,8 +30,14 @@ export class AddCampaignComponent implements OnInit {
   constructor(
     private AllCampaignService: AllCampaignService,
     private router: Router,
+
     private EducationService: EducationService,
-    private SkillService: SkillService
+    private SkillService: SkillService,
+    private FunctionService: FunctionService,
+    private GlobalExperienceService: GlobalExperienceService,
+    private CurrentSituationService: CurrentSituationService,
+    private AvailabiltyService: AvailabiltyService,
+
   ) {
   }
 
@@ -58,6 +69,14 @@ export class AddCampaignComponent implements OnInit {
     this.getEducation()
     // 
     this.getSkill()
+    // 
+    this.getFunction()
+    // 
+    this.getExperience()
+    // 
+    this.getAvailablity()
+    // 
+    this.getSituation()
   }
 
   // ----- Add Campaign 
@@ -100,7 +119,7 @@ export class AddCampaignComponent implements OnInit {
       (edu: any) => 
       {
         this.education = edu.content;
-        console.log(this.education);
+        console.log("education: ",this.education);
       }
     )
   }
@@ -113,11 +132,63 @@ export class AddCampaignComponent implements OnInit {
       (sk: any) => 
       {
         this.skill = sk.content;
-        console.log(this.skill);
+        console.log("skill: ",this.skill);
       }
     )
   }
 
+  // ------ Get Function
+  public functionSelected;
+  function : Function[] = []
+  getFunction() {
+    this.FunctionService.getFunctions().subscribe( 
+      (fn: any) => 
+      {
+        this.function = fn.content;
+        console.log("function: ",this.function);
+      }
+    )
+  }
+
+  // ------ Get Experience
+  public experienceSelected;
+  experience :  GlobalExperience[] = []
+  getExperience() {
+    this.GlobalExperienceService.getExperiences().subscribe( 
+      (ex: any) => 
+      {
+        this.experience = ex.content;
+        console.log("experience: ",this.experience);
+      }
+    )
+  }
+  
+  // ------ Get Availablity
+  public availablitySelected;
+  availablity :  Availability[] = []
+  getAvailablity() {
+    this.AvailabiltyService.getAvailabilties().subscribe( 
+      (av: any) => 
+      {
+        this.availablity = av.content;
+        console.log("availablity: ",this.availablity);
+      }
+    )
+  }
+
+  // ------ Get Situation
+  public situationSelected;
+  situation :  CurrentSituation[] = []
+  getSituation() {
+    this.CurrentSituationService.getSituations().subscribe( 
+      (av: any) => 
+      {
+        this.situation = av.content;
+        console.log("situation: ",this.situation);
+      }
+    )
+  }
+  
   // ---------------------------------------------
   // Select Custom Tag
   selectAddTagMethod(name) {
