@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Company } from '../../models/company.model';
-import { CompanyService } from '../../services/company.service';
+import { Company } from '../../../models/company.model';
+import { CompanyService } from '../../../services/company.service';
 
 @Component({
   selector: 'app-all-companies',

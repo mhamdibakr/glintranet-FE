@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 import { EntityDepartment } from '../models/entity-department.model';
 
-const baseUrl = 'http://localhost:8091/api';
+// const baseUrl = 'http://localhost:8091/api';
+const baseUrl = environment.UrlCompany;
 
 @Injectable({
   providedIn: 'root'

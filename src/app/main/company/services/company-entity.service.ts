@@ -2,8 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CompanyEntity } from '../models/company-entity.model';
 import { Observable } from 'rxjs';
+import { environment } from 'environments/environment';
 
-const baseUrl = 'http://localhost:8091/api';
+// const baseUrl = 'http://localhost:8091/api';
+const baseUrl = environment.UrlCompany;
+
 
 @Injectable({
   providedIn: 'root'

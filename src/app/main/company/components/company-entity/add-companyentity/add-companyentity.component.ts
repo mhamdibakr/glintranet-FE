@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyEntity } from '../../models/company-entity.model';
-import { Company } from '../../models/company.model';
-import { CompanyEntityService } from '../../services/company-entity.service';
-import { CompanyService } from '../../services/company.service';
+import { CompanyEntity } from '../../../models/company-entity.model';
+import { Company } from '../../../models/company.model';
+import { CompanyEntityService } from '../../../services/company-entity.service';
+import { CompanyService } from '../../../services/company.service';
 
 @Component({
   selector: 'app-add-companyentity',

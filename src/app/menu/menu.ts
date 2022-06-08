@@ -128,31 +128,32 @@ export const menu: CoreMenu[] = [
 
   },
   {
-    id: 'apps-company',
+    id: 'companies',
     type: 'collapsible',
     title: 'MENU.COMPANY.APP',
     icon: 'list',
 
     children: [
       {
-        id: 'Company',
+        id: 'company',
         title: 'MENU.COMPANY.COMP',
         type: 'collapsible',
         icon: 'grid',
+
         children:[
           {
-            id: 'Company',
+            id: 'allcompanies',
             title: 'MENU.COMPANY.ALLCOMPANIES',
             type: 'item',
             icon: 'list',
-            url: 'company/allcompanies'
+            url: 'companies/company/allcompanies'
           },
           {
-            id: 'Company',
+            id: 'addcompany',
             title: 'MENU.COMPANY.ADDCOMPANY',
             type: 'item',
             icon: 'plus-square',
-            url: 'company/addcompany'
+            url: 'companies/company/addcompany'
           },
         ]
       },
@@ -167,14 +168,14 @@ export const menu: CoreMenu[] = [
             title: 'MENU.COMPANY.ALLENTITIES',
             type: 'item',
             icon: 'list',
-            url: 'company/allentities'
+            url: 'companies/company-entity/allentities'
           },
           {
             id: 'Companyentity',
             title: 'MENU.COMPANY.ADDCOMPANYENTITY',
             type: 'item',
             icon: 'plus-square',
-            url: 'company/addcompanyentity'
+            url: 'companies/company-entity/addcompanyentity'
           }
         ]
         },

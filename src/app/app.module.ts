@@ -32,7 +32,7 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main/CvTech/cvtech.module').then(m => m.CvtechModule)
   },
   {
-    path: 'company',
+    path: 'companies',
     loadChildren: () => import('./main/company/company.module').then(m => m.CompanyModule)
   },
   {

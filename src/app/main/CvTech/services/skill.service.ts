@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Skill } from '../models/skill';
 import { environment } from 'environments/environment';
 
-const baseUrl = environment.apiBaseUrl;
+const baseUrl = environment.UrlCvTech;
 
 @Injectable({
   providedIn: 'root'

@@ -7,28 +7,24 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { AddDepartmentComponent } from './add-department/add-department.component';
+import { AllCompaniesComponent } from './all-companies.component';
+import { CompanyDetailsComponent } from './company-details/company-details.component';
 
-
-const routes: Routes = 
-[
+const routes: Routes = [
   {
-    path: 'company',
-    loadChildren: () => import('./company/company.module').then(m => m.CompanyModule)
+    path: '',
+    component: AllCompaniesComponent,
   },
   {
-    path: 'company-entity',
-    loadChildren: () => import('./company-entity/company-entity.module').then(m => m.CompanyEntityModule)
+    path: 'company-details/:company_id',
+    component:CompanyDetailsComponent ,
   },
-  {
-  path: 'addDepartment',
-  component: AddDepartmentComponent,
-  }
 ];
 
 @NgModule({
   declarations: [
-    AddDepartmentComponent
+    CompanyDetailsComponent,
+    AllCompaniesComponent
   ],
   imports: [
     CommonModule,
@@ -43,4 +39,4 @@ const routes: Routes =
 
   providers: []
 })
-export class ComponentsModule { }
+export class AllCompaniesModule { }

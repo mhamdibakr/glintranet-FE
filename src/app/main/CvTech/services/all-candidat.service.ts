@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpClientModule, HttpEvent, HttpRequest } from '@angular/common/http';
 import { AllCandidat } from '../models/all-candidat.model';
 
-const baseUrl = environment.apiBaseUrl;
+const baseUrl = environment.UrlCvTech;
 
 @Injectable({
   providedIn: 'root'

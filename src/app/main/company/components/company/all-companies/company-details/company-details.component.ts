@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import Stepper from 'bs-stepper';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CompanyEntity } from '../../models/company-entity.model';
-import { Company } from '../../models/company.model';
-import { CompanyService } from '../../services/company.service';
-import { CompanyEntityService } from '../../services/company-entity.service';
+import { CompanyEntity } from '../../../../models/company-entity.model';
+import { Company } from '../../../../models/company.model';
+import { CompanyService } from '../../../../services/company.service';
+import { CompanyEntityService } from '../../../../services/company-entity.service';
 
 @Component({
   selector: 'app-company-details',
