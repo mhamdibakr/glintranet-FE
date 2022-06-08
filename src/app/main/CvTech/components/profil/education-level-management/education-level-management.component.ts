@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormControlName, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Education } from '../../../models/education';
 import { EducationService } from '../../../services/education.service';
@@ -10,57 +12,56 @@ import { EducationService } from '../../../services/education.service';
   styleUrls: ['./education-level-management.component.scss']
 })
 export class EducationLevelManagementComponent implements OnInit {
-
+  public education : Education = {name: '', description :''}
   public contentHeader: object;
-  data!: Education[];
+  public data!: Education[];
+
+  educationForm = new FormGroup({
+    name : new FormControl(''),
+    description : new FormControl('')
+  })
 
 
   constructor(private modalService: NgbModal, private educationService : EducationService) {}
 
-  // Lifecycle Hooks
-  // -----------------------------------------------------------------------------------------------------
-
-  /**
-   * On init
-   */
+ 
   ngOnInit(): void {
-    // content header
-    this.contentHeader = {
-      headerTitle: 'Educations Managment',
-      actionButton: true,
-      breadcrumb: {
-        type: '',
-        links: [
-          {
-            name: 'Home',
-            isLink: true,
-            link: '/'
-          },
-          {
-            name: 'CvTech',
-            isLink: true,
-            link: '/'
-          },
-          {
-            name: 'Education Managment',
-            isLink: false
-          }
-        ]
-      }
-    };
+    this.getData()
+    
   }
 
-   public getData() : void 
+  public getData() : void 
   {
       this.educationService.getEducations().subscribe(
-      ( response : Education[]) =>
-      {
-        this.data = response,
-        console.log(this.data)
-      }
+      ( response : any) => { this.data = response.content },
+      (error : HttpErrorResponse) => { console.log(error.message) }
       )
   } 
 
+  public addData() : void 
+  {
+    this.education = this.educationForm.value
+    const educationData = 
+    {
+      name : this.education.name,
+      description : this.education.description
+    }
+    this.educationService.addEducation(educationData).subscribe(
+      (response : any) => { console.log(response), window.location.reload() },
+      (error : HttpErrorResponse) => {alert(error.message)}
+    )
+    console.log(educationData)
+  }
+
+  public deleteData(id : number) : void 
+  {
+    console.log(id)
+    this.educationService.deleteEducation(id).subscribe(
+      () => { window.location.reload() },
+      (error : HttpErrorResponse) => {  alert(error.message) }
+
+    )
+  }
 
   modalOpenPrimary(modalPrimary) {
     this.modalService.open(modalPrimary, {
@@ -68,5 +69,7 @@ export class EducationLevelManagementComponent implements OnInit {
       windowClass: 'modal modal-primary'
     });
   }
+
+ 
 
 }

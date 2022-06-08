@@ -1,5 +1,6 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, NgModule, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Skill } from '../../../models/skill';
 import { SkillService } from '../../../services/skill.service';
 
@@ -12,50 +13,62 @@ import { SkillService } from '../../../services/skill.service';
 
 
 
-export class SkillsComponent implements OnInit {
+export class SkillsComponent implements OnInit 
+{
+  public skill : Skill = {name: '', description :''}
   public contentHeader: object;
-  data!: Skill[];
+  public data?: Skill[];
 
   constructor(private skillService : SkillService) { }
+
+  skillForm = new FormGroup({
+    name: new FormControl(''),
+    description: new FormControl('')
+  })
 
   ngOnInit(): void 
   {
     this.getData()
-    this.contentHeader = {
-      headerTitle: 'Skills Managment',
-      actionButton: true,
-      breadcrumb: {
-        type: '',
-        links: [
-          {
-            name: 'Home',
-            isLink: true,
-            link: '/'
-          },
-          {
-            name: 'CvTech',
-            isLink: true,
-            link: '/'
-          },
-          {
-            name: 'Skills Management',
-            isLink: false
-          }
-        ]
-      }
-    };
+    
+
   }
 
   public getData() : void
   {
     this.skillService.getSkills().subscribe(
-      (response : Skill[]) =>
+      (res : any) => {
+        this.data = res.content
+        //console.log(res)
+      } ,
+      (error : HttpErrorResponse) =>
       {
-        this.data = response,
-        console.log(this.data)
+        alert(error.message)
       }
     )
+  }
 
+  public addData() : void 
+  {
+    this.skill = this.skillForm.value;
+   
+    const skillData = 
+    {
+      name : this.skill.name,
+      description : this.skill.description
+    }
+    this.skillService.addSkill(skillData).subscribe(
+      (response : Skill) => { console.log(response), window.location.reload() },
+      (error : HttpErrorResponse) => { alert(error.message) }
+      )
+    
+  }
+
+  public deleteData(id : number) : void 
+  {
+    this.skillService.deleteSkill(id).subscribe(
+      () => { window.location.reload() },
+      (error : HttpErrorResponse) => {  alert(error.message)}
+      )
   }
 
 }

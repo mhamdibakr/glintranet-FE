@@ -11,6 +11,8 @@ import { CvsComponent } from './cvs/cvs.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CampaignModule } from './campaign/campaign.module';
 import { UsersModule } from './users/users.module';
+import { profile } from 'console';
+import { ProfileModule } from './profil/profile.module';
 
 
 const routes: Routes = 
@@ -52,7 +54,8 @@ const routes: Routes =
     FormsModule,
     NgxDatatableModule,
     CampaignModule,
-    UsersModule
+    UsersModule,
+    ProfileModule
   ],
 
   providers: []

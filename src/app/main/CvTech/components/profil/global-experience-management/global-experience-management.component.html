@@ -8,9 +8,9 @@
                         <div class="card-header">
                             <h4 class="card-title">Global experiences</h4>
                         </div>
-    
+                        
                         <div class="card-body">
-                            <form class="form form-horizontal">
+                            <form class="form form-horizontal" [formGroup]="exprienceForm" (ngSubmit)="addData()">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group row">
@@ -18,7 +18,7 @@
                                                 <label for="first-name">Name</label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <input type="text" id="first-name" class="form-control" name="fname"
+                                                <input type="text" formControlName="name" id="first-name" class="form-control" name="fname"
                                                     placeholder="Name" />
                                             </div>
                                         </div>
@@ -29,7 +29,7 @@
                                                 <label for="email-id">Description</label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <textarea id="campaign-desc" placeholder="Description" name="c-desc"  rows="2" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                                                <textarea id="campaign-desc" formControlName="description" placeholder="Description" name="c-desc"  rows="2" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -60,102 +60,36 @@
                         <table class="table table-hover-animation">
                             <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>Nom d'experiences global</th>
                                     <th>Description</th>
                                     <th>Options</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr *ngFor="let obj of data, let i = index">
+                                    <td>{{i + 1}}</td>
                                     <td>
-                                        <span class="font-weight-bold">c#</span>
+                                        <span class="font-weight-bold">{{obj.name}}</span>
                                     </td>
-                                    <td>language de programation</td>
+                                    <td>{{obj.description}}</td>
                                     <td class="overflow-hidden">
                                         <div ngbDropdown container="body">
-                                            <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle
-                                                data-toggle="dropdown">
-                                                <i data-feather="more-vertical"></i>
+                                          <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle data-toggle="dropdown">
+                                            <i data-feather="more-vertical"></i>
+                                          </button>
+                                          <div ngbDropdownMenu>
+                                            <a ngbDropdownItem href="javascript:void(0);">
+                                              <i data-feather="edit-2" class="mr-50"></i><span>Edit</span>
+                                            </a
+                                            >
+                                            <button ngbDropdownItem  (click)="deleteData(obj.id)">
+                                                <i data-feather="trash" class="mr-50"></i>
+                                                <span>Delete</span>
                                             </button>
-                                            <div ngbDropdownMenu>
-                                                <a ngbDropdownItem href="javascript:void(0);">
-                                                    <i data-feather="edit-2" class="mr-50"></i>
-                                                    <button class="btn btn-link"
-                                                        (click)="modalOpenPrimary(modalPrimary)"
-                                                        rippleEffect>Edit</button>
-                                                    <ng-template #modalPrimary let-modal>
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="myModalLabel160">Modifier niveau
-                                                                d'etude
-                                                            </h5>
-                                                            <button type="button" class="close"
-                                                                (click)="modal.dismiss('Cross click')"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body" tabindex="0" ngbAutofocus>
-                                                            <div class="col-12">
-                                                                <div class="form-group row">
-                                                                    <div class="col-sm-3 col-form-label">
-                                                                        <label for="first-name">Niveau</label>
-                                                                    </div>
-                                                                    <div class="col-sm-9">
-                                                                        <input type="text" id="first-name"
-                                                                            class="form-control" name="fname"
-                                                                            placeholder="Niveau" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <div class="form-group row">
-                                                                    <div class="col-sm-3 col-form-label">
-                                                                        <label for="email-id">Description</label>
-                                                                    </div>
-                                                                    <div class="col-sm-9">
-                                                                        <div type="input" placeholder="Description"
-                                                                            contenteditable>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-primary"
-                                                                (click)="modal.close('Accept click')" rippleEffect>
-                                                                Accept
-                                                            </button>
-                                                        </div>
-                                                    </ng-template>
-                                                </a>
-                                                <a ngbDropdownItem href="javascript:void(0);">
-                                                    <i data-feather="trash" class="mr-50"></i>
-                                                    <span>Delete</span>
-                                                </a>
-                                            </div>
+                                          </div>
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="font-weight-bold">bureatique</span>
-                                    </td>
-                                    <td>importatn skills</td>
-                                    <td class="overflow-hidden">
-                                        <div ngbDropdown container="body">
-                                            <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle
-                                                data-toggle="dropdown">
-                                                <i data-feather="more-vertical"></i>
-                                            </button>
-                                            <div ngbDropdownMenu>
-                                                <a ngbDropdownItem href="javascript:void(0);"><i data-feather="edit-2"
-                                                        class="mr-50"></i><span>Edit</span></a><a ngbDropdownItem
-                                                    href="javascript:void(0);"><i data-feather="trash"
-                                                        class="mr-50"></i><span>Delete</span></a>
-                                            </div>
-                                        </div>
-                                    </td>
+                                      </td>
                                 </tr>
                             </tbody>
                         </table>

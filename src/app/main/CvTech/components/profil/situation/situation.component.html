@@ -7,9 +7,9 @@
                         <div class="card-header">
                             <h4 class="card-title">Add new situation</h4>
                         </div>
-    
+                        {{situationForm.value | json}}
                         <div class="card-body">
-                            <form class="form form-horizontal">
+                            <form class="form form-horizontal" [formGroup]="situationForm" (ngSubmit)="addData()">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group row">
@@ -17,7 +17,7 @@
                                                 <label for="first-name">Name</label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <input type="text" id="skill-name" class="form-control" name="sit-name"
+                                                <input type="text" id="skill-name" formControlName="name" class="form-control" name="sit-name"
                                                     placeholder="Name" />
                                             </div>
                                         </div>
@@ -28,7 +28,7 @@
                                                 <label for="email-id">Description</label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <textarea id="skill-desc" placeholder="Description" name="sit-desc"  rows="2" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                                                <textarea id="skill-desc" formControlName="description" placeholder="Description" name="sit-desc"  rows="2" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -59,17 +59,19 @@
                         <table class="table" style="text-align: center;">
                           <thead>
                             <tr>
+                              <th>#</th>
                               <th>Name</th>
                               <th>Description</th>
                               <th>Actions</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
+                            <tr *ngFor="let obj of data, let i = index">
+                              <td>{{i + 1}}</td>
                               <td>
-                               <span class="font-weight-bold">Searching for a job</span>
+                               <span class="font-weight-bold">{{obj.name}}</span>
                               </td>
-                              <td>----- ----- ----- ----- -----</td>
+                              <td>{{obj.description}}</td>
                               <td class="overflow-hidden">
                                 <div ngbDropdown container="body">
                                   <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle data-toggle="dropdown">
@@ -79,9 +81,11 @@
                                     <a ngbDropdownItem href="javascript:void(0);">
                                       <i data-feather="edit-2" class="mr-50"></i><span>Edit</span>
                                     </a
-                                    ><a ngbDropdownItem href="javascript:void(0);"
-                                      ><i data-feather="trash" class="mr-50"></i><span>Delete</span></a
                                     >
+                                    <button ngbDropdownItem  (click)="deleteData(obj.id)">
+                                        <i data-feather="trash" class="mr-50"></i>
+                                        <span>Delete</span>
+                                    </button>
                                   </div>
                                 </div>
                               </td>

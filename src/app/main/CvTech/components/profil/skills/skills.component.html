@@ -7,9 +7,9 @@
                         <div class="card-header">
                             <h4 class="card-title">Add new skill</h4>
                         </div>
-    
+                        {{skillForm.value | json}}
                         <div class="card-body">
-                            <form class="form form-horizontal">
+                            <form class="form form-horizontal" [formGroup]="skillForm" (ngSubmit)="addData()">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group row">
@@ -17,7 +17,7 @@
                                                 <label for="first-name">Name</label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <input type="text" id="skill-name" class="form-control" name="skill-name"
+                                                <input type="text" formControlName="name" id="skill-name" class="form-control" name="skill-name"
                                                     placeholder="Name" />
                                             </div>
                                         </div>
@@ -28,7 +28,7 @@
                                                 <label for="email-id">Description</label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <textarea id="skill-desc" placeholder="Description" name="skill-desc"  rows="2" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                                                <textarea id="skill-desc" formControlName="description" placeholder="Description" name="skill-desc"  rows="2" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -67,7 +67,7 @@
                           </thead>
                           <tbody *ngFor="let obj of data, let i = index">
                             <tr>
-                              <td>{{i+1}}</td>
+                              <td>{{i + 1}}</td>
                               <td>
                                <span class="font-weight-bold">{{obj.name}}</span>
                               </td>
@@ -81,9 +81,11 @@
                                     <a ngbDropdownItem href="javascript:void(0);">
                                       <i data-feather="edit-2" class="mr-50"></i><span>Edit</span>
                                     </a
-                                    ><a ngbDropdownItem href="javascript:void(0);"
-                                      ><i data-feather="trash" class="mr-50"></i><span>Delete</span></a
                                     >
+                                    <button ngbDropdownItem  (click)="deleteData(obj.id)">
+                                        <i data-feather="trash" class="mr-50"></i>
+                                        <span>Delete</span>
+                                    </button>
                                   </div>
                                 </div>
                               </td>

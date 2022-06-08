@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreCommonModule } from '@core/common.module';
@@ -28,11 +29,11 @@ const routes: Routes = [
     component: FunctionComponent,
   },
   {
-    path: 'experience',
+    path: 'global-experience',
     component: GlobalExperienceManagementComponent,
   },
   {
-    path: 'situation',
+    path: 'current-situation',
     component: SituationComponent,
   },
   {

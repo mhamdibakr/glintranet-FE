@@ -12,7 +12,19 @@ const baseUrl = environment.apiBaseUrl;
 export class EducationService {
 
   constructor(private http : HttpClient) { }
-  getEducations(): Observable<Education[]> {
+
+  getEducations(): Observable<Education[]> 
+  {
     return this.http.get<Education[]>(`${baseUrl}/education`);
+  }
+
+  addEducation(education : Education): Observable<any>
+  {
+    return this.http.post(`${baseUrl}/education`,education);
+  }
+
+  deleteEducation(id : number): Observable<any>
+  {
+    return this.http.delete(`${baseUrl}/education/${id}`,{responseType : 'text'});
   }
 }
