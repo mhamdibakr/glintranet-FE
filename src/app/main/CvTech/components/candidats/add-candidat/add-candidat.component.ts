@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AllCandidat } from '../../../models/all-candidat.model';
 import { AllCandidatService } from '../../../services/all-candidat.service';
+
+
 
 @Component({
   selector: 'app-add-candidat',
@@ -37,7 +40,10 @@ export class AddCandidatComponent implements OnInit {
     message: new FormControl(false),
   });
   submitted = false;
-  constructor(private formBuilder: FormBuilder, private AllCandidatService: AllCandidatService) { }
+  constructor(private formBuilder: FormBuilder,
+     private AllCandidatService: AllCandidatService,
+     private router: Router,
+     ) { }
 
   ngOnInit(): void {
     
@@ -122,6 +128,7 @@ export class AddCandidatComponent implements OnInit {
       {
         next: (response: any) => {
           console.log(response);
+          this.router.navigateByUrl("/cvtech/candidats/allcandidats");
         }, error: (err) => {
           console.error(err);
         }

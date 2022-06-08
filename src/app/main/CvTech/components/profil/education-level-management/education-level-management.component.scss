@@ -12,3 +12,8 @@ div[contenteditable] {
     overflow: auto;
     border-radius: 5px;
 }
+@import '@core/scss/angular/libs/datatables.component.scss';
+
+.datatable-scroll {
+  width: auto !important;
+}
