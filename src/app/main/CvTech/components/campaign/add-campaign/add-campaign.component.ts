@@ -80,7 +80,7 @@ export class AddCampaignComponent implements OnInit {
   }
 
   // ----- Add Campaign 
-  Campaign : AllCampaign = {
+  Campaign: AllCampaign = {
     name: undefined,
     description: undefined,
     nbPositions: 0,
@@ -98,8 +98,16 @@ export class AddCampaignComponent implements OnInit {
       name: this.Campaign.name,
       description: this.Campaign.description,
       nbPositions: this.Campaign.nbPositions,
-      closing_date: this.Campaign.closing_date
+      closing_date: this.Campaign.closing_date,
+
+      availablities: this.availablitySelected,
+      experiences: this.experienceSelected,
+      educations: this.educationSelected,
+      situations: this.situationSelected,
+      functions: this.functionSelected,
+      skills: this.skillSelected
     }
+
     this.AllCampaignService.addCampaign(data).subscribe(
       {
         next: (data) => {
@@ -113,88 +121,82 @@ export class AddCampaignComponent implements OnInit {
 
   // ------ Get Education
   public educationSelected;
-  education : Education[] = []
+  education: Education[] = []
   getEducation() {
-    this.EducationService.getEducations().subscribe( 
-      (edu: any) => 
-      {
+    this.EducationService.getEducations().subscribe(
+      (edu: any) => {
         this.education = edu.content;
-        console.log("education: ",this.education);
+        console.log("education: ", this.education);
       }
     )
   }
 
   // ------ Get Skill
   public skillSelected;
-  skill : Skill[] = []
+  skill: Skill[] = []
   getSkill() {
-    this.SkillService.getSkills().subscribe( 
-      (sk: any) => 
-      {
+    this.SkillService.getSkills().subscribe(
+      (sk: any) => {
         this.skill = sk.content;
-        console.log("skill: ",this.skill);
+        console.log("skill: ", this.skill);
       }
     )
   }
 
   // ------ Get Function
   public functionSelected;
-  function : Function[] = []
+  function: Function[] = []
   getFunction() {
-    this.FunctionService.getFunctions().subscribe( 
-      (fn: any) => 
-      {
+    this.FunctionService.getFunctions().subscribe(
+      (fn: any) => {
         this.function = fn.content;
-        console.log("function: ",this.function);
+        console.log("function: ", this.function);
       }
     )
   }
 
   // ------ Get Experience
   public experienceSelected;
-  experience :  GlobalExperience[] = []
+  experience: GlobalExperience[] = []
   getExperience() {
-    this.GlobalExperienceService.getExperiences().subscribe( 
-      (ex: any) => 
-      {
+    this.GlobalExperienceService.getExperiences().subscribe(
+      (ex: any) => {
         this.experience = ex.content;
-        console.log("experience: ",this.experience);
+        console.log("experience: ", this.experience);
       }
     )
   }
-  
+
   // ------ Get Availablity
   public availablitySelected;
-  availablity :  Availability[] = []
+  availablity: Availability[] = []
   getAvailablity() {
-    this.AvailabiltyService.getAvailabilties().subscribe( 
-      (av: any) => 
-      {
+    this.AvailabiltyService.getAvailabilties().subscribe(
+      (av: any) => {
         this.availablity = av.content;
-        console.log("availablity: ",this.availablity);
+        console.log("availablity: ", this.availablity);
       }
     )
   }
 
   // ------ Get Situation
   public situationSelected;
-  situation :  CurrentSituation[] = []
+  situation: CurrentSituation[] = []
   getSituation() {
-    this.CurrentSituationService.getSituations().subscribe( 
-      (av: any) => 
-      {
+    this.CurrentSituationService.getSituations().subscribe(
+      (av: any) => {
         this.situation = av.content;
-        console.log("situation: ",this.situation);
+        console.log("situation: ", this.situation);
       }
     )
   }
-  
+
   // ---------------------------------------------
   // Select Custom Tag
   selectAddTagMethod(name) {
     return { name: name, tag: true };
   }
 
-  
+
 
 }

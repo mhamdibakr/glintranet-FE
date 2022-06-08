@@ -9,6 +9,7 @@ import { ContentHeaderModule } from 'app/layout/components/content-header/conten
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CampaignDetailsComponent } from './campaign-details/campaign-details.component';
 import { AllCampaignsComponent } from './all-campaigns.component';
+import { CoreCardModule } from '@core/components/core-card/core-card.module';
 
 const routes: Routes = [
   {
@@ -34,7 +35,8 @@ const routes: Routes = [
     NgbModule,
     NgSelectModule,
     FormsModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    CoreCardModule
   ],
 
   providers: []

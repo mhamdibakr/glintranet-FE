@@ -8,7 +8,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AddCompanyComponent } from './components/company/add-company/add-company.component';
-import { AddDepartmentComponent } from './components/add-department/add-department.component';
+import { AddDepartmentComponent } from './components/department/add-department/add-department.component';
 import { AllCompaniesComponent } from './components/company/all-companies/all-companies.component';
 import { CompanyDetailsComponent } from './components/company/all-companies/company-details/company-details.component';
 import { CompanyentityDetailsComponent } from './components/company-entity/all-entities/companyentity-details/companyentity-details.component';

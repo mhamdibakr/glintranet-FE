@@ -162,7 +162,10 @@ export class CampaignDetailsComponent implements OnInit {
         },
       });
 
-    })
+    });
+    console.log(this.candidatIds);
+    this.candidatIds=[];
+    
   }
 
   // ---------- Delete Selected Candidats ------------ //

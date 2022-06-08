@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyEntity } from '../../models/company-entity.model';
-import { EntityDepartment } from '../../models/entity-department.model';
-import { CompanyEntityService } from '../../services/company-entity.service';
-import { CompanyService } from '../../services/company.service';
-import { EntityDepartmentService } from '../../services/entity-department.service';
+import { CompanyEntity } from '../../../models/company-entity.model';
+import { EntityDepartment } from '../../../models/entity-department.model';
+import { CompanyEntityService } from '../../../services/company-entity.service';
+import { CompanyService } from '../../../services/company.service';
+import { EntityDepartmentService } from '../../../services/entity-department.service';
 
 @Component({
   selector: 'app-add-department',

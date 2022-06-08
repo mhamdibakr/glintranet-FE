@@ -178,22 +178,22 @@ export const menu: CoreMenu[] = [
             url: 'companies/company-entity/addcompanyentity'
           }
         ]
-        },
-        {
-          id: 'Department',
-          title: 'MENU.COMPANY.DEPARTMENT',
-          type: 'collapsible',
-          icon: 'grid',
-          children: [
-            {
-              id: 'adddepartment',
-              title: 'MENU.COMPANY.ADDDEPARTMENT',
-              type: 'item',
-              icon: 'plus-square',
-              url: 'company/adddepartment'
-            }
-          ]
+      },
+      {
+        id: 'Department',
+        title: 'MENU.COMPANY.DEPARTMENT',
+        type: 'collapsible',
+        icon: 'grid',
+        children: [
+          {
+            id: 'adddepartment',
+            title: 'MENU.COMPANY.ADDDEPARTMENT',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'companies/department/addDepartment'
           }
+        ]
+      }
     ]
   }
 
