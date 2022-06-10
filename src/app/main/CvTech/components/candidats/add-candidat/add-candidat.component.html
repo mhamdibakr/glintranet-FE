@@ -3,7 +3,7 @@
     <!-- content-header component -->
     <app-content-header [contentHeader]="contentHeader"></app-content-header>
     <div class="row ">
-      <div class="col-md-9">
+      <div class="col-md-12">
         <div class="card">
           <div class="card-header">
             <h4 class="card-title text-primary">Add Candidat</h4>
@@ -12,7 +12,7 @@
             <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form form-horizontal">
               <div class="row">
 
-                <div class="col-12">
+                <div class="col-6">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
                       <label for="first-name">Civility</label>
@@ -30,7 +30,7 @@
                   </div>
                 </div>
 
-                <div class="col-12 form-group">
+                <div class="col-6 form-group">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
                       <label for="email-id">Full Name</label>
@@ -50,7 +50,7 @@
                   </div>
                 </div>
 
-                <div class="col-12">
+                <div class="col-6">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
                       <label for="password">Bith Date</label>
@@ -65,7 +65,7 @@
                   </div>
                 </div>
 
-                <div class="col-12">
+                <div class="col-6">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
                       <label for="email-id">Email</label>
@@ -81,7 +81,7 @@
                   </div>
                 </div>
 
-                <div class="col-12">
+                <div class="col-6">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
                       <label for="email-id">Phone Number</label>
@@ -99,7 +99,7 @@
                   </div>
                 </div>
 
-                <div class="col-12">
+                <div class="col-6">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
                       <label for="first-name">Country</label>
@@ -116,7 +116,7 @@
                   </div>
                 </div>
 
-                <div class="col-12">
+                <div class="col-6">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
                       <label for="email-id">City</label>
@@ -132,7 +132,7 @@
                   </div>
                 </div>
 
-                <div class="col-12">
+                <div class="col-6">
                   <div class="form-group row">
                     <div class="col-sm-3 col-form-label">
                       <label for="email-id">Adress</label>
@@ -149,13 +149,13 @@
 
                 <div class="col-12">
                   <div class="form-group row">
-                    <div class="col-sm-3 col-form-label">
+                    <div class="col-sm-1 mr-3 col-form-label">
                       <label for="email-id">Message</label>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-10">
                       <textarea id="campaign-rp-cs" placeholder="Enter a message" name="message" rows="2" wrap="soft"
                         formControlName="message" [ngClass]="{ 'is-invalid': submitted && f['message'].errors }"
-                        class="form-control" data-v-aa799a9e=""></textarea>
+                        class="form-control " data-v-aa799a9e=""></textarea>
                       <div *ngIf="submitted && f['message'].errors" class="invalid-feedback">
                         <div *ngIf="f['message'].errors['required']">Message is required</div>
                         <div *ngIf="f['message'].errors['minlength']">
@@ -166,14 +166,11 @@
                   </div>
                 </div>
 
-                <br><br>
-                <div class="col-sm-9 offset-sm-3">
-                  <div class="d-flex justify-content-end mb-1 pr-3">
-                    <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
-                    <!-- <button type="submit" (click)="AddCampaign()" rippleEffect class="btn btn-primary mr-1">save</button> -->
-          
-                    <!-- Sweet Alert With Position bottom-end -->
-                    <button type="submit" (click)="onSubmit()" class="btn btn-primary mr-1"[swal]="SweetAlertBottomEnd" rippleEffect>Save</button>
+                <div class="col-sm-12">
+                  <div class="d-flex justify-content-end">
+                    <button type="reset" rippleEffect class="mr-1 btn btn-outline-secondary">Reset</button>
+                   
+                    <button type="submit" (click)="onSubmit()" class="btn btn-primary"[swal]="SweetAlertBottomEnd" rippleEffect>Save</button>
                     <!-- Swal of Sweet Alert With Position bottom-end -->
                     <swal
                       #SweetAlertBottomEnd
@@ -186,7 +183,6 @@
                     </swal>
                     <!--/ Swal of Sweet Alert With Position bottom-end -->
                   </div>
-                  <!-- <button type="submit" onsubmit="onSubmit()" rippleEffect class="btn btn-primary mr-1">save</button> -->
                 </div>
               </div>
             </form>
