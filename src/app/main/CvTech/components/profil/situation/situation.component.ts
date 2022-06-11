@@ -12,6 +12,7 @@ import { CurrentSituationService } from 'app/main/CvTech/services/current-situat
 })
 export class SituationComponent implements OnInit 
 {
+  public contentHeader: object;
   public data?: CurrentSituation[]
   public situation : CurrentSituation = { name : '', description : ''}
 
@@ -25,6 +26,34 @@ export class SituationComponent implements OnInit
 
   ngOnInit(): void {
     this.getData()
+    this.contentHeader = {
+      headerTitle: 'Situation',
+      actionButton: true,
+      breadcrumb: {
+        type: '',
+        links: [
+          {
+            name: 'Home',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'CvTech',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Profil',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Situation',
+            isLink: false
+          }
+        ]
+      }
+    };
   }
 
   getData() : void

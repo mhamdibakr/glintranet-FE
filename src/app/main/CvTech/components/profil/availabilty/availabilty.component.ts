@@ -10,6 +10,8 @@ import { AvailabiltyService } from 'app/main/CvTech/services/availabilty.service
   styleUrls: ['./availabilty.component.scss']
 })
 export class AvailabiltyComponent implements OnInit {
+  public contentHeader: object;
+
   data?: Availability[]
   availability : Availability = { name : '', description : ''}
 
@@ -21,6 +23,35 @@ export class AvailabiltyComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData()
+    this.contentHeader = {
+      headerTitle: 'Availability',
+      actionButton: true,
+      breadcrumb: {
+        type: '',
+        links: [
+          {
+            name: 'Home',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'CvTech',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Profil',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Availability',
+            isLink: false
+          }
+        ]
+      }
+    };
+
   }
 
   getData() : void

@@ -199,10 +199,15 @@ export class CampaignDetailsComponent implements OnInit {
           {
             name: 'Home',
             isLink: true,
-            link: '/home'
+            link: '/'
           },
           {
             name: 'CvTech',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Campaign',
             isLink: true,
             link: '/'
           },

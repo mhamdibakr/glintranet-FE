@@ -30,7 +30,34 @@ export class SkillsComponent implements OnInit
   {
     this.getData()
     
-
+    this.contentHeader = {
+      headerTitle: 'Skills',
+      actionButton: true,
+      breadcrumb: {
+        type: '',
+        links: [
+          {
+            name: 'Home',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'CvTech',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Profil',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Skills',
+            isLink: false
+          }
+        ]
+      }
+    };
   }
 
   public getData() : void

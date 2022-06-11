@@ -13,8 +13,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class AllCandidatsComponent implements OnInit {
 
-  public pagePosition = 2;
-public totalPages=0;
+  public pagePosition = 1;
+  public totalPages=0;
   contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
 
   public chkBoxSelected = [];
@@ -28,7 +28,7 @@ public totalPages=0;
     this.getAllUsers();
 
     this.contentHeader = {
-      headerTitle: 'Candidats',
+      headerTitle: 'All Candidats',
       actionButton: true,
       breadcrumb: {
         type: '',
@@ -40,6 +40,11 @@ public totalPages=0;
           },
           {
             name: 'CvTech',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Candidats',
             isLink: true,
             link: '/'
           },
@@ -61,12 +66,9 @@ public totalPages=0;
 
   page = 1;
   count = 0;
-  pageSize = 4;
   email = '';
   phone = '';
   name = ''
-
-
 
   public pageChanged(event: any): void {
     this.page = event;
@@ -103,17 +105,15 @@ public totalPages=0;
       email : this.email,
       phone : this.phone,
       name : this.name
-
     }
     
     this.AllCandidatService.getAllPagination(params).subscribe(
       {
         next: (response: any) => {
           const { content, totalElements, totalPages } = response;
-          // this.Users = content;
-          this.Users = content
           this.count = totalElements;
           this.totalPages = totalPages*10
+          this.Users = response.content
         }, error: (err) => {
           console.error(err);
         }

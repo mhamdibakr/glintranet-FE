@@ -36,24 +36,24 @@
                 [footerHeight]="50" [rowHeight]="58" [limit]="2" rowHeight="auto" [rows]="Users"
                 [selected]="chkBoxSelected">
 
-                <ngx-datatable-column name="Full Name" [flexGrow]="1">
+                <ngx-datatable-column name="Full Name" [flexGrow]="1.5">
                   <ng-template let-row="row" ngx-datatable-cell-template>
                     {{ row?.name}}
                   </ng-template>
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Email" [flexGrow]="1">
+                <ngx-datatable-column name="Email" [flexGrow]="2.5">
                   <ng-template let-row="row" ngx-datatable-cell-template>
                     {{row?.email}}
                   </ng-template>
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Phone" [flexGrow]="1">
+                <ngx-datatable-column name="Phone" [flexGrow]="1.25">
                   <ng-template let-row="row" ngx-datatable-cell-template>
                     <div class="badge badge-pill badge-primary">{{ row?.phone}}</div>
                   </ng-template>
                 </ngx-datatable-column>
-                <ngx-datatable-column name="Actions" [flexGrow]="0.75" >
+                <ngx-datatable-column name="Actions" [flexGrow]="0.5" >
                   <ng-template let-row="row" ngx-datatable-cell-template>
                     <div class="d-flex align-items-center">
                       <div ngbDropdown container="body">
@@ -86,7 +86,6 @@
                 </ngx-datatable-column>
               </ngx-datatable>
               <div class=" col-lg-12">
-                <h5 class="text-right mb-1"></h5>
                 <ngb-pagination class="d-flex justify-content-end" [directionLinks]="false"
                   [collectionSize]="totalPages" [(page)]="pagePosition" (pageChange)="pageChanged($event)">
                 </ngb-pagination>

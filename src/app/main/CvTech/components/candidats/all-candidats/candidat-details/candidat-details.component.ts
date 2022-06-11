@@ -98,6 +98,11 @@ export class CandidatDetailsComponent implements OnInit {
             link: '/'
           },
           {
+            name: 'Candidats',
+            isLink: true,
+            link: '/'
+          },
+          {
             name: 'All Candidats',
             isLink: true,
             link: '/cvtech/candidats/allcandidats'

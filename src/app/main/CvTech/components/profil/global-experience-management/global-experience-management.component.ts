@@ -11,6 +11,7 @@ import { GlobalExperienceService } from 'app/main/CvTech/services/global-experie
   styleUrls: ['./global-experience-management.component.scss']
 })
 export class GlobalExperienceManagementComponent implements OnInit {
+  public contentHeader: object;
   public data?: GlobalExperience[]
   public exp : GlobalExperience = {name : '', description : ''}
 
@@ -22,6 +23,34 @@ export class GlobalExperienceManagementComponent implements OnInit {
 
   ngOnInit(): void {
    this.getData()
+   this.contentHeader = {
+    headerTitle: 'Experience',
+    actionButton: true,
+    breadcrumb: {
+      type: '',
+      links: [
+        {
+          name: 'Home',
+          isLink: true,
+          link: '/'
+        },
+        {
+          name: 'CvTech',
+          isLink: true,
+          link: '/'
+        },
+        {
+          name: 'Profil',
+          isLink: true,
+          link: '/'
+        },
+        {
+          name: 'Experience',
+          isLink: false
+        }
+      ]
+    }
+  };
   }
 
   getData() : void

@@ -43,7 +43,7 @@ export class AddCampaignComponent implements OnInit {
 
   ngOnInit(): void {
     this.contentHeader = {
-      headerTitle: 'Campaign',
+      headerTitle: 'Add Campaign',
       actionButton: true,
       breadcrumb: {
         type: '',
@@ -55,6 +55,11 @@ export class AddCampaignComponent implements OnInit {
           },
           {
             name: 'CvTech',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Campaign',
             isLink: true,
             link: '/'
           },

@@ -48,7 +48,7 @@ export class AddCandidatComponent implements OnInit {
   ngOnInit(): void {
     
     this.contentHeader = {
-      headerTitle: 'Candidats',
+      headerTitle: 'Add Candidat',
       actionButton: true,
       breadcrumb: {
         type: '',
@@ -60,6 +60,11 @@ export class AddCandidatComponent implements OnInit {
           },
           {
             name: 'CvTech',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Candidats',
             isLink: true,
             link: '/'
           },

@@ -12,6 +12,7 @@ import { FunctionService } from 'app/main/CvTech/services/function.service';
 export class FunctionComponent implements OnInit {
   data?: Function[]
   public func : Function = {name: '', description :''}
+  contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
   constructor(private functionService : FunctionService) { }
 
   funcForm = new FormGroup({
@@ -21,6 +22,34 @@ export class FunctionComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData()
+    this.contentHeader = {
+      headerTitle: 'Function',
+      actionButton: true,
+      breadcrumb: {
+        type: '',
+        links: [
+          {
+            name: 'Home',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'CvTech',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Profil',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Function',
+            isLink: false
+          }
+        ]
+      }
+    };
   }
 
   getData() : void 
