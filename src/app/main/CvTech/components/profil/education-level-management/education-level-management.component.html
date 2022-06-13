@@ -17,8 +17,8 @@
                                                 <label for="first-name">Name</label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <input type="text" id="edu-name" formControlName="name" class="form-control" name="edu-name"
-                                                    placeholder="Name" />
+                                                <input type="text" id="edu-name" formControlName="name"
+                                                    class="form-control" name="edu-name" placeholder="Name" />
                                             </div>
                                         </div>
                                     </div>
@@ -28,9 +28,9 @@
                                                 <label for="email-id">Description</label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <textarea id="campaign-desc" formControlName="description" placeholder="Description" name="edu-desc"
-                                                    rows="2" wrap="soft" class="form-control"
-                                                    data-v-aa799a9e=""></textarea>
+                                                <textarea id="campaign-desc" formControlName="description"
+                                                    placeholder="Description" name="edu-desc" rows="2" wrap="soft"
+                                                    class="form-control" data-v-aa799a9e=""></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -76,26 +76,37 @@
                                     </td>
                                     <td>{{obj.description}}</td>
                                     <td class="overflow-hidden">
-                                        <div ngbDropdown container="body">
-                                          <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle data-toggle="dropdown">
-                                            <i data-feather="more-horizontal"></i>
-                                          </button>
-                                          <div ngbDropdownMenu>
-                                            <a ngbDropdownItem href="javascript:void(0);">
-                                              <i data-feather="edit-2" class="mr-50"></i>
-                                              <span>Edit</span>
-                                            </a
-                                            >
-                                            <a ngbDropdownItem (click)="modalOpenDanger(modalDanger, obj.id)" routerLink="/reload" rippleEffect>
-                                             
-                                                <span>Delete</span>
-                                            </a>
-                                          </div>
-                                        </div>
-                                      </td>
-                                </tr>
+                                        <!-- <div ngbDropdown container="body">
+                                            <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle
+                                                data-toggle="dropdown">
+                                                <i data-feather="more-horizontal"></i>
+                                            </button>
+                                            <div ngbDropdownMenu>
+                                                <a ngbDropdownItem href="javascript:void(0);">
+                                                    <i data-feather="edit-2" class="mr-50"></i>
+                                                    <span>Edit</span>
+                                                </a>
+                                                <a ngbDropdownItem (click)="modalOpenDanger(modalDanger, obj.id)"
+                                                    routerLink="/reload" rippleEffect>
 
+                                                    <span>Delete</span>
+                                                </a>
+                                            </div>
+                                        </div> -->
+                                        <div container="body">
+                                            <button href="javascript:void(0);" type="button"
+                                                class="btn btn-flat-primary btn-sm" rippleEffect>
+                                                <i data-feather="file-text" class="mr-50"></i> Details
+                                            </button>
+                                            <button (click)="modalOpenDanger(modalDanger, obj.id)" type="button"
+                                                class="btn btn-flat-danger btn-sm" rippleEffect>
+                                                <i data-feather="trash-2" class="mr-50"></i> Delete
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -106,27 +117,27 @@
 <div class="modal-danger d-inline-block">
     <!-- Modal -->
     <ng-template #modalDanger let-modal>
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel160">Confirm</h5>
-  
-        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" tabindex="0" ngbAutofocus>
-       Are you sure you want to delete the education ?
-      </div>
-      <div class="modal-footer">
-  
-        <button type="button" class="btn btn-danger" (click)="modal.close('Accept click')" rippleEffect>
-          Cancel
-        </button>
-  
-        <button type="button" class="btn btn-danger" (click)="deleteData()" routerLink="/reload" rippleEffect>
-          Delete
-        </button>
-       
-      </div>
+        <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel160">Confirm</h5>
+
+            <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" tabindex="0" ngbAutofocus>
+            Are you sure you want to delete the education ?
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-danger" (click)="modal.close('Accept click')" rippleEffect>
+                Cancel
+            </button>
+
+            <button type="button" class="btn btn-danger" (click)="deleteData()" routerLink="/reload" rippleEffect>
+                Delete
+            </button>
+
+        </div>
     </ng-template>
     <!-- / Modal -->
-  </div>
+</div>

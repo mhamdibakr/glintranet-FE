@@ -101,7 +101,7 @@ export class AllCandidatsComponent implements OnInit {
   getAllUsers(): void {
     const params = {
       page : this.page-1,
-      size : 2,
+      size : 3,
       email : this.email,
       phone : this.phone,
       name : this.name

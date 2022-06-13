@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table" style="text-align: center;">
+                        <table class="table">
                           <thead>
                             <tr>
                               <th>#</th>
@@ -74,8 +74,8 @@
                                <span class="font-weight-bold">{{obj.name}}</span>
                               </td>
                               <td>{{obj.description}}</td>
-                              <td class="overflow-hidden">
-                                <div ngbDropdown container="body">
+                              <td class="">
+                                <!-- <div ngbDropdown container="body">
                                   <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle data-toggle="dropdown">
                                     <i data-feather="more-horizontal"></i>
                                   </button>
@@ -89,7 +89,17 @@
                                         <span>Delete</span>
                                     </a>
                                   </div>
+                                </div> -->
+                                
+                                <div container="body">
+                                    <button  href="javascript:void(0);"  type="button" class="btn btn-flat-primary btn-sm" rippleEffect>
+                                    <i data-feather="file-text" class="mr-50"></i> Details
+                                    </button>
+                                    <button (click)="modalOpenDanger(modalDanger, obj.id)" type="button" class="btn btn-flat-danger btn-sm" rippleEffect>
+                                    <i data-feather="trash-2" class="mr-50"></i> Delete
+                                    </button>
                                 </div>
+                                  
                               </td>
                             </tr>
                           </tbody>
@@ -99,4 +109,31 @@
             </div>
         </div>
     </div>
+</div>
+<div class="modal-danger d-inline-block">
+    <!-- Modal -->
+    <ng-template #modalDanger let-modal>
+        <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel160">Confirm</h5>
+
+            <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" tabindex="0" ngbAutofocus>
+            Are you sure you want to delete the education ?
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-danger" (click)="modal.close('Accept click')" rippleEffect>
+                Cancel
+            </button>
+
+            <button type="button" class="btn btn-danger" (click)="deleteData()" routerLink="/reload" rippleEffect>
+                Delete
+            </button>
+
+        </div>
+    </ng-template>
+    <!-- / Modal -->
 </div>
