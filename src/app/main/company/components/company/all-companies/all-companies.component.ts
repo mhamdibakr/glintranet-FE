@@ -123,35 +123,6 @@ export class AllCompaniesComponent implements OnInit {
       }
     );
   }
-
-
-  // Add
-
-  modalOpenPrimary(modalPrimary) {
-    this.modalService.open(modalPrimary, {
-      centered: true,
-      windowClass: 'modal modal-primary'
-    });
-  }
-
-  saveCompany(): void {
-    const data = {
-      name: this.company.name,
-      address: this.company.address,
-      email: this.company.email,
-      phoneNumber: this.company.phoneNumber,
-      webSite: this.company.webSite
-    }
-    this.companyService.createCompany(data).subscribe(
-      {
-        next: (data) => {
-          this.modalService.dismissAll("Cross click");
-          this.getCompanies();
-        }, error: (err) => {
-          console.error(err);
-        }
-      });
-  }
   
   //Edit 
 

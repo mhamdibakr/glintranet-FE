@@ -19,6 +19,11 @@ const routes = [
     path: 'home',
     component: HomeComponent,
     data: { animation: 'home' }
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
   }
 ];
 

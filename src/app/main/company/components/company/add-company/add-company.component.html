@@ -64,14 +64,13 @@
                     </div>
                   </div>
                   <div class="col-12">
-                    <div class="form-group row">
-                      <div class="col-sm-2 col-form-label">
+                    <div class="form-group row justify-content-start">
+                      <div class="col-1 col-form-label" style="margin-right: 2.3rem;">
                         <label for="address">Address</label>
                       </div>
-                      <div class="col-sm-10 d-flex justify-content-center">
+                      <div class="col-10 d-flex justify-content-center">
                         <textarea id="address" placeholder="address" name="c-rp-cs" rows="2" wrap="soft"
-                          class="form-control " data-v-aa799a9e=""
-                          [(ngModel)]="company.address" >
+                          class="form-control" [(ngModel)]="company.address" >
                         </textarea>
                       </div>
                     </div>
@@ -79,8 +78,9 @@
 
                   <br><br>
                   <div class="col-sm-9 offset-sm-3">
-                    <button type="submit" rippleEffect class="btn btn-primary mr-1" (click)="saveCompany()">save</button>
+                    <button type="submit" rippleEffect class="btn btn-primary mr-1" (click)="onSubmit()">save</button>
                     <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
+                    <swal></swal>
                   </div>
                 </div>
               </form>

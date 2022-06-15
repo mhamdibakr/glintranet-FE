@@ -170,18 +170,11 @@
                   <div class="d-flex justify-content-end">
                     <button type="reset" rippleEffect class="mr-1 btn btn-outline-secondary">Reset</button>
                    
-                    <button type="submit" (click)="onSubmit()" class="btn btn-primary"[swal]="SweetAlertBottomEnd" rippleEffect>Save</button>
-                    <!-- Swal of Sweet Alert With Position bottom-end -->
-                    <swal
-                      #SweetAlertBottomEnd
-                      title="Your work has been saved"
-                      icon="success"
-                      [showConfirmButton]="false"
-                      [timer]="1800"
-                      [position]="'bottom-end'"
-                    >
-                    </swal>
-                    <!--/ Swal of Sweet Alert With Position bottom-end -->
+                    <button type="submit" class="btn btn-primary"
+                    rippleEffect>Save</button>
+                  <!-- Swal of Sweet Alert With Position center -->
+                  <swal></swal>
+                  <!--/ Swal of Sweet Alert With Position center -->
                   </div>
                 </div>
               </div>

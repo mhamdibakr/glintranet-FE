@@ -6,33 +6,6 @@
         <div class="card">
           <div class="card-body">
 
-
-            <!-- header media -->
-
-
-            <!-- <div class="media">
-              <a href="javascript:void(0);" class="mr-25">
-                <img class="rounded mr-50" alt="profile image" height="76" width="80" />
-              </a>
-               upload and reset button 
-              <div class="media-body mt-75 ml-1">
-                <button (click)="file.click()" for="account-upload" class="btn btn-sm btn-primary mb-75 mr-75"
-                  rippleEffect>
-                  Upload
-                </button>
-                <input type="file" #file id="account-upload" hidden accept="image/*" />
-                <button class="btn btn-sm btn-outline-secondary mb-75" rippleEffect>Reset</button>
-                <p>Allowed JPG, GIF or PNG. Max size of 800kB</p>
-              </div>
-              / upload and reset button 
-            </div> -->
-
-
-            <!--/ header media -->
-
-
-
-
             <div class="row media-list media-bordered">
               <div class="col-sm-6">
                 <div class="form-group">
@@ -217,9 +190,11 @@
                         <div class="col-12 col-sm-6">
                           <div class="form-group">
                             <label for="account-city">City</label>
-                            <input type="text" class="form-control" placeholder="{{User?.city}}" formControlName="city"
-                              [ngClass]="{'is-invalid' : submitted && 
-                          f['city'].errors}" />
+                            <input 
+                              type="text" 
+                              class="form-control" 
+                              formControlName="city"
+                              [ngClass]="{'is-invalid' : submitted && f['city'].errors}" />
                             <div *ngIf="submitted && f['city'].errors" class="invalid-feedback">
                               <div *ngIf=" f['city'].errors['required'] ">City is required</div>
                             </div>
@@ -250,7 +225,7 @@
                         <div class="col-12">
                           <div class="form-group">
                               <label  for="accountTextarea">Message</label>
-                              <textarea id="campaign-rp-cs" placeholder="{{User?.message}}" 
+                              <textarea id="campaign-rp-cs" [value]="fgfgfgfgf" placeholder="{{User?.message}}" 
                                 name="message" rows="4"
                                 formControlName="message" 
                                 [ngClass]="{ 'is-invalid': submitted && f['message'].errors }"

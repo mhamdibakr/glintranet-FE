@@ -15,6 +15,7 @@ import { GlobalExperienceService } from 'app/main/CvTech/services/global-experie
 import { CurrentSituationService } from 'app/main/CvTech/services/current-situation.service';
 import { AvailabiltyService } from 'app/main/CvTech/services/availabilty.service';
 import { CurrentSituation } from 'app/main/CvTech/models/current-situation';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -117,6 +118,12 @@ export class AddCampaignComponent implements OnInit {
       {
         next: (data) => {
           console.log(data);
+          Swal.fire({
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          });
           this.router.navigateByUrl("/cvtech/campaign/allcampaigns");
         }, error: (err) => {
           console.error(err);

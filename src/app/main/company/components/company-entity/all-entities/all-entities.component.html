@@ -33,8 +33,7 @@
                 [columnMode]="'flex'" 
                 [headerHeight]="40"
                 [footerHeight]="50" 
-                [rowHeight]="58"
-                [limit]="10" 
+                [rowHeight]="58" 
                 rowHeight="auto" 
                 [rows]="entities"
                 [selected]="chkBoxSelected"
@@ -151,12 +150,6 @@
         <br>
         <div class="col-sm-9">
        
-       
-
-            <!--<input type="text" id="namecomp" class="form-control"
-                name="namecomp"
-                [(ngModel)]="company.name" />
-            -->
                 <select class="form-control"
                 >
                     <option *ngFor="let company of companies" id="ent"

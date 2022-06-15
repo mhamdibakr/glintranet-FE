@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AllCandidat } from '../../../models/all-candidat.model';
 import { AllCandidatService } from '../../../services/all-candidat.service';
 
@@ -26,7 +27,7 @@ export class AddCandidatComponent implements OnInit {
     birthDate: undefined,
     message: undefined
   }
-  
+
 
   public form: FormGroup = new FormGroup({
     civility: new FormControl(''),
@@ -41,12 +42,12 @@ export class AddCandidatComponent implements OnInit {
   });
   submitted = false;
   constructor(private formBuilder: FormBuilder,
-     private AllCandidatService: AllCandidatService,
-     private router: Router,
-     ) { }
+    private AllCandidatService: AllCandidatService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
-    
+
     this.contentHeader = {
       headerTitle: 'Add Candidat',
       actionButton: true,
@@ -116,7 +117,7 @@ export class AddCandidatComponent implements OnInit {
       }
     );
 
-    
+
   }
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
@@ -127,20 +128,29 @@ export class AddCandidatComponent implements OnInit {
       return;
     }
     this.candidat = this.form.value;
-    console.log(this.candidat);
 
+    this.addNewCandidat();
+
+  }
+  private addNewCandidat() {
     this.AllCandidatService.addCandidat(this.candidat).subscribe(
       {
         next: (response: any) => {
           console.log(response);
+          Swal.fire({
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          });
           this.router.navigateByUrl("/cvtech/candidats/allcandidats");
         }, error: (err) => {
           console.error(err);
         }
       }
     );
-
   }
+
   onReset(): void {
     this.submitted = false;
     this.form.reset();
