@@ -1,30 +1,38 @@
-import { Postulation } from "./postulation.model";
-
 export class Candidat {
     id: number;
     civility: String;
-    firstName: String;
-    lastName: String;
+    name:String;
     email: String;
-    phone: String;
+    phone: number;
     adress: String;
     city: String;
     country: String;
     birthDate: Date;
-    Message: String;
-    postulation: Postulation[];
+    message: String;
+    
 
-    constructor(civility: String, firstName: String, lastName: String, email: String, phone: String, adress: String, city: String, country: String, birthDate: Date, Message: String, postulation: Postulation[]) {
-        this.civility = civility;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    constructor(
+        id: number,
+        civility: String,
+        name:String,
+        email: String,
+        phone: number,
+        adress: String,
+        city: String,
+        country: String,
+        birthDate: Date,
+        message: String,
+    ) {
+        this.id = id;
+        this.name = name;
         this.email = email;
+        this.civility = civility;
         this.phone = phone;
         this.adress = adress;
         this.city = city;
         this.country = country;
         this.birthDate = birthDate;
-        this.Message = Message
-        this.postulation = postulation;
+        this.message = message;
     }
+    
 }

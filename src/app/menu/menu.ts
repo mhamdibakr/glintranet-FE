@@ -14,8 +14,7 @@ export const menu: CoreMenu[] = [
     type: 'collapsible',
     icon: 'menu',
 
-    children: 
-    [
+    children: [
       {
         id: 'dashboard',
         title: 'MENU.Dashboard',
@@ -31,7 +30,7 @@ export const menu: CoreMenu[] = [
         url: 'cvtech/cvs'
       },
       {
-        id: 'compaign',
+        id: 'campaign',
         title: 'MENU.Campaign',
         type: 'collapsible',
         icon: 'folder-plus',
@@ -41,92 +40,163 @@ export const menu: CoreMenu[] = [
             title: 'All campaigns',
             type: 'item',
             icon: 'list',
-            url: 'cvtech/allcampaigns'
+            url: 'cvtech/campaign/allcampaigns'
           },
           {
             id: 'addcampaign',
             title: 'Add campaign',
             type: 'item',
             icon: 'plus-square',
-            url: 'cvtech/addcampaign'
+            url: 'cvtech/campaign/addcampaign'
           },
         ]
-        
       },
       {
-        id: 'users',
-        title: 'MENU.Users',
+        id: 'candidats',
+        title: 'Candidats',
         type: 'collapsible',
         icon: 'users',
         children:[
           {
-            id: 'allusers',
-            title: 'All user',
+            id: 'allcandidats',
+            title: 'All candidats',
             type: 'item',
             icon: 'list',
-            url: 'cvtech/allusers'
+            url: 'cvtech/candidats/allcandidats'
           },
           {
-            id: 'adduser',
-            title: 'Add User',
+            id: 'addcandidat',
+            title: 'Add Candidat',
             type: 'item',
             icon: 'plus-square',
-            url: 'cvtech/adduser'
+            url: 'cvtech/candidats/addcandidat'
           }
         ]
       },
       {
-        id: 'settings',
-        title: 'MENU.Settings',
+        id: 'profil',
+        title: 'Profil',
+        //translate: 'MENU.cvtech',
         type: 'collapsible',
         icon: 'book',
         children: [
           {
-            id: 'gne',
-            title: 'MENU.GNE',
+            id: 'edu',
+            title: 'Education',
             type: 'item',
             icon: 'file',
-            url: 'cvtech/education-management'
+            url: 'cvtech/profile/education'
           },
           {
-            id: 'geg',
-            title: 'MENU.GEG',
+            id: 'ge',
+            title: 'Global Exprience',
             type: 'item',
             icon: 'file',
-            url: 'cvtech/global-experience'
+            url: 'cvtech/profile/experience'
           },
           {
-            id: 'gsc',
-            title: 'MENU.GSC',
+            id: 'cs',
+            title: 'Current Situation',
             type: 'item',
             icon: 'file',
-            url: 'cvtech/skills-management'
+            url: 'cvtech/profile/situation'
           },
           {
-            id: 'gfs',
-            title: 'MENU.GFS',
+            id: 'skill',
+            title: 'Skills',
             type: 'item',
             icon: 'file',
-            url: 'cvtech/funtion-management'
+            url: 'cvtech/profile/skills'
           },
           {
-            id: 'ga',
-            title: 'MENU.GA',
+            id: 'avail',
+            title: 'Availabilty',
             type: 'item',
             icon: 'file',
-            url: 'cvtech/availability-management'
+            url: 'cvtech/profile/availabilty'
           },
           {
-            id: 'gcs',
-            title: 'MENU.GCS',
+            id: 'func',
+            title: 'Function',
             type: 'item',
             icon: 'file',
-            url: 'cvtech/current-situation'
+            url: 'cvtech/profile/function'
           }
         ]
       },
     ]
 
   },
+  {
+    id: 'companies',
+    type: 'collapsible',
+    title: 'MENU.COMPANY.APP',
+    icon: 'menu',
+
+    children: [
+      {
+        id: 'company',
+        title: 'MENU.COMPANY.COMP',
+        type: 'collapsible',
+        icon: 'grid',
+
+        children:[
+          {
+            id: 'allcompanies',
+            title: 'MENU.COMPANY.ALLCOMPANIES',
+            type: 'item',
+            icon: 'list',
+            url: 'companies/company/allcompanies'
+          },
+          {
+            id: 'addcompany',
+            title: 'MENU.COMPANY.ADDCOMPANY',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'companies/company/addcompany'
+          },
+        ]
+      },
+      {
+        id: 'Companyentity',
+        title: 'MENU.COMPANY.COMPANYENTITY',
+        type: 'collapsible',
+        icon: 'grid',
+        children: [
+          {
+            id: 'Companyentity',
+            title: 'MENU.COMPANY.ALLENTITIES',
+            type: 'item',
+            icon: 'list',
+            url: 'companies/company-entity/allentities'
+          },
+          {
+            id: 'Companyentity',
+            title: 'MENU.COMPANY.ADDCOMPANYENTITY',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'companies/company-entity/addcompanyentity'
+          }
+        ]
+      },
+      {
+        id: 'Department',
+        title: 'MENU.COMPANY.DEPARTMENT',
+        type: 'collapsible',
+        icon: 'grid',
+        children: [
+          {
+            id: 'adddepartment',
+            title: 'MENU.COMPANY.ADDDEPARTMENT',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'companies/department/addDepartment'
+          }
+        ]
+      }
+    ]
+  }
+
+
 
 ]

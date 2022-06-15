@@ -5,7 +5,12 @@
 export const environment = {
   production: false,
   hmr: false,
-  apiUrl: 'http://localhost:4000'
+
+  UrlCvTech: 'http://localhost:8092/api',
+  UrlCompany: 'http://localhost:8091/api',
+  
+  apiUrl: 'http://localhost:4000',
+  //apiBaseUrl: 'http://localhost:8092/api'
 };
 
 /*

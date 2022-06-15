@@ -1,16 +1,24 @@
-import { Campaign } from "./campaign.model";
-import { Candidat } from "./candidat.model";
-
 export class Postulation {
-    candidat: Candidat;
-    campaign: Campaign;
-    status: String;
+    id: number;
     date_postulation: Date;
+    status: String;
 
-    constructor(candidat: Candidat, campaign: Campaign, status: String, date_postulation: Date) {
-        this.candidat = candidat;
-        this.campaign = campaign;
-        this.status = status;
+    campaign_id: number;
+    candidat_id: number;
+
+    constructor(
+        id: number,
+        date_postulation: Date,
+        status: String,
+
+        campaign_id: number,
+        candidat_id: number,
+        ) {
+        this.id = id;
         this.date_postulation = date_postulation;
+        this.status = status;
+        this.campaign_id = campaign_id;
+        this.candidat_id = candidat_id;
     }
+
 }

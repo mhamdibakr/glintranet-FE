@@ -5,11 +5,11 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "strict": false,
     "module": "es2020",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "noPropertyAccessFromIndexSignature": false, //
     "importHelpers": true,
     "target": "es5",
     "typeRoots": ["node_modules/@types"],
