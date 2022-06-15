@@ -131,7 +131,7 @@ export const menu: CoreMenu[] = [
     id: 'companies',
     type: 'collapsible',
     title: 'MENU.COMPANY.APP',
-    icon: 'list',
+    icon: 'menu',
 
     children: [
       {
