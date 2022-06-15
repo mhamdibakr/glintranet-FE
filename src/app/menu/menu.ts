@@ -79,7 +79,7 @@ export const menu: CoreMenu[] = [
         //translate: 'MENU.cvtech',
         type: 'collapsible',
         icon: 'book',
-        children: [
+        children:[
           {
             id: 'edu',
             title: 'Education',
@@ -90,9 +90,24 @@ export const menu: CoreMenu[] = [
           {
             id: 'ge',
             title: 'Global Exprience',
-            type: 'item',
-            icon: 'file',
-            url: 'cvtech/profile/experience'
+            type: 'collapsible',
+            icon: 'award',
+            children:[
+              {
+                id: 'All-Exp',
+                title: 'All Experiences',
+                type: 'item',
+                icon: 'align-left',
+                url: 'cvtech/profile/experience'
+              },
+              {
+                id: 'Add-Exp',
+                title: 'Add Experience',
+                type: 'item',
+                icon: 'plus-square',
+                url: 'cvtech/profile/add-exp'
+              }
+            ]
           },
           {
             id: 'cs',

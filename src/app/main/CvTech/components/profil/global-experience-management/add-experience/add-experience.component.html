@@ -1,0 +1,52 @@
+
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+        <section id="basic-carousel">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title text-primary">Add Experience</h4>
+                        </div>
+                        
+                        <div class="card-body">
+                            <form class="form form-horizontal" [formGroup]="exprienceForm" (ngSubmit)="addData()">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group row">
+                                            <div class="col-sm-3 col-form-label">
+                                                <label for="first-name">Name</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <input type="text" formControlName="name" id="first-name" class="form-control" name="fname"
+                                                    placeholder="Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group row">
+                                            <div class="col-sm-3 col-form-label">
+                                                <label for="email-id">Description</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <textarea id="campaign-desc" formControlName="description" placeholder="Description" name="c-desc"  rows="2" wrap="soft" class="form-control" data-v-aa799a9e=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-9 offset-sm-3">
+                                        <button type="submit" routerLink="/cvtech/profile/experience" rippleEffect class="btn btn-primary mr-1">Add</button>
+                                        <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+               
+
+            </div>
+        </section>
+
+    </div>
+</div>

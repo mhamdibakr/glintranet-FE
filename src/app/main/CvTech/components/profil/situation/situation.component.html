@@ -44,7 +44,68 @@
 
             </div>
         </section>
-        <div class="row" id="table-hover-animation">
+
+
+         <!-- Data table -->
+         <div class="table-responsive ">
+            <table class="table">
+
+              <ngx-datatable class="bootstrap core-bootstrap ml-1" [columnMode]="'flex'" [headerHeight]="40"
+                [footerHeight]="50" [rowHeight]="58"  rowHeight="auto" [rows]="data"
+                >
+
+                <ngx-datatable-column name="Full Name" [flexGrow]="1">
+                  <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.name}}
+                  </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Description" [flexGrow]="1">
+                  <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{row?.description}}
+                  </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Actions" [flexGrow]="0.75" >
+                  <ng-template let-row="row" ngx-datatable-cell-template>
+                    <div class="d-flex align-items-center">
+                      <div ngbDropdown container="body">
+                        <a
+                          ngbDropdownToggle
+                          href="javascript:void(0);"
+                          class="hide-arrow"
+                          id="dropdownBrowserState"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <i data-feather="more-horizontal" class="text-primary cursor-pointer mr-50"></i>
+                        </a>
+                        <div ngbDropdownMenu class="drodopwn-menu-right" aria-labelledby="dropdownBrowserState">
+                          <a routerLink="candidat-details/{{row.id}}" ngbDropdownItem class="d-flex align-items-center"
+                            ><i data-feather="file-text" class="mr-50"></i> Details
+                          </a>
+                          <a 
+                          href="javascript:void(0)" 
+                          ngbDropdownItem 
+                          class="d-flex align-items-center"
+                          (click)="modalOpenDanger(modalDanger, row?.id)">
+                            <i data-feather="trash-2" class="mr-50"></i> Delete
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                </ngx-datatable-column>
+              </ngx-datatable>
+              <div class=" col-lg-12">
+                <h5 class="text-right mb-1"></h5>
+                <ngb-pagination class="d-flex justify-content-end" [directionLinks]="false"
+                  [collectionSize]="totalPages" [(page)]="pagePosition" (pageChange)="pageChanged($event)">
+                </ngb-pagination>
+              </div>
+            </table>
+        <!-- <div class="row" id="table-hover-animation">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
@@ -94,6 +155,6 @@
                       </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

@@ -14,6 +14,7 @@ import { FunctionComponent } from './function/function.component';
 import { GlobalExperienceManagementComponent } from './global-experience-management/global-experience-management.component';
 import { SkillsComponent } from './skills/skills.component';
 import { SituationComponent } from './situation/situation.component';
+import { AddExperienceComponent } from './global-experience-management/add-experience/add-experience.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
     component: GlobalExperienceManagementComponent,
   },
   {
+    path: 'add-exp',
+    component: AddExperienceComponent,
+  },
+  {
     path: 'situation',
     component: SituationComponent,
   },
@@ -50,7 +55,8 @@ const routes: Routes = [
     GlobalExperienceManagementComponent,
     EducationLevelManagementComponent,
     FunctionComponent,
-    SituationComponent
+    SituationComponent,
+    AddExperienceComponent
   ],
   imports: [
     CommonModule,
