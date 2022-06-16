@@ -24,7 +24,12 @@ export const locale = {
         ALLCOMPANIES:"Tous les compagnies",
         ADDCOMPANYENTITY:"Ajouter une entité de compagnie",
         ADDDEPARTMENT:"Ajouter un département",
-        ALLENTITIES:"Toutes les entitées"
+        ALLDEPARTMENT:"Tous les départements",
+        ALLENTITIES:"Toutes les entitées",
+        TEAM:"Equipe",
+        ALLTEAMS:"Tous les équipes",
+        PROJECT:"Projet",
+        ALLPROJECTS:"Tous les projets"
       }
     }
   }
