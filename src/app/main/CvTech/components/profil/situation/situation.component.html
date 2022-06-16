@@ -46,6 +46,18 @@
         </section>
 
 
+
+        <div class="row" id="table-hover-animation">
+          <div class="col-12">
+              <div class="card">
+                  <div class="card-header">
+                      <h4 class="card-title text-primary">All Situations</h4>
+                      <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                          <input type="search" name="name" id="name" [(ngModel)]="name" placeholder="Search by Name"
+                                 class="form-control ml-25" (change)="getData()" />
+                      </div>
+                  </div>
+
          <!-- Data table -->
          <div class="table-responsive ">
             <table class="table">
@@ -105,17 +117,9 @@
                 </ngb-pagination>
               </div>
             </table>
-        <!-- <div class="row" id="table-hover-animation">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title text-primary">All Situations</h4>
-                        <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
-                            <input type="search" placeholder="Search" class="form-control ml-25" />
-                        </div>
-                    </div>
+         
 
-                    <div class="table-responsive">
+                   <!-- <div class="table-responsive">
                         <table class="table" style="text-align: center;">
                           <thead>
                             <tr>
@@ -152,9 +156,9 @@
                             </tr>
                           </tbody>
                         </table>
-                      </div>
+                      </div> -->
                 </div>
             </div>
-        </div> -->
+        </div> 
     </div>
 </div>

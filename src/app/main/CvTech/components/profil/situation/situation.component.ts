@@ -13,8 +13,8 @@ import { CurrentSituationService } from 'app/main/CvTech/services/current-situat
 export class SituationComponent implements OnInit 
 {
 
-public pagePosition = 2;
-public totalPages=0;
+public pagePosition;
+public totalPages;
 contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
   public data?: CurrentSituation[]
   public situation : CurrentSituation = { name : '', description : ''}
