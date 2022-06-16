@@ -66,6 +66,7 @@ export class AllCandidatsComponent implements OnInit {
 
   page = 1;
   count = 0;
+  public sizeSelect: number = 2;
   email = '';
   phone = '';
   name = ''
@@ -101,7 +102,7 @@ export class AllCandidatsComponent implements OnInit {
   getAllUsers(): void {
     const params = {
       page : this.page-1,
-      size : 4,
+      size : this.sizeSelect,
       email : this.email,
       phone : this.phone,
       name : this.name

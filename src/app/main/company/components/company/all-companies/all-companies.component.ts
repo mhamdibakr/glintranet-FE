@@ -15,7 +15,6 @@ export class AllCompaniesComponent implements OnInit {
 
   companies?: Company[];
   public chkBoxSelected = [];
-  pageSize = 5;
 
 
   company: Company = {
@@ -80,7 +79,8 @@ export class AllCompaniesComponent implements OnInit {
 
   page = 1;
   count = 0;
-  name = ''
+  name = '';
+  sizeSelect = 5;
   public pagePosition = 1;
   public totalPages = 0;
 
@@ -108,7 +108,7 @@ export class AllCompaniesComponent implements OnInit {
   public getCompanies(): void {
     const params = {
       page: this.page - 1,
-      size: this.pageSize,
+      size: this.sizeSelect,
       name: this.name
     }
     this.companyService.getCompanies(params).subscribe(
@@ -140,7 +140,7 @@ export class AllCompaniesComponent implements OnInit {
               [
                 Validators.required,
                 Validators.minLength(3),
-                Validators.pattern("[a-zA-Z ]*")
+                Validators.pattern(/[A-zÀ-ú]/)
               ]
             ],
             webSite: [this.company.webSite, Validators.required],
@@ -172,8 +172,6 @@ export class AllCompaniesComponent implements OnInit {
   private modal = null;
   onSubmit(): void {
     if (this.form.invalid) {
-      console.log(this.form.value);
-      
       return;
     }
     this.company.address = this.form.value.address;
@@ -182,7 +180,6 @@ export class AllCompaniesComponent implements OnInit {
     this.company.webSite = this.form.value.webSite;
     this.company.name = this.form.value.name;
 
-    console.log(this.company);
     this.updateCompany(this.company);
   }
 
