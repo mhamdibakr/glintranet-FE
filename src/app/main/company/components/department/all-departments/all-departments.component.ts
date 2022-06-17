@@ -4,6 +4,8 @@ import { CompanyEntityService } from 'app/main/company/services/company-entity.s
 import { EntityDepartmentService } from 'app/main/company/services/entity-department.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CompanyEntity } from 'app/main/company/models/company-entity.model';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-all-departments',
@@ -24,7 +26,7 @@ export class AllDepartmentsComponent implements OnInit {
 
   constructor(private modalService: NgbModal, 
     private departmentservice : EntityDepartmentService,
-    private entityservice:CompanyEntityService) {}
+    private entityservice:CompanyEntityService,private formBuilder: FormBuilder) {}
 
   ngOnInit(): void 
   {
@@ -59,7 +61,27 @@ export class AllDepartmentsComponent implements OnInit {
         ]
       }
     };
+    this.form = this.formBuilder.group(
+      {
+        departmentname: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(3)
+          ]
+        ]
+      }
+    );
   }
+
+  public form: FormGroup = new FormGroup({
+    departmentname: new FormControl('')
+  });
+  submitted = false;
+
+  get formControl(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  } 
 
   // ------------ pagination & search ------------
 
@@ -118,23 +140,39 @@ export class AllDepartmentsComponent implements OnInit {
     });
   }
 
-  adddepartment(): void {
-    const data = {
-       name: this.department.name,
-       entity_id: this.identity
-     }
-     this.departmentservice.createDepartment(data).subscribe(
-       {
-         next: (data) => {
-           this.ngOnInit();
-         }, error: (err) => {
-           console.error(err);
-         }
-       });
+  AddDepartment(): void {
+    this.submitted = true;
+    if (this.form.invalid) {
+      console.log(this.form.value);
+      return;
+    }
+    this.department.name = this.form.value.departmentname;
+    this.department.entity_id = this.identity;
+    this.createDepartment(this.department);
+  }
+
+  createDepartment(department:EntityDepartment): void {
+    this.departmentservice.createDepartment(department).subscribe(
+      {
+        next: (data) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Department has been saved with success',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          this.modalService.dismissAll("Cross click");
+          this.ngOnInit()
+          this.submitted = false;
+        }, error: (err) => {
+          console.error(err);
+        }
+      });
    }
 
    onChange(e: any) {
     this.identity=e.target.value;
+    console.log(this.identity)
   }
 
   // ------------ Delete Department ------------ 
@@ -163,27 +201,22 @@ export class AllDepartmentsComponent implements OnInit {
       entity_id:null
     }
 
-    updateDepartment():void{
-      const data = {
-        id: this.edit.id,
-        name: this.edit.name,
-        entity_id: this.identity
-      }
-      this.departmentservice.updateDepartment(data.id, data).subscribe(
-        {
-          next: (data) => {
-            this.ngOnInit();
-          }, error: (err) => {
-            console.error(err);
-          }
-        });
-    }
-  
     modalEdit(modalPrimaryedit, id) {
       this.departmentservice.getDepartment(id).subscribe({
         next: (data) => {
-          this.edit = data;
-          this.edit.entity_id=this.identity
+          this.department = data;
+          this.department.entity_id = this.identity;
+          this.form = this.formBuilder.group(
+            {
+              departmentname: [
+                this.department.name,
+                [
+                  Validators.required,
+                  Validators.minLength(3)
+                ]
+              ]
+            }
+          );
         }, error: (err) => {
           console.error(err);
         }
@@ -192,6 +225,29 @@ export class AllDepartmentsComponent implements OnInit {
         centered: true,
         windowClass: 'modal modal-primary',
       });
+    }
+  
+    updateDepartment(): void {
+      this.submitted = true;
+      if (this.form.invalid) {
+        return;
+      }
+      this.department.name = this.form.value.departmentname;
+      this.department.entity_id=this.identity;
+      this.editDepartment(this.department);
+    }
+
+    editDepartment(department:EntityDepartment):void{
+      this.departmentservice.updateDepartment(department.id, department).subscribe(
+        {
+          next: (data) => {
+            this.modalService.dismissAll("Cross click");
+            this.ngOnInit()
+            this.submitted = false;
+          }, error: (err) => {
+            console.error(err);
+          }
+        });
     }
     
     // ------------ GET entities for select ------------

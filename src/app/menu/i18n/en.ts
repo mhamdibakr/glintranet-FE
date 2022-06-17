@@ -29,7 +29,9 @@ export const locale = {
         TEAM:"Team",
         ALLTEAMS:"All teams",
         PROJECT:"Project",
-        ALLPROJECTS:"All projects"
+        ALLPROJECTS:"All projects",
+        EMPLOYEE:"Employee",
+        ADDEMPLOYEE:"Add employee"
       }
     }
   }

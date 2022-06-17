@@ -9,6 +9,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ContentHeaderModule } from "app/layout/components/content-header/content-header.module";
 import { AllTeamsComponent } from "./all-teams.component";
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 const routes: Routes = [
     {
@@ -30,7 +31,8 @@ const routes: Routes = [
       NgSelectModule,
       FormsModule,
       NgxDatatableModule,
-      CoreCardModule
+      CoreCardModule,
+      SweetAlert2Module.forRoot()
     ],
   
     providers: []

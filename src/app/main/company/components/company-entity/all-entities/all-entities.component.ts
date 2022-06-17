@@ -4,6 +4,8 @@ import { CompanyEntity } from '../../../models/company-entity.model';
 import { Company } from '../../../models/company.model';
 import { CompanyEntityService } from '../../../services/company-entity.service';
 import { CompanyService } from '../../../services/company.service';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-all-entities',
@@ -26,7 +28,7 @@ export class AllEntitiesComponent implements OnInit {
   idcompany:any;
 
   constructor(private modalService: NgbModal, private entityService : CompanyEntityService,
-   private companyservice:CompanyService) {}
+   private companyservice:CompanyService,private formBuilder: FormBuilder) {}
 
   ngOnInit(): void 
   {
@@ -61,6 +63,26 @@ export class AllEntitiesComponent implements OnInit {
         ]
       }
     };
+    this.form = this.formBuilder.group(
+      {
+        entityname: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(3)
+          ]
+        ]
+      }
+    );
+  }
+
+  public form: FormGroup = new FormGroup({
+    entityname: new FormControl('')
+  });
+  submitted = false;
+
+  get formControl(): { [key: string]: AbstractControl } {
+    return this.form.controls;
   }
 
 
@@ -114,6 +136,17 @@ export class AllEntitiesComponent implements OnInit {
 
    // ------------ Add Entity ------------
 
+   AddEntity(): void {
+    this.submitted = true;
+    if (this.form.invalid) {
+      console.log(this.form.value);
+      return;
+    }
+    this.entity.name = this.form.value.entityname;
+    this.entity.company_id = this.idcompany;
+    this.createEntity(this.entity);
+  }
+
   modalAdd(modalPrimaryAdd) {
     this.modalService.open(modalPrimaryAdd, {
       centered: true,
@@ -121,19 +154,23 @@ export class AllEntitiesComponent implements OnInit {
     });
   }
 
-  addentity(): void {
-    const data = {
-       name: this.entity.name,
-       company_id: this.idcompany
-     }
-     this.entityService.createCompanyEntity(data).subscribe(
-       {
-         next: (data) => {
-           this.getAllentities();
-         }, error: (err) => {
-           console.error(err);
-         }
-       });
+  createEntity(entity:CompanyEntity): void {
+    this.entityService.createCompanyEntity(entity).subscribe(
+      {
+        next: (data) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Entity has been saved with success',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          this.modalService.dismissAll("Cross click");
+          this.ngOnInit()
+          this.submitted = false;
+        }, error: (err) => {
+          console.error(err);
+        }
+      });
    }
 
    onChange(e: any) {
@@ -142,8 +179,20 @@ export class AllEntitiesComponent implements OnInit {
 
   // ------------ Delete Entity ------------
 
+  private modal = null;
+  private identity = 0;
+
+  modalOpenDanger(modalDanger, id: any) {
+    this.identity = id;
+    this.modal = this.modalService.open(modalDanger, {
+      centered: true,
+      windowClass: 'modal modal-danger'
+    });
+  }
+
     deleteEntity(id: number){
-      this.entityService.deleteCompanyEntity(id).subscribe({
+      this.modal.close('Accept click');
+      this.entityService.deleteCompanyEntity(this.identity).subscribe({
         next: () => {
           this.ngOnInit();
         },
@@ -162,27 +211,23 @@ export class AllEntitiesComponent implements OnInit {
       departements:[],
       company_id:null
     }
-
-    updateEntity(): void {
-      const data = {
-        id: this.edit.id,
-        name: this.edit.name,
-        company_id: this.idcompany
-      }
-      this.entityService.updateCompanyEntity(data.id, data).subscribe(
-        {   next: (data) => {
-            this.ngOnInit();
-          }, error: (err) => {
-            console.error(err);
-          }
-        });
-    }
   
     modalEdit(modalPrimaryedit, id) {
       this.entityService.getCompanyEntity(id).subscribe({
         next: (data) => {
-          this.edit = data;
-          this.edit.company_id=this.idcompany
+          this.entity = data;
+          this.entity.company_id = this.idcompany;
+          this.form = this.formBuilder.group(
+            {
+              entityname: [
+                this.entity.name,
+                [
+                  Validators.required,
+                  Validators.minLength(3)
+                ]
+              ]
+            }
+          );
         }, error: (err) => {
           console.error(err);
         }
@@ -192,6 +237,30 @@ export class AllEntitiesComponent implements OnInit {
         windowClass: 'modal modal-primary',
       });
     }
+  
+    updateEntity(): void {
+      this.submitted = true;
+      if (this.form.invalid) {
+        return;
+      }
+      this.entity.name = this.form.value.entityname;
+      this.entity.company_id=this.idcompany;
+      this.editEntity(this.entity);
+    }
+
+    editEntity(entity:CompanyEntity): void {
+      this.entityService.updateCompanyEntity(entity.id, entity).subscribe(
+        {
+          next: (data) => {
+            this.modalService.dismissAll("Cross click");
+            this.ngOnInit()
+            this.submitted = false;
+          }, error: (err) => {
+            console.error(err);
+          }
+        });
+    }
+
 
     // ------------ GET companies for select ------------
    

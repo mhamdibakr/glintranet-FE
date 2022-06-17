@@ -84,7 +84,7 @@
 
                           <a href="javascript:void(0)" 
                               ngbDropdownItem class="d-flex align-items-center" 
-                              (click)="deleteEntity(row?.id)">
+                              (click)="modalOpenDanger(modalDanger, row?.id)">
                             <i data-feather="trash-2" class="mr-50"></i>
                                  Delete
                           </a>
@@ -145,6 +145,7 @@
     <!------------------ Edit Entity ------------------->
 
   <ng-template #modalPrimaryedit let-modal>
+    <form [formGroup]="form" (ngSubmit)="updateEntity()" class="login-form">
     <div class="modal-header">
         <h5 class="modal-title" id="myModalLabel160"> Edit entity </h5>  
         <button type="button" class="close"
@@ -158,13 +159,32 @@
         <div class="col-12">
             <div class="form-group row">
                 <div class="col-sm-3 col-form-label">
-                    <label for="editentity"> Name of entity </label>
+                    <label for="entityname"> Name of entity </label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" id="editentity" class="form-control"
-                      name="editentity"
-                      [(ngModel)]="edit.name" 
-                    />
+
+                  <div class="form-group">
+                    <input
+                    type="text"
+                    formControlName="entityname"
+                    id="entityname"
+                    class="form-control"
+                    name="entityname"
+                    [ngClass]="{
+                      'is-invalid': formControl['entityname'].errors
+                    }"
+                    placeholder="Enter the entity's name"
+                  />
+                  <div *ngIf="formControl['entityname'].errors">
+                      <div *ngIf="formControl['entityname'].errors['required']">
+                        The entity's name is required
+                      </div>
+                      <div *ngIf="formControl['entityname'].errors['minlength']">
+                        <span class="err">The entity's name should be more than 3 character!</span>
+                      </div>
+                  </div>
+              </div>
+
                 </div>
             </div>
         </div>
@@ -191,16 +211,17 @@
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary"
-            (click)="updateEntity(); modal.close('Accept click')" rippleEffect>
-            Accept
-        </button>
+      <button type="submit" class="btn btn-primary" rippleEffect>
+          Accept
+      </button>
     </div>
+  </form>
 </ng-template>
 
 <!------------------ Add Entity ------------------->
 
 <ng-template #modalPrimaryAdd let-modal>
+  <form [formGroup]="form" (ngSubmit)="AddEntity()" class="login-form">
   <div class="modal-header">
       <h5 class="modal-title" id="myModalLabel160"> Add entity </h5>
 
@@ -214,11 +235,25 @@
       <div class="col-12">
           <div class="form-group row">
               <div class="col-sm-3 col-form-label">
-                  <label for="entityname"> Name of entity </label>
+                  <label for="entityName"> Name of entity </label>
               </div>
               <div class="col-sm-9">
-                  <input type="text" id="entityname" class="form-control"
-                      name="entityname"  [(ngModel)]="entity.name"/>
+
+                <div class="form-group">
+                  <input type="text" id="entityname" class="form-control" name="entityname" formControlName="entityname"
+                    placeholder="entityname" [ngClass]="{ 'is-invalid': submitted && formControl['entityname'].errors }" />
+                  <div *ngIf="formControl['entityname'].touched && formControl['entityname'].invalid">
+                    <div *ngIf="formControl['entityname'].errors && formControl['entityname'].errors['required']">
+                      <span class="err"> entityname is required ! </span>
+                    </div>
+                    <div *ngIf="formControl['entityname'].errors['minlength']">
+                      <span class="err">entityname should be more than 3 character!</span>
+                    </div>
+                  </div>
+                </div>
+
+                  <!--<input type="text" id="entityname" class="form-control"
+                      name="entityname"  [(ngModel)]="entity.name"/>-->
               </div>
           </div>
       </div>
@@ -241,10 +276,38 @@
 
   </div>
   <div class="modal-footer">
-      <button type="button" class="btn btn-primary"
-          (click)="addentity();modal.close('Accept click')" rippleEffect>
-          Accept
-      </button>
+    <button type="submit" class="btn btn-primary" rippleEffect>
+      Accept
+    </button>
   </div>
+</form>
 </ng-template>
 
+<!-----------   Modal Danger   ----------->
+
+<div class="modal-danger d-inline-block">
+  <ng-template #modalDanger let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title" id="myModalLabel160">Confirm</h5>
+
+      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+      Are you sure you want to delete the entity ?
+    </div>
+    <div class="modal-footer">
+
+      <button type="button" class="btn btn-danger" (click)="modal.close('Accept click')" rippleEffect>
+        Cancel
+      </button>
+
+      <button type="button" class="btn btn-danger" (click)="deleteEntity()" rippleEffect>
+        Delete
+      </button>
+
+    </div>
+  </ng-template>
+</div>
+<swal></swal>

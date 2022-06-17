@@ -230,6 +230,21 @@ export const menu: CoreMenu[] = [
             url: 'companies/project/allprojects'
           }
         ]
+      },
+      {
+        id: 'Employee',
+        title: 'MENU.COMPANY.EMPLOYEE',
+        type: 'collapsible',
+        icon: 'grid',
+        children: [
+          {
+            id: 'addemployee',
+            title: 'MENU.COMPANY.ADDEMPLOYEE',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'companies/employee/addemployee'
+          }
+        ]
       }
     ]
   }
