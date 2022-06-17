@@ -1,12 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { AllCampaign } from 'app/main/CvTech/models/all-campaign.model';
-import { Availability } from 'app/main/CvTech/models/availability';
-import { Education } from 'app/main/CvTech/models/education';
-import { Function } from 'app/main/CvTech/models/function';
-import { Skill } from 'app/main/CvTech/models/skill';
-import { GlobalExperience } from 'app/main/CvTech/models/global-experience';
 import { AllCampaignService } from 'app/main/CvTech/services/all-campaign.service';
 import { EducationService } from 'app/main/CvTech/services/education.service';
 import { FunctionService } from 'app/main/CvTech/services/function.service';
@@ -14,7 +7,13 @@ import { SkillService } from 'app/main/CvTech/services/skill.service';
 import { GlobalExperienceService } from 'app/main/CvTech/services/global-experience.service';
 import { CurrentSituationService } from 'app/main/CvTech/services/current-situation.service';
 import { AvailabiltyService } from 'app/main/CvTech/services/availabilty.service';
-import { CurrentSituation } from 'app/main/CvTech/models/current-situation';
+import Swal from 'sweetalert2';
+import { AllCampaign } from 'app/main/cvtech/models/all-campaign.model';
+import { Education } from 'app/main/cvtech/models/education.model';
+import { Skills } from 'app/main/cvtech/models/skills.model';
+import { GlobalExperience } from 'app/main/cvtech/models/global-experience';
+import { CurrentSituation } from 'app/main/cvtech/models/current-situation';
+import { Availability } from 'app/main/cvtech/models/availability';
 
 
 @Component({
@@ -117,6 +116,12 @@ export class AddCampaignComponent implements OnInit {
       {
         next: (data) => {
           console.log(data);
+          Swal.fire({
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          });
           this.router.navigateByUrl("/cvtech/campaign/allcampaigns");
         }, error: (err) => {
           console.error(err);
@@ -138,7 +143,7 @@ export class AddCampaignComponent implements OnInit {
 
   // ------ Get Skill
   public skillSelected;
-  skill: Skill[] = []
+  skill: Skills[] = []
   getSkill() {
     this.SkillService.getSkills().subscribe(
       (sk: any) => {

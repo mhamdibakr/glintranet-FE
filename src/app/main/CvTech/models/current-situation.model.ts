@@ -1,5 +1,4 @@
-export class Availability 
-{
+export class CurrentSituation {
     id:number;
     name: String;
     description: String;

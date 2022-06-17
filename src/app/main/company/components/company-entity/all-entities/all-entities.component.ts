@@ -122,7 +122,7 @@ export class AllEntitiesComponent implements OnInit {
   }
 
   // ------------- delete campaign 
-  deleteCampaign(id: number){
+  deleteCompanyEntity(id: number){
     this.entityService.deleteCompanyEntity(id).subscribe({
       next: () => {
         console.log(" deleted !", id);

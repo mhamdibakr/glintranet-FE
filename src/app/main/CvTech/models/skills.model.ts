@@ -1,5 +1,4 @@
-export class Availability 
-{
+export class Skills {
     id:number;
     name: String;
     description: String;

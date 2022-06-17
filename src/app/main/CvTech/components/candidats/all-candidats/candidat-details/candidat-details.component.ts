@@ -20,14 +20,6 @@ export class CandidatDetailsComponent implements OnInit {
     this.modalService.open(modalForm);
   }
 
-  // name: '';
-  // email: '';
-  // phone: '';
-  // adress: '';
-  // city: '';
-  // country: '';
-  // birthDate: '';
-  // bio: '';
   constructor(private route: ActivatedRoute, private AllCandidatService: AllCandidatService, private modalService: NgbModal, private formBuilder: FormBuilder) { }
 
   id: number = this.route.snapshot.params["candidat_id"];
@@ -62,12 +54,50 @@ export class CandidatDetailsComponent implements OnInit {
   });
   submitted = false;
 
-  async getUsers() {
+  getCandidat() {
     this.AllCandidatService.getbyid(this.id).subscribe(
       {
         next: (response: any) => {
           this.User = response;
-          // console.log("//////////////////////" + this.User);
+          this.form = this.formBuilder.group(
+            {
+              name: [
+                this.User.name,
+                [
+                  Validators.required,
+                  Validators.minLength(3),
+                  Validators.pattern("[a-zA-Z ]*")
+                ]
+              ],
+              birthDate: [this.User.birthDate, Validators.required],
+              civility: [this.User.civility, Validators.required],
+              country: [this.User.country, Validators.required],
+              email: [this.User.email, [Validators.required, Validators.email]],
+              phone: [
+                this.User.phone,
+                [
+                  Validators.required,
+                  Validators.pattern(/(\+212|0)([ \-_/]*)(\d[ \-_/]*){9}/g),
+      
+                ]
+              ],
+              city: [this.User.city,
+              [
+                Validators.required,
+                Validators.pattern("[a-zA-Z ]*")
+              ]
+              ],
+              adress: [this.User.adress, Validators.required],
+              message: [
+                this.User.message,
+                [
+                  Validators.required,
+                  Validators.minLength(10),
+                  Validators.maxLength(255)
+                ]
+              ],
+            }
+          );
         },
         error: (err) => {
           console.error(err);
@@ -79,7 +109,7 @@ export class CandidatDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getUsers();
+    this.getCandidat();
 
     this.contentHeader = {
       headerTitle: 'Candidat Details',
@@ -116,72 +146,17 @@ export class CandidatDetailsComponent implements OnInit {
       }
     };
 
-
-    // added by saad.............
-
-    this.form = this.formBuilder.group(
-      {
-        name: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(3),
-            Validators.pattern("[a-zA-Z ]*")
-          ]
-        ],
-        birthDate: ['', Validators.required],
-        civility: ['', Validators.required],
-        country: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        phone: [
-          '',
-          [
-            Validators.required,
-            Validators.pattern(/(\+212|0)([ \-_/]*)(\d[ \-_/]*){9}/g),
-
-          ]
-        ],
-        city: ['',
-          [
-            Validators.required,
-            Validators.pattern("[a-zA-Z ]*")
-          ]
-        ],
-        adress: ['', Validators.required],
-        message: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(10),
-            Validators.maxLength(255)
-          ]
-        ],
-      }
-      // },
-      // {
-      //   validators: [Validation.match('password', 'confirmPassword')]
-      // }
-    );
-
-    this.AllCandidatService.getbyid(this.route.snapshot.params['user_id']).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.User = data;
-      },
-      error: (err) => {
-        console.error(err);
-      },
-    }
-    );
-
-
+    console.log(this.form.value);
+    
   }
 
+
+
   updateCandidat(id: number): void {
-    
-    this.User=this.form.value;
+
+    this.User = this.form.value;
     console.log(this.User);
-    
+
     this.AllCandidatService.update(this.User, id).subscribe({
       next: (data) => {
         console.log(data);
