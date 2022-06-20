@@ -31,20 +31,20 @@ export const menu: CoreMenu[] = [
       },
       {
         id: 'campaign',
-        title: 'MENU.Campaign',
+        title: 'MENU.CVTECH.APP',
         type: 'collapsible',
         icon: 'folder-plus',
         children:[
           {
             id: 'allcampaigns',
-            title: 'All campaigns',
+            title: 'MENU.CVTECH.ALLCAMPAIGNS',
             type: 'item',
             icon: 'list',
             url: 'cvtech/campaign/allcampaigns'
           },
           {
             id: 'addcampaign',
-            title: 'Add campaign',
+            title: 'MENU.CVTECH.ADDCAMPAIGN',
             type: 'item',
             icon: 'plus-square',
             url: 'cvtech/campaign/addcampaign'
@@ -53,20 +53,20 @@ export const menu: CoreMenu[] = [
       },
       {
         id: 'candidats',
-        title: 'Candidats',
+        title: 'MENU.CVTECH.CANDIDAT',
         type: 'collapsible',
         icon: 'users',
         children:[
           {
             id: 'allcandidats',
-            title: 'All candidats',
+            title: 'MENU.CVTECH.ALLCANDIDATS',
             type: 'item',
             icon: 'list',
             url: 'cvtech/candidats/allcandidats'
           },
           {
             id: 'addcandidat',
-            title: 'Add Candidat',
+            title: 'MENU.CVTECH.ADDCANDIDAT',
             type: 'item',
             icon: 'plus-square',
             url: 'cvtech/candidats/addcandidat'
@@ -76,7 +76,6 @@ export const menu: CoreMenu[] = [
       {
         id: 'profil',
         title: 'Profil',
-        //translate: 'MENU.cvtech',
         type: 'collapsible',
         icon: 'book',
         children:[

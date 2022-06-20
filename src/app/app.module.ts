@@ -20,6 +20,8 @@ import { CvtechModule } from './main/CvTech/cvtech.module';
 import { CompanyModule } from './main/company/company.module';
 import { GrhModule } from './main/grh/grh.module';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 const appRoutes: Routes = [
   {
     path: 'pages',
@@ -73,7 +75,9 @@ const appRoutes: Routes = [
     SampleModule,
     CvtechModule,
     CompanyModule,
-    GrhModule
+    GrhModule,
+
+    ReactiveFormsModule
   ],
 
   bootstrap: [AppComponent]

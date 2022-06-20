@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table" style="text-align: center;">
+                        <table class="table">
                           <thead>
                             <tr>
                               <th>#</th>
@@ -73,7 +73,7 @@
                               </td>
                               <td>{{obj.description}}</td>
                               <td class="overflow-hidden">
-                                <div ngbDropdown container="body">
+                                <!-- <div ngbDropdown container="body">
                                   <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle data-toggle="dropdown">
                                     <i data-feather="more-horizontal"></i>
                                   </button>
@@ -87,6 +87,16 @@
                                         <span>Delete</span>
                                     </a>
                                   </div>
+                                </div> -->
+                                <div container="body">
+                                    <button href="javascript:void(0);" type="button"
+                                        class="btn btn-flat-primary btn-sm" rippleEffect>
+                                        <i data-feather="file-text" class="mr-50"></i> Details
+                                    </button>
+                                    <button (click)="modalOpenDanger(modalDanger, obj.id)" type="button"
+                                        class="btn btn-flat-danger btn-sm" rippleEffect>
+                                        <i data-feather="trash-2" class="mr-50"></i> Delete
+                                    </button>
                                 </div>
                               </td>
                             </tr>

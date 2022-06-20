@@ -25,6 +25,14 @@ export const locale = {
         ALLENTITIES:"All entities",
         ADDCOMPANYENTITY:"Add entity",
         ADDDEPARTMENT:"Add department"
+      },
+      CVTECH:{
+        APP: 'Campagn',
+        CANDIDAT:"Candidat",
+        ADDCAMPAIGN:"Add campagn",
+        ALLCAMPAIGNS:"All campagnes",
+        ADDCANDIDAT:"Add candidat",
+        ALLCANDIDATS:"All candidats"
       }
     }
   }

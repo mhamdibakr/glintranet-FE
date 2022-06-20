@@ -41,7 +41,7 @@
                 </div>
               </div>
               <ngx-datatable class="bootstrap core-bootstrap ml-1" [columnMode]="'flex'" [headerHeight]="40"
-                [footerHeight]="50" [rowHeight]="58" [limit]="10" rowHeight="auto" [rows]="Campains"
+                [footerHeight]="50" [rowHeight]="58" rowHeight="auto" [rows]="Campains"
                 [selected]="chkBoxSelected">
 
                 <ngx-datatable-column name="Name" [flexGrow]="1">
@@ -72,6 +72,7 @@
 
                 <ngx-datatable-column name="Actions" [flexGrow]="0.5">
                   <ng-template let-row="row" ngx-datatable-cell-template>
+
                     <div class="d-flex align-items-center">
                       <div ngbDropdown container="body">
                         <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow" id="dropdownBrowserState"
@@ -89,6 +90,7 @@
                         </div>
                       </div>
                     </div>
+
                   </ng-template>
                 </ngx-datatable-column>
               </ngx-datatable>
@@ -154,3 +156,4 @@
   </ng-template>
   <!-- / Modal -->
 </div>
+
