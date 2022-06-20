@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CompanyEntity } from '../../../models/company-entity.model';
 import { EntityDepartment } from '../../../models/entity-department.model';
 import { CompanyEntityService } from '../../../services/company-entity.service';
@@ -27,7 +28,8 @@ export class AddDepartmentComponent implements OnInit {
   idcompanyEntity: any = "";
   countDep: any;
 
-  constructor(private companyservice: CompanyService,
+  constructor(private modalService: NgbModal,
+    private companyservice: CompanyService,
     private departmentService: EntityDepartmentService,
     private companyEntityService: CompanyEntityService) { }
   ngOnInit(): void {
@@ -108,6 +110,13 @@ export class AddDepartmentComponent implements OnInit {
   }
 
   
+  modalAdd(modalPrimaryAdd) {
+    this.modalService.open(modalPrimaryAdd, {
+      centered: true,
+      windowClass: 'modal modal-primary'
+    });
+  }
+
   getAlldepartments(): void {
     const params = this.getParams(this.page, this.pageSize, this.searchTitle);
     this.departmentService.getDepartments(params).subscribe(

@@ -181,24 +181,9 @@ export const menu: CoreMenu[] = [
       {
         id: 'Department',
         title: 'MENU.COMPANY.DEPARTMENT',
-        type: 'collapsible',
+        type: 'item',
         icon: 'grid',
-        children: [
-          {
-            id: 'adddepartment',
-            title: 'MENU.COMPANY.ADDDEPARTMENT',
-            type: 'item',
-            icon: 'plus-square',
-            url: 'companies/department/addDepartment'
-          },
-          {
-            id: 'alldepartment',
-            title: 'MENU.COMPANY.ALLDEPARTMENT',
-            type: 'item',
-            icon: 'plus-square',
-            url: 'companies/department/allDepartment'
-          }
-        ]
+        url: 'companies/department/department'
       },
       {
         id: 'Team',

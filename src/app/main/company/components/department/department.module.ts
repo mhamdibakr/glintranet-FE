@@ -8,25 +8,19 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AddDepartmentComponent } from './add-department/add-department.component';
-import { AllDepartmentsComponent } from './all-departments/all-departments.component';
 
 
-const routes: Routes = 
-[
-  {
-  path: 'addDepartment',
-  component: AddDepartmentComponent,
-  },
-  {
-    path: 'allDepartment',
-    component:AllDepartmentsComponent,
-  }
-];
+const routes: Routes =
+  [
+    {
+      path: 'department',
+      component: AddDepartmentComponent,
+    }
+  ];
 
 @NgModule({
   declarations: [
-    AddDepartmentComponent,
-    AllDepartmentsComponent
+    AddDepartmentComponent
   ],
   imports: [
     CommonModule,
