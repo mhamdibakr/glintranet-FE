@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Company } from '../../../models/company.model';
 import { CompanyService } from '../../../services/company.service';
@@ -12,33 +12,41 @@ import { CompanyService } from '../../../services/company.service';
 export class AllCompaniesComponent implements OnInit {
 
   contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
-
+  
   companies?: Company[];
   public chkBoxSelected = [];
 
 
   company: Company = {
-    id: null,
+    id:null,
     name: '',
     address: '',
-    email: '',
-    phoneNumber: '',
-    webSite: '',
-    image: '',
-    entities: []
+    email:'',
+    phoneNumber:'',
+    webSite:'',
+    timestamp:"",
+    image:'',
+    entities:[]
   }
 
-  public form: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    address: new FormControl(''),
-    email: new FormControl(''),
-    phoneNumber: new FormControl(''),
-    webSite: new FormControl(''),
-  });
+  edit:Company = {
+    id:null,
+    name: '',
+    address: '',
+    email:'',
+    phoneNumber:'',
+    webSite:'',
+    timestamp:"",
+    image:'',
+    entities:[]
+  }
 
-  constructor(private modalService: NgbModal, private companyService: CompanyService, private formBuilder: FormBuilder) { }
+  constructor(private modalService: NgbModal,private companyService:CompanyService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+
+    this.getCompanies();
+
     this.contentHeader = {
       headerTitle: 'Company',
       actionButton: true,
@@ -67,23 +75,19 @@ export class AllCompaniesComponent implements OnInit {
         ]
       }
     };
-    this.getCompanies();
-
   }
-
-  get formControl(): { [key: string]: AbstractControl } {
-    return this.form.controls;
-  }
+  
 
   //  pagination & search
+  pageSize = 5;
 
   page = 1;
   count = 0;
   name = '';
   sizeSelect = 5;
   public pagePosition = 1;
-  public totalPages = 0;
-
+  public totalPages=0;
+  
 
   public pageChanged(event: any): void {
     this.page = event;
@@ -91,18 +95,17 @@ export class AllCompaniesComponent implements OnInit {
   }
 
   getParams(page: number, pageSize: number, name: string) {
-    let params: any = {};
-    if (page) {
-      params['page'] = page - 1;
-    }
-    if (pageSize) {
-      params['size'] = pageSize;
-    }
-    if (name) {
-      params['name'] = name;
-    }
-
-    return params;
+        let params: any = {};
+        if (page) {
+          params['page'] = page - 1;
+        }
+        if (pageSize) {
+          params['size'] = pageSize;
+        }
+        if (name) {
+          params['name'] = name;
+        }
+        return params;
   }
 
   public getCompanies(): void {
@@ -116,9 +119,8 @@ export class AllCompaniesComponent implements OnInit {
         next: (response: any) => {
           const { content, totalElements, totalPages } = response;
           this.count = totalElements;
-          this.totalPages = totalPages * 10
+          this.totalPages = totalPages*10
           this.companies = response.content
-
         }, error: (err) => {
           console.error(err);
         }
@@ -126,10 +128,41 @@ export class AllCompaniesComponent implements OnInit {
     );
   }
 
-  //Edit 
+  // ------------ Add Company ------------
+
+  modalOpenPrimary(modalPrimary) {
+    this.modalService.open(modalPrimary, {
+      centered: true,
+      windowClass: 'modal modal-primary'
+    });
+  }
+
+  saveCompany(): void {
+    const data = {
+      name: this.company.name,
+      address: this.company.address,
+      email: this.company.email,
+      phoneNumber: this.company.phoneNumber,
+      webSite: this.company.webSite
+    }
+    this.companyService.createCompany(data).subscribe(
+      {
+        next: (data) => {
+          this.modalService.dismissAll("Cross click");
+          this.ngOnInit();
+        }, error: (err) => {
+          console.error(err);
+        }
+      });
+  }
+  
+
+  public form: FormGroup = new FormGroup({
+    entityname: new FormControl('')
+  });
+  // ------------ Edit Company ------------ 
 
   modalEdit(modalPrimaryedit, id) {
-    console.log(id);
     this.companyService.getCompany(id).subscribe({
       next: (data) => {
         this.company = data;
@@ -164,7 +197,7 @@ export class AllCompaniesComponent implements OnInit {
         console.error(err);
       }
     });
-    this.modal = this.modalService.open(modalPrimaryedit, {
+    this.modalService.open(modalPrimaryedit, {
       centered: true,
       windowClass: 'modal modal-primary',
     });
@@ -187,8 +220,6 @@ export class AllCompaniesComponent implements OnInit {
     this.companyService.updateCompany(company.id, company).subscribe(
       {
         next: (data) => {
-          console.log(data);
-          this.modal.close('Accept click')
           this.getCompanies();
         }, error: (err) => {
           console.error(err);
@@ -196,18 +227,18 @@ export class AllCompaniesComponent implements OnInit {
       });
   }
 
-  // delete 
+  // ------------ Delete Company ------------
 
-  deleteCompany(id: number) {
-    this.companyService.deleteCompany(id).subscribe({
-      next: () => {
-        console.log("Company deleted !", id);
-        this.ngOnInit();
-      },
-      error: (err) => {
-        console.log(err);
-
-      }
-    })
-  }
+    deleteCompany(id: number){
+      this.companyService.deleteCompany(id).subscribe({
+        next: () => {
+          console.log("Company deleted !", id);
+          this.ngOnInit();
+        },
+        error: (err) => {
+          console.log(err);     
+        }
+      })
+    }
+    
 }

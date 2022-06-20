@@ -1,41 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Employee } from 'app/main/company/models/employee.model';
+import { EmployeeService } from 'app/main/company/services/employee.service';
 import Swal from 'sweetalert2';
-import { Company } from '../../../models/company.model';
-import { CompanyService } from '../../../services/company.service';
 
 @Component({
-  selector: 'app-add-company',
-  templateUrl: './add-company.component.html',
-  styleUrls: ['./add-company.component.scss']
+  selector: 'app-add-employee',
+  templateUrl: './add-employee.component.html',
+  styleUrls: ['./add-employee.component.scss']
 })
-export class AddCompanyComponent implements OnInit {
-
+export class AddEmployeeComponent implements OnInit {
   contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
 
-  company: Company = {
+  employee: Employee = {
     id: null,
-    name: '',
-    address: '',
+    firstName: '',
+    lastName: '',
     email: '',
-    phoneNumber: '',
-    webSite: '',
-    image: '',
-    entities: [],
-    timestamp:''
+    phoneNumber: 0,
+    hireDate:undefined,
+    team_id:4
   }
 
   public form: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    address: new FormControl(''),
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
     email: new FormControl(''),
     phoneNumber: new FormControl(''),
-    webSite: new FormControl(''),
-    image: new FormControl(),
+    hireDate: new FormControl(''),
   });
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private companyservice: CompanyService) { }
+  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService) { }
 
 
   ngOnInit(): void {
@@ -56,12 +52,12 @@ export class AddCompanyComponent implements OnInit {
             link: '/'
           },
           {
-            name: 'Company',
+            name: 'Employee',
             isLink: true,
             link: '/'
           },
           {
-            name: 'Add Company',
+            name: 'Add Employee',
             isLink: false
           }
         ]
@@ -70,7 +66,7 @@ export class AddCompanyComponent implements OnInit {
 
     this.form = this.formBuilder.group(
       {
-        name: [
+        firstName: [
           '',
           [
             Validators.required,
@@ -78,7 +74,14 @@ export class AddCompanyComponent implements OnInit {
             Validators.pattern("[a-zA-Z]*")
           ]
         ],
-        webSite: ['',Validators.required],
+        lastName: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.pattern("[a-zA-Z]*")
+          ]
+        ],
         email: ['', [Validators.required, Validators.email]],
         phoneNumber: [
           '',
@@ -88,7 +91,13 @@ export class AddCompanyComponent implements OnInit {
 
           ]
         ],
-        address: ['', Validators.required]
+        hireDate: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(3)
+          ]
+        ],
       }
     );
   }
@@ -103,14 +112,15 @@ export class AddCompanyComponent implements OnInit {
       
       return;
     }
-    this.company = this.form.value;
+    this.employee = this.form.value;
 
-    this.saveCompany(this.company);
+    this.saveEmployee(this.employee);
 
   }
-  saveCompany(company: Company): void {
-
-    this.companyservice.createCompany(company).subscribe(
+  saveEmployee(employee: Employee): void {
+    employee.team_id=4;
+      console.log("save employee",employee.team_id);
+    this.employeeService.createEmployee(employee).subscribe(
       {
         next: (data) => {
           console.log(data);

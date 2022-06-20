@@ -24,7 +24,14 @@ export const locale = {
         ALLCOMPANIES:"Tous les compagnies",
         ADDCOMPANYENTITY:"Ajouter une entité de compagnie",
         ADDDEPARTMENT:"Ajouter un département",
-        ALLENTITIES:"Toutes les entitées"
+        ALLENTITIES:"Toutes les entitées",
+        ALLDEPARTMENT:"Tous les départements",
+        TEAM:"Equipe",
+        ALLTEAMS:"Tous les équipes",
+        PROJECT:"Projet",
+        ALLPROJECTS:"Tous les projets",
+        EMPLOYEE:"Employé",
+        ADDEMPLOYEE:"Ajouter employé"
       },
       CVTECH:{
         APP: 'Campagnes',

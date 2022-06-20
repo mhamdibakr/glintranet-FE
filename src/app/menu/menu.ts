@@ -190,6 +190,58 @@ export const menu: CoreMenu[] = [
             type: 'item',
             icon: 'plus-square',
             url: 'companies/department/addDepartment'
+          },
+          {
+            id: 'alldepartment',
+            title: 'MENU.COMPANY.ALLDEPARTMENT',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'companies/department/allDepartment'
+          }
+        ]
+      },
+      {
+        id: 'Team',
+        title: 'MENU.COMPANY.TEAM',
+        type: 'collapsible',
+        icon: 'grid',
+        children: [
+          {
+            id: 'allteams',
+            title: 'MENU.COMPANY.ALLTEAMS',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'companies/team/allteams'
+          }
+        ]
+      },
+      {
+        id: 'Project',
+        title: 'MENU.COMPANY.PROJECT',
+        type: 'collapsible',
+        icon: 'grid',
+        children: [
+          {
+            id: 'allprojects',
+            title: 'MENU.COMPANY.ALLPROJECTS',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'companies/project/allprojects'
+          }
+        ]
+      },
+      {
+        id: 'Employee',
+        title: 'MENU.COMPANY.EMPLOYEE',
+        type: 'collapsible',
+        icon: 'grid',
+        children: [
+          {
+            id: 'addemployee',
+            title: 'MENU.COMPANY.ADDEMPLOYEE',
+            type: 'item',
+            icon: 'plus-square',
+            url: 'companies/employee/addemployee'
           }
         ]
       }

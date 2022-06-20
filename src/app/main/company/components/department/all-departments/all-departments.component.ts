@@ -1,39 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import { EntityDepartment } from 'app/main/company/models/entity-department.model';
+import { CompanyEntityService } from 'app/main/company/services/company-entity.service';
+import { EntityDepartmentService } from 'app/main/company/services/entity-department.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CompanyEntity } from '../../../models/company-entity.model';
-import { Company } from '../../../models/company.model';
-import { CompanyEntityService } from '../../../services/company-entity.service';
-import { CompanyService } from '../../../services/company.service';
+import { CompanyEntity } from 'app/main/company/models/company-entity.model';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-all-entities',
-  templateUrl: './all-entities.component.html',
-  styleUrls: ['./all-entities.component.scss']
+  selector: 'app-all-departments',
+  templateUrl: './all-departments.component.html',
+  styleUrls: ['./all-departments.component.scss']
 })
-export class AllEntitiesComponent implements OnInit {
+export class AllDepartmentsComponent implements OnInit {
   contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
   
-  entities? : CompanyEntity[];
-  entity: CompanyEntity = {
+  departments? : EntityDepartment[];
+  department: EntityDepartment = {
     id:null,
     name: '',
     timestamp:'',
-    departements:[],
-    company_id:null
+    entity:null,
+    entity_id:null
   }
 
-  companies?:Company[];
-  idcompany:any;
-
-  constructor(private modalService: NgbModal, private entityService : CompanyEntityService,
-   private companyservice:CompanyService,private formBuilder: FormBuilder) {}
+  constructor(private modalService: NgbModal, 
+    private departmentservice : EntityDepartmentService,
+    private entityservice:CompanyEntityService,private formBuilder: FormBuilder) {}
 
   ngOnInit(): void 
   {
-    this.getAllentities()
-    this.getCompanies();
+    this.getAlldepartments()
+    this.getEntities();
 
     this.contentHeader = {
       headerTitle: 'Company',
@@ -52,12 +50,12 @@ export class AllEntitiesComponent implements OnInit {
             link: '/'
           },
           {
-            name: 'Company entity',
+            name: 'Departments',
             isLink: true,
             link: '/'
           },
           {
-            name: 'All entities',
+            name: 'All departments',
             isLink: false
           }
         ]
@@ -65,7 +63,7 @@ export class AllEntitiesComponent implements OnInit {
     };
     this.form = this.formBuilder.group(
       {
-        entityname: [
+        departmentname: [
           '',
           [
             Validators.required,
@@ -77,14 +75,13 @@ export class AllEntitiesComponent implements OnInit {
   }
 
   public form: FormGroup = new FormGroup({
-    entityname: new FormControl('')
+    departmentname: new FormControl('')
   });
   submitted = false;
 
   get formControl(): { [key: string]: AbstractControl } {
     return this.form.controls;
-  }
-
+  } 
 
   // ------------ pagination & search ------------
 
@@ -97,7 +94,7 @@ export class AllEntitiesComponent implements OnInit {
   
   public pageChanged(event: any): void {
     this.page = event;
-    this.getAllentities();
+    this.getAlldepartments();
   }
 
   getParams(page: number, pageSize: number, name: string) {
@@ -114,19 +111,19 @@ export class AllEntitiesComponent implements OnInit {
     return params;
   }
 
-  public getAllentities(): void {
+  public getAlldepartments(): void {
     const params = {
       page : this.page-1,
       size : 8,
       name : this.name
     }
-    this.entityService.getCompanyentities(params).subscribe(
+    this.departmentservice.getDepartments(params).subscribe(
       {
         next: (response: any) => {
           const { content, totalElements, totalPages } = response;
           this.count = totalElements;
           this.totalPages = totalPages*10
-          this.entities = content
+          this.departments = content
         }, error: (err) => {
           console.error(err);
         }
@@ -134,18 +131,7 @@ export class AllEntitiesComponent implements OnInit {
     );
   }
 
-   // ------------ Add Entity ------------
-
-   AddEntity(): void {
-    this.submitted = true;
-    if (this.form.invalid) {
-      console.log(this.form.value);
-      return;
-    }
-    this.entity.name = this.form.value.entityname;
-    this.entity.company_id = this.idcompany;
-    this.createEntity(this.entity);
-  }
+  // ------------ Add Department ------------
 
   modalAdd(modalPrimaryAdd) {
     this.modalService.open(modalPrimaryAdd, {
@@ -154,13 +140,24 @@ export class AllEntitiesComponent implements OnInit {
     });
   }
 
-  createEntity(entity:CompanyEntity): void {
-    this.entityService.createCompanyEntity(entity).subscribe(
+  AddDepartment(): void {
+    this.submitted = true;
+    if (this.form.invalid) {
+      console.log(this.form.value);
+      return;
+    }
+    this.department.name = this.form.value.departmentname;
+    this.department.entity_id = this.identity;
+    this.createDepartment(this.department);
+  }
+
+  createDepartment(department:EntityDepartment): void {
+    this.departmentservice.createDepartment(department).subscribe(
       {
         next: (data) => {
           Swal.fire({
             icon: 'success',
-            title: 'Entity has been saved with success',
+            title: 'Department has been saved with success',
             showConfirmButton: false,
             timer: 1500
           });
@@ -174,53 +171,45 @@ export class AllEntitiesComponent implements OnInit {
    }
 
    onChange(e: any) {
-    this.idcompany=e.target.value;
+    this.identity=e.target.value;
+    console.log(this.identity)
   }
 
-  // ------------ Delete Entity ------------
+  // ------------ Delete Department ------------ 
 
-  private modal = null;
-  private identity = 0;
-
-  modalOpenDanger(modalDanger, id: any) {
-    this.identity = id;
-    this.modal = this.modalService.open(modalDanger, {
-      centered: true,
-      windowClass: 'modal modal-danger'
-    });
-  }
-
-    deleteEntity(id: number){
-      this.modal.close('Accept click');
-      this.entityService.deleteCompanyEntity(this.identity).subscribe({
+    deleteDepartment(id: number){
+      this.departmentservice.deleteDepartment(id).subscribe({
         next: () => {
           this.ngOnInit();
         },
         error: (err) => {
-          console.log(err);    
+          console.log(err);
+          
         }
       })
     }
 
-    // ------------ Update entity ------------ 
+    // ------------ Update department ------------
 
-    edit:CompanyEntity = {
+    entities?:CompanyEntity[];
+    identity:any;
+    edit:EntityDepartment = {
       id:null,
       name: '',
       timestamp:'',
-      departements:[],
-      company_id:null
+      entity:null,
+      entity_id:null
     }
-  
+
     modalEdit(modalPrimaryedit, id) {
-      this.entityService.getCompanyEntity(id).subscribe({
+      this.departmentservice.getDepartment(id).subscribe({
         next: (data) => {
-          this.entity = data;
-          this.entity.company_id = this.idcompany;
+          this.department = data;
+          this.department.entity_id = this.identity;
           this.form = this.formBuilder.group(
             {
-              entityname: [
-                this.entity.name,
+              departmentname: [
+                this.department.name,
                 [
                   Validators.required,
                   Validators.minLength(3)
@@ -238,18 +227,18 @@ export class AllEntitiesComponent implements OnInit {
       });
     }
   
-    updateEntity(): void {
+    updateDepartment(): void {
       this.submitted = true;
       if (this.form.invalid) {
         return;
       }
-      this.entity.name = this.form.value.entityname;
-      this.entity.company_id=this.idcompany;
-      this.editEntity(this.entity);
+      this.department.name = this.form.value.departmentname;
+      this.department.entity_id=this.identity;
+      this.editDepartment(this.department);
     }
 
-    editEntity(entity:CompanyEntity): void {
-      this.entityService.updateCompanyEntity(entity.id, entity).subscribe(
+    editDepartment(department:EntityDepartment):void{
+      this.departmentservice.updateDepartment(department.id, department).subscribe(
         {
           next: (data) => {
             this.modalService.dismissAll("Cross click");
@@ -260,18 +249,17 @@ export class AllEntitiesComponent implements OnInit {
           }
         });
     }
-
-
-    // ------------ GET companies for select ------------
+    
+    // ------------ GET entities for select ------------
    
-  getCompanies(): void {
+  getEntities(): void {
     const params = {page:this.page-1, size:8, name:this.name};
-    this.companyservice.getCompanies(params).subscribe(
+    this.entityservice.getCompanyentities(params).subscribe(
       { next: (data) => {
           const { content, totalElements } = data;
-          this.companies = content;
+          this.entities = content;
           this.count = totalElements;
-          this.idcompany=this.companies[0].id;
+          this.identity=this.entities[0].id;
         }, error: (err) => {
           console.error(err);
         }
