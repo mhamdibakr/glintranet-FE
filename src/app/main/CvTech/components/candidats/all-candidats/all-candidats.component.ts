@@ -19,7 +19,7 @@ export class AllCandidatsComponent implements OnInit {
 
   public chkBoxSelected = [];
 
-  constructor(private modalService: NgbModal, private AllCandidatService: AllCandidatService) { }
+  constructor(private modalService: NgbModal, private allCandidatService: AllCandidatService) { }
 
 
   ngOnInit(): void {
@@ -108,7 +108,7 @@ export class AllCandidatsComponent implements OnInit {
       name : this.name
     }
     
-    this.AllCandidatService.getAllPagination(params).subscribe(
+    this.allCandidatService.getAllPagination(params).subscribe(
       {
         next: (response: any) => {
           const { content, totalElements, totalPages } = response;
@@ -139,7 +139,7 @@ export class AllCandidatsComponent implements OnInit {
       
        this.modal.close('Accept click')
        window.location.reload();
-       this.AllCandidatService.DeleteCandidatById(this.id).subscribe({
+       this.allCandidatService.DeleteCandidatById(this.id).subscribe({
          next: () => {
            console.log("Campaigns , deleted !", this.id);
            this.ngOnInit();
