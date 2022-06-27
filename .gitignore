@@ -30,6 +30,7 @@ speed-measure-plugin.json
 !.vscode/extensions.json
 
 # misc
+.angular
 /.angular/cache
 /.sass-cache
 /connect.lock
