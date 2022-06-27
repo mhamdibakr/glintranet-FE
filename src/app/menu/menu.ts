@@ -229,10 +229,81 @@ export const menu: CoreMenu[] = [
             url: 'companies/employee/addemployee'
           }
         ]
+      },
+    ]
+  },
+  {
+    id: 'FAQ',
+    title: 'MENU.FAQ',
+    type: 'collapsible',
+    icon: 'menu',
+    children: [
+      {
+        id: 'FAQs',
+        title: 'All FAQs',
+        type: 'item',
+        icon: 'list',
+        url: 'faq/Allfaqs'
+      },
+      {
+        id: 'addFAQ',
+        title: 'Add FAQ',
+        type: 'item',
+        icon: 'plus-square',
+        url: 'faq/Addfaq'
       }
     ]
-  }
-
-
+  },
+  {
+    id: 'Document',
+    title: 'Document',
+    type: 'collapsible',
+    icon: 'menu',
+    children: [
+      {
+        id: 'Documents',
+        title: 'All Docs',
+        type: 'item',
+        icon: 'list',
+        url: 'doc/Alldocs'
+      },
+      {
+        id: 'adddoc',
+        title: 'Upload Doc',
+        type: 'item',
+        icon: 'plus-square',
+        url: 'doc/Adddoc'
+      }
+    ]
+  },
+  {
+    id: 'User',
+    title: 'User',
+    type: 'collapsible',
+    icon: 'menu',
+    children: [
+      {
+        id: 'Users',
+        title: 'All Users',
+        type: 'item',
+        icon: 'list',
+        url: 'user/Allusers'
+      },
+      {
+        id: 'adduser',
+        title: 'Add User',
+        type: 'item',
+        icon: 'plus-square',
+        url: 'user/Adduser'
+      }
+    ]
+  },
+  {
+    id: 'projects',
+    title: 'Projects',
+    type: 'item',
+    icon: 'menu',
+    url: 'projects'
+  },
 
 ]

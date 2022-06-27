@@ -40,9 +40,21 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main/grh/grh.module').then(m => m.GrhModule)
   },
   {
+    path: 'faq',
+    loadChildren: () => import('./main/faq/faq.module').then(m => m.FaqModule)
+  },
+  {
+    path: 'doc',
+    loadChildren: () => import('./main/document/document.module').then(m => m.Document)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  { 
+    path: 'user',
+    loadChildren: () => import('./main/user/user.module').then(m => m.UserModule)
   }
 ];
 
@@ -50,10 +62,10 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent
   ],
-  imports: [ 
-    BrowserModule, 
-    BrowserAnimationsModule, 
-    HttpClientModule, 
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes, {
       scrollPositionRestoration: 'enabled', // Add options right here
       relativeLinkResolution: 'legacy'
@@ -63,13 +75,13 @@ const appRoutes: Routes = [
     //NgBootstrap
     NgbModule,
     ToastrModule.forRoot(),
-    
+
     // Core modules
     CoreModule.forRoot(coreConfig),
     CoreCommonModule,
     CoreSidebarModule,
     CoreThemeCustomizerModule,
-    
+
     // App modules
     LayoutModule,
     SampleModule,
@@ -82,4 +94,4 @@ const appRoutes: Routes = [
 
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

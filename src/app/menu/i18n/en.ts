@@ -6,6 +6,7 @@ export const locale = {
       SAMPLE: 'Sample',
       Dashboard: 'Dashboard',
       CVs: 'CVs',
+      FAQ: "FAQ",
       Users: 'Users',
       Campaign: 'Campaign',
       cvtech: 'CvTech',
