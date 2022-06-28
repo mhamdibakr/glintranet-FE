@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="col-lg-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="font-weight-bolder mb-0">5</h2>
+            <p class="card-text">FAQs</p>
+          </div>
+          <div class="avatar bg-light-primary p-50 m-0">
+            <div class="avatar-content">
+              <i data-feather="cpu" class="font-medium-5"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="font-weight-bolder mb-0">12</h2>
+            <p class="card-text">COMMENT</p>
+          </div>
+          <div class="avatar bg-light-success p-50 m-0">
+            <div class="avatar-content">
+              <i data-feather="server" class="font-medium-5"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="font-weight-bolder mb-0">2</h2>
+            <p class="card-text">Documents</p>
+          </div>
+          <div class="avatar bg-light-danger p-50 m-0">
+            <div class="avatar-content">
+              <i data-feather="activity" class="font-medium-5"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="font-weight-bolder mb-0">3</h2>
+            <p class="card-text">Projects</p>
+          </div>
+          <div class="avatar bg-light-warning p-50 m-0">
+            <div class="avatar-content">
+              <i data-feather="alert-octagon" class="font-medium-5"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+      <!-- Content-Header Component -->
+
+      <section id="line-chart">
+        <!-- Line Chart Starts-->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h4 class="card-title">Statistics</h4>
+                  <span class="card-subtitle text-muted">FAQs per last 7 days</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas
+                  class="line-chart-ex chartjs"
+                  baseChart
+                  height="400"
+                  [datasets]="barChart.datasets"
+                  [chartType]="barChart.chartType"
+                  [options]="barChart.options"
+                  [labels]="barChart.labels"
+  
+                ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/ Line Chart Ends-->
+      </section>
+    </div>
+  </div>
+  

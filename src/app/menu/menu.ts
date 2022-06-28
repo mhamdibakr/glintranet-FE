@@ -258,7 +258,7 @@ export const menu: CoreMenu[] = [
     id: 'Document',
     title: 'Document',
     type: 'collapsible',
-    icon: 'menu',
+    icon: 'file',
     children: [
       {
         id: 'Documents',
@@ -277,10 +277,17 @@ export const menu: CoreMenu[] = [
     ]
   },
   {
+    id: 'projects',
+    title: 'Projects',
+    type: 'item',
+    icon: 'book',
+    url: 'projects'
+  },
+  {
     id: 'User',
     title: 'User',
     type: 'collapsible',
-    icon: 'menu',
+    icon: 'users',
     children: [
       {
         id: 'Users',
@@ -298,12 +305,13 @@ export const menu: CoreMenu[] = [
       }
     ]
   },
+
   {
-    id: 'projects',
-    title: 'Projects',
+    id: 'stats',
+    title: 'Statistics',
     type: 'item',
-    icon: 'menu',
-    url: 'projects'
-  },
+    icon: 'monitor',
+    url: 'stats'
+  }
 
 ]

@@ -20,6 +20,8 @@ import { CvtechModule } from './main/CvTech/cvtech.module';
 import { CompanyModule } from './main/company/company.module';
 import { GrhModule } from './main/grh/grh.module';
 
+import { ChartsModule } from 'ng2-charts';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
@@ -59,14 +61,22 @@ const appRoutes: Routes = [
   { 
     path: 'projects',
     loadChildren: () => import('./main/project/project.module').then(m => m.ProjectModule)
+  },
+  {
+    path : 'stats',
+    loadChildren: () => import('./main/statistics/statistics.module').then(m => m.StatisticsModule)
+
   }
+ 
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
