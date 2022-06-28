@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { FaqDetailsComponent } from './faq-details.component';
 
 
 const routes: Routes = [
-  
-  {
-    path: '',
-    loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule)
-  }
-  
+  { path: '', component: FaqDetailsComponent }
 ];
 
 @NgModule({
@@ -19,4 +15,4 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class FaqModule { }
+export class FaqDetailsModule { }

@@ -4,29 +4,33 @@
     <app-content-header [contentHeader]="contentHeader"></app-content-header>
 
     <section id="faq-search-filter">
-      <div class="card" style="padding: 4rem; background-image: url('assets/images/banner/banner.png');height: 150px;">
-        <div class="card-body text-center">
-          <form class="faq-search-input">
-            <div class="input-group input-group-merge" style="box-shadow: 0px 5px 5px #16161673;">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <i data-feather="search"></i>
+      <div class="card" style="background-image: url('assets/images/banner/banner.png');height: 150px;">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div class="text-center">
+            <form class="faq-search-input">
+              <div class="input-group input-group-merge" style="box-shadow: 0px 5px 5px #16161673;">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i data-feather="search"></i>
+                  </div>
                 </div>
+                <input type="text" name="searchbar" class="form-control" placeholder="Search faq..." />
               </div>
-              <input type="text" name="searchbar" class="form-control" placeholder="Search faq..." />
+            </form>
+          </div>
+          <div class="btn-group justify-content-end">
+            <div class="d-flex">
+              <div class="form-group">
+                <select class="form-control" id="basicSelect">
+                  <option>IT</option>
+                  <option>Blade Runner</option>
+                  <option>Thor Ragnarok</option>
+                </select>
+              </div>
+              <div>
+                <a href="" class="btn btn-primary ml-1">+ FAQ</a>
+              </div>
             </div>
-          </form>
-        </div>
-      </div>
-      <div class="btn-group">
-        <div ngbDropdown>
-          <button ngbDropdownToggle class="btn btn-dark" type="button" id="dropdownMenuButton7" rippleEffect>
-            Dark
-          </button>
-          <div ngbDropdownMenu aria-labelledby="dropdownMenuButton7">
-            <a ngbDropdownItem href="javascript:void(0)">Option 1</a>
-            <a ngbDropdownItem href="javascript:void(0)">Option 2</a>
-            <a ngbDropdownItem href="javascript:void(0)">Option 3</a>
           </div>
         </div>
       </div>
@@ -51,8 +55,10 @@
                 </div>
               </div>
               <div class="media-body">
-                <h6 class="font-weight-bolder mb-25">How to Fetch each records from MySQL with jQuery AJAX in
-                  Dynamically Add or Remove Input Fields in Laravel?</h6>
+                <h6 class="font-weight-bolder mb-25">
+                  <a routerLink="/faq/faq-details/5">How to Fetch each records from MySQL with jQuery AJAX in
+                    Dynamically Add or Remove Input Fields in Laravel?</a>
+                </h6>
                 <p class="card-text">I'm trying to Fetch each records from MySQL with jQuery AJAX in Dynamically Add or
                   Remove Input Fields in Laravel, but when I add the second dynamic element, it doesn't add Fetch each
                   records from database.</p>
@@ -86,7 +92,8 @@
                 </div>
               </div>
               <div class="media-body">
-                <h6 class="font-weight-bolder mb-25">A button allowing at most one click per second</h6>
+                <h6 class="font-weight-bolder mb-25">
+                  <a routerLink="/faq/faq-details/5">A button allowing at most one click per second</a></h6>
                 <p class="card-text">I wanted to implement a button in Javascript that allows at most one click per
                   second, so I thought of 4 solutions ( 2 are working and 2 aren't). each solution has its branch in the
                   following repository: https://github.com/codiaji/OneClickPerSecond Can you tell me, If I did well with
@@ -122,7 +129,8 @@
                 </div>
               </div>
               <div class="media-body">
-                <h6 class="font-weight-bolder mb-25">Angular Material with ngx-formly - Sorting issue</h6>
+                <h6 class="font-weight-bolder mb-25">
+                <a routerLink="/faq/faq-details/5">Angular Material with ngx-formly - Sorting issue</a></h6>
                 <p class="card-text">Im working on building a material table with ngx-fornmly. Data are displayed,
                   pagination working. Having issue with sorting the columns. Despite matColumnDef is the same with the
                   keys of columns its not sorted. The only column sorted is third one that match with name of
