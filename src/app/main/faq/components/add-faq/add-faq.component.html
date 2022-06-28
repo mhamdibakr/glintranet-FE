@@ -1,1 +1,50 @@
-<p>add-faq works!</p>
+<h2 class="mb-2">Add a new FAQ</h2>
+<div class="card">
+    <div class="card-body">
+        <form class="form form-vertical">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="first-name-vertical">Question</label>
+                        <input type="text" id="first-name-vertical" class="form-control" name="fname"
+                            placeholder="Question" />
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="label-textarea">Description</label>
+                        <fieldset class="form-label-group">
+                            <textarea class="form-control" id="label-textarea" rows="3"
+                                placeholder="Description"></textarea>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label>Default</label>
+                    <div class="form-group">
+                      <!-- Multi Select Size default -->
+                      <ng-select
+                        [items]="MultiDefault"
+                        [multiple]="true"
+                        [closeOnSelect]="false"
+                        [searchable]="false"
+                        bindLabel="name"
+                        placeholder="Select people"
+                        [(ngModel)]="MultiDefaultSelected"
+                      >
+                        <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                          <span class="ng-value-label"> {{ item.name }}</span>
+                          <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                        </ng-template>
+                      </ng-select>
+                      <!--/ Multi Select Size default -->
+                    </div>
+                  </div>
+                <div class="col-12">
+                    <button type="submit" rippleEffect class="btn btn-primary mr-1">Submit</button>
+                    <button type="reset" rippleEffect class="btn btn-outline-secondary">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
