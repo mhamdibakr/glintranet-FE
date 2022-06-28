@@ -55,6 +55,10 @@ const appRoutes: Routes = [
   { 
     path: 'user',
     loadChildren: () => import('./main/user/user.module').then(m => m.UserModule)
+  },
+  { 
+    path: 'projects',
+    loadChildren: () => import('./main/project/project.module').then(m => m.ProjectModule)
   }
 ];
 
