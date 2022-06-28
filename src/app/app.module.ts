@@ -23,6 +23,7 @@ import { GrhModule } from './main/grh/grh.module';
 import { ChartsModule } from 'ng2-charts';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const appRoutes: Routes = [
   {
@@ -102,6 +103,7 @@ const appRoutes: Routes = [
     CvtechModule,
     CompanyModule,
     GrhModule,
+    NgSelectModule,
 
     ReactiveFormsModule
   ],
