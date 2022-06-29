@@ -86,7 +86,7 @@ export class AllCampaignsComponent implements OnInit {
           const { content, totalElements, totalPages } = response;
           this.count = totalElements;
           this.totalPages = totalPages*10
-          this.Campains = response.content
+          this.Campains = content
           
         }, error: (err) => {
           console.error(err);
@@ -105,16 +105,7 @@ export class AllCampaignsComponent implements OnInit {
       windowClass: 'modal modal-danger'
     });
   }
-
-    // delFunc(id){
-    //   //console.log("Delete ",id);
-    //   this.deleteCampaign(id);
-    //   this.router.navigateByUrl("/reload");
-    // }
-
-
-    
-  // ------------- delete campaign 
+ 
   deleteCampaign(){
    console.log(this.id);
    

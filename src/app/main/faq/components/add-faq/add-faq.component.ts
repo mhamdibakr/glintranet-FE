@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   encapsulation: ViewEncapsulation.None
 })
 export class AddFaqComponent implements OnInit {
+  contentHeader: Object; 
 
   constructor() { }
 
@@ -20,6 +21,30 @@ export class AddFaqComponent implements OnInit {
     { name: 'Python' }
   ];
   ngOnInit(): void {
+    // content header
+    this.contentHeader = {
+      headerTitle: 'FAQ',
+      actionButton: true,
+      breadcrumb: {
+        type: '',
+        links: [
+          {
+            name: 'Home',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'All FAQs',
+            isLink: true,
+            link: '/faq/Allfaqs'
+          },
+          {
+            name: 'Add FAQ',
+            isLink: false
+          }
+        ]
+      }
+    };
   }
 
 }

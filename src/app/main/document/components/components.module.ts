@@ -14,10 +14,6 @@ const routes: Routes =
         {
             path: '',
             loadChildren: () => import('./all-docs/all-docs.module').then(m => m.AllDocsModule)
-        },
-        {
-            path: '',
-            loadChildren: () => import('./upload-doc/upload-doc.module').then(m => m.UploadDocModule)
         }
     ];
 

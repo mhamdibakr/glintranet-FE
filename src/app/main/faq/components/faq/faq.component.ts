@@ -53,12 +53,7 @@ export class FaqComponent implements OnInit {
             link: '/'
           },
           {
-            name: 'Pages',
-            isLink: true,
-            link: '/'
-          },
-          {
-            name: 'FAQ',
+            name: 'All FAQs',
             isLink: false
           }
         ]

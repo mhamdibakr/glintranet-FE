@@ -1,23 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { UploadDocComponent } from './upload-doc.component';
+import { FeedbackComponent } from './feedback.component';
 
 
 const routes: Routes = [
-  {
-    path: 'Adddoc',
-    component: UploadDocComponent
-  }
+  { path: '', component: FeedbackComponent }
 ];
 
 @NgModule({
   declarations: [
-    UploadDocComponent
+    FeedbackComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
   ]
 })
-export class UploadDocModule { }
+export class FeedbackModule { }
