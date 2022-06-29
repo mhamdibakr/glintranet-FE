@@ -10,7 +10,7 @@ export class UserService {
    *
    * @param {HttpClient} _http
    */
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) { }
 
   /**
    * Get all users
@@ -22,7 +22,7 @@ export class UserService {
   /**
    * Get user by id
    */
-  getById(id: number) {
-    return this._http.get<User>(`${environment.apiUrl}/users/${id}`);
+  getById(id: any) {
+    return this._http.get<User>(`${environment.apiUrl}/api/employee/${id}`);
   }
 }
