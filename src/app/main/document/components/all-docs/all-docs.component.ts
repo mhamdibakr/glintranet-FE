@@ -44,7 +44,9 @@ export class AllDocsComponent implements OnInit {
   }
 
   modalOpenForm(modalForm) {
-    this.modalService.open(modalForm);
+    this.modalService.open(modalForm, {
+      centered: true
+    });
   }
 
 }
