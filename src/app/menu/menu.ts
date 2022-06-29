@@ -257,24 +257,9 @@ export const menu: CoreMenu[] = [
   {
     id: 'Document',
     title: 'Document',
-    type: 'collapsible',
+    type: 'item',
     icon: 'file',
-    children: [
-      {
-        id: 'Documents',
-        title: 'All Docs',
-        type: 'item',
-        icon: 'list',
-        url: 'doc/Alldocs'
-      },
-      {
-        id: 'adddoc',
-        title: 'Upload Doc',
-        type: 'item',
-        icon: 'plus-square',
-        url: 'doc/Adddoc'
-      }
-    ]
+    url: 'doc/Alldocs'
   },
   {
     id: 'projects',
