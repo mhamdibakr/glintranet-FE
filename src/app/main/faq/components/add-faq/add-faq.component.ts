@@ -13,7 +13,8 @@ export class AddFaqComponent implements OnInit {
 
   public MultiDefaultSelected = [{ name: 'Karyn Wright' }];
   public MultiDefault = [
-    { name: 'Javascript' },
+    { name: 'IT' },
+    { name: 'need answer asap'},
     { name: 'Angular' },
     { name: 'Typescript' },
     { name: 'Python' }
