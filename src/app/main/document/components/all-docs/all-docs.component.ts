@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-datatable';
 
 
@@ -16,11 +17,34 @@ export class AllDocsComponent implements OnInit {
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
+  public contentHeader: object;
   public rows = [];
 
   ngOnInit(): void {
+    this.contentHeader = {
+      headerTitle: 'Document',
+      actionButton: true,
+      breadcrumb: {
+        type: '',
+        links: [
+          {
+            name: 'Home',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'all documents',
+            isLink: false
+          }
+        ]
+      }
+    };
+  }
+
+  modalOpenForm(modalForm) {
+    this.modalService.open(modalForm);
   }
 
 }

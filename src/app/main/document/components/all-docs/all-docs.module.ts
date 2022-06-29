@@ -6,23 +6,19 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CoreCommonModule } from '@core/common.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CardSnippetModule } from '@core/components/card-snippet/card-snippet.module';
-import { UploadDocComponent } from '../upload-doc/upload-doc.component';
+import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 
 
 const routes: Routes = [
   { 
     path: 'Alldocs',
     component: AllDocsComponent
-  },
-  {
-    path: 'Adddoc',
-    component: UploadDocComponent
   }
 ];
 
 @NgModule({
   declarations: [
-    AllDocsComponent,UploadDocComponent
+    AllDocsComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +26,8 @@ const routes: Routes = [
     NgxDatatableModule,
     CoreCommonModule,
     NgbModule,
-    CardSnippetModule
+    CardSnippetModule,
+    ContentHeaderModule
   ]
 })
 export class AllDocsModule { }
