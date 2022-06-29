@@ -106,7 +106,7 @@
                   </div>
                 </ng-template>
               </ngx-datatable-footer>
-
+{{pagePosition}}
               <div class="col-lg-12">
                 <ngb-pagination class="d-flex justify-content-end" [collectionSize]="totalPages" [(page)]="pagePosition"
                   [rotate]="true" [ellipses]="false" [boundaryLinks]="true" (pageChange)="pageChanged($event)">

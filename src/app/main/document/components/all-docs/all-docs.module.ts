@@ -5,9 +5,8 @@ import { AllDocsComponent } from './all-docs.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CoreCommonModule } from '@core/common.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateModule } from '@ngx-translate/core';
-import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 import { CardSnippetModule } from '@core/components/card-snippet/card-snippet.module';
+import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 
 
 const routes: Routes = [
@@ -27,7 +26,8 @@ const routes: Routes = [
     NgxDatatableModule,
     CoreCommonModule,
     NgbModule,
-    CardSnippetModule
+    CardSnippetModule,
+    ContentHeaderModule
   ]
 })
 export class AllDocsModule { }
