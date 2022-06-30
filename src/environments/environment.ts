@@ -10,7 +10,7 @@ export const environment = {
   UrlCompany: 'http://localhost:8091/api',
   Urlglintranet : 'http://localhost:8095/api',
   
-  apiUrl: 'http://localhost:4000',
+  apiUrl: 'http://localhost:8095',
   //apiBaseUrl: 'http://localhost:8092/api'
 };
 

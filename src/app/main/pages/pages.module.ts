@@ -1,3 +1,4 @@
+import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -21,9 +22,10 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
     NgSelectModule,
     FormsModule,
     AuthenticationModule,
-    MiscellaneousModule
+    MiscellaneousModule,
+    ToastrModule
   ],
 
   providers: []
 })
-export class PagesModule {}
+export class PagesModule { }

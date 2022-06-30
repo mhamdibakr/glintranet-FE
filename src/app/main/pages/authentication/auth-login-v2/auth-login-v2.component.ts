@@ -1,10 +1,12 @@
+import { AuthenticationService } from 'app/auth/service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { takeUntil } from 'rxjs/operators';
+import { first, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { CoreConfigService } from '@core/services/config.service';
+import * as snippet from 'app/main/extensions/custom-toastr/toastr.snippetcode';
 
 @Component({
   selector: 'app-auth-login-v2',
@@ -22,6 +24,15 @@ export class AuthLoginV2Component implements OnInit {
   public error = '';
   public passwordTextType: boolean;
 
+  public _snippetCodeTypes = snippet.snippetCodeTypes;
+  public _snippetCodeTopPositions = snippet.snippetCodeTopPositions;
+  public _snippetCodeBottomPositions = snippet.snippetCodeBottomPositions;
+  public _snippetCodeOptions = snippet.snippetCodeOptions;
+  public _snippetCodeRemove = snippet.snippetCodeRemove;
+  public _snippetCodeClear = snippet.snippetCodeClear;
+  public _snippetCodeEaseTimeout = snippet.snippetCodeEaseTimeout;
+  public _snippetCodeCustomToastr = snippet.snippetCodeCustomToastr;
+
   // Private
   private _unsubscribeAll: Subject<any>;
 
@@ -34,7 +45,8 @@ export class AuthLoginV2Component implements OnInit {
     private _coreConfigService: CoreConfigService,
     private _formBuilder: FormBuilder,
     private _route: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _authenticationService: AuthenticationService
   ) {
     this._unsubscribeAll = new Subject();
 
@@ -78,6 +90,17 @@ export class AuthLoginV2Component implements OnInit {
 
     // Login
     this.loading = true;
+    this._authenticationService
+      .login(this.f.email.value, this.f.password.value)
+      .pipe(first())
+      .subscribe(data => {
+        this._router.navigate([this.returnUrl]);
+      },
+        error => {
+          this.error = error;
+          this.loading = false;
+        }
+      )
 
     // redirect to home page
     setTimeout(() => {
