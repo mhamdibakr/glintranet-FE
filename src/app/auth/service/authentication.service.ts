@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -12,6 +13,17 @@ export class AuthenticationService {
   //public
   public currentUser: Observable<User>;
 
+  public usr: User = {
+    id: "",
+    avatar: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    password: "",
+    token: "",
+    role: Role.User
+  };
+
   //private
   private currentUserSubject: BehaviorSubject<User>;
 
@@ -20,7 +32,7 @@ export class AuthenticationService {
    * @param {HttpClient} _http
    * @param {ToastrService} _toastrService
    */
-  constructor(private _http: HttpClient, private _toastrService: ToastrService) {
+  constructor(private _http: HttpClient, private _toastrService: ToastrService, private _userService: UserService) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -30,19 +42,30 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
+  // get user informations
+  public userInf(): User {
+    this._userService.getById(this.currentUserSubject.value.id).subscribe({
+      next: (data) => {
+        this.usr = data
+        console.log(data);
+      },
+      error: (err) => console.error(err)
+    });
+    return this.usr;
+  }
   /**
    *  Confirms if user is admin
    */
-  get isAdmin() {
-    return this.currentUser && this.currentUserSubject.value.role === Role.Admin;
-  }
+  // get isAdmin() {
+  //   return this.currentUser && this.currentUserSubject.value.role === Role.Admin;
+  // }
 
-  /**
-   *  Confirms if user is client
-   */
-  get isClient() {
-    return this.currentUser && this.currentUserSubject.value.role === Role.Client;
-  }
+  // /**
+  //  *  Confirms if user is client
+  //  */
+  // get isClient() {
+  //   return this.currentUser && this.currentUserSubject.value.role === Role.Client;
+  // }
 
   /**
    * User login
@@ -53,7 +76,7 @@ export class AuthenticationService {
    */
   login(email: string, password: string) {
     return this._http
-      .post<any>(`${environment.apiUrl}/users/authenticate`, { email, password })
+      .post<any>(`${environment.apiUrl}/users/login`, { email, password })
       .pipe(
         map(user => {
           // login successful if there's a jwt token in the response
@@ -65,9 +88,9 @@ export class AuthenticationService {
             setTimeout(() => {
               this._toastrService.success(
                 'You have successfully logged in as an ' +
-                  user.role +
-                  ' user to Vuexy. Now you can start to explore. Enjoy! 🎉',
-                '👋 Welcome, ' + user.firstName + '!',
+                this.userInf().role +
+                ' user to Vuexy. Now you can start to explore. Enjoy! 🎉',
+                '👋 Welcome, ' + this.userInf().firstName + ' ' + this.userInf().lastName + '!',
                 { toastClass: 'toast ngx-toastr', closeButton: true }
               );
             }, 2500);

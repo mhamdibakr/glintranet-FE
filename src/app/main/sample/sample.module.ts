@@ -1,3 +1,4 @@
+import { AuthGuard } from 'app/auth/helpers';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -18,6 +19,7 @@ const routes = [
   {
     path: 'home',
     component: HomeComponent,
+    CanActivate: [AuthGuard],
     data: { animation: 'home' }
   },
   {
@@ -30,11 +32,11 @@ const routes = [
 @NgModule({
   declarations: [SampleComponent, HomeComponent],
   imports: [
-    RouterModule.forChild(routes), 
-    ContentHeaderModule, 
-    TranslateModule, 
+    RouterModule.forChild(routes),
+    ContentHeaderModule,
+    TranslateModule,
     CoreCommonModule
   ],
   exports: [SampleComponent, HomeComponent]
 })
-export class SampleModule {}
+export class SampleModule { }

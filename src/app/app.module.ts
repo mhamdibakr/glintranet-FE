@@ -24,6 +24,7 @@ import { ChartsModule } from 'ng2-charts';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { CustomToastrComponent } from './main/extensions/custom-toastr/custom-toastr.component';
 
 const appRoutes: Routes = [
   {
@@ -74,6 +75,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    CustomToastrComponent,
 
   ],
   imports: [
