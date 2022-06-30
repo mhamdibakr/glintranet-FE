@@ -38,114 +38,39 @@
     <!-- account setting page -->
     <section id="faq">
       <div class="col-12 mt-1" id="blogComment">
-        <h6 class="section-label mt-25">5 Questions</h6>
-        <div class="card">
+        <h6 class="section-label mt-25">{{count}} Questions</h6>
+        <div class="card" *ngFor="let faq of AllFaqs">
           <div class="card-body">
             <div class="media">
               <div class="mr-2">
                 <div class="d-flex flex-column align-items-center">
                   <!-- <i class="bi bi-caret-up-fill" style="font-size: 35px;"></i> -->
-                  <h3>12</h3>
+                  <h3>{{faq.votes}}</h3>
                   <!-- <i class="bi bi-caret-down-fill" style="font-size: 35px;"></i> -->
                   <p style="font-size: x-small;" width="38" height="38">Votes</p>
                 </div>
                 <div class="d-flex flex-column align-items-center">
-                  <h3>5</h3>
+                  <h3>{{faq.comments.length}}</h3>
                   <p style="font-size: x-small;" width="38" height="38">Answers</p>
                 </div>
               </div>
               <div class="media-body">
                 <h6 class="font-weight-bolder mb-25">
-                  <a routerLink="/faq/faq-details/5">How to Fetch each records from MySQL with jQuery AJAX in
-                    Dynamically Add or Remove Input Fields in Laravel?</a>
+                  <a routerLink="/faq/faq-details/{{faq.id}}">{{faq.content}}</a>
                 </h6>
-                <p class="card-text">I'm trying to Fetch each records from MySQL with jQuery AJAX in Dynamically Add or
-                  Remove Input Fields in Laravel, but when I add the second dynamic element, it doesn't add Fetch each
-                  records from database.</p>
+                <p class="card-text">{{faq.description}}</p>
                 <a href="javascript:void(0);">
                   <div class="d-inline-flex align-items-center">
-                    <div class="badge badge-pill badge-primary mr-1">javascript</div>
-                    <div class="badge badge-pill badge-secondary mr-1">laravel</div>
+                    <div class="badge badge-pill badge-primary mr-1" *ngFor="let tag of faq.tags">
+                      {{tag.name}}
+                    </div>
                   </div>
                 </a>
               </div>
             </div>
             <div class="float-right" style="font-size: small;">
-              <p style="margin-bottom: 0;">il y'a une semaine</p>
-              <p style="margin-bottom: 0;">Goerge wiya</p>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="media">
-              <div class="mr-2">
-                <div class="d-flex flex-column align-items-center">
-                  <!-- <i class="bi bi-caret-up-fill" style="font-size: 35px;"></i> -->
-                  <h3>-2</h3>
-                  <!-- <i class="bi bi-caret-down-fill" style="font-size: 35px;"></i> -->
-                  <p style="font-size: x-small;" width="38" height="38">Votes</p>
-                </div>
-                <div class="d-flex flex-column align-items-center">
-                  <h3>2</h3>
-                  <p style="font-size: x-small;" width="38" height="38">Answers</p>
-                </div>
-              </div>
-              <div class="media-body">
-                <h6 class="font-weight-bolder mb-25">
-                  <a routerLink="/faq/faq-details/5">A button allowing at most one click per second</a></h6>
-                <p class="card-text">I wanted to implement a button in Javascript that allows at most one click per
-                  second, so I thought of 4 solutions ( 2 are working and 2 aren't). each solution has its branch in the
-                  following repository: https://github.com/codiaji/OneClickPerSecond Can you tell me, If I did well with
-                  the working solutions, and why aren't the other ones not working. finally, If you've other tricks to
-                  implement this feature tell me about briefly.</p>
-                <a href="javascript:void(0);">
-                  <div class="d-inline-flex align-items-center">
-                    <div class="badge badge-pill badge-primary mr-1">react</div>
-                    <div class="badge badge-pill badge-secondary mr-1">nodejs</div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="float-right" style="font-size: small;">
-              <p style="margin-bottom: 0;">il y'a une semaine</p>
-              <p style="margin-bottom: 0;">Goerge wiya</p>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <div class="media">
-              <div class="mr-2">
-                <div class="d-flex flex-column align-items-center">
-                  <!-- <i class="bi bi-caret-up-fill" style="font-size: 35px;"></i> -->
-                  <h3>0</h3>
-                  <!-- <i class="bi bi-caret-down-fill" style="font-size: 35px;"></i> -->
-                  <p style="font-size: x-small;" width="38" height="38">Votes</p>
-                </div>
-                <div class="d-flex flex-column align-items-center">
-                  <h3>0</h3>
-                  <p style="font-size: x-small;" width="38" height="38">Answers</p>
-                </div>
-              </div>
-              <div class="media-body">
-                <h6 class="font-weight-bolder mb-25">
-                <a routerLink="/faq/faq-details/5">Angular Material with ngx-formly - Sorting issue</a></h6>
-                <p class="card-text">Im working on building a material table with ngx-fornmly. Data are displayed,
-                  pagination working. Having issue with sorting the columns. Despite matColumnDef is the same with the
-                  keys of columns its not sorted. The only column sorted is third one that match with name of
-                  matColumnDef but not with value of it.</p>
-                <a href="javascript:void(0);">
-                  <div class="d-inline-flex align-items-center">
-                    <div class="badge badge-pill badge-primary mr-1">Primary</div>
-                    <div class="badge badge-pill badge-secondary mr-1">Secondary</div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="float-right" style="font-size: small;">
-              <p style="margin-bottom: 0;">il y'a une semaine</p>
-              <p style="margin-bottom: 0;">Goerge wiya</p>
+              <p style="margin-bottom: 0;">{{faq.postingDate}}</p>
+              <p style="margin-bottom: 0;">{{faq.employee.lastName}} {{faq.employee.firstName}}</p>
             </div>
           </div>
         </div>

@@ -18,7 +18,7 @@ export class FaqComponent implements OnInit {
   public contentHeader: object;
   public data: any;
   public searchText: string;
-  public data2?: any[];
+  public AllFaqs?: any[];
 
   // private
   private _unsubscribeAll: Subject<any>;
@@ -28,7 +28,7 @@ export class FaqComponent implements OnInit {
    *
    * @param {FAQService} _faqService
    */
-  constructor(private _faqService: FAQService, private faqService : FaqService) {
+  constructor(private _faqService: FAQService, private faqService: FaqService) {
     this._unsubscribeAll = new Subject();
   }
 
@@ -66,16 +66,15 @@ export class FaqComponent implements OnInit {
     };
   }
 
-  public getData() : void
-  {
+  count = 0;
+  public getData(): void {
     this.faqService.getAllFAQs().subscribe(
-      (res : any) =>
-      {
-        this.data2 = res,
-        console.log(this.data2)
+      (res: any) => {
+        this.AllFaqs = res;
+        this.count = this.AllFaqs.length;
+        console.log(this.AllFaqs);
       },
-      (error : HttpErrorResponse) =>
-      {
+      (error: HttpErrorResponse) => {
         alert(error.message)
       }
     )

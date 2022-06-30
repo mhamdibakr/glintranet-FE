@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
+import { Faq } from '../models/faq.model';
 
 const baseUrl = environment.Urlglintranet;
 
@@ -16,5 +17,15 @@ export class FaqService {
   getAllFAQs() : Observable<any[]>
   {
     return this.http.get<any[]>(`${baseUrl}/faq`)
+  }
+
+  getFAQById(id: number) : Observable<any[]>
+  {
+    return this.http.get<any[]>(`${baseUrl}/faq/${id}`)
+  }
+
+  AddFAQ(faq: Faq) : Observable<any[]>
+  {
+    return this.http.post<any[]>(`${baseUrl}/faq`, faq)
   }
 }
