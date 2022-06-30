@@ -40,4 +40,22 @@ export class FaqDetailsComponent implements OnInit {
     )
   }
 
+  public voteUp(id : number) : void
+  {
+    this.faqService.voteUp(id).subscribe(
+      () => {
+        this.ngOnInit()
+      }
+    )
+  }
+
+  public voteDown(id : number) : void
+  {
+    this.faqService.voteDown(id).subscribe(
+      () => {
+        this.ngOnInit()
+      }
+    )
+  }
+
 }

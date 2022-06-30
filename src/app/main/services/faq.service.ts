@@ -28,4 +28,14 @@ export class FaqService {
   {
     return this.http.post<any[]>(`${baseUrl}/faq`, faq)
   }
+
+  voteUp(id : number) : Observable<any>
+  {
+    return this.http.get<any>(`${baseUrl}/faq/up/${id}`)
+  }
+
+  voteDown(id : number) : Observable<any>
+  {
+    return this.http.get<any>(`${baseUrl}/faq/down/${id}`)
+  }
 }
