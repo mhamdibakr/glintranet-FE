@@ -42,10 +42,11 @@
     <div class="form-group mb-2 d-flex flex-column">
         <label>Comment</label>
         <fieldset class="form-label-group">
-            <textarea class="form-control" id="label-textarea" rows="3" placeholder="add youre comment here"></textarea>
+            <textarea class="form-control" [(ngModel)]="comment.content" id="label-textarea" rows="3"
+                placeholder="add youre comment here"></textarea>
         </fieldset>
         <div class="align-self-end">
-            <a href="" class="btn btn-primary ml-1">Comment</a>
+            <button class="btn btn-primary ml-1" (click)="addComment()">Comment</button>
         </div>
     </div>
 </div>
@@ -56,11 +57,15 @@
         <div class="card-body">
             <div class="media">
                 <div class="avatar mr-2">
-                    <img src="assets/images/portrait/small/avatar-s-2.jpg" width="38" height="38" alt="" />
+                    <img src="assets/images/avatars/pp.png" width="38" height="38" alt="" />
                 </div>
                 <div class="media-body">
-                    <h6 class="font-weight-bolder mb-25">{{comment.employeeCommentResponse.lastName}} {{comment.employeeCommentResponse.firstName}}</h6>
+                    <h6 class="font-weight-bolder mb-25">{{comment.employeeCommentResponse.lastName}}
+                        {{comment.employeeCommentResponse.firstName}}</h6>
                     <p class="card-text">{{comment.content}}</p>
+                </div>
+                <div class="float-right" style="font-size: small;">
+                    <p class="mt-4 mb-0">{{comment.commentDate}}</p>
                 </div>
             </div>
         </div>

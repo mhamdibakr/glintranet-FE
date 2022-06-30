@@ -1,6 +1,6 @@
 export class Comment 
 {
-    id : number ;
     content : String;
-    commentDate : Date 
+    emp_Id: number;
+    faq_Id: number
 }

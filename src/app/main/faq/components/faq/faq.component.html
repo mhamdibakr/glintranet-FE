@@ -21,10 +21,9 @@
           <div class="btn-group justify-content-end">
             <div class="d-flex">
               <div class="form-group">
-                <select class="form-control" id="basicSelect">
-                  <option>IT</option>
-                  <option>Blade Runner</option>
-                  <option>Thor Ragnarok</option>
+                <select class="form-control" (change)="getAllFAQsBySection()" [(ngModel)]="SelectedSection" id="basicSelect">
+                  <option selected>All</option>
+                  <option *ngFor="let section of sections">{{section.name}}</option>
                 </select>
               </div>
               <div>
