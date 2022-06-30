@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { FaqService } from 'app/main/services/faq.service';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -16,6 +18,7 @@ export class FaqComponent implements OnInit {
   public contentHeader: object;
   public data: any;
   public searchText: string;
+  public data2?: any[];
 
   // private
   private _unsubscribeAll: Subject<any>;
@@ -25,7 +28,7 @@ export class FaqComponent implements OnInit {
    *
    * @param {FAQService} _faqService
    */
-  constructor(private _faqService: FAQService) {
+  constructor(private _faqService: FAQService, private faqService : FaqService) {
     this._unsubscribeAll = new Subject();
   }
 
@@ -36,6 +39,8 @@ export class FaqComponent implements OnInit {
    * On Changes
    */
   ngOnInit(): void {
+    this.getData()
+
     this._faqService.onFaqsChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
       this.data = response;
     });
@@ -59,5 +64,20 @@ export class FaqComponent implements OnInit {
         ]
       }
     };
+  }
+
+  public getData() : void
+  {
+    this.faqService.getAllFAQs().subscribe(
+      (res : any) =>
+      {
+        this.data2 = res,
+        console.log(this.data2)
+      },
+      (error : HttpErrorResponse) =>
+      {
+        alert(error.message)
+      }
+    )
   }
 }
