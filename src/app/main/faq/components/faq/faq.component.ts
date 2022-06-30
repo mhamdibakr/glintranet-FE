@@ -1,11 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Section } from 'app/main/models/section.model';
 import { FaqService } from 'app/main/services/faq.service';
-
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { FAQService } from './faq.service';
-
+import { SectionService } from 'app/main/services/section.service';
 
 @Component({
   selector: 'app-faq',
@@ -19,31 +16,17 @@ export class FaqComponent implements OnInit {
   public data: any;
   public searchText: string;
   public AllFaqs?: any[];
+  public sections: Section[];
+  public SelectedSection = "All";
 
-  // private
-  private _unsubscribeAll: Subject<any>;
-
-  /**
-   * Constructor
-   *
-   * @param {FAQService} _faqService
-   */
-  constructor(private _faqService: FAQService, private faqService: FaqService) {
-    this._unsubscribeAll = new Subject();
+  constructor(
+    private faqService: FaqService,
+    private sectionService: SectionService) {
   }
 
-  // Lifecycle Hooks
-  // -----------------------------------------------------------------------------------------------------
-
-  /**
-   * On Changes
-   */
   ngOnInit(): void {
     this.getData()
-
-    this._faqService.onFaqsChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(response => {
-      this.data = response;
-    });
+    this.getAllSections()
 
     // content header
     this.contentHeader = {
@@ -67,7 +50,7 @@ export class FaqComponent implements OnInit {
   }
 
   count = 0;
-  public getData(): void {
+  getData(): void {
     this.faqService.getAllFAQs().subscribe(
       (res: any) => {
         this.AllFaqs = res;
@@ -79,4 +62,32 @@ export class FaqComponent implements OnInit {
       }
     )
   }
+
+  getAllSections() {
+    this.sectionService.getAllSections().subscribe({
+      next: (data: any) => {
+        this.sections = data;
+        console.log(data);
+      },
+      error: (err) => console.error(err)
+
+    })
+  }
+
+  getAllFAQsBySection(): void {
+    var sec = this.sections.find(section => section.name == this.SelectedSection);
+    
+    this.faqService.getAllFAQsBySection(sec.id).subscribe(
+      (res: any) => {
+        this.AllFaqs = res;
+        this.count = this.AllFaqs.length;
+        console.log(this.AllFaqs);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message)
+      }
+    )
+  }
+
+
 }

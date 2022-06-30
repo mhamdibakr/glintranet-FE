@@ -2,7 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { id } from '@swimlane/ngx-datatable';
+import { Comment } from 'app/main/models/comment.model';
 import { Faq } from 'app/main/models/faq.model';
+import { CommentService } from 'app/main/services/comment.service';
 import { FaqService } from 'app/main/services/faq.service';
 import { CustomOption } from 'ngx-quill';
 
@@ -13,10 +15,20 @@ import { CustomOption } from 'ngx-quill';
 })
 export class FaqDetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private faqService: FaqService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private faqService: FaqService,
+    private commentService: CommentService
+  ) { }
 
   public fad_id = this.route.snapshot.params["faqId"];
   public actualFaq: any;
+  date = new Date(Date.now());
+  public comment: Comment = {
+    content: undefined,
+    emp_Id: 0,
+    faq_Id: Number.parseInt(this.fad_id)
+  }
 
   ngOnInit(): void {
     this.getData()
@@ -38,6 +50,19 @@ export class FaqDetailsComponent implements OnInit {
         alert(error.message)
       }
     )
+  }
+
+  addComment() {
+    this.comment.emp_Id = this.actualFaq.employee.id;
+    console.log(this.comment);
+
+    this.commentService.addComment(this.comment).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.ngOnInit()
+      },
+      error: (err) => console.error(err)
+    })
   }
 
 }

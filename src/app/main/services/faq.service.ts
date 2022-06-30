@@ -18,6 +18,11 @@ export class FaqService {
   {
     return this.http.get<any[]>(`${baseUrl}/faq`)
   }
+  
+  getAllFAQsBySection(sectionId: number) : Observable<any[]>
+  {
+    return this.http.get<any[]>(`${baseUrl}/faq/section/${sectionId}`)
+  }
 
   getFAQById(id: number) : Observable<any[]>
   {
