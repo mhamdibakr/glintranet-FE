@@ -1,14 +1,13 @@
 <section id="faq">
     <div class="col-12 mt-1" id="blogComment">
-        <h3 class="my-2">How to Fetch each records from MySQL with jQuery AJAX in
-            Dynamically Add or Remove Input Fields in Laravel?</h3>
+        <h3 class="my-2">{{actualFaq?.content}}</h3>
         <div class="card">
             <div class="card-body">
                 <div class="media" style="align-items: normal;">
                     <div class="mr-2">
                         <div class="d-flex flex-column align-items-center">
                             <div class="d-flex flex-column align-items-center">
-                                <h3>12</h3>
+                                <h3>{{actualFaq?.votes}}</h3>
                                 <p class="mb-0" style="font-size: x-small;">Positifs</p>
                                 <i class="bi bi-caret-up-fill" style="font-size: 35px;"></i>
                             </div>
@@ -20,22 +19,19 @@
                         </div>
                     </div>
                     <div class="media-body d-flex flex-column justify-content-around">
-                        <p class="card-text">I'm trying to Fetch each records from MySQL with jQuery AJAX in Dynamically
-                            Add or
-                            Remove Input Fields in Laravel, but when I add the second dynamic element, it doesn't add
-                            Fetch each
-                            records from database.</p>
+                        <p class="card-text">{{actualFaq?.description}}</p>
                         <a href="javascript:void(0);">
                             <div class="d-inline-flex align-items-center">
-                                <div class="badge badge-pill badge-primary mr-1">javascript</div>
-                                <div class="badge badge-pill badge-secondary mr-1">laravel</div>
+                                <div class="badge badge-pill badge-primary mr-1" *ngFor="let tag of actualFaq?.tags">
+                                    {{tag.name}}
+                                </div>
                             </div>
                         </a>
                     </div>
                 </div>
                 <div class="float-right" style="font-size: small;">
-                    <p style="margin-bottom: 0;">il y'a une semaine</p>
-                    <p style="margin-bottom: 0;">Goerge wiya</p>
+                    <p style="margin-bottom: 0;">{{actualFaq?.postingDate}}</p>
+                    <p style="margin-bottom: 0;">{{actualFaq?.employee.lastName}} {{actualFaq?.employee.firstName}}</p>
                 </div>
             </div>
         </div>
@@ -46,27 +42,25 @@
     <div class="form-group mb-2 d-flex flex-column">
         <label>Comment</label>
         <fieldset class="form-label-group">
-            <textarea class="form-control" id="label-textarea" rows="3" placeholder="Label in Textarea"></textarea>
-            <label for="label-textarea">Label in Textarea</label>
+            <textarea class="form-control" id="label-textarea" rows="3" placeholder="add youre comment here"></textarea>
         </fieldset>
         <div class="align-self-end">
-          <a href="" class="btn btn-primary ml-1">Comment</a>
+            <a href="" class="btn btn-primary ml-1">Comment</a>
         </div>
     </div>
 </div>
 
 
-<div class="col-12">
+<div class="col-12" *ngFor="let comment of actualFaq?.comments">
     <div class="card">
         <div class="card-body">
             <div class="media">
                 <div class="avatar mr-2">
-                    <img src="assets/images/portrait/small/" width="38" height="38" alt="" />
+                    <img src="assets/images/portrait/small/avatar-s-2.jpg" width="38" height="38" alt="" />
                 </div>
                 <div class="media-body">
-                    <h6 class="font-weight-bolder mb-25">El bakali youness </h6>
-                    <p class="card-text"> this is a comment </p>
-                    <p class="card-text"> this is a comment comment </p>
+                    <h6 class="font-weight-bolder mb-25">{{comment.employeeCommentResponse.lastName}} {{comment.employeeCommentResponse.firstName}}</h6>
+                    <p class="card-text">{{comment.content}}</p>
                 </div>
             </div>
         </div>
