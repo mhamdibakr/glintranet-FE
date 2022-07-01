@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Employee } from 'app/main/models/employee.model';
 import { Faq } from 'app/main/models/faq.model';
@@ -38,7 +39,8 @@ export class AddFaqComponent implements OnInit {
     private employeeService: EmployeeService,
     private tagService: TagService,
     private sectionService: SectionService,
-    private faqService: FaqService
+    private faqService: FaqService,
+    private router: Router,
   ) { }
 
   public MultiDefaultSelected = [];
@@ -110,13 +112,14 @@ export class AddFaqComponent implements OnInit {
   }
 
   addFaq() {
-    this.faq.employee_id=this.employees[1].id
+    this.faq.employee_id=1
     this.faq.section_id=this.SectionSelected.id
     this.faq.tags=this.MultiDefaultSelected;
 
     this.faqService.AddFAQ(this.faq).subscribe({
       next: (data: any) => {
         console.log(data);
+        this.router.navigateByUrl("/faq/Allfaqs")
       },
       error: (err) => console.error(err)
     })

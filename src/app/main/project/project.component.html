@@ -1,63 +1,26 @@
 <div class="content-wrapper container-xxl p-0">
     <div class="content-body">
         <h2 class="mb-2">Projects</h2>
+        <section *ngFor="let pct of data">
+            
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body d-flex flex-column">
+                                <h3 class="font-weight-bolder mb-2">{{pct.projectName}}</h3>
+                                <p class="card-text">
+                                   {{pct.projectDesc}}
+                                </p>
+                                <a routerLink="/projects/feedback/{{pct.id}}" class="btn btn-primary align-self-end">
+                                    <i class="bi bi-box-arrow-in-up-right" style="font-size: 18px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <section>
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="media-body d-flex flex-column">
-                                <h3 class="font-weight-bolder mb-2">Service CvTeck</h3>
-                                <p class="card-text">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio labore, impedit nobis
-                                    repudiandae cupiditate eligendi eaque laboriosam possimus ducimus odio!
-                                </p>
-                                <a routerLink="/projects/feedback/5" class="btn btn-primary align-self-end">
-                                    <i class="bi bi-box-arrow-in-up-right" style="font-size: 18px;"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="media-body d-flex flex-column">
-                                <h3 class="font-weight-bolder mb-2">Service Company</h3>
-                                <p class="card-text">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur sapiente iure, sed
-                                    dicta assumenda architecto.
-                                </p>
-                                <a routerLink="/projects/feedback/5" class="btn btn-primary align-self-end">
-                                    <i class="bi bi-box-arrow-in-up-right" style="font-size: 18px;"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="media-body d-flex flex-column">
-                                <h3 class="font-weight-bolder mb-2">Service GRH</h3>
-                                <p class="card-text">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia modi aut nulla
-                                    sunt omnis architecto sapiente sequi animi illum accusantium est voluptatibus
-                                    aspernatur, facere quam.
-                                </p>
-                                <a routerLink="/projects/feedback/5" class="btn btn-primary align-self-end">
-                                    <i class="bi bi-box-arrow-in-up-right" style="font-size: 18px;"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
     </div>
 </div>

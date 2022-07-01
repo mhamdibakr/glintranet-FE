@@ -7,6 +7,7 @@ import { CoreCommonModule } from '@core/common.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
+
 const routes: Routes = [
   { path: '', component: ProjectComponent },
   { path: 'feedback/:projectId', loadChildren: () => import('./feedback/feedback.module').then(m => m.FeedbackModule) }

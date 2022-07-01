@@ -93,9 +93,14 @@ export class AuthenticationService {
                 '👋 Welcome, ' + this.userInf().firstName + ' ' + this.userInf().lastName + '!',
                 { toastClass: 'toast ngx-toastr', closeButton: true }
               );
+              console.log(
+                this.userInf().id
+              );
             }, 2500);
 
             // notify
+          
+          
             this.currentUserSubject.next(user);
           }
 

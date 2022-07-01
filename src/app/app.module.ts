@@ -26,6 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CustomToastrComponent } from './main/extensions/custom-toastr/custom-toastr.component';
 
+
+
 const appRoutes: Routes = [
   {
     path: 'pages',
@@ -75,7 +77,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    CustomToastrComponent,
+    CustomToastrComponent
 
   ],
   imports: [
