@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { AuthenticationService } from 'app/auth/service/authentication.service';
 import { Section } from 'app/main/models/section.model';
 import { FaqService } from 'app/main/services/faq.service';
 import { SectionService } from 'app/main/services/section.service';
@@ -21,12 +22,14 @@ export class FaqComponent implements OnInit {
 
   constructor(
     private faqService: FaqService,
-    private sectionService: SectionService) {
+    private sectionService: SectionService,
+    private authService : AuthenticationService) {
   }
 
   ngOnInit(): void {
     this.getData()
     this.getAllSections()
+    
 
     // content header
     this.contentHeader = {
@@ -77,6 +80,7 @@ export class FaqComponent implements OnInit {
   getAllFAQsBySection(): void {
     var sec = this.sections.find(section => section.name == this.SelectedSection);
     
+    
     this.faqService.getAllFAQsBySection(sec.id).subscribe(
       (res: any) => {
         this.AllFaqs = res;
@@ -87,6 +91,10 @@ export class FaqComponent implements OnInit {
         alert(error.message)
       }
     )
+
+    
+    console.log(sec.name);
+    
   }
 
 

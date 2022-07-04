@@ -1,63 +1,64 @@
+<app-content-header [contentHeader]="contentHeader"></app-content-header>
 <div class="content-wrapper container-xxl p-0">
-    <div class="content-body">
-        <h2 class="mb-2">Feedbacks</h2>
+  <div class="content-body">
+    <button type="button" (click)="modalOpenForm(modalForm)" class="mb-1 btn btn-primary" style="margin-left : 15px;"
+      rippleEffect>
+      Add Feedback
+    </button>
+    <section *ngFor="let fb of feedBacks">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="media">
+              <div class="media-body d-flex flex-column">
+                <h3 class="font-weight-bolder mb-2">{{fb.type.name}}</h3>
+                <p class="card-text">
+                  {{fb.content}}
+                </p>
+              </div>
+            </div>
+            <div class="mx-1 float-right" style="font-size: small;">
+              <p style="margin-bottom: 0;">{{fb.timestamp | date:'yyyy-MM-dd HH:mm'}}</p>
+              <p style="margin-bottom: 0;">{{fb.employee.firstName+" "+fb.employee.lastName}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
 
-        <section>
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="media-body d-flex flex-column">
-                                <h3 class="font-weight-bolder mb-2">Positive feedback</h3>
-                                <p class="card-text">
-                                    Great working enviroment
-                                </p>
-                            </div>
-                        </div>
-                        <div class="mx-1 float-right" style="font-size: small;">
-                          <p style="margin-bottom: 0;">3 days ago</p>
-                          <p style="margin-bottom: 0;">Goerge wiya</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="media-body d-flex flex-column">
-                                <h3 class="font-weight-bolder mb-2">To improve</h3>
-                                <p class="card-text">
-                                    Must respect the good parctice when mworking on such a project 
-                                </p>
-                            </div>
-                        </div>
-                        <div class="mx-1 float-right" style="font-size: small;">
-                          <p style="margin-bottom: 0;">1 week ago</p>
-                          <p style="margin-bottom: 0;">Goerge wiya</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="media-body d-flex flex-column">
-                                <h3 class="font-weight-bolder mb-2">Negative feedback</h3>
-                                <p class="card-text">
-                                    Version management problem
-                                </p>
-                            </div>
-                        </div>
-                        <div class="mx-1 float-right" style="font-size: small;">
-                          <p style="margin-bottom: 0;">1 week ago</p>
-                          <p style="margin-bottom: 0;">Goerge wiya</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-         
-        </section>
+
+<div class="modal-size-default d-inline-block">
+  <ng-template #modalForm let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel1">upload document </h4>
+      <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+      <form (ngSubmit)="addFeedBack()">
+        <label>feedBack type : </label>
+        <div class="form-group">
+          <select class="form-control" [(ngModel)]="feedBackReq.type_id" name="type_id" id="basicSelect">
+            <option value="{{feedBackType.id}}" *ngFor="let feedBackType of feedBackTypes">{{feedBackType.name}}
+            </option>
+          </select>
+        </div>
+        <fieldset class="form-label-group">
+          <textarea class="form-control" id="label-textarea" rows="3" placeholder="Content"
+            [(ngModel)]="feedBackReq.content" name="content"></textarea>
+        </fieldset>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" rippleEffect>
+            add
+          </button>
+          <button type="reset" class="btn btn-danger" rippleEffect>
+            Reset
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
 </div>

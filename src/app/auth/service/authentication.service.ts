@@ -76,7 +76,7 @@ export class AuthenticationService {
    */
   login(email: string, password: string) {
     return this._http
-      .post<any>(`${environment.apiUrl}/users/login`, { email, password })
+      .post<any>(`${environment.apiUrl}/api/login`, { email, password })
       .pipe(
         map(user => {
           // login successful if there's a jwt token in the response
@@ -93,9 +93,14 @@ export class AuthenticationService {
                 '👋 Welcome, ' + this.userInf().firstName + ' ' + this.userInf().lastName + '!',
                 { toastClass: 'toast ngx-toastr', closeButton: true }
               );
+              console.log(
+                this.userInf().id
+              );
             }, 2500);
 
             // notify
+          
+          
             this.currentUserSubject.next(user);
           }
 

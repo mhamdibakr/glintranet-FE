@@ -1,3 +1,4 @@
+<app-content-header [contentHeader]="contentHeader"></app-content-header>
 <section id="faq">
     <div class="col-12 mt-1" id="blogComment">
         <h3 class="my-2">{{actualFaq?.content}}</h3>
@@ -7,13 +8,13 @@
                     <div class="mr-2">
                         <div class="d-flex flex-column align-items-center">
                             <div class="d-flex flex-column align-items-center">
-                                <h3>{{actualFaq?.votes}}</h3>
+                                <h3>{{actualFaq?.votesUp}}</h3>
                                 <p class="mb-0" style="font-size: x-small;">Positifs</p>
-                                <i class="bi bi-caret-up-fill" style="font-size: 35px;"></i>
+                                <i (click)="voteUp(actualFaq?.id)" class="bi bi-caret-up-fill cursor-pointer" style="font-size: 35px;"></i>
                             </div>
                             <div class="d-flex flex-column align-items-center">
-                                <i class="bi bi-caret-down-fill" style="font-size: 35px;"></i>
-                                <h3>-2</h3>
+                                <i (click)="voteDown(actualFaq?.id)" class="bi bi-caret-down-fill cursor-pointer" style="font-size: 35px;"></i>
+                                <h3>{{actualFaq?.votesDown}}</h3>
                                 <p class="mb-0" style="font-size: x-small;" width="38" height="38">Negatifs</p>
                             </div>
                         </div>
@@ -31,7 +32,7 @@
                 </div>
                 <div class="float-right" style="font-size: small;">
                     <p style="margin-bottom: 0;">{{actualFaq?.postingDate}}</p>
-                    <p style="margin-bottom: 0;">{{actualFaq?.employee.lastName}} {{actualFaq?.employee.firstName}}</p>
+                    <p style="margin-bottom: 0;">{{actualFaq?.employee?.lastName}} {{actualFaq?.employee?.firstName}}</p>
                 </div>
             </div>
         </div>

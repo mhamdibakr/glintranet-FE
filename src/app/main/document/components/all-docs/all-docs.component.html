@@ -56,13 +56,13 @@
 <div class="modal-size-default d-inline-block">
   <ng-template #modalForm let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="myModalLabel1">upload document</h4>
+      <h4 class="modal-title" id="myModalLabel1">upload document </h4>
       <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body" tabindex="0" ngbAutofocus>
-      <form action="#">
+      <form (ngSubmit)="show()">
         <div class="form-group">
           <label for="basicInputFile">file :</label>
           <div class="custom-file">
@@ -78,12 +78,20 @@
             <option>Pdf</option>
           </select>
         </div>
+        <fieldset class="form-label-group">
+          <textarea class="form-control" id="label-textarea" rows="3" placeholder="Content"
+              [(ngModel)]="fbContent" name="description"></textarea>
+        </fieldset>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary"  rippleEffect>
+            Upload
+          </button>
+          <button type="reset" class="btn btn-primary"  rippleEffect>
+            Upload
+          </button>
+        </div>
       </form>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-primary" (click)="modal.close('Accept click')" rippleEffect>
-        Upload
-      </button>
-    </div>
+   
   </ng-template>
 </div>

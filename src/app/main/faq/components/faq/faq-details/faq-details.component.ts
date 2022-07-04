@@ -15,6 +15,7 @@ import { CustomOption } from 'ngx-quill';
 })
 export class FaqDetailsComponent implements OnInit {
 
+  contentHeader: Object;
   constructor(
     private route: ActivatedRoute,
     private faqService: FaqService,
@@ -32,6 +33,30 @@ export class FaqDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData()
+
+    this.contentHeader = {
+      headerTitle: 'FAQ',
+      actionButton: true,
+      breadcrumb: {
+        type: '',
+        links: [
+          {
+            name: 'Home',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'All FAQs',
+            isLink: true,
+            link: '/faq/Allfaqs'
+          },
+          {
+            name: 'FAQ Details',
+            isLink: false
+          }
+        ]
+      }
+    };
   }
   options: CustomOption[] = [
     {
@@ -52,8 +77,25 @@ export class FaqDetailsComponent implements OnInit {
     )
   }
 
+  public voteUp(id : number) : void
+  {
+    this.faqService.voteUp(id).subscribe(
+      () => {
+        this.ngOnInit()
+      }
+    )
+  }
+
+  public voteDown(id : number) : void
+  {
+    this.faqService.voteDown(id).subscribe(
+      () => {
+        this.ngOnInit()
+      }
+    )
+  }
   addComment() {
-    this.comment.emp_Id = this.actualFaq.employee.id;
+    this.comment.emp_Id = 1;
     console.log(this.comment);
 
     this.commentService.addComment(this.comment).subscribe({
