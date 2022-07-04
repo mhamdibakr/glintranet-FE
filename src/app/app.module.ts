@@ -50,7 +50,7 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main/faq/faq.module').then(m => m.FaqModule)
   },
   {
-    path: 'doc',
+    path: 'document',
     loadChildren: () => import('./main/document/document.module').then(m => m.Document)
   },
   {

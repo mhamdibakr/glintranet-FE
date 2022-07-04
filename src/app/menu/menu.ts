@@ -259,7 +259,7 @@ export const menu: CoreMenu[] = [
     title: 'Document',
     type: 'item',
     icon: 'file',
-    url: 'doc/Alldocs'
+    url: 'document/Alldocs'
   },
   {
     id: 'projects',
