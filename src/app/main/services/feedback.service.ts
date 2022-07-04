@@ -22,6 +22,11 @@ export class FeedbackService {
     return this.http.get<any[]>(`${baseUrl}/fbtype`)
   }
 
+  addFeedBack(feedBackRequest : any) : Observable<any[]>
+  {
+    return this.http.post<any[]>(`${baseUrl}/feedback`, feedBackRequest)
+  }
+
 
 
 }

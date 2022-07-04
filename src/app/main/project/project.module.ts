@@ -5,6 +5,7 @@ import { ProjectComponent } from './project.component';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
 import { CoreCommonModule } from '@core/common.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -22,7 +23,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     NgbModule,
     CoreCommonModule,
-    ContentHeaderModule
+    ContentHeaderModule,
+    FormsModule
   ]
 })
 export class ProjectModule { }

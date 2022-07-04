@@ -1,8 +1,11 @@
+<app-content-header [contentHeader]="contentHeader"></app-content-header>
 <div class="content-wrapper container-xxl p-0">
     <div class="content-body">
-        <h2 class="mb-2">Projects</h2>
+        <button type="button" (click)="modalOpenForm(modalForm)" class="mb-1 btn btn-primary" style="margin-left : 15px;"
+            rippleEffect>
+            Add Project
+        </button>
         <section *ngFor="let pct of data">
-            
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
@@ -10,7 +13,7 @@
                             <div class="media-body d-flex flex-column">
                                 <h3 class="font-weight-bolder mb-2">{{pct.projectName}}</h3>
                                 <p class="card-text">
-                                   {{pct.projectDesc}}
+                                    {{pct.projectDesc}}
                                 </p>
                                 <a routerLink="/projects/feedback/{{pct.id}}" class="btn btn-primary align-self-end">
                                     <i class="bi bi-box-arrow-in-up-right" style="font-size: 18px;"></i>
@@ -20,7 +23,39 @@
                     </div>
                 </div>
             </div>
-
         </section>
     </div>
+</div>
+
+<div class="modal-size-default d-inline-block">
+    <ng-template #modalForm let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel1">upload document </h4>
+            <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" tabindex="0" ngbAutofocus>
+            <form (ngSubmit)="addProject()">
+                <div class="form-group">
+                    <label for="basicInput">Project name : </label>
+                    <input class="form-control" id="label-textarea" rows="3" placeholder="Content"
+                        [(ngModel)]="projectReq.projectName" name="content">
+                </div>
+                <div class="form-group">
+                    <label for="basicInput">Project description : </label>
+                    <input class="form-control" id="label-textarea" rows="3" placeholder="Content"
+                        [(ngModel)]="projectReq.projectDesc" name="content">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" rippleEffect>
+                        add
+                    </button>
+                    <button type="reset" class="btn btn-danger" rippleEffect>
+                        Reset
+                    </button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
 </div>

@@ -1,31 +1,31 @@
+<app-content-header [contentHeader]="contentHeader"></app-content-header>
 <div class="content-wrapper container-xxl p-0">
-    <div class="content-body">
-        <h2 class="mb-2">Feedbacks</h2>
-        <button type="button" (click)="modalOpenForm(modalForm)"  class="mb-1 btn btn-primary" style="margin-left : 15px;" rippleEffect>
-           Add Feedback
-          </button>
-        <section *ngFor="let fb of data">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="media-body d-flex flex-column">
-                                <h3 class="font-weight-bolder mb-2">{{fb.type.name}}</h3>
-                                <p class="card-text">
-                                    {{fb.content}}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="mx-1 float-right" style="font-size: small;">
-                        <p style="margin-bottom: 0;">{{fb.timestamp | date:'yyyy-MM-dd HH:mm'}}</p> 
-                         <p style="margin-bottom: 0;">{{fb.employee.firstName+" "+fb.employee.lastName}}</p>
-                        </div>
-                    </div>
-                </div>
+  <div class="content-body">
+    <button type="button" (click)="modalOpenForm(modalForm)" class="mb-1 btn btn-primary" style="margin-left : 15px;"
+      rippleEffect>
+      Add Feedback
+    </button>
+    <section *ngFor="let fb of feedBacks">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="media">
+              <div class="media-body d-flex flex-column">
+                <h3 class="font-weight-bolder mb-2">{{fb.type.name}}</h3>
+                <p class="card-text">
+                  {{fb.content}}
+                </p>
+              </div>
             </div>
-         
-        </section>
-    </div>
+            <div class="mx-1 float-right" style="font-size: small;">
+              <p style="margin-bottom: 0;">{{fb.timestamp | date:'yyyy-MM-dd HH:mm'}}</p>
+              <p style="margin-bottom: 0;">{{fb.employee.firstName+" "+fb.employee.lastName}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
 
 
@@ -38,38 +38,27 @@
       </button>
     </div>
     <div class="modal-body" tabindex="0" ngbAutofocus>
-      <form (ngSubmit)="show()">
+      <form (ngSubmit)="addFeedBack()">
+        <label>feedBack type : </label>
         <div class="form-group">
-          <label for="basicInputFile">file :</label>
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" />
-            <label class="custom-file-label" for="customFile">Choose file</label>
-          </div>
-        </div>
-        <label>file type : </label>
-        <div class="form-group">
-          <select class="form-control" id="basicSelect">
-            <option>Excel</option>
-            <option>Word</option>
-            <option>Pdf</option>
+          <select class="form-control" [(ngModel)]="feedBackReq.type_id" name="type_id" id="basicSelect">
+            <option value="{{feedBackType.id}}" *ngFor="let feedBackType of feedBackTypes">{{feedBackType.name}}
+            </option>
           </select>
         </div>
         <fieldset class="form-label-group">
           <textarea class="form-control" id="label-textarea" rows="3" placeholder="Content"
-              [(ngModel)]="fbContent" name="description"></textarea>
+            [(ngModel)]="feedBackReq.content" name="content"></textarea>
         </fieldset>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary"  rippleEffect>
-            Upload
+          <button type="submit" class="btn btn-primary" rippleEffect>
+            add
           </button>
-          <button type="reset" class="btn btn-primary"  rippleEffect>
-            Upload
+          <button type="reset" class="btn btn-danger" rippleEffect>
+            Reset
           </button>
         </div>
       </form>
     </div>
-   
   </ng-template>
 </div>
-
-  
