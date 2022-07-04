@@ -101,7 +101,7 @@ export class FaqDetailsComponent implements OnInit {
     this.commentService.addComment(this.comment).subscribe({
       next: (res: any) => {
         console.log(res);
-        this.comment.content="";
+        this.comment.content=""
         this.ngOnInit()
       },
       error: (err) => console.error(err)

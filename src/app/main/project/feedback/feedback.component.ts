@@ -1,8 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {FeedbackService} from 'app/main/services/feedback.service'
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Feedback } from 'app/main/models/feedback.model';
+import { FeedbackService } from 'app/main/services/feedback.service'
 
 
 
@@ -12,57 +13,97 @@ import {FeedbackService} from 'app/main/services/feedback.service'
   styleUrls: ['./feedback.component.scss']
 })
 export class FeedbackComponent implements OnInit {
+  contentHeader: Object
 
-
-  constructor(private route : ActivatedRoute, private fbService : FeedbackService,
-                private modalService: NgbModal) { }
+  constructor(private route: ActivatedRoute, private fbService: FeedbackService,
+    private modalService: NgbModal) { }
 
   public project_id = this.route.snapshot.params["projectId"];
-  public data : any[]
+  public feedBacks: any[]
+  public feedBackTypes: any[]
 
-  public fbContent : ''
+  public feedBack: Feedback = {
+    id: 0,
+    content: undefined,
+    timestamp: undefined,
+    employee: undefined,
+    type: undefined
+  }
+  feedBackReq = {
+    content: "",
+    employee_id: 24,
+    project_id: this.project_id,
+    type_id: 0
+  }
 
-  ngOnInit(): void 
-  {
-    this.getFeedBacks(this.project_id)
-    console.log(this.project_id)
+  ngOnInit(): void {
+    this.getFeedBacks(this.project_id);
+    this.getTypes();
+
+    this.contentHeader = {
+      headerTitle: 'Feedback',
+      actionButton: true,
+      breadcrumb: {
+        type: '',
+        links: [
+          {
+            name: 'Home',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'All Projects',
+            isLink: true,
+            link: '/projects'
+          },
+          {
+            name: 'All FeedBacks',
+            isLink: false
+          }
+        ]
+      }
+    };
   }
 
 
-  getFeedBacks(id : number)
-  {
-      this.fbService.getFeedBacks(id).subscribe(
-        (res : any[]) => {
-          this.data = res
-          console.log(this.data)
-        },
-        (err : HttpErrorResponse) => {  console.log(err.message)  }
-      )
-  }
-
-  getTypes()
-  {
-    this.fbService.getFeedBackTypes().subscribe(
-      (res : any[]) => 
-      {
-        console.log(res)
+  getFeedBacks(id: number) {
+    this.fbService.getFeedBacks(id).subscribe(
+      (res: any[]) => {
+        this.feedBacks = res
+        console.log(this.feedBacks)
       },
-      (err : HttpErrorResponse) => {  console.log(err.message) }
+      (err: HttpErrorResponse) => { console.log(err.message) }
     )
   }
 
-  modalOpenForm(modalForm) {
-    this.modalService.open(modalForm, {
-      centered: true
-    });
-    this.getTypes()
-
+  getTypes() {
+    this.fbService.getFeedBackTypes().subscribe(
+      (res: any[]) => {
+        this.feedBackTypes = res
+        console.log(res)
+      },
+      (err: HttpErrorResponse) => { console.log(err.message) }
+    )
   }
 
-  show()
-  {
-    console.log(this.fbContent);
-    
+  model: NgbModalRef
+  modalOpenForm(modalForm) {
+    this.model = this.modalService.open(modalForm, {
+      centered: true
+    });
+  }
+
+  addFeedBack() {
+    this.fbService.addFeedBack(this.feedBackReq).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.model.close();
+        this.feedBackReq.content = "";
+        this.feedBackReq.type_id = 0;
+        this.ngOnInit();
+      },
+      error: (err) => console.error(err),
+    })
   }
 
 }
