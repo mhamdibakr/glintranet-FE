@@ -20,6 +20,8 @@ export class FeedbackComponent implements OnInit {
   public project_id = this.route.snapshot.params["projectId"];
   public data : any[]
 
+  public fbContent : ''
+
   ngOnInit(): void 
   {
     this.getFeedBacks(this.project_id)
@@ -55,6 +57,12 @@ export class FeedbackComponent implements OnInit {
     });
     this.getTypes()
 
+  }
+
+  show()
+  {
+    console.log(this.fbContent);
+    
   }
 
 }

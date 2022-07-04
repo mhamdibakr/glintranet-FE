@@ -22,7 +22,11 @@ export class AllDocsComponent implements OnInit {
   public contentHeader: object;
   public rows = [];
 
-  ngOnInit(): void {
+  public fbContent : ''
+
+  ngOnInit(): void 
+  {
+    
     this.contentHeader = {
       headerTitle: 'Document',
       actionButton: true,
@@ -47,6 +51,12 @@ export class AllDocsComponent implements OnInit {
     this.modalService.open(modalForm, {
       centered: true
     });
+  }
+
+  show()
+  {
+    console.log(this.fbContent);
+    
   }
 
 }
