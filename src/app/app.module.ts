@@ -107,7 +107,6 @@ const appRoutes: Routes = [
     CvtechModule,
     CompanyModule,
     GrhModule,
-    NgSelectModule,
 
     ReactiveFormsModule
   ],

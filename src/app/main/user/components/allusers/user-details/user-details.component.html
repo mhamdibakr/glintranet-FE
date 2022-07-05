@@ -1,0 +1,66 @@
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+        <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+        <!-- users edit account form start -->
+        <form class="form-validate" #accountForm="ngForm">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" class="form-control" placeholder="Username" name="username"
+                            [(ngModel)]="user.username" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="name">First Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Name" name="frstName"
+                            [(ngModel)]="user.firstName" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="name">Last Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Name" name="lastName"
+                            [(ngModel)]="user.lastName" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" class="form-control" placeholder="Email" name="email"
+                            [(ngModel)]="user.email" required />
+                    </div>
+                </div>
+                <div class="col-md-4 card">
+                    <label class="mt-1">Roles</label>
+                    <div class="form-group mb-0 p-0 row card-body">
+                        <div class="custom-control m-1 custom-control-success custom-checkbox">
+                            <input type="checkbox" (change)="pushOrPop($event)" class="custom-control-input" id="colorCheck1" />
+                            <label class="custom-control-label" for="colorCheck1">Admin</label>
+                        </div>
+                        <div class="custom-control m-1 custom-control-success custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="colorCheck2" checked />
+                            <label class="custom-control-label" for="colorCheck2">User</label>
+                        </div>
+                        <div class="custom-control m-1 custom-control-success custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="colorCheck3" />
+                            <label class="custom-control-label" for="colorCheck3">RH</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 d-flex flex-sm-row flex-column mt-2">
+                    <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>
+                        Save Changes
+                    </button>
+                    <button (click)="resetFormWithDefaultValues()" class="btn btn-outline-secondary" rippleEffect>
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </form>
+        <!-- users edit account form ends -->
+    </div>
+</div>
