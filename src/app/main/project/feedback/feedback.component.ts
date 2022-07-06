@@ -31,7 +31,7 @@ export class FeedbackComponent implements OnInit {
   }
   feedBackReq = {
     content: "",
-    employee_id: 24,
+    employee_id: 57,
     project_id: this.project_id,
     type_id: 0
   }

@@ -88,7 +88,7 @@
       </button>
     </div>
     <div class="modal-body" tabindex="0" ngbAutofocus>
-      <form (ngSubmit)="show()">
+      <form (ngSubmit)="onUploadFile()">
         <div class="form-group">
           <label for="basicInputFile">file :</label>
           <div class="custom-file">
@@ -96,14 +96,8 @@
             <label class="custom-file-label" for="customFile">Choose file</label>
           </div>
         </div>
-        <label>file type : </label>
-        <div class="form-group">
-          <select class="form-control" id="basicSelect">
-            <option>Excel</option>
-            <option>Word</option>
-            <option>Pdf</option>
-          </select>
-        </div>
+
+       
         <div class="modal-footer">
           <button (click)="onUploadFile()" class="btn btn-primary"  rippleEffect>
             Upload

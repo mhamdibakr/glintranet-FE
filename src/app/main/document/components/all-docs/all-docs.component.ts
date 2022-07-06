@@ -82,7 +82,7 @@ export class AllDocsComponent implements OnInit {
   onUploadFile(): void {
     this.uploadedFile = this.selectedFiles.item(0)
 
-    this.documentService.upload(this.uploadedFile, 1, 34).subscribe(
+    this.documentService.upload(this.uploadedFile, 57, 34).subscribe(
       event => {
         this.modal.close()
         Swal.fire({
