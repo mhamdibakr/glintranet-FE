@@ -95,7 +95,7 @@ export class FaqDetailsComponent implements OnInit {
     )
   }
   addComment() {
-    this.comment.emp_Id = 1;
+    this.comment.emp_Id = 57;
     console.log(this.comment);
 
     this.commentService.addComment(this.comment).subscribe({

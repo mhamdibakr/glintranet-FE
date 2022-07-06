@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { colors } from 'app/colors.const';
+import { StatisticsService } from '../services/statistics.service';
 
 @Component({
   selector: 'app-statistics',
@@ -7,41 +9,110 @@ import { colors } from 'app/colors.const';
   styleUrls: ['./statistics.component.scss']
 })
 export class StatisticsComponent implements OnInit {
+  constructor(private statService: StatisticsService) { }
+
+  public data: any[]
+  public totFaqs: number
+  public totDocs: number
+  public totComments: number
+  public totProjects1: number
+
+  public sections = []
+  public count = []
+
+
   public contentHeader: object;
   public radioModel = 1;
-
-
   private successColorShade = '#28dac6';
-  private warningColorShade = '#ffe802';
-
   private tooltipShadow = 'rgba(0, 0, 0, 0.25)';
-  private lineChartPrimary = '#666ee8';
-  private lineChartDanger = '#ff4961';
   private labelColor = '#6e6b7b';
   private grid_line_color = 'rgba(200, 200, 200, 0.2)'; // RGBA color helps in dark layout
 
-  // ng2-flatpickr options
-  public DateRangeOptions = {
-    altInput: true,
-    mode: 'range',
-    altInputClass: 'form-control flat-picker bg-transparent border-0 shadow-none flatpickr-input',
-    defaultDate: ['2019-05-01', '2019-05-10'],
-    altFormat: 'Y-n-j'
-  };
+  getData() {
+    var count1: any = []
+    var sections1: any = []
+
+    this.statService.getAllReports().subscribe(
+      (res: any) => {
+        this.data = res.reports,
+          this.totFaqs = res.totFAQs,
+          this.totComments = res.totComment,
+          this.totDocs = res.totDocs,
+          this.totProjects1 = res.totProjects
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err.message);
+      }
+    )
+  }
+
+  showData() {
+    var allData: any = []
+    var count: any = []
+    var sections: any = []
+    this.statService.getAllReports().subscribe({
+      next: (res) => {
+        allData = res.reports,
+        allData.forEach(function (value: any[]) {
+          count.push(value[1])
+          sections.push(value[0])
+        })
+        console.log(count);
+        this.barChart.datasets[0].data = count
+        this.barChart.labels = sections
+      },
+      error: (err) => console.log(err)
+    })
+  }
+
+
+  ngOnInit(): void {
+    this.getData()
+    this.showData()
+    this.contentHeader = {
+      headerTitle: 'Chartjs',
+      actionButton: true,
+      breadcrumb: {
+        type: '',
+        links: [
+          {
+            name: 'Home',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Charts & Maps',
+            isLink: true,
+            link: '/'
+          },
+          {
+            name: 'Chartjs',
+            isLink: false
+          }
+        ]
+      }
+    };
+
+
+
+  }
+
+
+
 
   // Bar Chart
   public barChart = {
     chartType: 'bar',
     datasets: [
       {
-        data: [1, 0, 2, 2, 4, 0, 0],
+        data: this.count,
         backgroundColor: this.successColorShade,
         borderColor: 'transparent',
         hoverBackgroundColor: this.successColorShade,
         hoverBorderColor: this.successColorShade
       }
     ],
-    labels: ['7/12', '8/12', '9/12', '10/12', '11/12', '12/12', '13/12'],
+    labels: [],
     options: {
       elements: {
         rectangle: {
@@ -115,43 +186,8 @@ export class StatisticsComponent implements OnInit {
     }
   ];
 
-  /**
-   *
-   */
-  constructor() {}
 
-  // Lifecycle Hooks
-  // -----------------------------------------------------------------------------------------------------
 
-  /**
-   * On init
-   */
-  ngOnInit(): void {
-    // content header
-    this.contentHeader = {
-      headerTitle: 'Chartjs',
-      actionButton: true,
-      breadcrumb: {
-        type: '',
-        links: [
-          {
-            name: 'Home',
-            isLink: true,
-            link: '/'
-          },
-          {
-            name: 'Charts & Maps',
-            isLink: true,
-            link: '/'
-          },
-          {
-            name: 'Chartjs',
-            isLink: false
-          }
-        ]
-      }
-    };
-  }
 
 
 }

@@ -3,6 +3,10 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-datatable';
 import { DocumentService } from 'app/main/services/document.service';
+import { error } from 'console';
+import { saveAs } from 'file-saver'
+import Swal from 'sweetalert2';
+import { types } from 'util';
 
 
 @Component({
@@ -21,6 +25,7 @@ export class AllDocsComponent implements OnInit {
   fileName: any;
   currentUserSubject: any;
   currentUser: any;
+  doc: any;
 
   constructor(private modalService: NgbModal, private documentService: DocumentService) {
     this.currentUserSubject = JSON.parse(localStorage.getItem('currentUser'));
@@ -30,7 +35,8 @@ export class AllDocsComponent implements OnInit {
   public contentHeader: object;
   public rows = [];
   public allDocs?: any[];
-  public typeId: any
+  public typeId: any;
+  public types: any;
   public fbContent: ''
 
 
@@ -62,8 +68,9 @@ export class AllDocsComponent implements OnInit {
     };
   }
 
+  modal = null
   modalOpenForm(modalForm) {
-    this.modalService.open(modalForm, {
+    this.modal = this.modalService.open(modalForm, {
       centered: true
     });
   }
@@ -80,7 +87,6 @@ export class AllDocsComponent implements OnInit {
     this.selectedFiles = selectedFile.target.files;
   }
 
-  public types: any;
   getTypes() {
     this.documentService.getTypes().subscribe({
       next: (data) => this.types = data,
@@ -92,20 +98,42 @@ export class AllDocsComponent implements OnInit {
     this.uploadedFile = this.selectedFiles.item(0)
     console.log(this.typeId);
 
-    // this.documentService.upload(this.uploadedFile, this.currentUser.id, this.typeId).subscribe(
-    //   event => {
-    //     console.log(event)
-    //   },
-    //   (err: HttpErrorResponse) => { console.log(err.message); }
-    // )
+    this.documentService.upload(this.uploadedFile, this.currentUser.id, this.typeId).subscribe(
+      event => {
+        this.modal.close()
+        Swal.fire({
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        this.ngOnInit()
+      },
+      (err: HttpErrorResponse) => { console.log(err.message); }
+    )
   }
 
   onDownLoadFile(fileId: number): void {
-    this.documentService.download(fileId).subscribe(
-      (res: any) => console.log(res)
 
 
+    this.documentService.getDocument(fileId).subscribe(
+      (response: any) => { this.doc = response , this.down(fileId, response.documentName)},
+      (error: HttpErrorResponse) => {
+        console.log(error.message);
+      }
     )
+  }
+
+  down(id : number, content : string) : void 
+  {
+    
+    this.documentService.download(id).subscribe((response: any) => {
+      let blob: any = new Blob([response], { type: 'text/json; charset=utf-8' });
+      const url = window.URL.createObjectURL(blob);
+      //window.open(url);
+      saveAs(blob, content);
+    }), (error: any) => console.log('Error downloading the file'),
+      () => console.info('File downloaded successfully');
   }
 
   getAllDocs() {
