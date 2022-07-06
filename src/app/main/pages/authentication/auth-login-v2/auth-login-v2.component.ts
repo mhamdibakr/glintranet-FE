@@ -94,6 +94,8 @@ export class AuthLoginV2Component implements OnInit {
       .login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe(data => {
+        console.log(data);
+        
         this._router.navigate([this.returnUrl]);
       },
         error => {
@@ -103,9 +105,9 @@ export class AuthLoginV2Component implements OnInit {
       )
 
     // redirect to home page
-    setTimeout(() => {
-      this._router.navigate(['/']);
-    }, 100);
+    // setTimeout(() => {
+    //   this._router.navigate(['/']);
+    // }, 100);
   }
 
   // Lifecycle Hooks
