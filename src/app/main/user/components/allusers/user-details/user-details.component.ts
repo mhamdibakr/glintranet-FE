@@ -22,20 +22,25 @@ export class UserDetailsComponent implements OnInit {
     email: "",
     password: "",
     phoneNumber: "",
-    role: ""
+    roles: [
+      {
+        id: 0,
+        name: "",
+        description: ""
+      }
+    ],
+    birthDate: undefined
   }
 
   private id = this.router.snapshot.params['userId'];
   public MultiDefaultSelected = [];
-  public roles = []
+  public roles = [
+    { name: "Admin", checked: false },
+    { name: "User", checked: false },
+    { name: "RH", checked: false }
+  ];
 
   ngOnInit(): void {
-    this.roles = [
-      { name: "Admin" },
-      { name: "User" },
-      { name: "RH" }
-    ];
-
     this.getUser();
 
     this.contentHeader = {
@@ -67,7 +72,11 @@ export class UserDetailsComponent implements OnInit {
     this.userService.getUser(this.id).subscribe({
       next: (res: any) => {
         this.user = res;
-        console.log(this.user);
+        this.user.roles.forEach(role => {
+          this.roles.forEach(inRole => {
+            role.name == inRole.name ? inRole.checked = true : null
+          })
+        })
       },
       error: (err) => console.log(err)
     })
@@ -76,6 +85,15 @@ export class UserDetailsComponent implements OnInit {
   resetFormWithDefaultValues() {
     console.log("45554");
 
+  }
+
+  updateUser() {
+    console.log(this.user);
+    
+    this.userService.updateUser(this.user, this.id).subscribe({
+      next: (res) => console.log(res),
+      error: (err) => console.error(err)      
+    })
   }
 
   pushOrPop(event: Event) {

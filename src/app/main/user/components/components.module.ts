@@ -29,7 +29,6 @@ const routes: Routes = [
         CoreCommonModule,
         ContentHeaderModule,
         NgbModule,
-        NgSelectModule,
         FormsModule,
     ],
 

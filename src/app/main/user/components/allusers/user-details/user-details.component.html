@@ -3,7 +3,7 @@
         <app-content-header [contentHeader]="contentHeader"></app-content-header>
 
         <!-- users edit account form start -->
-        <form class="form-validate" #accountForm="ngForm">
+        <form class="form-validate" #accountForm="ngForm" (ngSubmit)="updateUser()">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -33,20 +33,19 @@
                             [(ngModel)]="user.email" required />
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="birth">Birth Date</label>
+                        <input type="date" id="birthDate" class="form-control" name="birthDate"
+                            [(ngModel)]="user.birthDate" required />
+                    </div>
+                </div>
                 <div class="col-md-4 card">
                     <label class="mt-1">Roles</label>
                     <div class="form-group mb-0 p-0 row card-body">
-                        <div class="custom-control m-1 custom-control-success custom-checkbox">
-                            <input type="checkbox" (change)="pushOrPop($event)" class="custom-control-input" id="colorCheck1" />
-                            <label class="custom-control-label" for="colorCheck1">Admin</label>
-                        </div>
-                        <div class="custom-control m-1 custom-control-success custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="colorCheck2" checked />
-                            <label class="custom-control-label" for="colorCheck2">User</label>
-                        </div>
-                        <div class="custom-control m-1 custom-control-success custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="colorCheck3" />
-                            <label class="custom-control-label" for="colorCheck3">RH</label>
+                        <div *ngFor="let role of roles" class="custom-control m-1 custom-control-success custom-checkbox">
+                            <input type="checkbox" style="z-index: 100;" [checked]="role.checked" (change)="pushOrPop($event)" class="custom-control-input" id="{{role?.id}}" />
+                            <label class="custom-control-label" for="{{role?.id}}">{{role?.name}}</label>
                         </div>
                     </div>
                 </div>

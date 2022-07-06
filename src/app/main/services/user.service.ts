@@ -28,6 +28,11 @@ export class UserService {
   {
     return this.http.post<any[]>(`${baseUrl}/employee`, user)
   }
+
+  updateUser(user : User, id : number) : Observable<any[]>
+  {
+    return this.http.put<any[]>(`${baseUrl}/employee/${id}`, user)
+  }
   
   deleteUser(id: number) : Observable<any[]>
   {

@@ -1,175 +1,191 @@
 <div class="content-wrapper container-xxl p-0">
-    <div class="content-body">
-      <!-- content-header component -->
-      <app-content-header [contentHeader]="contentHeader"></app-content-header>
-      <div class="row ">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header">
-              <h4 class="card-title text-primary">Add User</h4>
-            </div>
-            <div class="card-body">
-              <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form form-horizontal">
-                <div class="row">
-  
-                  <div class="col-6 form-group">
-                    <div class="form-group row">
-                      <div class="col-sm-3 col-form-label">
-                        <label for="email-id">Fist Name</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <input type="text" formControlName="firstName" class="form-control"
-                          [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }"
-                          placeholder="Enter your first name" />
-                        <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
-                          <div *ngIf="f['firstName'].errors['required']">First name is required</div>
-                          <div *ngIf="f['firstName'].errors['pattern']">
-                            First name must have characters only
-                          </div>
-                          <div *ngIf="f['firstName'].errors['minlength']">Add more characters</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-  
-                  <div class="col-6 form-group">
-                    <div class="form-group row">
-                      <div class="col-sm-3 col-form-label">
-                        <label for="email-id">Last Name</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <input type="text" formControlName="lastName" class="form-control"
-                          [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }"
-                          placeholder="Enter your last name" />
-                        <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
-                          <div *ngIf="f['lastName'].errors['required']">Last name is required</div>
-                          <div *ngIf="f['lastName'].errors['pattern']">
-                            Last name must have characters only
-                          </div>
-                          <div *ngIf="f['lastName'].errors['minlength']">Add more characters</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+  <div class="content-body">
+    <!-- content-header component -->
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+    <div class="row ">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title text-primary">Add User</h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form form-horizontal">
+              <div class="row">
 
-                  <div class="col-6 form-group">
-                    <div class="form-group row">
-                      <div class="col-sm-3 col-form-label">
-                        <label for="email-id">Username</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <input type="text" formControlName="username" class="form-control"
-                          [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
-                          placeholder="Enter your username" />
-                        <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
-                          <div *ngIf="f['username'].errors['required']">User name is required</div>
-                          <div *ngIf="f['username'].errors['pattern']">
-                            User name must have characters only
-                          </div>
-                          <div *ngIf="f['username'].errors['minlength']">Add more characters</div>
-                        </div>
-                      </div>
+                <div class="col-6 form-group">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="email-id">Fist Name</label>
                     </div>
-                  </div>
-  
-                  <div class="col-6 form-group">
-                    <div class="form-group row">
-                      <div class="col-sm-3 col-form-label">
-                        <label for="password">Bith Date</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <input type="date" id="closing-date" class="form-control" formControlName="birthDate"
-                          name="c-closing-date" />
-                        <div *ngIf="submitted && f['birthDate'].errors" class="invalid-feedback">
-                          <div *ngIf="f['birthDate'].errors['required']">Birth date is required</div>
+                    <div class="col-sm-9">
+                      <input type="text" formControlName="firstName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }"
+                        placeholder="Enter your first name" />
+                      <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['firstName'].errors['required']">First name is required</div>
+                        <div *ngIf="f['firstName'].errors['pattern']">
+                          First name must have characters only
                         </div>
+                        <div *ngIf="f['firstName'].errors['minlength']">Add more characters</div>
                       </div>
-                    </div>
-                  </div>
-  
-                  <div class="col-6 form-group">
-                    <div class="form-group row">
-                      <div class="col-sm-3 col-form-label">
-                        <label for="email-id">Email</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <input name="user-email" placeholder="Enter your email" type="text" formControlName="email"
-                          class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
-                        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-                          <div *ngIf="f['email'].errors['required']">Email is required</div>
-                          <div *ngIf="f['email'].errors['email']">Email is invalid</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-  
-                  <div class="col-6 form-group">
-                    <div class="form-group row">
-                      <div class="col-sm-3 col-form-label">
-                        <label for="email-id">Password</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <input name="password" placeholder="password" type="password" formControlName="password"
-                          class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
-                        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-                          <div *ngIf="f['password'].errors['required']">Password is required</div>
-                          <div *ngIf="f['password'].errors['minLength']">Password must have characters only </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-  
-                  <div class="col-6 form-group">
-                    <div class="form-group row">
-                      <div class="col-sm-3 col-form-label">
-                        <label for="email-id">CIN</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <input name="cin" placeholder="cin" type="text" formControlName="cin"
-                          class="form-control" [ngClass]="{ 'is-invalid': submitted && f['cin'].errors }" />
-                        <div *ngIf="submitted && f['cin'].errors" class="invalid-feedback">
-                          <div *ngIf="f['cin'].errors['required']">Cin is required</div>
-                          <div *ngIf="f['cin'].errors['minLength']">Cin must have characters only </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-  
-                  <div class="col-6 form-group">
-                    <div class="form-group row">
-                      <div class="col-sm-3 col-form-label">
-                        <label for="email-id">Phone Number</label>
-                      </div>
-                      <div class="col-sm-9">
-                        <input name="phone" placeholder="Enter your phone number" type="text" formControlName="phone"
-                          class="form-control" [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }" />
-                        <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
-                          <div *ngIf="f['phone'].errors['required']">Phone Number is required</div>
-                          <div *ngIf="f['phone'].errors['pattern']">
-                            Phone Number must start with eg: +2126 or 02126 or 06
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-  
-                  <div class="col-sm-12">
-                    <div class="d-flex justify-content-end">
-                      <button type="reset" rippleEffect class="mr-1 btn btn-outline-secondary">Reset</button>
-                     
-                      <button type="submit" class="btn btn-primary"
-                      rippleEffect>Save</button>
-                    <!-- Swal of Sweet Alert With Position center -->
-                    <swal></swal>
-                    <!--/ Swal of Sweet Alert With Position center -->
                     </div>
                   </div>
                 </div>
-              </form>
-            </div>
+
+                <div class="col-6 form-group">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="email-id">Last Name</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="text" formControlName="lastName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }"
+                        placeholder="Enter your last name" />
+                      <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['lastName'].errors['required']">Last name is required</div>
+                        <div *ngIf="f['lastName'].errors['pattern']">
+                          Last name must have characters only
+                        </div>
+                        <div *ngIf="f['lastName'].errors['minlength']">Add more characters</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6 form-group">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="email-id">Username</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="text" formControlName="username" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
+                        placeholder="Enter your username" />
+                      <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                        <div *ngIf="f['username'].errors['required']">User name is required</div>
+                        <div *ngIf="f['username'].errors['pattern']">
+                          User name must have characters only
+                        </div>
+                        <div *ngIf="f['username'].errors['minlength']">Add more characters</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6 form-group">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="password">Bith Date</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="date" id="closing-date" class="form-control" formControlName="birthDate"
+                        name="c-closing-date" />
+                      <div *ngIf="submitted && f['birthDate'].errors" class="invalid-feedback">
+                        <div *ngIf="f['birthDate'].errors['required']">Birth date is required</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6 form-group">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="email-id">Email</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <input name="user-email" placeholder="Enter your email" type="text" formControlName="email"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+                      <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                        <div *ngIf="f['email'].errors['required']">Email is required</div>
+                        <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6 form-group">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="email-id">Password</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <input name="password" placeholder="password" type="password" formControlName="password"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+                      <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                        <div *ngIf="f['password'].errors['required']">Password is required</div>
+                        <div *ngIf="f['password'].errors['minLength']">Password must have characters only </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6 form-group">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="email-id">CIN</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <input name="CIN" placeholder="CIN" type="text" formControlName="CIN" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['CIN'].errors }" />
+                      <div *ngIf="submitted && f['CIN'].errors" class="invalid-feedback">
+                        <div *ngIf="f['CIN'].errors['required']">CIN is required</div>
+                        <div *ngIf="f['CIN'].errors['minLength']">CIN must have characters only </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6 form-group">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label for="email-id">Phone Number</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <input name="phoneNumber" placeholder="Enter your phone number" type="text" formControlName="phoneNumber"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f['phoneNumber'].errors }" />
+                      <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">
+                        <div *ngIf="f['phoneNumber'].errors['required']">Phone Number is required</div>
+                        <div *ngIf="f['phoneNumber'].errors['pattern']">
+                          Phone Number must start with eg: +2126 or 02126 or 06
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6 form-group">
+                  <div class="form-group row">
+                    <div class="col-sm-3 col-form-label">
+                      <label class="mt-1">Roles</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <div class="form-group mb-0 p-0 row" style="border: solid 1px ; border-radius: 20px;">
+                        <div *ngFor="let role of roles"
+                          class="custom-control m-1 custom-control-success custom-checkbox">
+                          <input type="checkbox" [checked]="role.checked" (change)="pushOrPop($event)"
+                            class="custom-control-input" name="{{role?.name}}" style="z-index: 100;" id="{{role?.name}}" />
+                            <label class="custom-control-label" for="{{role?.name}}">{{role?.name}}</label>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12">
+                  <div class="d-flex justify-content-end">
+                    <button type="reset" rippleEffect class="mr-1 btn btn-outline-secondary">Reset</button>
+
+                    <button type="submit" class="btn btn-primary" rippleEffect>Save</button>
+                    <!-- Swal of Sweet Alert With Position center -->
+                    <swal></swal>
+                    <!--/ Swal of Sweet Alert With Position center -->
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

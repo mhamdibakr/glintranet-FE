@@ -6,5 +6,12 @@ export class User {
     email: String;
     password: String;
     phoneNumber: String;
-    role: String;
+    birthDate: String
+    roles: [
+        {
+            id: number,
+            name: String,
+            description: String
+        }
+    ];
 }
