@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   //public
-  public currentUser: Observable<User>;
+  public currentUser: any;
 
   public usr: User = {
     id: "",
@@ -34,7 +34,7 @@ export class AuthenticationService {
    */
   constructor(private _http: HttpClient, private _toastrService: ToastrService, private _userService: UserService) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
+    this.currentUser = this.currentUserSubject;
   }
 
   // getter: currentUserValue
@@ -43,11 +43,10 @@ export class AuthenticationService {
   }
 
   // get user informations
-  public userInf(): User {
-    this._userService.getById(this.currentUserSubject.value.id).subscribe({
+  public userInf(id: number): User {
+    this._userService.getById(id).subscribe({
       next: (data) => {
         this.usr = data
-        console.log(data);
       },
       error: (err) => console.error(err)
     });
@@ -74,34 +73,37 @@ export class AuthenticationService {
    * @param password
    * @returns user
    */
+  public loggedUser : any
   login(email: string, password: string) {
     return this._http
       .post<any>(`${environment.apiUrl}/api/login`, { email, password })
       .pipe(
         map(user => {
+          // this.userInf(user.value.id);
+          this.loggedUser = user
           // login successful if there's a jwt token in the response
           if (user && user.token) {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(user));
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
 
             // Display welcome toast!
             setTimeout(() => {
               this._toastrService.success(
                 'You have successfully logged in as an ' +
-                this.userInf().role +
+                this.loggedUser.role +
                 ' user to Vuexy. Now you can start to explore. Enjoy! 🎉',
-                '👋 Welcome, ' + this.userInf().firstName + ' ' + this.userInf().lastName + '!',
+                '👋 Welcome, ' + user.username + '!',
                 { toastClass: 'toast ngx-toastr', closeButton: true }
               );
               console.log(
-                this.userInf().id
+                this.loggedUser.id
               );
             }, 2500);
 
             // notify
           
           
-            this.currentUserSubject.next(user);
+            this.currentUserSubject.next(this.loggedUser);
           }
 
           return user;

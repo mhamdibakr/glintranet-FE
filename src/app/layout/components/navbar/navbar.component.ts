@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public currentSkin: string;
   public prevSkin: string;
 
-  public currentUser: User;
+  public currentUser: any;
 
   public languageOptions: any;
   public navigation: any;
