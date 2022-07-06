@@ -23,9 +23,14 @@ export class DocumentService {
     });
   }
 
-  download(id : number) : Observable<any>
+  download(id : number) :any
   {
-    return this.http.get(`${baseUrl}/document/${id}`)
+    return this.http.get(`${baseUrl}/document/${id}`, {responseType : 'blob'})
+  }
+
+  getDocument(id : number) : any
+  {
+    return this.http.get<any>(`${baseUrl}/document/get/${id}`)
   }
 
 

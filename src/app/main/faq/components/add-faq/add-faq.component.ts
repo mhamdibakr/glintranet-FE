@@ -112,7 +112,7 @@ export class AddFaqComponent implements OnInit {
   }
 
   addFaq() {
-    this.faq.employee_id=1
+    this.faq.employee_id=57
     this.faq.section_id=this.SectionSelected.id
     this.faq.tags=this.MultiDefaultSelected;
 

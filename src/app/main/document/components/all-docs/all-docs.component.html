@@ -23,21 +23,23 @@
             </div>
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="Document Type" prop="full_name" [width]="50">
+        <ngx-datatable-column name="Document Type" prop="full_name" [width]="100">
           <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
             <div class="d-flex align-items-center">
               <!-- <div *ngIf="row.avatar.length > 0; else customAvatar">
                 <img class="rounded-circle mr-1" src="" height="32"
                   width="32" alt="datatable-avatar" />
               </div> -->
-              <div class="cell-line-height">
+              
+              <div class="cell-line-height d-flex align-items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/1200px-Picture_icon_BLACK.svg.png" height="20" width="20" alt="Angular" class="mr-75">
                 <p class="font-medium-1 line-height-1 mb-0">{{ row?.contentType }}</p>
                 <span class="text-muted font-small-2"> </span>
               </div>
             </div>
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="Uploaded By" prop="full_name" [width]="200">
+        <ngx-datatable-column name="Uploaded By" prop="full_name" [width]="150">
           <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
             <div class="d-flex align-items-center">
               <!-- <div *ngIf="row.avatar.length > 0; else customAvatar">
@@ -52,7 +54,7 @@
           </ng-template>
         </ngx-datatable-column>
 
-        <ngx-datatable-column name="Action" [width]="120" [sortable]="false">
+        <ngx-datatable-column name="Action" [width]="20" [sortable]="false">
           <ng-template ngx-datatable-cell-template let-row="row">
             <div class="d-flex align-items-center">
               <div ngbDropdown container="body">
@@ -62,15 +64,12 @@
                 </a>
                 <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="dropdownBrowserState">
                   <a (click)="onDownLoadFile(row?.id)" ngbDropdownItem class="d-flex align-items-center"><i
-                      data-feather="file-text" class="mr-50"></i> Details</a>
-                  <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"><i
-                      data-feather="archive" class="mr-50"></i> Archive</a>
+                      data-feather="download" class="mr-50"></i> Download</a>
                   <a href="javascript:void(0)" ngbDropdownItem class="d-flex align-items-center"><i
                       data-feather="trash-2" class="mr-50"></i> Delete</a>
                 </div>
               </div>
 
-              <i data-feather="edit" class="text-primary cursor-pointer"></i>
             </div>
           </ng-template>
         </ngx-datatable-column>
@@ -105,10 +104,6 @@
             <option>Pdf</option>
           </select>
         </div>
-        <fieldset class="form-label-group">
-          <textarea class="form-control" id="label-textarea" rows="3" placeholder="Content"
-              [(ngModel)]="fbContent" name="description"></textarea>
-        </fieldset>
         <div class="modal-footer">
           <button (click)="onUploadFile()" class="btn btn-primary"  rippleEffect>
             Upload
