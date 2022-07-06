@@ -15,8 +15,14 @@ import { FeedbackService } from 'app/main/services/feedback.service'
 export class FeedbackComponent implements OnInit {
   contentHeader: Object
 
+  private currentUserSubject: any;
+  public currentUser: any;
+
   constructor(private route: ActivatedRoute, private fbService: FeedbackService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal) {
+    this.currentUserSubject = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = this.currentUserSubject;
+  }
 
   public project_id = this.route.snapshot.params["projectId"];
   public feedBacks: any[]
@@ -94,6 +100,7 @@ export class FeedbackComponent implements OnInit {
   }
 
   addFeedBack() {
+    this.feedBackReq.employee_id=this.currentUser.id;
     this.fbService.addFeedBack(this.feedBackReq).subscribe({
       next: (res: any) => {
         console.log(res);

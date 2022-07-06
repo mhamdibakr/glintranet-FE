@@ -100,9 +100,7 @@
         <label>file type : </label>
         <div class="form-group">
           <select class="form-control" id="basicSelect">
-            <option>Excel</option>
-            <option>Word</option>
-            <option>Pdf</option>
+            <option *ngFor="let type of types">{{type.name}}</option>
           </select>
         </div>
         <fieldset class="form-label-group">
