@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ColumnMode, DatatableComponent, SelectionType } from '@swimlane/ngx-datatable';
 import { DocumentService } from 'app/main/services/document.service';
-import { saveAs } from 'file-saver'
 
 
 @Component({
@@ -82,7 +81,7 @@ export class AllDocsComponent implements OnInit {
   {
         this.uploadedFile = this.selectedFiles.item(0)
 
-    this.documentService.upload(this.uploadedFile,1,34).subscribe(
+    this.documentService.upload(this.uploadedFile,24,44).subscribe(
         event => {
           console.log(event)
         },

@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { CoreCommonModule } from '@core/common.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { UserDetailsModule } from './allusers/user-details/user-details.module';
+import { AllusersModule } from './allusers/allusers.module';
+import { CoreCommonModule } from '@core/common.module';
 import { ContentHeaderModule } from 'app/layout/components/content-header/content-header.module';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -28,10 +29,7 @@ const routes: Routes = [
         CoreCommonModule,
         ContentHeaderModule,
         NgbModule,
-        NgSelectModule,
         FormsModule,
-        NgxDatatableModule,
-        NgbModule
     ],
 
     providers: []
