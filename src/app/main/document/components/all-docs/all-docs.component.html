@@ -99,8 +99,8 @@
         </div>
         <label>file type : </label>
         <div class="form-group">
-          <select class="form-control" id="basicSelect">
-            <option *ngFor="let type of types">{{type.name}}</option>
+          <select class="form-control" name="typeId" [(ngModel)]="typeId" id="basicSelect">
+            <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
           </select>
         </div>
         <fieldset class="form-label-group">

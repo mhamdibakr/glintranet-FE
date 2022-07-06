@@ -13,7 +13,7 @@ import { DocumentService } from 'app/main/services/document.service';
 })
 export class AllDocsComponent implements OnInit {
 
-  
+
   public SelectionType = SelectionType;
   public ColumnMode = ColumnMode;
 
@@ -22,27 +22,26 @@ export class AllDocsComponent implements OnInit {
   currentUserSubject: any;
   currentUser: any;
 
-  constructor(private modalService: NgbModal, private documentService : DocumentService) {
+  constructor(private modalService: NgbModal, private documentService: DocumentService) {
     this.currentUserSubject = JSON.parse(localStorage.getItem('currentUser'));
     this.currentUser = this.currentUserSubject;
   }
 
   public contentHeader: object;
   public rows = [];
-  public allDocs? : any[];
+  public allDocs?: any[];
+  public typeId: any
+  public fbContent: ''
 
-  public fbContent : ''
 
-
-  selectedFiles : any
-  uploadedFile  : any
+  selectedFiles: any
+  uploadedFile: any
   fileStatus = { status: '', requestType: '', percent: 0 };
-  
-  ngOnInit(): void 
-  {
+
+  ngOnInit(): void {
     this.getAllDocs();
     this.getTypes();
-    
+
     this.contentHeader = {
       headerTitle: 'Document',
       actionButton: true,
@@ -69,21 +68,19 @@ export class AllDocsComponent implements OnInit {
     });
   }
 
-  show()
-  {
+  show() {
     this.uploadedFile = this.selectedFiles.item(0)
     console.log(this.uploadedFile);
   }
 
-  
-  public showFileName(selectedFile : any)
-  {
+
+  public showFileName(selectedFile: any) {
     let file = selectedFile.target.files[0]
     this.fileName = file.name;
     this.selectedFiles = selectedFile.target.files;
   }
 
-  public types : any;
+  public types: any;
   getTypes() {
     this.documentService.getTypes().subscribe({
       next: (data) => this.types = data,
@@ -91,49 +88,44 @@ export class AllDocsComponent implements OnInit {
     })
   }
 
-  onUploadFile() : void
-  {
-        this.uploadedFile = this.selectedFiles.item(0)
+  onUploadFile(): void {
+    this.uploadedFile = this.selectedFiles.item(0)
+    console.log(this.typeId);
 
-    this.documentService.upload(this.uploadedFile,this.currentUser.id,44).subscribe(
-        event => {
-          console.log(event)
-        },
-        (err : HttpErrorResponse) =>
-        { console.log(err.message); }
-      )
+    // this.documentService.upload(this.uploadedFile, this.currentUser.id, this.typeId).subscribe(
+    //   event => {
+    //     console.log(event)
+    //   },
+    //   (err: HttpErrorResponse) => { console.log(err.message); }
+    // )
   }
 
-  onDownLoadFile(fileId : number) : void
-  {
+  onDownLoadFile(fileId: number): void {
     this.documentService.download(fileId).subscribe(
-       (res : any) =>  console.log(res)
-        
-      
+      (res: any) => console.log(res)
+
+
     )
   }
 
-  getAllDocs() 
-  {
+  getAllDocs() {
     this.documentService.getDocuments().subscribe(
-      (res : any[]) => {this.allDocs = res, console.log(this.allDocs);},
-      
-      (err : HttpErrorResponse) => console.log(err.message)
+      (res: any[]) => { this.allDocs = res, console.log(this.allDocs); },
+
+      (err: HttpErrorResponse) => console.log(err.message)
     )
   }
 
 
-  private reportProgress(httpEvent: HttpEvent<string[] | Blob>) : void
-  {
-    switch(httpEvent.type)
-    {
-      case HttpEventType.UploadProgress :
+  private reportProgress(httpEvent: HttpEvent<string[] | Blob>): void {
+    switch (httpEvent.type) {
+      case HttpEventType.UploadProgress:
         this.updateStatus(httpEvent.loaded, httpEvent.total, 'Uploading... ')
         break
-      case HttpEventType.DownloadProgress :
+      case HttpEventType.DownloadProgress:
         this.updateStatus(httpEvent.loaded, httpEvent.total, 'Downloading... ')
         break
-      case HttpEventType.ResponseHeader :
+      case HttpEventType.ResponseHeader:
         console.log('Header returned', httpEvent);
         break;
     }
@@ -145,6 +137,6 @@ export class AllDocsComponent implements OnInit {
     this.fileStatus.percent = Math.round(100 * loaded / total);
   }
 
- 
+
 
 }
