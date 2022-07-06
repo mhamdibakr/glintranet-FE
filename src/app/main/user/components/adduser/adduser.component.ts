@@ -3,6 +3,8 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router';
 import { AllCandidat } from 'app/main/CvTech/models/all-candidat.model';
 import { AllCandidatService } from 'app/main/CvTech/services/all-candidat.service';
+import { User } from 'app/main/models/user.model';
+import { UserService } from 'app/main/services/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,31 +16,46 @@ export class AdduserComponent implements OnInit {
 
   contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
 
-  public candidat = {
+  public user: User = {
     firstName: undefined,
     lastName: undefined,
+    CIN: undefined,
+    username: 0,
     email: undefined,
-    phone: undefined,
-    username: undefined,
-    birthDate: undefined,
     password: undefined,
-    cin: undefined
+    phoneNumber: undefined,
+    birthDate: undefined,
+    roles: [
+      {
+        id: 0,
+        name: "",
+        description: ""
+      }
+    ]
   }
+
 
 
   public form: FormGroup = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     email: new FormControl(''),
-    phone: new FormControl(''),
+    phoneNumber: new FormControl(''),
     username: new FormControl(''),
     birthDate: new FormControl(false),
     password: new FormControl(),
-    cin: new FormControl()
+    CIN: new FormControl(),
+    roles: new FormControl([])
   });
   submitted = false;
+  public roles = [
+    { name: "Admin", checked: false },
+    { name: "User", checked: false },
+    { name: "RH", checked: false }
+  ];
+
   constructor(private formBuilder: FormBuilder,
-    private AllCandidatService: AllCandidatService,
+    private userService: UserService,
     private router: Router,
   ) { }
 
@@ -95,9 +112,9 @@ export class AdduserComponent implements OnInit {
           ]
         ],
         birthDate: ['', Validators.required],
-        cin: ['', Validators.required],
+        CIN: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        phone: [
+        phoneNumber: [
           '',
           [
             Validators.required,
@@ -124,35 +141,60 @@ export class AdduserComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    this.candidat = this.form.value;
+    this.user = this.form.value;
+    this.user.roles = [{
+      id: 0,
+      name: "",
+      description: ""
+    }]
 
-    // this.addNewCandidat();
+    this.roles.forEach(role => {
+      if (role.checked) {
+        const userRole = {
+          id: 0,
+          name: role.name,
+          description: ""
+        }
+        this.user.roles.push(userRole);
+      }
+    })
+    this.addNewUseer();
 
   }
-  // private addNewCandidat() {
-  //   this.AllCandidatService.addCandidat(this.candidat).subscribe(
-  //     {
-  //       next: (response: any) => {
-  //         console.log(response);
-  //         Swal.fire({
-  //           icon: 'success',
-  //           title: 'Your work has been saved',
-  //           showConfirmButton: false,
-  //           timer: 1500
-  //         });
-  //         this.router.navigateByUrl("/cvtech/candidats/allcandidats");
-  //       }, error: (err) => {
-  //         console.error(err);
-  //       }
-  //     }
-  //   );
-  // }
+  private addNewUseer() {
+    this.user.roles.splice(0,1)
+
+    this.userService.addUser(this.user).subscribe(
+      {
+        next: (response: any) => {
+          console.log(response);
+          Swal.fire({
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          this.router.navigateByUrl("/user/Allusers");
+        }, error: (err) => {
+          console.error(err);
+        }
+      }
+    );
+  }
 
   onReset(): void {
     this.submitted = false;
     this.form.reset();
   }
 
-  
+
+  pushOrPop(event: Event) {
+    const name = event.target["name"]
+    const isChecked = event.target["checked"]
+    
+    this.roles.find(role => {
+      role.name == name ? role.checked = isChecked : null
+    })
+  }
 
 }

@@ -11,7 +11,11 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 const routes: Routes = [
-  { path: '', component: AllusersComponent }
+  { path: '', component: AllusersComponent },
+  { 
+    path: 'UserDetails/:userId',
+    loadChildren: () => import('./user-details/user-details.module').then(m => m.UserDetailsModule)
+  }
 ];
 
 @NgModule({
@@ -24,9 +28,9 @@ const routes: Routes = [
     CoreCommonModule,
     ContentHeaderModule,
     NgbModule,
-    NgSelectModule,
     FormsModule,
     NgxDatatableModule
+    
   ]
 })
 export class AllusersModule { }
