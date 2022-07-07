@@ -95,11 +95,12 @@ export class AuthLoginV2Component implements OnInit {
       .pipe(first())
       .subscribe(data => {
         console.log(data);
+        console.log(localStorage.getItem('currentUser'));
         
         this._router.navigate([this.returnUrl]);
       },
         error => {
-          this.error = error;
+          this.error = "email or password is invalid";
           this.loading = false;
         }
       )
@@ -118,7 +119,7 @@ export class AuthLoginV2Component implements OnInit {
    */
   ngOnInit(): void {
     this.loginForm = this._formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
       password: ['', Validators.required]
     });
 

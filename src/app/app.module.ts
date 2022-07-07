@@ -25,32 +25,54 @@ import { ChartsModule } from 'ng2-charts';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CustomToastrComponent } from './main/extensions/custom-toastr/custom-toastr.component';
+import { AuthGuard } from './auth/helpers';
+import { Role } from './auth/models';
 
 
 
 const appRoutes: Routes = [
   {
     path: 'pages',
+    data: {
+      userRoles: [Role.Admin, Role.Rh, Role.User]
+    },
     loadChildren: () => import('./main/pages/pages.module').then(m => m.PagesModule)
   },
   {
     path: 'cvtech',
+    data: {
+      userRoles: [Role.Admin, Role.Rh, Role.User]
+    },
     loadChildren: () => import('./main/CvTech/cvtech.module').then(m => m.CvtechModule)
   },
   {
     path: 'companies',
+    data: {
+      userRoles: [Role.Admin, Role.Rh, Role.User]
+    },
     loadChildren: () => import('./main/company/company.module').then(m => m.CompanyModule)
   },
   {
     path: 'grh',
+    data: {
+      userRoles: [Role.Admin, Role.Rh, Role.User]
+    },
     loadChildren: () => import('./main/grh/grh.module').then(m => m.GrhModule)
   },
   {
     path: 'faq',
+    data: {
+      userRoles: [Role.Admin, Role.Rh, Role.User]
+    },
+    canActivate: [AuthGuard],
     loadChildren: () => import('./main/faq/faq.module').then(m => m.FaqModule)
   },
   {
     path: 'document',
+    data: {
+      userRoles: [Role.Admin, Role.Rh, Role.User]
+    },
+    canActivate: [AuthGuard],
     loadChildren: () => import('./main/document/document.module').then(m => m.Document)
   },
   {
@@ -60,14 +82,26 @@ const appRoutes: Routes = [
   },
   { 
     path: 'user',
+    data: {
+      userRoles: [Role.Admin]
+    },
+    canActivate: [AuthGuard],
     loadChildren: () => import('./main/user/user.module').then(m => m.UserModule)
   },
   { 
     path: 'projects',
+    data: {
+      userRoles: [Role.Admin]
+    },
+    canActivate: [AuthGuard],
     loadChildren: () => import('./main/project/project.module').then(m => m.ProjectModule)
   },
   {
     path : 'stats',
+    data: {
+      userRoles: [Role.Admin, Role.Rh, Role.User]
+    },
+    canActivate: [AuthGuard],
     loadChildren: () => import('./main/statistics/statistics.module').then(m => m.StatisticsModule)
 
   }

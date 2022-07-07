@@ -4,9 +4,9 @@
     <li class="nav-item">
       <a class="navbar-brand" [routerLink]="['/']">
         <span class="brand-logo">
-          <img src="{{ coreConfig.app.appLogoImage }}" alt="brand-logo" width="36" />
+          <img src="{{ coreConfig?.app.appLogoImage }}" alt="brand-logo" width="36" />
         </span>
-        <h2 class="brand-text mb-0">{{ coreConfig.app.appName }}</h2>
+        <h2 class="brand-text mb-0">{{ coreConfig?.app.appName }}</h2>
       </a>
     </li>
   </ul>
@@ -16,7 +16,7 @@
 <div class="navbar-container d-flex content">
   <div class="bookmark-wrapper d-flex align-items-center">
     <!-- Menu Toggler | Menu icon will be hidden in case of layout without menu -->
-    <ul class="nav navbar-nav d-xl-none" *ngIf="!coreConfig.layout.menu.hidden">
+    <ul class="nav navbar-nav d-xl-none" *ngIf="!coreConfig?.layout.menu.hidden">
       <li class="nav-item">
         <a class="nav-link menu-toggle" (click)="toggleSidebar('menu')">
           <span [data-feather]="'menu'" [class]="'ficon'"></span>
@@ -55,8 +55,8 @@
       <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" ngbDropdownToggle
         id="navbarUserDropdown" aria-haspopup="true" aria-expanded="false">
         <div class="user-nav d-sm-flex d-none">
-          <span class="user-name font-weight-bolder mb-50">{{currentUser?.username }}
-          </span><span class="user-status">Admin</span>
+          <span class="user-name font-weight-bolder mb-50">{{currentUser?.userName }}
+          </span><span class="user-status">{{currentUser?.Roles[0].name }}</span>
         </div>
         <span class="avatar"><img class="round" src="../../../../assets/images/portrait/small/pp.png" alt="avatar"
             height="40" width="40" /><span class="avatar-status-online"></span></span>
