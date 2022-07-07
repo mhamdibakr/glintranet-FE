@@ -6,6 +6,7 @@ import { DocumentService } from 'app/main/services/document.service';
 import { error } from 'console';
 import { saveAs } from 'file-saver'
 import Swal from 'sweetalert2';
+import { types } from 'util';
 
 
 @Component({
@@ -22,15 +23,21 @@ export class AllDocsComponent implements OnInit {
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
   fileName: any;
+  currentUserSubject: any;
+  currentUser: any;
+  doc: any;
 
-  constructor(private modalService: NgbModal, private documentService: DocumentService) { }
+  constructor(private modalService: NgbModal, private documentService: DocumentService) {
+    this.currentUserSubject = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = this.currentUserSubject;
+  }
 
   public contentHeader: object;
   public rows = [];
   public allDocs?: any[];
-
+  public typeId: any;
+  public types: any;
   public fbContent: ''
-  public doc: any
 
 
   selectedFiles: any
@@ -38,7 +45,9 @@ export class AllDocsComponent implements OnInit {
   fileStatus = { status: '', requestType: '', percent: 0 };
 
   ngOnInit(): void {
-    this.getAllDocs()
+    this.getAllDocs();
+    this.getTypes();
+
     this.contentHeader = {
       headerTitle: 'Document',
       actionButton: true,
@@ -78,11 +87,18 @@ export class AllDocsComponent implements OnInit {
     this.selectedFiles = selectedFile.target.files;
   }
 
+  getTypes() {
+    this.documentService.getTypes().subscribe({
+      next: (data) => this.types = data,
+      error: (err) => console.error(err)
+    })
+  }
 
   onUploadFile(): void {
     this.uploadedFile = this.selectedFiles.item(0)
+    console.log(this.typeId);
 
-    this.documentService.upload(this.uploadedFile, 57, 34).subscribe(
+    this.documentService.upload(this.uploadedFile, this.currentUser.id, this.typeId).subscribe(
       event => {
         this.modal.close()
         Swal.fire({

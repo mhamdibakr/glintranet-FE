@@ -38,7 +38,10 @@ export class DocumentService {
   {
     return this.http.get<any[]>(`${baseUrl}/document`)
   }
-
+  
+  getTypes() : Observable<any> {
+    return this.http.get<any[]>(`${baseUrl}/type`)
+  }
 
 
 }

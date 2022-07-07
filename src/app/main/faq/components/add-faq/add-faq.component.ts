@@ -34,6 +34,8 @@ export class AddFaqComponent implements OnInit {
     tags: []
   };
   employees: Employee[];
+  private currentUserSubject: any;
+  public currentUser: any;
 
   constructor(
     private employeeService: EmployeeService,
@@ -41,7 +43,10 @@ export class AddFaqComponent implements OnInit {
     private sectionService: SectionService,
     private faqService: FaqService,
     private router: Router,
-  ) { }
+  ) {
+    this.currentUserSubject = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = this.currentUserSubject;
+  }
 
   public MultiDefaultSelected = [];
   public SectionSelected: Section = {
@@ -112,7 +117,7 @@ export class AddFaqComponent implements OnInit {
   }
 
   addFaq() {
-    this.faq.employee_id=57
+    this.faq.employee_id=this.currentUser.id
     this.faq.section_id=this.SectionSelected.id
     this.faq.tags=this.MultiDefaultSelected;
 

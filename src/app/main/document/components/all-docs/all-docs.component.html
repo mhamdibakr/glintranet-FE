@@ -96,8 +96,16 @@
             <label class="custom-file-label" for="customFile">Choose file</label>
           </div>
         </div>
-
-       
+        <label>file type : </label>
+        <div class="form-group">
+          <select class="form-control" name="typeId" [(ngModel)]="typeId" id="basicSelect">
+            <option *ngFor="let type of types" value="{{type.id}}">{{type.name}}</option>
+          </select>
+        </div>
+        <fieldset class="form-label-group">
+          <textarea class="form-control" id="label-textarea" rows="3" placeholder="Content"
+              [(ngModel)]="fbContent" name="description"></textarea>
+        </fieldset>
         <div class="modal-footer">
           <button (click)="onUploadFile()" class="btn btn-primary"  rippleEffect>
             Upload
