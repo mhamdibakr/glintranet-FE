@@ -165,6 +165,9 @@ export class AllDocsComponent implements OnInit {
     this.fileStatus.percent = Math.round(100 * loaded / total);
   }
 
-
+  onCheckboxChangeFn(event: Event) {
+    console.log(event);
+    
+  }
 
 }

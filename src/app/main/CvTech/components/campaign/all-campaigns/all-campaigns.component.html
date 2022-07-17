@@ -40,7 +40,7 @@
                   >
                 </div>
               </div>
-              <ngx-datatable class="bootstrap core-bootstrap ml-1" [columnMode]="'flex'" [headerHeight]="40"
+              <ngx-datatable #table class="bootstrap core-bootstrap"  [columnMode]="ColumnMode.force" [headerHeight]="40"
                 [footerHeight]="50" [rowHeight]="58" rowHeight="auto" [rows]="Campains"
                 [selected]="chkBoxSelected">
 

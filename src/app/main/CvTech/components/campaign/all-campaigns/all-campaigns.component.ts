@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AllCampaignService } from '../../../services/all-campaign.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AllCampaign } from '../../../models/all-campaign.model';
 import { Router } from '@angular/router';
+import { ColumnMode } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-all-campaigns',
   templateUrl: './all-campaigns.component.html',
-  styleUrls: ['./all-campaigns.component.scss']
+  styleUrls: ['./all-campaigns.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AllCampaignsComponent implements OnInit {
 
   contentHeader: { headerTitle: string; actionButton: boolean; breadcrumb: { type: string; links: ({ name: string; isLink: boolean; link: string; } | { name: string; isLink: boolean; link?: undefined; })[]; }; };
   router: any;
   
+  public ColumnMode = ColumnMode;
   constructor(private modalService: NgbModal, private AllCampaignService : AllCampaignService) {}
 
   ngOnInit(): void 

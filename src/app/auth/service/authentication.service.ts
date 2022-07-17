@@ -92,8 +92,8 @@ export class AuthenticationService {
             setTimeout(() => {
               this._toastrService.success(
                 'You have successfully logged in as an ' +
-                this.currentUser.Roles[0],
-                ' 👋 Welcome, ' + this.currentUser.username + '!',
+                this.currentUser["First Name"],
+                ' 👋 Welcome, ' + this.currentUser["First Name"] + '!',
                 { toastClass: 'toast ngx-toastr', closeButton: true }
               );
             }, 2500);

@@ -33,9 +33,9 @@ import { Role } from './auth/models';
 const appRoutes: Routes = [
   {
     path: 'pages',
-    data: {
-      userRoles: [Role.Admin, Role.Rh, Role.User]
-    },
+    // data: {
+    //   userRoles: [Role.Admin, Role.Rh, Role.User]
+    // },
     loadChildren: () => import('./main/pages/pages.module').then(m => m.PagesModule)
   },
   {
@@ -54,25 +54,25 @@ const appRoutes: Routes = [
   },
   {
     path: 'grh',
-    data: {
-      userRoles: [Role.Admin, Role.Rh, Role.User]
-    },
+    // data: {
+    //   userRoles: [Role.Admin, Role.Rh, Role.User]
+    // },
     loadChildren: () => import('./main/grh/grh.module').then(m => m.GrhModule)
   },
   {
     path: 'faq',
-    data: {
-      userRoles: [Role.Admin, Role.Rh, Role.User]
-    },
-    canActivate: [AuthGuard],
+    // data: {
+    //   userRoles: [Role.Admin, Role.Rh, Role.User]
+    // },
+    // canActivate: [AuthGuard],
     loadChildren: () => import('./main/faq/faq.module').then(m => m.FaqModule)
   },
   {
     path: 'document',
-    data: {
-      userRoles: [Role.Admin, Role.Rh, Role.User]
-    },
-    canActivate: [AuthGuard],
+    // data: {
+    //   userRoles: [Role.Admin, Role.Rh, Role.User]
+    // },
+    // canActivate: [AuthGuard],
     loadChildren: () => import('./main/document/document.module').then(m => m.Document)
   },
   {
@@ -82,25 +82,25 @@ const appRoutes: Routes = [
   },
   { 
     path: 'user',
-    data: {
-      userRoles: [Role.Admin]
-    },
+    // data: {
+    //   userRoles: [Role.Admin]
+    // },
     canActivate: [AuthGuard],
     loadChildren: () => import('./main/user/user.module').then(m => m.UserModule)
   },
   { 
     path: 'projects',
-    data: {
-      userRoles: [Role.Admin]
-    },
+    // data: {
+    //   userRoles: [Role.Admin]
+    // },
     canActivate: [AuthGuard],
     loadChildren: () => import('./main/project/project.module').then(m => m.ProjectModule)
   },
   {
     path : 'stats',
-    data: {
-      userRoles: [Role.Admin, Role.Rh, Role.User]
-    },
+    // data: {
+    //   userRoles: [Role.Admin, Role.Rh, Role.User]
+    // },
     canActivate: [AuthGuard],
     loadChildren: () => import('./main/statistics/statistics.module').then(m => m.StatisticsModule)
 
