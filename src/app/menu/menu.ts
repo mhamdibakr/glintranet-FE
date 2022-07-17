@@ -297,6 +297,28 @@ export const menu: CoreMenu[] = [
     type: 'item',
     icon: 'monitor',
     url: 'stats'
+  },
+  {
+    id: 'settings',
+    title: 'Settings',
+    type: 'collapsible',
+    icon: 'settings',
+    children: [
+      {
+        id: 'sections',
+        title: 'Sections',
+        type: 'item',
+        icon: 'folder-plus',
+        url: 'settings/sections'
+      },
+      {
+        id: 'roles',
+        title: 'Roles',
+        type: 'item',
+        icon: 'folder-plus',
+        url: 'settings/roles'
+      }
+    ]
   }
 
 ]
