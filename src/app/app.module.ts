@@ -103,7 +103,10 @@ const appRoutes: Routes = [
     // },
     canActivate: [AuthGuard],
     loadChildren: () => import('./main/statistics/statistics.module').then(m => m.StatisticsModule)
-
+  },
+  {
+    path : 'settings',
+    loadChildren: () => import('./main/settings/settings.module').then(m => m.SettingsModule)
   }
  
 ];
@@ -112,7 +115,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     CustomToastrComponent
-
   ],
   imports: [
     ChartsModule,

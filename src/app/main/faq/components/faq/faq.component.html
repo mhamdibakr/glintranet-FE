@@ -14,7 +14,7 @@
                     <i data-feather="search"></i>
                   </div>
                 </div>
-                <input type="text" name="searchbar" class="form-control" placeholder="Search faq..." />
+                <input type="text" name="key" (ngModelChange)="searchFAQ(key.value)" #key="ngModel" ngModel class="form-control" placeholder="Search faq..." />
               </div>
             </form>
           </div>
@@ -68,7 +68,8 @@
               </div>
             </div>
             <div class="float-right" style="font-size: small;">
-              <p style="margin-bottom: 0;">{{faq.postingDate | date:'yyyy-MM-dd HH:mm'}}</p>
+              <!-- <p style="margin-bottom: 0;">{{faq.postingDate | date:'yyyy-MM-dd HH:mm'}}</p> -->
+              <p style="margin-bottom: 0;">{{this.dateFormat.timeAgo(faq.postingDate) }}</p>
               <p style="margin-bottom: 0;">{{faq.employee.lastName}} {{faq.employee.firstName}}</p>
             </div>
           </div>

@@ -19,10 +19,12 @@ import { TagService } from 'app/main/services/tag.service';
 export class AddFaqComponent implements OnInit {
 
   contentHeader: Object;
+
   public tags: Tag[];
   public sections: Section[];
-  date = new Date(Date.now());
-  public faq: Faq = {
+  public date = new Date(Date.now());
+  public faq: Faq = 
+  {
     id: 0,
     content: undefined,
     description: undefined,
@@ -31,9 +33,8 @@ export class AddFaqComponent implements OnInit {
     status: false,
     employee_id: 0,
     section_id: 0,
-    tags: []
-  };
-  employees: Employee[];
+    tags: [] };
+  public employees: Employee[];
   private currentUserSubject: any;
   public currentUser: any;
 
@@ -121,6 +122,8 @@ export class AddFaqComponent implements OnInit {
     this.faq.section_id=this.SectionSelected.id
     this.faq.tags=this.MultiDefaultSelected;
 
+    console.log(this.faq)
+
     this.faqService.AddFAQ(this.faq).subscribe({
       next: (data: any) => {
         console.log(data);
@@ -130,5 +133,7 @@ export class AddFaqComponent implements OnInit {
     })
     
   }
+
+
 
 }
