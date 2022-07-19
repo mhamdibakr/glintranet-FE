@@ -58,44 +58,59 @@
 
 <div class="col-12" *ngFor="let comment of actualFaq?.comments">
     <div class="card">
-        <div class="card-body">
-            <div class="media">
-                <div class="avatar mr-2">
+        <div class="media">
+            <div class="p-1">
+                <div class="avatar">
                     <img src="assets/images/avatars/pp.png" width="38" height="38" alt="" />
                 </div>
+            </div>
 
-                <div class="media-body">
-                    <h6 class="font-weight-bolder mb-25">{{comment.employeeCommentResponse.lastName}}</h6>
-                    <p class="card-text">{{commentDate(comment.commentDate)}}</p>
+            <div class="media-body">
+                <div class="p-1">
+                    <h6 class="font-weight-bolder mb-25">{{comment.employeeCommentResponse.username}}</h6>
+                    <p class="card-text">{{this.dateFormat.timeAgo(comment.commentDate)}}</p>
                     <p class="card-text">{{comment.content}}</p>
+                </div>
 
-                    <ngb-accordion [closeOthers]="true">
-                        <ngb-panel id="comment-{{comment.id}}">
-                            <ng-template ngbPanelTitle >
-                                <a href="javascript:void(0)">
-                                    <span>Reply <i data-feather="corner-up-left" class="font-medium-3"></i></span>
-                                </a>
-                            </ng-template>
-                            <ng-template ngbPanelContent>
-                                <div class="card mb-0">
-                                    <div class="card-body">
-                                        <div class="form-group mb-2 d-flex flex-column">
-                                            <fieldset class="form-label-group">
-                                                <textarea class="form-control" [(ngModel)]="content" id="label-textarea"
-                                                    rows="3" placeholder="add youre reply here"></textarea>
-                                            </fieldset>
-                                            <div class="align-self-end">
-                                                <button class="btn btn-primary ml-1"
-                                                    (click)="addReply(comment.id)">Reply</button>
-                                            </div>
-                                        </div>
+            </div>
+        </div>
+        <div class="card-footer p-0">
+            <ngb-accordion [closeOthers]="true">
+                <ngb-panel id="comment-{{comment.id}}">
+                    <ng-template ngbPanelTitle>
+                        <a href="javascript:void(0)">
+                            <span>
+                                <i data-feather="corner-down-right" class="font-medium-3"></i>
+                                <span style="float: none;">Replies</span>
+                            </span>
+                        </a>
+                    </ng-template>
+                    <ng-template ngbPanelContent style="padding: 0;">
+                        <div class="row justify-content-end mr-0">
+                            <div class="mb-1 col-10 p-0" *ngFor="let reply of comment?.replies">
+                              <div class="card shadow-none bg-transparent border-primary">
+                                <div class="card-body">
+                                  <h5 class="font-weight-bolder mb-0">{{reply?.employeeCommentResponse?.username}}</h5>
+                                  <span class="card-subtitle">{{this.dateFormat.timeAgo(reply?.replyDate)}}</span>
+                                  <p class="card-text mt-1">{{reply?.content}}</p>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="mb-0">
+                            <div class="form-groug d-flex flex-column">
+                                <div class="input-group">
+                                    <textarea class="form-control" [(ngModel)]="content" rows="1"
+                                        placeholder="reply here to {{comment.employeeCommentResponse.username}}" aria-label="With textarea"></textarea>
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-primary" (click)="addReply(comment.id)">Reply</button>
                                     </div>
                                 </div>
-                            </ng-template>
-                        </ngb-panel>
-                    </ngb-accordion>
-                </div>
-            </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-panel>
+            </ngb-accordion>
         </div>
     </div>
 </div>

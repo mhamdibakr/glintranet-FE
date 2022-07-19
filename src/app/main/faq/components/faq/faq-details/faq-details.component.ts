@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { id } from '@swimlane/ngx-datatable';
+import { DateMethod } from 'app/main/date-method';
 import { Comment } from 'app/main/models/comment.model';
 import { Faq } from 'app/main/models/faq.model';
 import { CommentService } from 'app/main/services/comment.service';
@@ -18,6 +19,7 @@ export class FaqDetailsComponent implements OnInit {
   contentHeader: Object;
   currentUser: any;
   constructor(
+    private dateFormat : DateMethod,
     private route: ActivatedRoute,
     private faqService: FaqService,
     private commentService: CommentService
@@ -121,7 +123,8 @@ export class FaqDetailsComponent implements OnInit {
   addReply(cmt_id: any) {
     const reply = {
       content: this.content,
-      cmt_Id: cmt_id
+      cmt_Id: cmt_id,
+      emp_Id: this.currentUser.id
     }
 
     this.commentService.addReply(reply).subscribe({
