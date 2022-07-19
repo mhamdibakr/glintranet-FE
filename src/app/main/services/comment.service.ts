@@ -18,4 +18,9 @@ export class CommentService {
   {
     return this.http.post<any[]>(`${baseUrl}/comment`, comment)
   }
+
+  addReply(reply: any) : Observable<any[]>
+  {
+    return this.http.post<any[]>(`${baseUrl}/comment/reply`, reply)
+  }
 }

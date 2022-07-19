@@ -16,11 +16,15 @@ import { CustomOption } from 'ngx-quill';
 export class FaqDetailsComponent implements OnInit {
 
   contentHeader: Object;
+  currentUser: any;
   constructor(
     private route: ActivatedRoute,
     private faqService: FaqService,
     private commentService: CommentService
-  ) { }
+  ) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
+  public isCollapsed = true;
 
   public fad_id = this.route.snapshot.params["faqId"];
   public actualFaq: any;
@@ -64,11 +68,17 @@ export class FaqDetailsComponent implements OnInit {
       whitelist: void 0
     }
   ];
-
+  postingDate: any;
+  commentDate(date: any): any {
+    return new Date(date).toDateString()
+  }
   getData(): void {
     this.faqService.getFAQById(this.fad_id).subscribe(
       (res: any) => {
-        this.actualFaq = res
+        this.actualFaq = res;
+        this.postingDate = new Date(res.postingDate).toDateString()
+        console.log(this.postingDate);
+
         console.log(this.actualFaq);
       },
       (error: HttpErrorResponse) => {
@@ -77,8 +87,7 @@ export class FaqDetailsComponent implements OnInit {
     )
   }
 
-  public voteUp(id : number) : void
-  {
+  public voteUp(id: number): void {
     this.faqService.voteUp(id).subscribe(
       () => {
         this.ngOnInit()
@@ -86,22 +95,39 @@ export class FaqDetailsComponent implements OnInit {
     )
   }
 
-  public voteDown(id : number) : void
-  {
+  public voteDown(id: number): void {
     this.faqService.voteDown(id).subscribe(
       () => {
         this.ngOnInit()
       }
     )
   }
+
   addComment() {
-    this.comment.emp_Id = 57;
+    this.comment.emp_Id = this.currentUser.id;
     console.log(this.comment);
 
     this.commentService.addComment(this.comment).subscribe({
       next: (res: any) => {
         console.log(res);
-        this.comment.content=""
+        this.comment.content = ""
+        this.ngOnInit()
+      },
+      error: (err) => console.error(err)
+    })
+  }
+
+  content: any
+  addReply(cmt_id: any) {
+    const reply = {
+      content: this.content,
+      cmt_Id: cmt_id
+    }
+
+    this.commentService.addReply(reply).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.content = ""
         this.ngOnInit()
       },
       error: (err) => console.error(err)
