@@ -11,9 +11,8 @@ import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.s
 import { CoreConfigService } from '@core/services/config.service';
 import { CoreMediaService } from '@core/services/media.service';
 
-import { User } from 'app/auth/models';
+import jwt_decode from "jwt-decode";
 
-import { coreConfig } from 'app/app-config';
 import { Router } from '@angular/router';
 
 @Component({
@@ -83,7 +82,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private _mediaObserver: MediaObserver,
     public _translateService: TranslateService
   ) {
+    // get the logged in user
     this._authenticationService.currentUser.subscribe(x => (this.currentUser = x));
+    console.log(this.currentUser);
+    
 
     this.languageOptions = {
       en: {
@@ -176,9 +178,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    // get the currentUser details from localStorage
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+    // decode jwt token
+    this.currentUser = jwt_decode(this.currentUser?.token)
 
+    console.log(this.currentUser);
     // Subscribe to the config changes
     this._coreConfigService.config.pipe(takeUntil(this._unsubscribeAll)).subscribe(config => {
       this.coreConfig = config;

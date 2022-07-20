@@ -38,7 +38,7 @@ const users: User[] = [
     firstName: 'Nataly',
     lastName: 'Doe',
     avatar: 'avatar-s-2.jpg',
-    role: Role.Client
+    role: Role.Rh
   },
   {
     id: 3,

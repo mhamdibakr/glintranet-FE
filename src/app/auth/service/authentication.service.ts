@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'environments/environment';
 import { User, Role } from 'app/auth/models';
 import { ToastrService } from 'ngx-toastr';
+import jwt_decode from "jwt-decode";
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -38,8 +39,8 @@ export class AuthenticationService {
   }
 
   // getter: currentUserValue
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
+  public get currentUserValue(): any {
+    return this.currentUser;
   }
 
   // get user informations
@@ -73,37 +74,34 @@ export class AuthenticationService {
    * @param password
    * @returns user
    */
-  public loggedUser : any
   login(email: string, password: string) {
     return this._http
       .post<any>(`${environment.apiUrl}/api/login`, { email, password })
       .pipe(
         map(user => {
-          // this.userInf(user.value.id);
-          this.loggedUser = user
+          console.log(localStorage.getItem('currentUser'));
+          
           // login successful if there's a jwt token in the response
           if (user && user.token) {
-            localStorage.setItem('currentUser', JSON.stringify(user));
             // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            // decode the jwt-token
+            this.currentUser = jwt_decode(user.token);
 
             // Display welcome toast!
             setTimeout(() => {
               this._toastrService.success(
                 'You have successfully logged in as an ' +
-                this.loggedUser.role +
-                ' user to Vuexy. Now you can start to explore. Enjoy! 🎉',
-                '👋 Welcome, ' + user.username + '!',
+                this.currentUser["First Name"],
+                ' 👋 Welcome, ' + this.currentUser["First Name"] + '!',
                 { toastClass: 'toast ngx-toastr', closeButton: true }
-              );
-              console.log(
-                this.loggedUser.id
               );
             }, 2500);
 
             // notify
-          
-          
-            this.currentUserSubject.next(this.loggedUser);
+
+
+            this.currentUserSubject.next(this.currentUser);
           }
 
           return user;

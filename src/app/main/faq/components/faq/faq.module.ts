@@ -10,6 +10,8 @@ import { ContentHeaderModule } from 'app/layout/components/content-header/conten
 import { FaqComponent } from './faq.component';
 import { FAQService } from './faq.service';
 import { FaqDetailsComponent } from './faq-details/faq-details.component';
+import { CardSnippetModule } from '@core/components/card-snippet/card-snippet.module';
+import { CoreCardModule } from '@core/components/core-card/core-card.module';
 
 
 const routes: Routes = [
@@ -30,7 +32,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     NgbModule,
     CoreCommonModule,
-    ContentHeaderModule],
+    CardSnippetModule,
+    ContentHeaderModule,
+    CoreCardModule
+  ],
 
   providers: [FAQService]
 })

@@ -10,10 +10,12 @@
                             <div class="d-flex flex-column align-items-center">
                                 <h3>{{actualFaq?.votesUp}}</h3>
                                 <p class="mb-0" style="font-size: x-small;">Positifs</p>
-                                <i (click)="voteUp(actualFaq?.id)" class="bi bi-caret-up-fill cursor-pointer" style="font-size: 35px;"></i>
+                                <i (click)="voteUp(actualFaq?.id)" class="bi bi-caret-up-fill cursor-pointer"
+                                    style="font-size: 35px;"></i>
                             </div>
                             <div class="d-flex flex-column align-items-center">
-                                <i (click)="voteDown(actualFaq?.id)" class="bi bi-caret-down-fill cursor-pointer" style="font-size: 35px;"></i>
+                                <i (click)="voteDown(actualFaq?.id)" class="bi bi-caret-down-fill cursor-pointer"
+                                    style="font-size: 35px;"></i>
                                 <h3>{{actualFaq?.votesDown}}</h3>
                                 <p class="mb-0" style="font-size: x-small;" width="38" height="38">Negatifs</p>
                             </div>
@@ -31,8 +33,9 @@
                     </div>
                 </div>
                 <div class="float-right" style="font-size: small;">
-                    <p style="margin-bottom: 0;">{{actualFaq?.postingDate}}</p>
-                    <p style="margin-bottom: 0;">{{actualFaq?.employee?.lastName}} {{actualFaq?.employee?.firstName}}</p>
+                    <p style="margin-bottom: 0;">{{postingDate}}</p>
+                    <p style="margin-bottom: 0;">{{actualFaq?.employee?.lastName}} {{actualFaq?.employee?.firstName}}
+                    </p>
                 </div>
             </div>
         </div>
@@ -52,23 +55,62 @@
     </div>
 </div>
 
-
+<h6 class="section-label mt-25">{{commentCount}} Comments</h6>
 <div class="col-12" *ngFor="let comment of actualFaq?.comments">
     <div class="card">
-        <div class="card-body">
-            <div class="media">
-                <div class="avatar mr-2">
+        <div class="media">
+            <div class="p-1">
+                <div class="avatar">
                     <img src="assets/images/avatars/pp.png" width="38" height="38" alt="" />
                 </div>
-                <div class="media-body">
-                    <h6 class="font-weight-bolder mb-25">{{comment.employeeCommentResponse.lastName}}
-                        {{comment.employeeCommentResponse.firstName}}</h6>
+            </div>
+
+            <div class="media-body">
+                <div class="p-1">
+                    <h6 class="font-weight-bolder mb-25">{{comment.employeeCommentResponse.username}}</h6>
+                    <p class="card-text">{{this.dateFormat.timeAgo(comment.commentDate)}}</p>
                     <p class="card-text">{{comment.content}}</p>
                 </div>
-                <div class="float-right" style="font-size: small;">
-                    <p class="mt-4 mb-0">{{comment.commentDate}}</p>
-                </div>
+
             </div>
+        </div>
+        <div class="card-footer p-0">
+            <ngb-accordion [closeOthers]="true">
+                <ngb-panel id="comment-{{comment.id}}">
+                    <ng-template ngbPanelTitle>
+                        <a href="javascript:void(0)">
+                            <span>
+                                <i data-feather="corner-down-right" class="font-medium-3"></i>
+                                <span style="float: none;"> {{comment?.replies.length}} Replies</span>
+                            </span>
+                        </a>
+                    </ng-template>
+                    <ng-template ngbPanelContent style="padding: 0;">
+                        <div class="row justify-content-end mr-0">
+                            <div class="mb-1 col-10 p-0" *ngFor="let reply of comment?.replies">
+                              <div class="card shadow-none bg-transparent border-primary">
+                                <div class="card-body">
+                                  <h5 class="font-weight-bolder mb-0">{{reply?.employeeCommentResponse?.username}}</h5>
+                                  <span class="card-subtitle">{{this.dateFormat.timeAgo(reply?.replyDate)}}</span>
+                                  <p class="card-text mt-1">{{reply?.content}}</p>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="mb-0">
+                            <div class="form-groug d-flex flex-column">
+                                <div class="input-group">
+                                    <textarea class="form-control" [(ngModel)]="content" rows="1"
+                                        placeholder="reply here to {{comment.employeeCommentResponse.username}}" aria-label="With textarea"></textarea>
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-primary" (click)="addReply(comment.id)">Reply</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-panel>
+            </ngb-accordion>
         </div>
     </div>
 </div>
