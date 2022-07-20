@@ -55,7 +55,7 @@
     </div>
 </div>
 
-
+<h6 class="section-label mt-25">{{commentCount}} Comments</h6>
 <div class="col-12" *ngFor="let comment of actualFaq?.comments">
     <div class="card">
         <div class="media">
@@ -81,7 +81,7 @@
                         <a href="javascript:void(0)">
                             <span>
                                 <i data-feather="corner-down-right" class="font-medium-3"></i>
-                                <span style="float: none;">Replies</span>
+                                <span style="float: none;"> {{comment?.replies.length}} Replies</span>
                             </span>
                         </a>
                     </ng-template>

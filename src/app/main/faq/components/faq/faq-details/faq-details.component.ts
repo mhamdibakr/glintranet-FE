@@ -74,10 +74,12 @@ export class FaqDetailsComponent implements OnInit {
   commentDate(date: any): any {
     return new Date(date).toDateString()
   }
+  commentCount=0;
   getData(): void {
     this.faqService.getFAQById(this.fad_id).subscribe(
       (res: any) => {
         this.actualFaq = res;
+        this.commentCount = res.comments.length;
         this.postingDate = new Date(res.postingDate).toDateString()
         console.log(this.postingDate);
 
