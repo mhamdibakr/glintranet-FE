@@ -92,23 +92,16 @@ export class AuthLoginV2Component implements OnInit {
     this.loading = true;
     this._authenticationService
       .login(this.f.email.value, this.f.password.value)
-      .pipe(first())
-      .subscribe(data => {
-        console.log(data);
-        console.log(localStorage.getItem('currentUser'));
-        
-        this._router.navigate([this.returnUrl]);
-      },
-        error => {
+      .subscribe({
+        next: (data) => {
+          // Display welcome toast!
+          this._router.navigateByUrl(this.returnUrl);
+        },
+        error: (error) => {
           this.error = "email or password is invalid";
           this.loading = false;
         }
-      )
-
-    // redirect to home page
-    // setTimeout(() => {
-    //   this._router.navigate(['/']);
-    // }, 100);
+      });
   }
 
   // Lifecycle Hooks
