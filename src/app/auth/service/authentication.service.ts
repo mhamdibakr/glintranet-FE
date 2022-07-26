@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 
 import { environment } from 'environments/environment';
 import { User, Role } from 'app/auth/models';
-import { ToastrService } from 'ngx-toastr';
 import jwt_decode from "jwt-decode";
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -79,7 +79,6 @@ export class AuthenticationService {
       .post<any>(`${environment.apiUrl}/api/login`, { email, password })
       .pipe(
         map(user => {
-          console.log(localStorage.getItem('currentUser'));
           
           // login successful if there's a jwt token in the response
           if (user && user.token) {
@@ -92,11 +91,11 @@ export class AuthenticationService {
             setTimeout(() => {
               this._toastrService.success(
                 'You have successfully logged in as an ' +
-                this.currentUser["First Name"],
-                ' 👋 Welcome, ' + this.currentUser["First Name"] + '!',
+                this.currentUser?.Roles[0].name,
+                ' 👋 Welcome, ' + this.currentUser?.userName + '!',
                 { toastClass: 'toast ngx-toastr', closeButton: true }
               );
-            }, 2500);
+            }, 1000);
 
             // notify
 
@@ -104,7 +103,7 @@ export class AuthenticationService {
             this.currentUserSubject.next(this.currentUser);
           }
 
-          return user;
+          return this.currentUser;
         })
       );
   }

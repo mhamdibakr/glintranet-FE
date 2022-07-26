@@ -11,7 +11,7 @@ import { CardSnippetModule } from './../../../@core/components/card-snippet/card
 
 @NgModule({
     declarations: [
-        CustomToastrComponent
+        
     ],
     imports: [
         CommonModule,
