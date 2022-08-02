@@ -34,7 +34,6 @@
     <!--/ Toggle skin -->
   </div>
 
-
   <ul class="nav navbar-nav align-items-center ml-auto">
     <!-- ? Language selection | Uncomment if needed-->
     <li ngbDropdown class="nav-item dropdown dropdown-language">
@@ -49,13 +48,9 @@
     </li>
     <!--/ Language selection -->
 
-    <!--/ Notification bell -->
-    <li class="nav-item dropdown-notification mr-25">
-      <a class="nav-link" id="navbarNotificationDropdown"><i class="ficon" data-feather="bell"></i><span
-          class="badge badge-pill badge-danger badge-up">6</span>
-      </a>
-    </li>
-    <!--/ Notification bell -->
+    <!-- Notification -->
+    <app-navbar-notification></app-navbar-notification>
+    <!--/ Notification -->
 
     <!-- User Dropdown -->
     <li ngbDropdown class="nav-item dropdown-user">

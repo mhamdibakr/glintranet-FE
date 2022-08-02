@@ -83,7 +83,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     public _translateService: TranslateService
   ) {
     // get the logged in user
-    
+
 
     this.languageOptions = {
       en: {
@@ -176,7 +176,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
    * On init
    */
   ngOnInit(): void {
-    
     // decode jwt token
     this.currentUser = jwt_decode(JSON.parse(localStorage.getItem('currentUser'))?.token)
     console.log(this.currentUser);
@@ -225,4 +224,5 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
   }
+
 }

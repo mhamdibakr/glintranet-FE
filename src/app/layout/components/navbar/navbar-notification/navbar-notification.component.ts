@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { NotificationsService } from 'app/layout/components/navbar/navbar-notification/notifications.service';
+import { NotificationService } from 'app/main/services/notification.service';
 
-// Interface
-interface notification {
-  messages: [];
-  systemMessages: [];
-  system: Boolean;
-}
 
 @Component({
   selector: 'app-navbar-notification',
@@ -15,13 +10,14 @@ interface notification {
 })
 export class NavbarNotificationComponent implements OnInit {
   // Public
-  public notifications: notification;
+  public notifications: any;
+  currentUser: any;
 
   /**
    *
    * @param {NotificationsService} _notificationsService
    */
-  constructor(private _notificationsService: NotificationsService) {}
+  constructor(private notificationService: NotificationService, private router: Router) {}
 
   // Lifecycle Hooks
   // -----------------------------------------------------------------------------------------------------
@@ -30,8 +26,40 @@ export class NavbarNotificationComponent implements OnInit {
    * On init
    */
   ngOnInit(): void {
-    this._notificationsService.onApiDataChange.subscribe(res => {
-      this.notifications = res;
-    });
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
+    console.log(this.currentUser);
+    
+    this.getAllNotifs(this.currentUser.id)
+  }
+
+  getAllNotifs(id: any){
+    this.notificationService.getAllNotification(id).subscribe({
+      next: (data: any) => {
+        console.log(data)
+        this.notifications = data
+      },
+      error: (err) => console.error(err)
+    })
+  }
+
+  readAllNotif() {
+    this.notificationService.readAllNotifications(this.currentUser.id).subscribe({
+      next : (res) => {
+        console.log(res);
+        this.getAllNotifs(this.currentUser.id);
+      },
+      error : (err) => console.error(err)
+    })
+  }
+
+  readNotification(link: string, id: any) {
+    this.notificationService.readNotification(id).subscribe({
+      next : (res) => {
+        console.log(res);
+        this.getAllNotifs(this.currentUser.id);
+        this.router.navigateByUrl(link);
+      },
+      error : (err) => console.error(err)
+    })
   }
 }
