@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { NotificationService } from 'app/main/services/notification.service';
 
@@ -16,7 +17,7 @@ export class NavbarNotificationComponent implements OnInit {
    *
    * @param {NotificationsService} _notificationsService
    */
-  constructor(private notificationService: NotificationService) {}
+  constructor(private notificationService: NotificationService, private router: Router) {}
 
   // Lifecycle Hooks
   // -----------------------------------------------------------------------------------------------------
@@ -38,6 +39,27 @@ export class NavbarNotificationComponent implements OnInit {
         this.notifications = data
       },
       error: (err) => console.error(err)
+    })
+  }
+
+  readAllNotif() {
+    this.notificationService.readAllNotifications(this.currentUser.id).subscribe({
+      next : (res) => {
+        console.log(res);
+        this.getAllNotifs(this.currentUser.id);
+      },
+      error : (err) => console.error(err)
+    })
+  }
+
+  readNotification(link: string, id: any) {
+    this.notificationService.readNotification(id).subscribe({
+      next : (res) => {
+        console.log(res);
+        this.getAllNotifs(this.currentUser.id);
+        this.router.navigateByUrl(link);
+      },
+      error : (err) => console.error(err)
     })
   }
 }
